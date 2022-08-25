@@ -1,0 +1,38 @@
+[
+ {
+  "nombre": "Carlos Eduardo",
+  "apellido": "David",
+  "documento": 12498773,
+  "sexo": "Masculino",
+  "matricula": "MN 10930",
+  "especialidad": [
+   "Gastroenterología",
+   "Clinica Medica",
+   "Proctologia"
+  ],
+  "nacimiento": "31 de Diciembre de 1956",
+  "userID": "CMD12498773N2022"
+ },
+ {
+  "nombre": "Marcela Alejandra",
+  "apellido": "Gurzi",
+  "documento": 16895293,
+  "sexo": "Femenino",
+  "matricula": "MN 16032",
+  "especialidad": [
+   "Flebologia"
+  ],
+  "nacimiento": "04 de Noviembre de 1963",
+  "userID": "CMD16895293N2022"
+ },
+ {
+  "nombre": "Sebastian Gonzalo",
+  "apellido": "David",
+  "documento": 43628440,
+  "sexo": "Masculino",
+  "matricula": "MN 40293",
+  "especialidad": "Kinesiologia",
+  "nacimiento": "25 de Noviembre de 2001",
+  "userID": "CMD43628440N2022"
+ }
+]
