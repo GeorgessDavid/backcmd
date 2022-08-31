@@ -26,7 +26,7 @@ https://www.cdrossi.com
 ### Listado del grupo con una breve descripción de cada uno
 De Sá, Janet
 
-Donnoli, Mariela
+Donnoli, Mariela: Diseñadora Industrial, con conocimientos de paquete adobe y diseño grafico en general.
 
 Garibaldi, Martin
 
