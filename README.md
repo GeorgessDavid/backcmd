@@ -32,7 +32,7 @@ Garibaldi, Martin
 
 David, Georges Ammiel
 
-Nope Rendon, Anthony
+Nope Rendon, Anthony: 17 años, colombia. Recién graduado de la secundaria/bachillerato. Estudiante de DH.
 
 ### Link del tablero de trabajo en donde se encuentran trabajando
 https://trello.com/b/u3vdUFBj/sprint-1-mockup
