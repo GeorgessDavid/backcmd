@@ -24,7 +24,7 @@ https://www.cdrossi.com
 
 
 ### Listado del grupo con una breve descripción de cada uno
-De Sá, Janet
+de Sá, Janet Estudiante de Full Stack, sin conocimientos previos al respecto.
 
 Donnoli, Mariela
 
