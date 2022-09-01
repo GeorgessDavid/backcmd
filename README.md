@@ -28,7 +28,7 @@ de Sá, Janet Estudiante de Full Stack, sin conocimientos previos al respecto.
 
 Donnoli, Mariela: Diseñadora Industrial, con conocimientos de paquete adobe y diseño grafico en general.
 
-Garibaldi, Martin
+Garibaldi, Martin: Estudiante de Desarrollo Web Full Stack en DigitalHouse.
 
 David, Georges Ammiel: Estudiante de Desarrollo Web Full Stack en DigitalHouse, con pocos conocimientos previos en el ámbito de la computación.
 
