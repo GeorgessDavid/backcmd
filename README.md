@@ -30,7 +30,7 @@ Donnoli, Mariela: Diseñadora Industrial, con conocimientos de paquete adobe y d
 
 Garibaldi, Martin
 
-David, Georges Ammiel
+David, Georges Ammiel: Estudiante de Desarrollo Web Full Stack en DigitalHouse, con pocos conocimientos previos en el ámbito de la computación.
 
 Nope Rendon, Anthony: 17 años, colombia. Recién graduado de la secundaria/bachillerato. Estudiante de DH.
 
