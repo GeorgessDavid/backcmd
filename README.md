@@ -15,12 +15,12 @@ El proyecto propuesto apunta a ser un portal de salud, donde se pueda manejar to
 
 
 ### Listado de 5 páginas referentes en las que se basa su proyecto
-https://www.colsanitas.com/home
-https://www.premelab.com.ar
-https://www.diagnosticotesla.com
-https://www.diagnosticomaipu.com
-https://www.centromoreau.com.ar
-https://www.cdrossi.com
+- https://www.colsanitas.com/home
+- https://www.premelab.com.ar
+- https://www.diagnosticotesla.com
+- https://www.diagnosticomaipu.com
+- https://www.centromoreau.com.ar
+- https://www.cdrossi.com
 
 
 ### Listado del grupo con una breve descripción de cada uno
