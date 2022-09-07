@@ -15,12 +15,12 @@ El proyecto propuesto apunta a ser un portal de salud, donde se pueda manejar to
 
 
 ### Listado de 5 páginas referentes en las que se basa su proyecto
-https://www.colsanitas.com/home
-https://www.premelab.com.ar
-https://www.diagnosticotesla.com
-https://www.diagnosticomaipu.com
-https://www.centromoreau.com.ar
-https://www.cdrossi.com
+- https://www.colsanitas.com/home
+- https://www.premelab.com.ar
+- https://www.diagnosticotesla.com
+- https://www.diagnosticomaipu.com
+- https://www.centromoreau.com.ar
+- https://www.cdrossi.com
 
 
 ### Listado del grupo con una breve descripción de cada uno
@@ -28,7 +28,7 @@ de Sá, Janet Estudiante de Full Stack, sin conocimientos previos al respecto.
 
 Donnoli, Mariela: Diseñadora Industrial, con conocimientos de paquete adobe y diseño grafico en general.
 
-Garibaldi, Martin
+Garibaldi, Martin: Estudiante de Desarrollo Web Full Stack en DigitalHouse.
 
 David, Georges Ammiel: Estudiante de Desarrollo Web Full Stack en DigitalHouse, con pocos conocimientos previos en el ámbito de la computación.
 
