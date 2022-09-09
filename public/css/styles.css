@@ -1,0 +1,12 @@
+footer{
+   
+    display: flex;
+
+}
+
+body{
+
+    background-color: beige;
+}
+
+/*El backgroundcolor del body es sólo de prueba de que funciona el CSS en el HTML del LocalHost.*/
