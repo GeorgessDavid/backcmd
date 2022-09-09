@@ -1,12 +1,58 @@
-footer{
-   
-    display: flex;
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
+.opensans {
+  font-family: "Open Sans", sans-serif;
 }
 
 body{
-
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-size: 15px;
     background-color: beige;
 }
 
-/*El backgroundcolor del body es sólo de prueba de que funciona el CSS en el HTML del LocalHost.*/
+.flex{
+    display: flex;
+}
+
+.header{
+    background-color: #012B78;
+}
+
+.headersIcons{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.headerLogo{
+    justify-content: center;
+    padding-left: 25rem;
+}
+
+
+.footer{
+    display: flex;
+    flex-direction: row;
+    background-color: #012B78 ;
+    justify-content: space-between;
+    padding-left: 1%;
+    padding-right: 1%
+}
+
+.middleHigh{
+    justify-content:space-around;
+    align-items: center;
+    margin: 0.2rem;
+}
+
+.fontColor{
+
+    color: white
+}
+
+.marginLeft{
+    margin-left: 3%;
+    flex-wrap: wrap;
+    
+}

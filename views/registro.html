@@ -4,48 +4,64 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" >
-    <link rel="stylesheet" type= "text/css" herf= "http.//fonts.googleapis.com/css">
     <link rel="stylesheet" href="css/styles.css">
     <title>Registrarse</title>
 </head>
 <body>
-    <header>
-        <a href = "https://www.instagram.com/consultoriosmedicosdavid/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-        <a href = "https://www.facebook.com/ConsultoriosMedicosDavid" target="_blank"><i class="fa-brands fa-facebook"></i></a>
-        <img width="50px" height="50px" src="img/logoCMD.png">
+    <header class="flex header">
+        <div class="headersIcons middleHigh">
+            <a href = "https://www.instagram.com/consultoriosmedicosdavid/" target="_blank"><i class="fa-brands fa-instagram fa-2xl fontColor "></i></a>
+            <a href = "https://www.facebook.com/ConsultoriosMedicosDavid" target="_blank"><i class="fa-brands fa-facebook fa-2xl fontColor"></i></a>
+        </div>
+        <div class="headerLogo">
+          <img width="50px" height="50px" src="img/logoCMD.png">
+        </div>
     </header>
     <div>
-        <h1>Registrarse</h1>
-        <form action="" method="POST">
-            <label name="usuario">
-            <input type="text" name="usuario" placeholder="Usuario">
-            <br>
-            <label name="contraseña">
-            <input type="password" name="contraseña" placeholder="Clave">
-            <br>
-            <br>
-            <br>
-            <br>
-            <label name="nombre">
-            <input type="text" name="nombre" placeholder="Nombre">
-            <br>
-            <label name="apellido">
-            <input type="text" name="apellido" placeholder="Apellido">
-            <br>
-            <label name="email">
-            <input name="email" type="email" placeholder="Email">
-         </form>
-  
-    </div>    
-    <footer>
         <div>
-            <div>
-            <a href=""><i class="fa-brands fa-whatsapp"></i></a>
-            <p>Puedes hacer clic en el ícono o simplemente enviar un mensaje a +54 9 11 7080-3287</p>
-            </div>
-            <div>
-                <p><i class="fa-solid fa-phone"></i>4757-2389</p>
-            </div>
+            <h1>Registrarse</h1>
+            <form action="" method="POST">
+                <label name="usuario">
+                <input type="text" name="usuario" placeholder="Usuario">
+                <br>
+                <label name="contraseña">
+                <input type="password" name="contraseña" placeholder="Clave">
+                <br>
+                <br>
+                <br>
+                <br>
+                <label name="nombre">
+                <input type="text" name="nombre" placeholder="Nombre">
+                <br>
+                <label name="apellido">
+                <input type="text" name="apellido" placeholder="Apellido">
+                <br>
+                <label name="email">
+                <input name="email" type="email" placeholder="Email">
+                <br>
+                <br>
+                <br>
+                <button type="button" class="btn btn-primary">Registrar</button>
+            </form>
+        </div>
+    </div>    
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <footer class="footer flex">
+        <div class="fontColor flex middleHigh">
+            <a href="" target="_blank"><i class="fa-brands fa-whatsapp fa-2xl fontColor"></i></a>
+            <span class="marginLeft">Puedes hacer clic en el ícono o simplemente enviar un mensaje a +54 9 11 7080-3287</span>
+        </div>
+        <div class="fontColor middleHigh">
+            <p><i class="fa-solid fa-phone"></i> 4757-2389</p>
         </div>
     </footer>
 </body>
