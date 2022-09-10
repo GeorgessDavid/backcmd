@@ -11,23 +11,34 @@ body{
     background-color: beige;
 }
 
+main{
+    display: flex;
+    flex-direction: column;
+    padding-top: 15rem;
+    padding-bottom: 15rem;
+}
+
 .flex{
     display: flex;
 }
 
-.header{
+.registerBox{
+    margin-left: 90vw;
+}
+
+header{
     background-color: #012B78;
+    display: flex;
+    flex-direction: row;
 }
 
 .headersIcons{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+    align-self: center;
 }
 
 .headerLogo{
-    justify-content: center;
-    padding-left: 25rem;
+    margin-left: 93vw;
+    
 }
 
 
