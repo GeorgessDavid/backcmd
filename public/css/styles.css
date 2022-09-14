@@ -1,53 +1,68 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans');
-
-.opensans {
-  font-family: "Open Sans", sans-serif;
-}
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans+Condensed');
 
 body{
     background-color: beige;
+    box-sizing: border-box;
 }
 
-main{
-    display: flex;
-    flex-direction: column;
-    padding-top: 15rem;
-    padding-bottom: 15rem;
-}
-
-.flex{
-    display: flex;
-}
-
-.registerBox{
-    margin-left: 90vw;
-}
 
 header{
-    box-sizing: border-box;
     width:100%;
+    box-sizing: border-box;
     justify-content: space-between;
-    padding-left: 1%;
-    padding-right: 1%;
+    padding-left: 0,1%;
+    padding-right: 0,1%;    
 }
 
-.top-header{
+ .top-header{
     width:100%;
-    justify-content: space-between;
-    background-color: #012B78;
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+    background-color: #012B78;
     font-size: 1 em;
-    font-family:arial, sans-serif;
+    font-family: 'Fira Sans Condensed';
     color: aliceblue;
 	letter-spacing: 0.05em;
-    padding-left: 1%;
-    padding-right: 1%;
 }
+
 .top-header ul{
-    text-decoration: none;
-    list-style:none
+    display:flex;
+    flex-direction: row;
+    float:left;
+    justify-content: space-between;
+    list-style:none;
+ }
     
+.top-header li{
+    text-align: center;
+    padding-left: 2%;
+    padding-right: 70px;
+}
+
+.top-header a{
+    color: white;
+    transition: color 300ms;
+    padding-left: 2%;
+    padding-right: 2%;
+    text-decoration: none;
+    padding-right: 20px; 
+}
+
+.top-header a:hover{
+    color:black;
+}
+.social-media{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-self: center;
+    padding-left:40px;
+    padding-right:30px;
+}
+
+.social-media:hover{
+    color:black;
 }
 
 .bottom-header{
@@ -61,12 +76,28 @@ header{
     padding-right: 1%;
 
 }
+
+.logo{
+
+    background-position: left top;
+    margin-left: 30px;
+    width: 80px;
+    height: 80px;
+    margin-bottom: 6px;
+    
+}
+
+.Logo a img{
+    width: 80px;
+    height: 80px;
+}
+
 .main-menu{
-    width: 80%;
+    width: 100%;
     box-sizing: border-box;
     padding-bottom: 20px;
-    padding-left: 300px;
-  
+    padding-left: 400px;
+    
     
 
 }
@@ -76,46 +107,49 @@ header{
     
 }
 .main-menu li{
-    font-size: 1.1em;
-    font-family:"BebasNeue", arial, sans-serif;
-	letter-spacing: 0.2em;
+    font-size: 1.2em;
+    font-family:'Fira Sans Condensed';
+    text-decoration: none;
+	text-transform: uppercase;
 	width:20%;
 	height:35px;
 	/*padding: 6px 0px 0px 0px;*/
 	float:left;
-	color: #012B78;
 	text-align:center;
-
 }
-
-.logo{
-
-    background-position: left top;
-    margin-left: 30px;
-    width: 60px;
-    height: 60px;
-    box-sizing: border-box;
+.main-menu p{
+    width: 100%;
+	height: inherit;
+	text-align:center;
+    padding-right: 20px;
 }
-
-.headersIcons{
-    align-self: center;
+.main-menu a{
+    width: 100%;
+    text-decoration: none;
+    color: #012B78;
+    font-weight: bold;
+	/*padding: 6px 0px 6px 0px;*/
+   
 }
-
-
+main{
+    display: flex;
+    flex-direction: column;
+    padding-top: 15rem;
+    padding-bottom: 15rem;
+}
 
 footer{
     display: flex;
     flex-direction: row;
     font-size: 1 em;
-    font-family:arial, sans-serif;
+    font-family: 'Fira Sans Condensed';
     color: aliceblue;
 	letter-spacing: 0.05em;
     background-color: #012B78 ;
     justify-content: space-between;
-    padding-left: 1%;
-    padding-right: 1%
+    padding-left: 2%;
+    padding-right: 2%
 }
-
 .middleHigh{
     justify-content:space-around;
     align-items: center;
