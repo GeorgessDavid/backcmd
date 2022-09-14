@@ -1,8 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans');
-
-.opensans {
-  font-family: "Open Sans", sans-serif;
-}
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans+Condensed');
 
 body{
     background-color: beige;
@@ -38,18 +34,29 @@ header{
     display: flex;
     flex-direction: row;
     font-size: 1 em;
-    font-family:arial, sans-serif;
+    font-family: 'Fira Sans Condensed';
     color: aliceblue;
 	letter-spacing: 0.05em;
     padding-left: 1%;
     padding-right: 1%;
 }
-.top-header ul{
+.top-header-ul{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
     text-decoration: none;
-    list-style:none
-    
+    list-style:none;
 }
 
+.textWhite{
+    color: white;
+    transition: color 300ms;
+    margin-left: 2vw;
+}
+
+.textWhite:hover{
+    color:black;
+}
 .bottom-header{
     width:100%;
     display: flex;
@@ -77,17 +84,21 @@ header{
 }
 .main-menu li{
     font-size: 1.1em;
-    font-family:"BebasNeue", arial, sans-serif;
-	letter-spacing: 0.2em;
+    font-family:'Fira Sans Condensed';
+    text-decoration: none;
+	text-transform: uppercase;
+    font-weight: bold;
 	width:20%;
 	height:35px;
 	/*padding: 6px 0px 0px 0px;*/
 	float:left;
 	color: #012B78;
 	text-align:center;
-
 }
 
+a{
+    text-decoration: none;
+}
 .logo{
 
     background-position: left top;
