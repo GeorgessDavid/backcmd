@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Fira+Sans+Condensed');
 
-
 body{
     background-color: beige;
     box-sizing: border-box;
@@ -74,7 +73,23 @@ header{
 .social-media:hover{
     color:black;
 }
+.top-header-ul{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    text-decoration: none;
+    list-style:none;
+}
 
+.textWhite{
+    color: white;
+    transition: color 300ms;
+    margin-left: 2vw;
+}
+
+.textWhite:hover{
+    color:black;
+}
 .bottom-header{
     width:100%;
     display: flex;
@@ -118,15 +133,24 @@ header{
 }
 
 .main-menu li{
+
     font-size: 1.2em;
     font-family:'Fira Sans Condensed';
     text-decoration: none;
 	text-transform: uppercase;
+}
+.main-menu ul{
+    font-size: 1.1em;
+    font-family:'Fira Sans Condensed';
+    text-decoration: none;
+	text-transform: uppercase;
+    font-weight: bold;
 	width:20%;
 	height:35px;
 	/*padding: 6px 0px 0px 0px;*/
 	float:left;
 	text-align:center;
+
 }
 .main-menu p{
     width: 100%;
