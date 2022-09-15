@@ -1,9 +1,19 @@
 @import url('https://fonts.googleapis.com/css?family=Fira+Sans+Condensed');
 
+
 body{
     background-color: beige;
     box-sizing: border-box;
 }
+h3{
+    font-size: 24px;
+}
+
+
+p{
+    font-size: 12px;
+}
+
 
 
 header{
@@ -87,7 +97,7 @@ header{
     
 }
 
-.Logo a img{
+.Logo.img{
     width: 80px;
     height: 80px;
 }
@@ -106,6 +116,7 @@ header{
     list-style:none
     
 }
+
 .main-menu li{
     font-size: 1.2em;
     font-family:'Fira Sans Condensed';
@@ -129,14 +140,68 @@ header{
     color: #012B78;
     font-weight: bold;
 	/*padding: 6px 0px 6px 0px;*/
+}
+.main-menu a:hover{
+    color:black;
+}
+
+section.banner.img{
+    width:100%;
+    position:relative;
    
 }
-main{
-    display: flex;
-    flex-direction: column;
-    padding-top: 15rem;
-    padding-bottom: 15rem;
+section.banner h1{
+    font-size: 3em;
+    letter-spacing: 0.05em;
+    font-family:'Fira Sans Condensed';
+    color: #012B78;
+    width:100%;
+    font-weight: bold;
+    text-align:center;
+    position:relative;
+    bottom:200px;
 }
+/*  ----- ESTUDIOS ----- */
+div.estudios,
+div.estudios-medicos{
+    display: flex;
+    flex-wrap: wrap;
+    letter-spacing: 0.05em;
+    font-family:'Fira Sans Condensed';
+    color: #012B78;
+}
+
+.main-article{
+    font-size: 18px;
+    width: 30%;
+}
+
+.info{
+    width: 70%;
+}
+
+.info,
+.description{
+    font-size: 16px;
+    font-weight: normal;
+}
+
+h3,
+.description{
+    color: #666;
+}
+
+.description{
+    display: none;
+    margin-top: 20px;
+}
+
+.description{
+    display: none;
+    margin-top: 20px;
+}
+
+/* --- FIN ESTUDIOS */
 
 footer{
     display: flex;
