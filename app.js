@@ -34,8 +34,9 @@ res.sendFile(path.join(__dirname, '/views/index.html' )));
 app.get('/',(req,res)=>
 res.sendFile(path.join(__dirname, '/views/turnos.html' )));
 
-app.get('/',(req,res)=>
+app.get('/register',(req,res)=>
 res.sendFile(path.join(__dirname, '/views/registro.html' )));
+
 /*
 
 app.use(express.static((__dirname + '/public')));
