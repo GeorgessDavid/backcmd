@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" >
+    <link rel="stylesheet" type= "text/css" herf= "http.//fonts.googleapis.com/css">
+    <link rel="stylesheet" href="css/styles.css">
+    <title>Consultorios Médicos David</title>
+</head>
+<body> <!--START BODY-->
+  <header> <!--start header-->
+    <div class = "top-header">
+      <div class ="social-media" >
+        <a href = "https://www.instagram.com/consultoriosmedicosdavid/" target="_blank"><i class="fa-brands fa-instagram fa-2xl fontColor "></i></a>
+        <a href = "https://www.facebook.com/ConsultoriosMedicosDavid" target="_blank"><i class="fa-brands fa-facebook fa-2xl fontColor"></i></a>
+      </div>
+      <nav> 
+        <ul>
+        <li><p><a href="pacientes.html">Pacientes</a></p></li>
+        <li><p><a href="prestadores.html">Prestadores</a></p></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="bottom-header">
+      <div class="logo">
+       <img  width="90px" height="90px" src="img/logoCMD.png"  alt="Logo CMD"/>
+      </div>
+    <!--  NO FUNCIONA LOGO CSS 
+          <img width="50px" height="50px" src="img/logoCMD.png alt="Logo CMD"">
+        </div>
+      -->
+      <div class="main-menu">
+        <ul>
+        <li><p><a href="index.html">Home</a></p></li>
+        <li><p><a href="#">Blabla</a></p></li>
+        <li><p><a href="turnos.html">Turnos</a></p></li>
+        <li><p><a href="especialidades.html">Especialidades</a></p></li>
+        <li><p><a href="contacto.html">Contacto</a></p></li>
+       </ul>
+      </div>
+    </div>
+  </header>
+
+<main>
+     <!-- Turnos base -->
+     <div class="turnos">
+        <form action="turnos.html" method="POST">
+            <div class="column">
+                <p>Turnos Para:</p>
+                <label>ESTUDIOS</label>
+                <select name="turnoPara" >
+                    <option value="Estudios">ESTUDIOS</option>
+                    <option value="Especialidades">ESPECIALIDADES</option>
+                </select>
+                <p>Especialidad:</p>
+                <select name="especialidad" >
+                    <option value="1">ALERGIA</option>
+                    <option value="2">CARDIOLOGIA</option>
+                    <option value="3">CLINICA MEDICA</option>
+                    <option value="4">DERMATILOGÍA</option>
+                    <option value="5">ENDOCRINOLOGIA</option>
+                    <option value="6">FLEBOLOGIA</option>
+                    <option value="7">GASTROENTEROLOGIA</option>
+                    <option value="8">GINECOLOGIA</option>
+                    <option value="9">ODONTOLOGIA</option>
+                </select>
+                <p>Dr/Dra:</p>
+                <select name="doctor" >
+                    <option value="1">Dra. Maradona Yanina</option>
+                    <option value="2">Dr. Coppola Guillermo</option>
+                    <option value="3">Dr. Messi Lionel</option>
+                </select>
+               </select>
+               <p>Fecha:</p>
+               <select name="fecha" >
+                <input type="date" name="fecha" value="2022-09-22" min="2022-09-01"max="2022-12-31">
+               </select>
+            </div>
+            <div class="column">
+            <h2>INFORMACIÓN PERSONAL</h2>
+            <p>Los campos con * son obligatorios</p>
+            <p>
+                <label>Email:</label>
+                <input type="text" name="email" placeholder="EMAIL" required>
+              </p>
+              <p>
+                <label>Nombre:</label>
+                <input type="email" name="nombre" placeholder="NOMBRE Y APELLIDO" required>
+              </p>
+              <p>
+                <label>Telefono:</label>
+                <input type="number" name="TELEFONO" required>
+              </p>
+              <div class="submitButton">
+              <p><input type="submit" value="ENVIAR"></p>
+              <p><input type="submit" value="CANCELAR"></p>
+            </div>
+            </div>
+        </form>
+     </div>
+     <div class="imgTurnos">
+     <img  width="90px" height="90px" src="img/"  alt="Imagen turnos"/>
+
+     </div>
+</main>
+    <!-- body info -->
+<main class = "otro-mas">   
+    <div class="cont">
+               <div class="body-info">
+                       
+                 <div style="width:auto;" class="floatleft"><img src="img/cmd-logo.png" alt="CMD" title="::: Ultimos ajustes ::::" align="right" style="margin-right:60px;" /></div>
+                 <div style="width:auto; display:block;" class="floatleft">
+                    <h2 style="margin:0px; padding:0px;">Mis turnos</h2>
+                    <form name="form1" method="post" action="">
+                       <div class="cont-form">
+                          <div class="cont-field">
+                            <label class="label-form">Nombre y Appellido *</label><input value="" name="Nombre" id="Nombre" type="text" /></div>
+                          <div class="cont-field"><label class="label-form">Empresa *</label><input value=""  name="Institucion" id="Institucion" type="text" /></div>
+                          <div class="cont-field">
+                            <label class="label-form">Ciudad / Pa�s</label><input value="" name="Pais" id="Pais" type="text" /></div>
+                          <div class="cont-field">
+                            <label class="label-form">Email de Contacto *</label><input value="" name="Email" id="Email" type="text" /></div>		   
+                          <div class="cont-field"><label class="label-form">Consulta *</label><textarea name="Consulta" id="Consulta" cols="1" rows="1"></textarea></div>
+                          <div class="bt-send"><span>(*) Campos Obligatorios</span>
+                            <input type="image" name="submit" value="Enviar" src="img/bt-send.png" /></div>
+                       
+                       <?php if($_POST != empresa){?>
+                         <div class="cont-message">
+                         <?php if($errors == ""){?>
+                          <h4>Muchas gracias</h4>
+                          <p>su consulta ha sido enviada, le responderemos brevemente</p>
+                          <p>Tambi�n puede llamarnos o comunicarse por whatsapp al 011-3387-9666</p>
+                        <?php } else { ?>
+                          <ul>
+                             <li class="ultitle mrg-bottom10"><img src="img/ico-alert.png" alt="Alert!" />ATENCION! Hay errores en el formulario:</li>
+                              <?php echo $errors;?>
+                          </ul> 
+                         <?php }?> 
+                        </div>
+                      <?php }?> 	
+                       </div>
+                    </form>
+                    
+                 </div>
+                 
+               </div>
+        <!-- /body info -->	
+        
+        </div>
+</main>
+    <footer>
+        <div class="divFooterWhatsApp">
+            <a href="" target="_blank"><i class="fa-brands fa-whatsapp fa-2xl whatsAppLogo"></i></a>
+            <span>Puedes hacer clic en el ícono o simplemente enviar un mensaje a +54 9 11 7080-3287</span>
+        </div>
+        <div class="divTelefono">
+            <p><i class="fa-solid fa-phone"></i> 4757-2389</p>
+        </div>
+    </footer>
+</body>
+</html>
