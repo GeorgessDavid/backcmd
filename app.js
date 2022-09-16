@@ -31,11 +31,23 @@ app.use(express.static(__dirname +'/public'));
 app.get('/',(req,res)=>
 res.sendFile(path.join(__dirname, '/views/index.html' )));
 
-app.get('/',(req,res)=>
+app.get('/turnos',(req,res)=>
 res.sendFile(path.join(__dirname, '/views/turnos.html' )));
 
-app.get('/',(req,res)=>
+app.get('/register',(req,res)=>
 res.sendFile(path.join(__dirname, '/views/registro.html' )));
+
+app.get('/login', (req, res) => {
+
+    res.sendFile((__dirname + '/views/login.html'));
+
+})
+
+app.get('/especialidades', (req, res) => {
+
+    res.sendFile((__dirname + '/views/especialides.html'))
+})
+
 /*
 
 app.use(express.static((__dirname + '/public')));
