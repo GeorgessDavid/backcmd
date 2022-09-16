@@ -160,4 +160,161 @@ footer{
     color: #25D366;
 }
 
-/*---------- END FOOTER'S STYLES ----------*/
+/*---------- END FOOTER'S STYLES ↑ ----------*/
+
+/*---------- RESPONSIVIDAD PARA 720p ↓ ----------*/
+
+@media only screen and (min-width: 769px) and (max-width: 1366px){
+    
+    body{
+        background-color: beige;
+        font-family: 'Fira Sans Condensed';
+        text-transform: uppercase;
+        height: 100%;
+    }
+
+    /*---------- START HEADER'S STYLES ↓ ----------*/
+    header{
+        background-color: #012B78;
+        display: flex;
+        flex-direction: row;
+        position: fixed;
+        width: 100%;
+        height: 6%;
+    }
+
+    .imgLogo{
+        position: relative;
+        left: 27%;
+        top: 2vh;
+        align-items: center;
+        transition: all 300ms;
+    }
+    
+    .imgLogo a img{
+        width: 50px;
+        height: 50px;
+        transition: all 300ms;
+    }
+    
+    .imgLogo a img:hover{
+        width: 70px;
+        height: 70px;
+    }
+    
+    .divTelefono{
+        display: flex;
+        flex-direction: row;
+        position: absolute;
+        left: 1.8vw;
+        top: 3vh;
+        color: white;
+        font-size: 1.3rem;
+        text-align: justify;
+    }
+    
+    .numeroDeTelefono{
+        font-size: 1.3em;
+        font-weight: bold;
+        margin-left: 1.2vw;
+        position: relative;
+        bottom: 0.7vh;
+    }
+    
+    /*---------- END HEADER'S STYLES ----------*/
+
+    /*---------- START MAIN'S STYLES ----------*/
+    
+    main{
+        padding-top: 15vh;
+        padding-bottom: 15vh;
+    }
+
+    .divContainerRegister{
+        background-color: #d4dae6;
+        width: 100%;
+        height: 50vh;
+        position: relative;
+        left: 63vw;
+        border-radius: 0.5rem;
+    }
+    
+    .divRegistrarse{
+        position: absolute;
+        left: 5vw;
+        top: 2vh;
+    }
+    
+    .titleRegistrarse{
+        color: #012B78;
+    }
+    
+    
+    .btn-registrar /*Botón de registrar sin fondo*/ {
+        --bs-btn-color: #012B78;
+        --bs-btn-border-color: #012B78;
+        --bs-btn-hover-color: #fff;
+        --bs-btn-hover-bg: #012B78;
+        --bs-btn-hover-border-color: #012B78;
+        --bs-btn-focus-shadow-rgb: 49,132,253;
+        --bs-btn-active-color: #fff;
+        --bs-btn-active-bg: #012B78;
+        --bs-btn-active-border-color: #012B78;
+        --bs-btn-active-shadow: inset 0 3px 5pxrgba(0, 0, 0, 0.125);
+        --bs-btn-disabled-color: #fff;
+        --bs-btn-disabled-bg: #012B78;
+        --bs-btn-disabled-border-color: #012B78;
+        text-transform: uppercase;
+        position: relative;
+        left: 5vw;
+    }
+
+    /*---------- END MAIN'S STYLES ↑ ----------*/
+
+    /*---------- START FOOTER'S STYLES ↓ ----------*/
+    
+    .socialesLogos{
+        align-self: center;
+        position: relative;
+        left: 30vw;
+        bottom: 1vh;
+    }
+    
+    .facebookLogo{
+        position: relative;
+        left: 2vw;
+        color: white;
+        transition: color 300ms;
+    }
+    
+    .facebookLogo:hover{
+        color: #698bd1;
+    }
+    .instagramLogo{
+        color: white;
+        transition: color 300ms;
+    }
+    
+    .instagramLogo:hover{
+        color:black;
+    }
+    
+    .divFooterWhatsApp{
+        align-items: center;
+        position: relative;
+        bottom: 0.5vw;
+    }
+    
+    .whatsAppLogo{
+        color: white;
+        padding-right: 0.5vw;
+        margin-left: 1vw;
+        transition: color 300ms;
+    }
+    
+    .whatsAppLogo:hover{
+        color: #25D366;
+    }
+
+    /*---------- END FOOTER'S STYLES ↑ ----------*/
+}
