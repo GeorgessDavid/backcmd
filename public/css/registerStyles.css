@@ -17,16 +17,15 @@ header{
 }
 
 main{
-    padding-top: 24vh;
-    padding-bottom: 24vh;
+    min-height: 93vh;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 footer{
     background-color: #012B78;
-    display: flex;
-    flex-direction: row;
     color: white;
-    align-items: center;
+    align-self: flex-end;
     width: 100%;
     padding-top: 1.6%;
     padding-bottom: 0.65%;
@@ -40,6 +39,7 @@ footer{
     height: 45vh;
     position: relative;
     left: 80vw;
+    align-self: center;
     border-radius: 0.5rem;
 }
 
@@ -158,6 +158,11 @@ footer{
 
 .whatsAppLogo:hover{
     color: #25D366;
+}
+
+.footerBox{
+    display: flex;
+    flex-direction: row;
 }
 
 /*---------- END FOOTER'S STYLES ↑ ----------*/
