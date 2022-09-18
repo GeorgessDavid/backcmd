@@ -45,7 +45,7 @@ app.get('/login', (req, res) => {
 
 app.get('/especialidades', (req, res) => {
 
-    res.sendFile((__dirname + '/views/especialides.html'))
+    res.sendFile((__dirname + '/views/especialidades.html'))
 })
 
 /*
