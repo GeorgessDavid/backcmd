@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" >
     <link rel="stylesheet" type= "text/css" herf= "http.//fonts.googleapis.com/css">
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/turnos.css">
+    
     <title>Consultorios Médicos David</title>
 </head>
 <body> <!--START BODY-->
@@ -15,40 +17,44 @@
         <a href = "https://www.instagram.com/consultoriosmedicosdavid/" target="_blank"><i class="fa-brands fa-instagram fa-2xl fontColor "></i></a>
         <a href = "https://www.facebook.com/ConsultoriosMedicosDavid" target="_blank"><i class="fa-brands fa-facebook fa-2xl fontColor"></i></a>
       </div>
-      <nav> 
+ <!--    
         <ul>
         <li><p><a href="pacientes.html">Pacientes</a></p></li>
         <li><p><a href="prestadores.html">Prestadores</a></p></li>
-        </ul>
+        </ul> -->
+      <nav class="nav-top-header"> 
+         <ul class="top-header-ul">
+          <li><p><a  href="pacientes.html">Pacientes</a></p></li>
+          <li><p><a  href="prestadores.html">Prestadores</a></p></li>
+         </ul>
       </nav>
     </div>
     <div class="bottom-header">
       <div class="logo">
-       <img  width="90px" height="90px" src="img/logoCMD.png"  alt="Logo CMD"/>
+       <img  src="img/logoCMD.png"  alt="Logo CMD"/>
       </div>
     <!--  NO FUNCIONA LOGO CSS 
-          <img width="50px" height="50px" src="img/logoCMD.png alt="Logo CMD"">
+          <img width="90px" height="90px" src="img/logoCMD.png alt="Logo CMD"">
         </div>
       -->
       <div class="main-menu">
         <ul>
-        <li><p><a href="index.html">Home</a></p></li>
-        <li><p><a href="#">Blabla</a></p></li>
-        <li><p><a href="turnos.html">Turnos</a></p></li>
-        <li><p><a href="especialidades.html">Especialidades</a></p></li>
-        <li><p><a href="contacto.html">Contacto</a></p></li>
+        <li><p><a href="index.html">Nosotros</a></p></li>
+        <li><p><a href="/register">Registro</a></p></li>
+        <li><p><a href="/turnos">Turnos</a></p></li>
+        <li><p><a href="/especialidades">Especialidades</a></p></li>
+        <li><p><a href="#">Contacto</a></p></li>
        </ul>
       </div>
     </div>
   </header>
-
 <main>
      <!-- Turnos base -->
      <div class="turnos">
         <form action="turnos.html" method="POST">
             <div class="column">
+              <h3>MIS TURNOS</h3>
                 <p>Turnos Para:</p>
-                <label>ESTUDIOS</label>
                 <select name="turnoPara" >
                     <option value="Estudios">ESTUDIOS</option>
                     <option value="Especialidades">ESPECIALIDADES</option>
@@ -78,29 +84,26 @@
                </select>
             </div>
             <div class="column">
-            <h2>INFORMACIÓN PERSONAL</h2>
+            <h3>INFORMACIÓN PERSONAL</h3>
             <p>Los campos con * son obligatorios</p>
             <p>
-                <label>Email:</label>
                 <input type="text" name="email" placeholder="EMAIL" required>
               </p>
               <p>
-                <label>Nombre:</label>
                 <input type="email" name="nombre" placeholder="NOMBRE Y APELLIDO" required>
               </p>
               <p>
-                <label>Telefono:</label>
-                <input type="number" name="TELEFONO" required>
+                <input type="number" name="telefono" placeholder="TELÉFONO" required>
               </p>
               <div class="submitButton">
-              <p><input type="submit" value="ENVIAR"></p>
-              <p><input type="submit" value="CANCELAR"></p>
+              <p><input type="submit" value="ENVIAR">
+              <input type="submit" value="CANCELAR"></p>
             </div>
             </div>
         </form>
      </div>
      <div class="imgTurnos">
-     <img  width="90px" height="90px" src="img/"  alt="Imagen turnos"/>
+     <img  width="350px" height="450px" src="img/turnos.png"  alt="Img turnos"/>
 
      </div>
 </main>
@@ -146,7 +149,97 @@
                  
                </div>
         <!-- /body info -->	
-        
+ <!-- ESTO ES EL MAIN MERCADO LIEBRE-->	
+ <main> <!--Start main-->
+  <section class="last_visit">
+    <h3>Basado en tu última visita</h3>
+    <div class="products"><!--SECCION PRODUCTOS-->
+      <article>
+        <img src="images/img-cafetera-moulinex.jpg" class="img_product" alt="Cafetera Moulinex">
+        <div class="main_article">
+          <i class="fas fa-truck"></i>
+          <p class="price">$6.770</p>
+          <p class="discount">40% off</p>
+          <h4 class="description">Cafetera Moulinex</h4>
+        </div>
+      </article>
+    </div>
+  </section> 
+</main> 
+<!--CSS 
+main{
+    width: 90%;
+    margin: 0 auto;
+}
+
+main section article{
+    background-color: #fff;    
+    margin: 10px 0px;
+}
+
+main section article img{
+    width: 100%;
+}
+
+main section article i,
+.discount{
+    color: #39b54a;
+}
+
+main section article i{
+    display: block;
+    font-size: 16px;
+    padding: 5px;
+    width: 30px;
+    height: 30px;
+    border: 1px solid #39b54a;
+    background-color: #FFF;
+    border-radius: 50%;
+    position: absolute;
+    right: 20px;
+    top: -15px;
+}
+
+main section h3{
+    margin: 20px 0px;
+}
+
+main section div.products article i{
+    transition: transform 1s;
+}
+
+main section div.products article:hover i{
+    transform: rotate(-90deg);
+}
+
+article div.main-article{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    border-top: 1px solid #ebebeb;
+    position: relative;
+    padding: 15px;
+}
+main section article:hover{
+    box-shadow: 0px 0px 10px rgb(100, 100, 100);
+}
+main section article:hover .description{
+    display: block;
+}
+
+.login input[type='submit']:hover,
+.register input[type='submit']:hover{
+    background-color: #0022AA;
+}
+
+
+
+
+
+
+-->
+  <!-- ESTO ES EL MAIN MERCADO LIEBRE-->	
         </div>
 </main>
     <footer>
