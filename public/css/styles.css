@@ -1,19 +1,31 @@
 @import url('https://fonts.googleapis.com/css?family=Fira+Sans+Condensed');
-
+*{
+    margin: 0px;
+    padding:0px;
+    box-sizing: border-box;
+}
 
 body{
     background-color: beige;
     box-sizing: border-box;
 }
+h1{
+    font-size: 48px; /* o 3 em*/
+    font-family: 'Fira Sans Condensed';
+}
+
 h3{
-    font-size: 24px;
+    font-size: 24px; /* o 1.5em*/
+    font-family: 'Fira Sans Condensed';
 }
-
-
+h2{
+    font-size: 16px; 
+    font-family: 'Fira Sans Condensed';
+}
 p{
-    font-size: 12px;
+    font-size: 18px; /* o 1 em*/
+    font-family: 'Fira Sans Condensed';
 }
-
 header{
     width:100%;
     box-sizing: border-box;
@@ -21,40 +33,47 @@ header{
     padding-left: 0,1%;
     padding-right: 0,1%;    
 }
-
  .top-header{
     width:100%;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    box-sizing: border-box;
+    float: right;
     background-color: #012B78;
-    font-size: 1 em;
-    font-family: 'Fira Sans Condensed';
     color: aliceblue;
 	letter-spacing: 0.05em;
+    padding-left: 4%;
+    padding-right: 4%;
+    justify-content: space-between;
+}
+.nav-top-header{ 
+    display:flex;
+    box-sizing: border-box;
+    float: right!important; 
+    padding-top:20px;  
+    padding-bottom: 20px;
 }
 
 .top-header ul{
+    box-sizing: border-box;
     display:flex;
     flex-direction: row;
-    float:left;
-    justify-content: space-between;
+    text-align: center;
     list-style:none;
  }
-    
 .top-header li{
+    display:flex;
+    flex-direction: row;
     text-align: center;
-    padding-left: 2%;
-    padding-right: 70px;
+    font-size: 1em;
 }
-
 .top-header a{
     color: white;
     transition: color 300ms;
-    padding-left: 2%;
-    padding-right: 2%;
+    padding-right: 30px;
     text-decoration: none;
-    padding-right: 20px; 
+    letter-spacing: 0.05em;
+    text-align:center
 }
 
 .top-header a:hover{
@@ -65,166 +84,166 @@ header{
     flex-direction: row;
     justify-content: space-between;
     align-self: center;
-    padding-left:40px;
-    padding-right:30px;
 }
-
 .social-media:hover{
     color:black;
 }
-
 .bottom-header{
     width:100%;
     display: flex;
     flex-direction: row;
+    padding-left: 4%;
+    padding-right: 4%; 
     background-color: #ffffff;
     border-bottom: solid rgb(223, 223, 223) 2px ;
     box-sizing: border-box;
-    padding-left: 1%;
-    padding-right: 1%;
-
+    align-items: center;
 }
-
-.logo{
-
+.logo img{
     background-position: left top;
-    margin-left: 30px;
-    width: 80px;
-    height: 80px;
-    margin-bottom: 6px;
-    
+    width: 90px;
+    height: 90px;
 }
-
-.Logo.img{
-    width: 80px;
-    height: 80px;
-}
-
 .main-menu{
-    width: 100%;
+    width:100%;
     box-sizing: border-box;
-    padding-bottom: 20px;
-    padding-left: 400px; 
-
-
-
-    
+    float: right!important;
 }
 .main-menu ul{
-    text-align: right!important;
+    box-sizing: border-box;
+    justify-content: space-between;
+    display:flex;
+    float: right;
     list-style:none
-    
 }
-
 .main-menu li{
-    font-size: 1.2em;
-    font-family:'Fira Sans Condensed';
+    float: right;
     text-decoration: none;
 	text-transform: uppercase;
-	width:20%;
-	height:35px;
-	/*padding: 6px 0px 0px 0px;*/
-	float:left;
 	text-align:center;
-}
-.main-menu p{
-    width: 100%;
-	height: inherit;
-	text-align:center;
-    padding-right: 20px;
 }
 .main-menu a{
-    width: 100%;
     text-decoration: none;
+    font-size: 1.2em; /*asignar valores en gral en html*/
     color: #012B78;
+    height: inherit;
+    padding-right: 30px;
     font-weight: bold;
-	/*padding: 6px 0px 6px 0px;*/
+	text-align: center;
 }
 .main-menu a:hover{
     color:black;
 }
-
-section.banner.img{
-    width:100%;
-    position:relative;
-   
+section{
+    width: 100%;
+    padding-left: 0,1%;
+    padding-right: 0,1%;
 }
+section.banner img{
+    width: 100%;
+    box-sizing: border-box;
+    position:relative;
+}
+
 section.banner h1{
-    font-size: 3em;
     letter-spacing: 0.05em;
-    font-family:'Fira Sans Condensed';
     color: #012B78;
     width:100%;
     font-weight: bold;
     text-align:center;
     position:relative;
-    bottom:200px;
+    bottom:180px;
 }
-/*  ----- ESTUDIOS ----- */
-div.estudios,
-div.estudios-medicos{
+
+/* --- Main estudios  */
+main{
+    width: 90%;
+    margin: 0 auto;
+}
+main section h3{
+    color:rgb(73, 73, 73);
+    text-transform: uppercase;
+
+}
+
+main section article{
+    background-color: #fff;    
+    margin: 20px 0px;
+    font-family:'Fira Sans Condensed';
+}
+
+main section article img{
+    width: 100%;
+}
+
+main section article p,
+.description{
+    color: #012B78;
+    text-align: center;
+    
+    
+}
+
+article div.main-article{
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
-        letter-spacing: 0.05em;
-    font-family:'Fira Sans Condensed';
-    color: #012B78;
+    align-items: baseline;
+    border-top: 1px solid #ebebeb;
+    position: relative;
+    padding: 10px;
+}
+main section article:hover{
+    box-shadow: 0px 0px 10px rgb(100, 100, 100);
+}
+main section article:hover .description{
+    display: block;
 }
 
-.main-article{
-    font-size: 18px;
-    width: 30%;
+@media (min-width: 361px){
+    main section div.estudios{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+    
+    main section div.estudios article{
+        width: 45%;
+    }
+
+
+@media (min-width: 769px){
+
+    header nav {
+        display: block;
+    }
+
+    .burguer-menu {
+        display: none;
+    }
+
+    main section div.estudios article{
+        width: 22%;
+    }
 }
-
-.info{
-    width: 70%;
-}
-
-.info,
-.description{
-    font-size: 16px;
-    font-weight: normal;
-}
-
-h3,
-.description{
-    color: #666;
-}
-
-.description{
-    display: none;
-    margin-top: 20px;
-}
-
-.description{
-    display: none;
-    margin-top: 20px;
-}
-
-/* --- FIN ESTUDIOS */
-
+/* --- Main estudios  */
 footer{
     display: flex;
     flex-direction: row;
-    font-size: 1 em;
+    font-size: 1em;
     font-family: 'Fira Sans Condensed';
     color: aliceblue;
+    align-items: center;
 	letter-spacing: 0.05em;
     background-color: #012B78 ;
     justify-content: space-between;
-    padding-left: 2%;
-    padding-right: 2%
+    padding:20px;
 }
-.middleHigh{
-    justify-content:space-around;
-    align-items: center;
-    margin: 0.2rem;
+.WhatsApp i{
+    color:aliceblue !important;
+    padding-right:10px;
 }
-
-
-.marginLeft{
-    margin-left: 3%;
-    flex-wrap: wrap;
-    
 }
-/* ---TURNOS ---*/
-
+/* ---TURNOS---*/
