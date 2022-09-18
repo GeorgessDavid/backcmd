@@ -290,8 +290,11 @@ footer{
     /*---------- START MAIN'S STYLES ----------*/
     
     main{
-        padding-top: 15vh;
-        padding-bottom: 15vh;
+        max-height: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        background-image: url('/img/salaDeEsperaBlanca.jpg');
+        background-size: 1366px;
     }
 
     .divContainerRegister{
