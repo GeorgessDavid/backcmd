@@ -33,10 +33,6 @@
       <div class="logo">
        <img  src="img/logoCMD.png"  alt="Logo CMD"/>
       </div>
-    <!--  NO FUNCIONA LOGO CSS 
-          <img width="90px" height="90px" src="img/logoCMD.png alt="Logo CMD"">
-        </div>
-      -->
       <div class="main-menu">
         <ul>
         <li><p><a href="index.html">Nosotros</a></p></li>
@@ -53,23 +49,22 @@
     <h1>Acá va una frase institucional o amigable</h1>
   </section>    
 
-
-<main> <!--Start main-->
+<main> <!--ESTUDIOS MEDICOS-->
   <section class="last_visit">
     <h3>ESTUDIOS MÉDICOS</h3>
-    <div class="estudios"><!--SECCION PRODUCTOS-->
+    <div class="estudios">
       <article>
         <img src="img/radiologia.png" class="img_product" alt="imagen radiologia">
         <div class="main_article">
           <p class="description">Especialidades Médicas</p>
           <p><a  href="h">Pedir Turno</a></p>
-          
+
         </div>
       </article>
       <article>
         <img src="img/radiologia.png" class="img_product" alt="img radiologia">
         <div class="main_article">
-          <p class="description">Especialidades Médicas</p>
+          <p class="description">Clínica Médica</p>
           <p><a  href="h">Pedir Turno</a></p>
 
         </div>
@@ -77,7 +72,7 @@
       <article>
         <img src="img/radiologia.png" class="img_product" alt="img radiologia">
         <div class="main_article">
-          <p class="description">Especialidades Médicas</p>
+          <p class="description">Ecografías</p>
           <p><a  href="h">Pedir Turno</a></p>
 
         </div>
@@ -85,16 +80,77 @@
       <article>
         <img src="img/radiologia.png" class="img_product" alt="img radiologia">
         <div class="main_article">
-          <p class="description">Especialidades Médicas</p>
+          <p class="description">Laboratorio</p>
           <p><a  href="h">Pedir Turno</a></p>
         </div>
       </article>
-      
-      
     </div>
   </section> 
-</main> 
+ <!--SECTION TURNOS-->
 
+<section>
+  
+  <div class="turnos">
+
+    <form action="turnos.html" method="POST">
+      <div class="column">
+        <h3>MIS TURNOS</h3>
+          <p>Turnos Para:</p>
+          <select name="turnoPara" >
+              <option value="Estudios">ESTUDIOS</option>
+              <option value="Especialidades">ESPECIALIDADES</option>
+          </select>
+          <p>Especialidad:</p>
+          <select name="especialidad" >
+              <option value="1">ALERGIA</option>
+              <option value="2">CARDIOLOGIA</option>
+              <option value="3">CLINICA MEDICA</option>
+              <option value="4">DERMATILOGÍA</option>
+              <option value="5">ENDOCRINOLOGIA</option>
+              <option value="6">FLEBOLOGIA</option>
+              <option value="7">GASTROENTEROLOGIA</option>
+              <option value="8">GINECOLOGIA</option>
+              <option value="9">ODONTOLOGIA</option>
+          </select>
+          <p>Dr/Dra:</p>
+          <select name="doctor" >
+              <option value="1">Dra. Maradona Yanina</option>
+              <option value="2">Dr. Coppola Guillermo</option>
+              <option value="3">Dr. Messi Lionel</option>
+          </select>
+         </select>
+         <p>Fecha:</p>
+         <select name="fecha" >
+          <input type="date" name="fecha" value="2022-09-22" min="2022-09-01"max="2022-12-31">
+         </select>
+      </div>
+      <div class="column">
+        <h3>INFORMACIÓN PERSONAL</h3>
+        <p>Los campos con * son obligatorios</p>
+        <p>
+            <input type="text" name="email" placeholder="EMAIL" required>
+          </p>
+          <p>
+            <input type="email" name="nombre" placeholder="NOMBRE Y APELLIDO" required>
+          </p>
+          <p>
+            <input type="number" name="telefono" placeholder="TELÉFONO" required>
+          </p>
+          <div class="submitButton">
+          <p><input type="submit" value="ENVIAR">
+          <input type="submit" value="CANCELAR"></p>
+        </div>
+        </div>
+    </form>
+ </div>
+
+
+
+
+
+  </div>
+</section>
+</main>
     <footer>
         <div class="WhatsApp">
             <a href="" target="_blank"><i class="fa-brands fa-whatsapp fa-2xl whatsAppLogo"></i></a>
