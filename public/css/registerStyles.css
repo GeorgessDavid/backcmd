@@ -21,7 +21,7 @@ main{
     display: flex;
     flex-wrap: wrap;
     background-image: url('/img/salaDeEsperaBlanca.jpg');
-    background-size: 1920px;
+    background-size: 100%;
 }
 
 .divLogoConsultorio img {
@@ -61,7 +61,6 @@ footer{
     -moz-appearance: none;
     appearance: none;
     transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-    text-transform: uppercase;
     margin-left: 5%;
     margin-bottom: 5px;
 }
@@ -76,6 +75,7 @@ footer{
 }
 .formCMD::placeholder{
     color:#012B78;
+    text-transform: uppercase;
 }
 
 .formCMD:focus{
@@ -89,6 +89,7 @@ footer{
 .formCMD:focus::placeholder{
     text-transform: uppercase;
 }
+
 /*---------- START MAIN'S STYLES ↓ ----------*/
 
 .divContainerRegister{
@@ -312,7 +313,7 @@ footer{
         display: flex;
         flex-wrap: wrap;
         background-image: url('/img/salaDeEsperaBlanca.jpg');
-        background-size: 1366px;
+        background-size: 100%;
     }
 
     .divLogoConsultorio img{
@@ -444,7 +445,11 @@ footer{
 
 /*---------- RESPONSIVIDAD PARA TABLETS ↓ ----------*/
 
-@media only screen and (min-width: 481px) and (max-width: 768px){
+@media only screen and (min-width: 0px) and (max-width: 768px){
+
+    header{
+        height: 7vh;
+    }
 
     .mobileMenu{
         color: #fff;
@@ -470,14 +475,25 @@ footer{
     }
 
     .imgLogo{
-        display: none;
+        position: absolute;
+        left: 43vw;
+        align-items: center;
+    }
+
+    .imgLogo a img{
+        width: 50px;
+        height: 50px;
     }
 
     .divTelefono{
         display: none;
     }
+
     footer{
-        display: none;
+        height: 6vh;
+        position: fixed;
+        z-index: 10;
+        bottom: 4vh;
     }
 
     main{
@@ -485,10 +501,60 @@ footer{
         display: flex;
         flex-wrap: wrap;
         background-image: url('/img/salaDeEsperaBlanca.jpg');
-        background-size: 768px;
+        background-size: 1920px;
+        background-position: center;
     }
     
     .divLogoConsultorio img {
         display: none;
     }
-}
+
+    .divContainerRegister{
+        position: inherit;
+        width: 100%;
+        height: 83vh;
+        margin-top: 4vh;
+    }
+
+    .titleRegistrarse{
+        text-align: center;
+        position: relative;
+        left: 15vw;
+    }
+
+    .divFormulario{
+        position: relative;
+        left: 20vw;
+        top: 3vh;
+    }
+
+    .formCMD{
+        position: relative;
+        width: 65vw;
+        height: 7vh;
+        right: 10vw;
+    }
+
+    .formCMD::placeholder{
+        text-align: center;
+        font-size: 20px;
+    }
+    
+    .divFooterWhatsApp{
+        position: absolute;
+        left: 35vw;
+        bottom: 1.5vh;
+    }
+
+    .divFooterWhatsApp span{
+        display: none;        
+    }
+
+    .socialesLogos{
+        position: absolute;
+        bottom: 1.5vh;
+        padding-left: 20vw;
+        left: 25vw;
+    }
+
+}   
