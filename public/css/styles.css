@@ -209,11 +209,8 @@ main section article:hover{
     padding-right: 10px;
 }
 div.column1{
-    position: relative;
     padding: 10px;
-    align-items: baseline;
     position: relative;
-    
 }
 
 div.column1 p{
@@ -236,8 +233,6 @@ div.column1 p{
     main section div.estudios article{
         width: 45%;
     }
-
-
 
 @media (min-width: 769px){
 
