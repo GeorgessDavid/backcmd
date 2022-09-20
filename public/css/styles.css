@@ -71,6 +71,7 @@ header{
     color: white;
     transition: color 300ms;
     padding-right: 30px;
+    text-transform: none; /*elimina propiedad de una regla ya declarada pseuudoclase */
     text-decoration: none;
     letter-spacing: 0.05em;
     text-align:center
