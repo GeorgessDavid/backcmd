@@ -199,54 +199,33 @@ main section article:hover{
 }
 /* ---SECCION TURNOS---*/
 
-main section {
-    background-color: #fff;    
-    margin: 20px 0px;
-    font-family:'Fira Sans Condensed';
-    
-}
-
 .turnos{
     width: 100%;
+    margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
     align-items: baseline;
     position: relative;
-    padding: 10px;
+    padding-right: 10px;
 }
 div.column1{
-    width: 100%;
-    border-top: 1px solid #ebebeb;
+ 
     position: relative;
     padding: 10px;
 }
 div.column2{
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
+
     align-items: baseline;
-    border-top: 1px solid #ebebeb;
     position: relative;
-    padding: 10px;
-}
-.column1 p,
-.description{
-    color: #012B78;
     
 }
+div.column1 p{
+    color: #012B78;
+    font-size: 16px;
+    padding-top: 10px; 
+}
 
-article div.main-article{
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: baseline;
-    border-top: 1px solid #ebebeb;
-    position: relative;
-    padding: 10px;
-}
-main section article:hover{
-    box-shadow: 0px 0px 10px rgb(100, 100, 100);
-}
+
 /* -------------*/
 @media (min-width: 361px){
     main section div.estudios{
