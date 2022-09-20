@@ -209,16 +209,13 @@ main section article:hover{
     padding-right: 10px;
 }
 div.column1{
- 
     position: relative;
     padding: 10px;
-}
-div.column2{
-
     align-items: baseline;
     position: relative;
     
 }
+
 div.column1 p{
     color: #012B78;
     font-size: 16px;
