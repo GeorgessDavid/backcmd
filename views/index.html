@@ -120,21 +120,18 @@
  <!--SECTION TURNOS-->
 
 <section>  <!--SECTION TURNOS-->
-  <div>
-  
-  <div class="turnos">
-
-    <form action="turnos.html" method="POST">
-      <div class="column1">
-   
-        <h3>MIS TURNOS</h3>
+  <div class="divTurnosSection">
+    <div class="turnos">
+      <form action="turnos.html" method="POST">
+        <div class="column1">
+          <h3>MIS TURNOS</h3>
           <p>Turnos Para:</p>
-          <select name="turnoPara" >
+          <select name="turnoPara" class="selectorCMD">
               <option value="Estudios">ESTUDIOS</option>
               <option value="Especialidades">ESPECIALIDADES</option>
           </select>
           <p>Especialidad:</p>
-          <select name="especialidad" >
+          <select name="especialidad" class="selectorCMD">
               <option value="1">ALERGIA</option>
               <option value="2">CARDIOLOGIA</option>
               <option value="3">CLINICA MEDICA</option>
@@ -146,42 +143,52 @@
               <option value="9">ODONTOLOGIA</option>
           </select>
           <p>Dr/Dra:</p>
-          <select name="doctor" >
+          <select name="doctor" class="selectorCMD">
               <option value="1">Dra. Maradona Yanina</option>
               <option value="2">Dr. Coppola Guillermo</option>
               <option value="3">Dr. Messi Lionel</option>
           </select>
-         </select>
-         <p>Fecha:</p>
-         <select name="fecha" >
-          <input type="date" name="fecha" value="2022-09-22" min="2022-09-01"max="2022-12-31">
-         </select>
+          <p>Fecha:</p>
+          <select name="fecha" >
+            <input type="date" name="fecha" value="2022-09-22" min="2022-09-01"max="2022-12-31">
+          </select>
         </div>
-      </div>
-      <div class="column1"> 
-        
+    </div>
+    <div class="column2"> 
         <h3>INFORMACIÓN PERSONAL</h3>
         <p>Los campos con * son obligatorios</p>
-        <p>
-            <input type="text" name="email" placeholder="EMAIL" required>
+          <p>
+            <input type="text" name="email" placeholder="EMAIL" class="formCMD" required>
           </p>
           <p>
-            <input type="email" name="nombre" placeholder="NOMBRE Y APELLIDO" required>
+            <input type="email" name="nombre" placeholder="NOMBRE Y APELLIDO" class="formCMD" required>
           </p>
           <p>
-            <input type="number" name="telefono" placeholder="TELÉFONO" required>
+            <input type="number" name="telefono" placeholder="TELÉFONO" class="formCMD" required>
           </p>
+          <div>
+            <div class="idSection">
+              <label for="documento">Tipo de documento:</label>
+              <select class="idSelector">
+                <option value="documento">DNI</option>
+                <option value="documento">LC</option>
+                <option value="documento">LE</option>              
+              </select>
+            </div>
+            <div>
+              <label for="documento"></label>
+              <input type="text" class="formCMD" placeholder="NÚMERO DE DOCUMENTO">
+            </div>
+          </div>
 
           <div class="submitButton">
-          <p><input type="submit" value="ENVIAR">
-          <input type="submit" value="CANCELAR"></p>
+            <p><input type="submit" value="ENVIAR">
+            <input type="submit" value="CANCELAR"></p>
           </div>
-     
-      </div>
-    </div>
-        
+    </div>  
     </form>
- </div>
+    <img src="/img/turnos.png">
+  </div>
   </div>
 </div>
 </section>
