@@ -158,13 +158,13 @@
         <h3>INFORMACIÓN PERSONAL</h3>
         <p>Los campos con * son obligatorios</p>
           <p>
-            <input type="text" name="email" placeholder="EMAIL" class="formCMD" required>
+            <input type="email" name="email" placeholder="EMAIL *" class="formCMD" required>
           </p>
           <p>
-            <input type="email" name="nombre" placeholder="NOMBRE Y APELLIDO" class="formCMD" required>
+            <input type="text" name="nombre" placeholder="NOMBRE Y APELLIDO *" class="formCMD" required>
           </p>
           <p>
-            <input type="number" name="telefono" placeholder="TELÉFONO" class="formCMD" required>
+            <input type="number" name="telefono" placeholder="TELÉFONO *" class="formCMD" required>
           </p>
           <div>
             <div class="idSection">
@@ -177,13 +177,13 @@
             </div>
             <div>
               <label for="documento"></label>
-              <input type="text" class="formCMD" placeholder="NÚMERO DE DOCUMENTO">
+              <input type="text" class="formCMD" placeholder="NÚMERO DE DOCUMENTO *">
             </div>
           </div>
 
-          <div class="submitButton">
-            <p><input type="submit" value="ENVIAR">
-            <input type="submit" value="CANCELAR"></p>
+          <div class="buttonBox submitButton">
+            <p><input type="submit" value="ENVIAR" class="sendButton">
+            <input type="reset" value="CANCELAR" class="cancelButton"></p>
           </div>
     </div>  
     </form>

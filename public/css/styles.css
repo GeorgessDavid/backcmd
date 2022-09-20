@@ -248,6 +248,7 @@ main section article:hover{
     font-family: 'Fira Sans Condensed';
     color: #727272;
     font-weight: bold;
+    transition: all 300ms;
 }
 
 .selectorCMD option{
@@ -278,6 +279,7 @@ main section article:hover{
     font-family: 'Fira Sans Condensed';
     padding-left: 1vw;
     font-weight: bold;
+    transition: all 300ms;
 }
 
 .formCMD::placeholder{
@@ -321,6 +323,7 @@ main section article:hover{
     color: #727272;
     font-weight: bold;
     bottom: 0.225vw;
+    transition: all 300ms
 }
 
 .idSelector:hover{
@@ -339,6 +342,51 @@ main section article:hover{
     
 }
 
+.buttonBox{
+    position: absolute;
+    left: 4vw;
+}
+
+.sendButton{
+    position: relative;
+    background-color: #012B78;
+    color: white;
+    border-radius: 0.225rem;
+    font-family: 'Fira Sans Condensed';
+    width: 5vw;
+    height: 2vw;
+    border: 1px solid white;
+    transition: all 300ms;
+}
+
+.sendButton:hover{
+    background-color: white;
+    color: #012B78;
+    font-weight: bold;
+    border: 2px solid #012B78;
+}
+
+.sendButton:focus{
+    box-shadow: 0 0 20 #012B78 ;
+}
+
+.cancelButton{
+    position: relative;
+    background-color: #929292;
+    color: white;
+    border-radius: 0.225rem;
+    margin-left: 1vw;
+    width: 7vw;
+    height: 2vw;
+    border: 1px solid white;
+    font-family: 'Fira Sans Condensed';
+    transition: all 300ms;
+}
+
+.cancelButton:hover{
+    background-color: #727272;
+    font-weight: bold;    
+}
 
 /* -------------*/
 @media (min-width: 361px){
