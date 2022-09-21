@@ -19,10 +19,9 @@ const path = require('path');
 /*
 const publicPath = path.join(__dirname, '/public');
 */
-app.listen(3002, (req, res) => {
 
-    console.log("Servidor activo - Puerto: " + 3002)
-
+app.listen(process.env.PORT || 3002, (req, res) => {
+    console.log("Servidor activo")
 }
 );
 
