@@ -362,11 +362,19 @@ section.banner h1{
         width: 45%;
     }
 
+    section.banner-turnos h1{
+        width:33% ;
+        font-size: 18px;
+       
+    }
+
 @media (min-width: 769px){
 
     header nav {
         display: block;
     }
+
+
 
     main section div.estudios article{
         width: 22%;
