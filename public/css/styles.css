@@ -206,19 +206,187 @@ main section article:hover{
     flex-wrap: wrap;
     align-items: baseline;
     position: relative;
-    padding-right: 10px;
 }
-div.column1{
-    padding: 10px;
-    position: relative;
+.column1{
+    align-items: baseline;
+    position: absolute;
+    width: 33%;
+    margin-left: 2vw;
+    margin-top: 1vw;
 }
 
-div.column1 p{
+.column1 p{
     color: #012B78;
     font-size: 16px;
     padding-top: 10px; 
 }
 
+.column2{
+    align-items: baseline;
+    position: absolute;
+    width: 33%;
+    margin-left: 40%;
+    margin-top: 1vw;
+}
+
+.column2 p{
+    color: #012B78;
+    font-size: 16px;
+    padding-top: 10px; 
+}
+
+.selectorCMD{
+    position: relative;
+    width: 90%;
+    border-radius: 0.275rem;
+    border-color: #012B78;
+    border-style: solid;
+    border-width: 2px;
+    padding-left: 1vw;
+    padding-top: 0.126vw;
+    padding-bottom: 0.125vw;
+    font-family: 'Fira Sans Condensed';
+    color: #727272;
+    font-weight: bold;
+    transition: all 300ms;
+}
+
+.selectorCMD option{
+    background-color: white;
+    color: #012B78;
+    font-weight: bold;
+    
+}
+
+.selectorCMD:hover{
+    box-shadow: 0 0 20px;
+}
+
+.selectorCMD:focus{
+    background-color: #012B78;
+    color: white;
+}
+
+.formCMD{
+    position: relative;
+    width: 80%;
+    border-radius: 0.275rem;
+    border-color: #012B78;
+    border-style: solid;
+    border-width: 2px;
+    height: 2vw;
+    color: #012B78;
+    font-family: 'Fira Sans Condensed';
+    padding-left: 1vw;
+    font-weight: bold;
+    transition: all 300ms;
+}
+
+.formCMD::placeholder{
+    font-weight: bold;
+    font-family: 'Fira Sans Condensed';
+}
+
+.formCMD:hover{
+    box-shadow: 0 0 20px;
+}
+
+.formCMD:focus{
+    box-shadow: 0 0 20px;
+    color: #012B78;
+    font-family: 'Fira Sans Condensed';
+    font-weight: bold;
+}
+
+
+.idSection{
+    display: flex;
+    flex-direction: row;
+    margin-top: 1vw;
+    margin-bottom: 0.3vw;
+}
+
+.idSection label{
+    padding-right: 1vw;
+}
+
+.idSelector{
+    position: relative;
+    border-radius: 0.275rem;
+    border-color: #012B78;
+    border-style: solid;
+    border-width: 2px;
+    padding-left: 1vw;
+    padding-top: 0.126vw;
+    padding-bottom: 0.125vw;
+    font-family: 'Fira Sans Condensed';
+    color: #727272;
+    font-weight: bold;
+    bottom: 0.225vw;
+    transition: all 300ms
+}
+
+.idSelector:hover{
+    box-shadow: 0 0 20px;
+}
+
+.idSelector:focus{
+    background-color: #012B78;
+    color: white;
+}
+
+.idSelector option{
+    background-color: white;
+    color: #012B78;
+    font-weight: bold;
+    
+}
+
+.buttonBox{
+    position: absolute;
+    left: 4vw;
+}
+
+.sendButton{
+    position: relative;
+    background-color: #012B78;
+    color: white;
+    border-radius: 0.225rem;
+    font-family: 'Fira Sans Condensed';
+    width: 5vw;
+    height: 2vw;
+    border: 1px solid white;
+    transition: all 300ms;
+}
+
+.sendButton:hover{
+    background-color: white;
+    color: #012B78;
+    font-weight: bold;
+    border: 2px solid #012B78;
+}
+
+.sendButton:focus{
+    box-shadow: 0 0 20 #012B78 ;
+}
+
+.cancelButton{
+    position: relative;
+    background-color: #929292;
+    color: white;
+    border-radius: 0.225rem;
+    margin-left: 1vw;
+    width: 7vw;
+    height: 2vw;
+    border: 1px solid white;
+    font-family: 'Fira Sans Condensed';
+    transition: all 300ms;
+}
+
+.cancelButton:hover{
+    background-color: #727272;
+    font-weight: bold;    
+}
 
 /* -------------*/
 @media (min-width: 361px){
@@ -267,3 +435,20 @@ footer{
 }
 }
 /* ---TURNOS---*/
+
+.divTurnosSection{
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    position: relative;
+}
+
+.divTurnosSection img{
+    width: 17vw;
+    margin-top: 1vw;
+    margin-bottom: 1vw;
+    position: relative;
+    left: 8vw
+
+}
