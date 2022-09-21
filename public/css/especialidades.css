@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans+Condensed');
+
+
+.tituloEspecialidades{
+    text-align: center;
+    font-size: xx-large;
+}
+
+.parrafoEspecialidades{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.especialidadesFooter{
+    background-color: #012B78;
+    color: white;
+    align-self: flex-end;
+    width: 100%;
+    padding-top: 1.6%;
+    padding-bottom: 0.65%;
+}
+
+.especialidadesBody{
+    box-sizing: unset;
+}
