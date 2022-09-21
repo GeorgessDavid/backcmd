@@ -47,6 +47,11 @@ app.get('/especialidades', (req, res) => {
     res.sendFile((__dirname + '/views/especialidades.html'))
 })
 
+app.get('/prestadores', (req, res) =>{
+    
+    res.sendFile((__dirname + '/views/prestadores.html'))
+    
+})
 /*
 
 app.use(express.static((__dirname + '/public')));
