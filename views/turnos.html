@@ -49,115 +49,86 @@
     </div>
   </header>
 <main>
+  <section class="banner-turnos"> 
+    <img src="img/banner_turnos.png" alt="Banner turnos">
+    <h1>SOLICITA TU TURNO</h1>
+    <h1>ONLINE</h1>
+  </section>  
      <!-- Turnos base -->
-     <div class="turnos">
-        <form action="turnos.html" method="POST">
-            <div class="column">
+     <section>  <!--SECTION TURNOS-->
+      <div class="divTurnosSection">
+        <div class="turnos">
+          <form action="turnos.html" method="POST">
+            <div class="column1">
               <h3>MIS TURNOS</h3>
-                <p>Turnos Para:</p>
-                <select name="turnoPara" >
-                    <option value="Estudios">ESTUDIOS</option>
-                    <option value="Especialidades">ESPECIALIDADES</option>
-                </select>
-                <p>Especialidad:</p>
-                <select name="especialidad" >
-                    <option value="1">ALERGIA</option>
-                    <option value="2">CARDIOLOGIA</option>
-                    <option value="3">CLINICA MEDICA</option>
-                    <option value="4">DERMATILOGÍA</option>
-                    <option value="5">ENDOCRINOLOGIA</option>
-                    <option value="6">FLEBOLOGIA</option>
-                    <option value="7">GASTROENTEROLOGIA</option>
-                    <option value="8">GINECOLOGIA</option>
-                    <option value="9">ODONTOLOGIA</option>
-                </select>
-                <p>Dr/Dra:</p>
-                <select name="doctor" >
-                    <option value="1">Dra. Maradona Yanina</option>
-                    <option value="2">Dr. Coppola Guillermo</option>
-                    <option value="3">Dr. Messi Lionel</option>
-                </select>
-               </select>
-               <p>Fecha:</p>
-               <select name="fecha" >
+              <p>Turnos Para:</p>
+              <select name="turnoPara" class="selectorCMD">
+                  <option value="Estudios">ESTUDIOS</option>
+                  <option value="Especialidades">ESPECIALIDADES</option>
+              </select>
+              <p>Especialidad:</p>
+              <select name="especialidad" class="selectorCMD">
+                  <option value="1">ALERGIA</option>
+                  <option value="2">CARDIOLOGIA</option>
+                  <option value="3">CLINICA MEDICA</option>
+                  <option value="4">DERMATILOGÍA</option>
+                  <option value="5">ENDOCRINOLOGIA</option>
+                  <option value="6">FLEBOLOGIA</option>
+                  <option value="7">GASTROENTEROLOGIA</option>
+                  <option value="8">GINECOLOGIA</option>
+                  <option value="9">ODONTOLOGIA</option>
+              </select>
+              <p>Dr/Dra:</p>
+              <select name="doctor" class="selectorCMD">
+                  <option value="1">Dra. Maradona Yanina</option>
+                  <option value="2">Dr. Coppola Guillermo</option>
+                  <option value="3">Dr. Messi Lionel</option>
+              </select>
+              <p>Fecha:</p>
+              <select name="fecha" >
                 <input type="date" name="fecha" value="2022-09-22" min="2022-09-01"max="2022-12-31">
-               </select>
+              </select>
             </div>
-            <div class="column">
+        </div>
+        <div class="column2"> 
             <h3>INFORMACIÓN PERSONAL</h3>
             <p>Los campos con * son obligatorios</p>
-            <p>
-                <input type="text" name="email" placeholder="EMAIL" required>
+              <p>
+                <input type="email" name="email" placeholder="EMAIL *" class="formCMD" required>
               </p>
               <p>
-                <input type="email" name="nombre" placeholder="NOMBRE Y APELLIDO" required>
+                <input type="text" name="nombre" placeholder="NOMBRE Y APELLIDO *" class="formCMD" required>
               </p>
               <p>
-                <input type="number" name="telefono" placeholder="TELÉFONO" required>
+                <input type="number" name="telefono" placeholder="TELÉFONO *" class="formCMD" required>
               </p>
-              <div class="submitButton">
-              <p><input type="submit" value="ENVIAR">
-              <input type="submit" value="CANCELAR"></p>
-            </div>
-            </div>
+              <div>
+                <div class="idSection">
+                  <label for="documento">Tipo de documento:</label>
+                  <select class="idSelector">
+                    <option value="documento">DNI</option>
+                    <option value="documento">LC</option>
+                    <option value="documento">LE</option>              
+                  </select>
+                </div>
+                <div>
+                  <label for="documento"></label>
+                  <input type="text" class="formCMD" placeholder="NÚMERO DE DOCUMENTO *">
+                </div>
+              </div>
+    
+              <div class="buttonBox submitButton">
+                <p><input type="submit" value="ENVIAR" class="sendButton">
+                <input type="reset" value="CANCELAR" class="cancelButton"></p>
+              </div>
+        </div>  
         </form>
-     </div>
-     <div class="imgTurnos">
-     <img  width="350px" height="450px" src="img/turnos.png"  alt="Img turnos"/>
-
-     </div>
-</main>
-    <!-- body info -->
-<main class = "otro-mas">   
-    <div class="cont">
-               <div class="body-info">
-                       
-                 <div style="width:auto;" class="floatleft"><img src="img/cmd-logo.png" alt="CMD" title="::: Ultimos ajustes ::::" align="right" style="margin-right:60px;" /></div>
-                 <div style="width:auto; display:block;" class="floatleft">
-                    <h2 style="margin:0px; padding:0px;">Mis turnos</h2>
-                    <form name="form1" method="post" action="">
-                       <div class="cont-form">
-                          <div class="cont-field">
-                            <label class="label-form">Nombre y Appellido *</label><input value="" name="Nombre" id="Nombre" type="text" /></div>
-                          <div class="cont-field"><label class="label-form">Empresa *</label><input value=""  name="Institucion" id="Institucion" type="text" /></div>
-                          <div class="cont-field">
-                            <label class="label-form">Ciudad / Pa�s</label><input value="" name="Pais" id="Pais" type="text" /></div>
-                          <div class="cont-field">
-                            <label class="label-form">Email de Contacto *</label><input value="" name="Email" id="Email" type="text" /></div>		   
-                          <div class="cont-field"><label class="label-form">Consulta *</label><textarea name="Consulta" id="Consulta" cols="1" rows="1"></textarea></div>
-                          <div class="bt-send"><span>(*) Campos Obligatorios</span>
-                            <input type="image" name="submit" value="Enviar" src="img/bt-send.png" /></div>
-                       
-                       <?php if($_POST != empresa){?>
-                         <div class="cont-message">
-                         <?php if($errors == ""){?>
-                          <h4>Muchas gracias</h4>
-                          <p>su consulta ha sido enviada, le responderemos brevemente</p>
-                          <p>Tambi�n puede llamarnos o comunicarse por whatsapp al 011-3387-9666</p>
-                        <?php } else { ?>
-                          <ul>
-                             <li class="ultitle mrg-bottom10"><img src="img/ico-alert.png" alt="Alert!" />ATENCION! Hay errores en el formulario:</li>
-                              <?php echo $errors;?>
-                          </ul> 
-                         <?php }?> 
-                        </div>
-                      <?php }?> 	
-                       </div>
-                    </form>
-                    
-                 </div>
-                 
-               </div>
-        <!-- /body info -->	
- 
-
-
-
-
-
--->
-  <!-- ESTO ES EL MAIN MERCADO LIEBRE-->	
-        </div>
+        <img src="/img/turnos.png">
+      </div>
+      </div>
+    </div>
+    </section>
+    
 </main>
     <footer>
         <div class="divFooterWhatsApp">

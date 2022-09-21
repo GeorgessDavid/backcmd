@@ -125,7 +125,7 @@ header{
 }
 .main-menu a{
     text-decoration: none;
-    font-size: 1.2em; 
+    font-size: 1.2em; /*asignar valores en gral en html*/
     color: #012B78;
     height: inherit;
     padding-right: 30px;
@@ -137,7 +137,8 @@ header{
 }
 section{
     width: 100%;
-
+    padding-left: 0,1%;
+    padding-right: 0,1%;
 }
 section.banner img{
     width: 100%;
@@ -155,51 +156,9 @@ section.banner h1{
     bottom:180px;
 }
 
-/* --- Main estudios  */
-main{
-    width: 90%;
-    margin: 0 auto;
-}
-main section h3{
-    color:rgb(73, 73, 73);
-    text-transform: uppercase;
 
-}
-
-main section {
-    background-color: #fff;    
-    margin: 20px 0px;
-    font-family:'Fira Sans Condensed';
-}
-
-main section article img{
-    width: 100%;
-}
-
-main section article p,
-.description{
-    color: #012B78;
-    text-align: center;
-    
-    
-}
-
-article div.main-article{
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: baseline;
-    border-top: 1px solid #ebebeb;
-    position: relative;
-    padding: 10px;
-}
-main section article:hover{
-    box-shadow: 0px 0px 10px rgb(100, 100, 100);
-}
 /* ---SECCION TURNOS---*/
-section.turnos{
-  margin-top:20px;
-}
+
 .turnos{
     width: 100%;
     margin: 0 auto;
@@ -402,25 +361,6 @@ section.turnos{
     main section div.estudios article{
         width: 45%;
     }
-  
-    .contacto-logo img{
-       
-            align-items: baseline;
-          /*  display: none; */
-        }
-    div.map{
-
-        width: 33%;
-        margin-right: 20px;
-        }
-
-    .contacto{
-            align-items: baseline;
-            width: 33%;
-            margin-left: 10px;
-            margin-right: 10px;
-        }
-    
 
 @media (min-width: 769px){
 
@@ -444,14 +384,31 @@ footer{
     background-color: #012B78 ;
     justify-content: space-between;
     padding:20px;
-    margin-top:20px;
-
 }
 .WhatsApp i{
     color:aliceblue;
     padding-right:10px;
 }
+
+/*-- BANNER TURNOS --*/
+section.banner-turnos img{
+    width: 100%;
+    box-sizing: border-box;
+    position:relative;
 }
+
+section.banner-turnos h1{
+    letter-spacing: 0.05em;
+    color: #012B78;
+    width:100%;
+    font-weight: bold;
+    text-align:center;
+    position:relative;
+    bottom:400px;
+    left:550px;
+
+}
+
 /* ---TURNOS---*/
 
 .divTurnosSection{
@@ -463,7 +420,7 @@ footer{
 }
 
 .divTurnosSection img{
-    width: 17vw;
+    
     padding-top: 1vw;
     padding-bottom:2vw;
 
@@ -472,51 +429,4 @@ footer{
 
 }
 
-/*---CONTACTO ---*/
 
-div.ubicacion{
-    width:100%;
-    display: flex;
-    flex-direction: row;
-    align-items: baseline;
-    padding-right: 2%;
-    padding-left:2%;
-    justify-content: space-between;
-    background-color: #ffffff;
-    align-items: center;
-    box-sizing: border-box;
-    border-top: #dddddd 1px,
-}
-
-div.map{
-    width: 33%;
-    margin-right: 20px;
-    align-items: baseline;
-}
-.map h3{
-    padding-bottom: 30px;
-}
-.contacto{
-    align-items: baseline;
-    width: 33%;
-    padding-top: 15px; 
-    float: right;
-    margin-left: 50px;
-}
-.contacto h3{
-    padding-bottom: 40px;
-    font-weight: bolder;
-}
-.contacto p{
-    color: #012B78;
-    font-size: 18px;
-    font-weight: bold;
-    padding-top: 15px; 
-}
-.contacto-logo{
-    float: right!important;
-    background-position: right;
-   
-    margin-top:10px;
-
-}
