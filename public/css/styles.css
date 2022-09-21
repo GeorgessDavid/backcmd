@@ -6,7 +6,7 @@
 }
 
 body{
-    background-color: rgb(242, 242, 242);
+    background-color: rgb(255, 255, 255);
     box-sizing: border-box;
 }
 h1{
@@ -408,15 +408,11 @@ main section article:hover{
         display: block;
     }
 
-    .burguer-menu {
-        display: none;
-    }
-
     main section div.estudios article{
         width: 22%;
     }
 }
-/* --- Main estudios  */
+/* ---  footer ----- */
 footer{
     display: flex;
     flex-direction: row;
@@ -446,9 +442,56 @@ footer{
 
 .divTurnosSection img{
     width: 17vw;
-    margin-top: 1vw;
-    margin-bottom: 1vw;
+    padding-top: 1vw;
+    padding-bottom:2vw;
+
     position: relative;
-    left: 8vw
+    left: 9vw;
+
+}
+
+/*---CONTACTO ---*/
+
+div.ubicacion{
+    width:100%;
+    display: flex;
+    flex-direction: row;
+    padding-right: 2%;
+    padding-left:2%;
+    justify-content: space-between;
+    background-color: #ffffff;
+    align-items: center;
+    box-sizing: border-box;
+    border-top: #dddddd 1px,
+}
+
+div.map{
+    width: 33%;
+    margin-right: 20px;;
+}
+.map h3{
+    padding-bottom: 30px;
+}
+.contacto{
+    align-items: baseline;
+    width: 33%;
+    padding-top: 15px; 
+    float: right;
+    margin-left: 50px;
+}
+.contacto h3{
+    padding-bottom: 30px;
+}
+.contacto p{
+    color: #012B78;
+    font-size: 18px;
+    font-weight: bold;
+    padding-top: 10px; 
+}
+.contacto-logo{
+    float: right!important;
+    background-position: right;
+   
+    margin-top:10px;
 
 }
