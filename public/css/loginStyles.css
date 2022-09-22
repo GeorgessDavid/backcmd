@@ -73,7 +73,7 @@ header{
 
 main{
     max-width: 100%;
-    max-height: 90%;
+    max-height: 100%;
     background-image: url('/img/background_login_01.png');
     background-size: 100%;
 
