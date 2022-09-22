@@ -25,3 +25,9 @@
 .especialidadesBody{
     box-sizing: unset;
 }
+
+.especialidadesLogo img{
+    background-position: left top;
+    width: 90px;
+    height: 90px;
+}
