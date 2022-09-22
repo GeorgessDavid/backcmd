@@ -389,90 +389,6 @@ section.turnos{
     font-weight: bold;    
 }
 
-/* -------------*/
-@media (min-width: 361px){
-    main section div.estudios{
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        align-items: flex-start;
-    }
-    
-    main section div.estudios article{
-        width: 45%;
-    }
-  
-    .contacto-logo img{
-            display: none;
-        }
-
-        div.map iframe{
-            width: 300px;
-            height: 200px;
-        }
-        div.map h3{
-            padding-bottom: 0px;
-            
-        }
-
-        div.contacto{
-           /*  padding-top: 420px; -cuando cambie contacto-*/
-            width: 250px;
-            padding-bottom: 30px;
-            
-        }
-        div.contacto p {
-            padding-top: 5px; 
-            font-size: 12px;
-        }
-
-        div.contacto h3{
-            padding-top: 30px;
-            padding-bottom: 0px;
-            font-weight: bolder;
-           
-        }
-    }
-
-@media (min-width: 769px){
-
-    header nav {
-        display: block;
-    }
-
-    main section div.estudios article{
-        width: 22%;
-    }
-    .contacto-logo img {
-        display: none;
-    }
-    div.map iframe{
-        width: 345px;
-        align-items: baseline;
-    }
-    div.map h3{
-        padding-bottom: 30px;
-    }
-    div.contacto p {
-        padding-top: 10px; 
-        margin-left: 35px;
-        
-        font-size: 16px;
-    }
-    div.contacto h3{
-        padding-top: 30px;
-        padding-bottom: 0px;
-        font-weight: bolder;
-        margin-left: 35px;
-    }
-
-@media (min-width: 1366px){
-    .contacto-logo img {
-        align-items: baseline;
-        display: inline-block;
-    }
-}
 
 /* ---  footer ----- */
 footer{
@@ -563,3 +479,89 @@ div.map{
     margin-top:10px;
 
 }
+
+/* ------@MEDIA-------*/
+@media (min-width: 361px){
+    main section div.estudios{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+    
+    main section div.estudios article{
+        width: 45%;
+    }
+  
+    .contacto-logo img{
+            display: none;
+        }
+
+        div.map iframe{
+            width: 300px;
+            height: 200px;
+        }
+        div.map h3{
+            padding-bottom: 0px;
+            
+        }
+
+        div.contacto{
+           /*  padding-top: 420px; -cuando cambie contacto-*/
+            width: 250px;
+            padding-bottom: 30px;
+            
+        }
+        div.contacto p {
+            padding-top: 5px; 
+            font-size: 12px;
+        }
+
+        div.contacto h3{
+            padding-top: 30px;
+            padding-bottom: 0px;
+            font-weight: bolder;
+           
+        }
+    }
+
+@media (min-width: 769px){
+
+    header nav {
+        display: block;
+    }
+
+    main section div.estudios article{
+        width: 22%;
+    }
+    .contacto-logo img {
+        display: none;
+    }
+    div.map iframe{
+        width: 345px;
+        align-items: baseline;
+    }
+    div.map h3{
+        padding-bottom: 30px;
+    }
+    div.contacto p {
+        padding-top: 10px; 
+        margin-left: 35px;
+        font-size: 16px;
+    }
+    div.contacto h3{
+        padding-top: 30px;
+        padding-bottom: 0px;
+        font-weight: bolder;
+        margin-left: 35px;
+    }
+}
+
+@media (min-width: 1366px){
+    .contacto-logo img {
+        align-items: baseline;
+        display: inline-block;
+    }
+}
+
