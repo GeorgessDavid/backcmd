@@ -140,20 +140,20 @@ section{
     padding-left: 0,1%;
     padding-right: 0,1%;
 }
-section.banner img{
+section.banner-turnos img{
     width: 100%;
     box-sizing: border-box;
     position:relative;
 }
 
-section.banner h1{
+section.banner-turnos h1{
     letter-spacing: 0.05em;
     color: #012B78;
     width:100%;
     font-weight: bold;
-    text-align:center;
-    position:relative;
-    bottom:180px;
+    
+
+    
 }
 
 
@@ -348,38 +348,7 @@ section.banner h1{
         
 }
 
-/* -------------*/
-@media (min-width: 361px){
-    main section div.estudios{
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        align-items: flex-start;
-    }
-    
-    main section div.estudios article{
-        width: 45%;
-    }
 
-    section.banner-turnos h1{
-        width:33% ;
-     
-       
-    }
-
-@media (min-width: 769px){
-
-    header nav {
-        display: block;
-    }
-
-
-
-    main section div.estudios article{
-        width: 22%;
-    }
-}
 /* ---  footer ----- */
 footer{
     display: flex;
@@ -434,5 +403,35 @@ section.banner-turnos h1{
     position: relative;
     left: 9vw;
 
+}
+/* -------------*/
+@media (min-width: 361px){
+    main section div.estudios{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+    
+    main section div.estudios article{
+        width: 45%;
+    }
+
+    section.banner-turnos h1{
+        display:block;
+       
+    }
+
+@media (min-width: 769px){
+
+    header  {
+        display: block;
+    }
+   
+
+    main section div.estudios article{
+        width: 22%;
+    }
 }
 }
