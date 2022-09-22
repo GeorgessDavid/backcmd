@@ -100,7 +100,7 @@ header{
     box-sizing: border-box;
     align-items: center;
 }
-.logo img{
+.logo a img{
     background-position: left top;
     width: 90px;
     height: 90px;
@@ -421,6 +421,7 @@ section.turnos{
             margin-right: 10px;
         }
     
+}
 
 @media (min-width: 769px){
 
