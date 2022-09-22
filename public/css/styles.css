@@ -455,7 +455,7 @@ footer{
 /* ---TURNOS---*/
 
 .divTurnosSection{
-    width: 90%;
+    width: 100%;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
@@ -478,6 +478,7 @@ div.ubicacion{
     width:100%;
     display: flex;
     flex-direction: row;
+    flex-wrap: nowrap;
     align-items: baseline;
     padding-right: 2%;
     padding-left:2%;
@@ -485,7 +486,8 @@ div.ubicacion{
     background-color: #ffffff;
     align-items: center;
     box-sizing: border-box;
-    border-top: #dddddd 1px,
+    margin-top: 20px;
+    
 }
 
 div.map{
@@ -501,7 +503,7 @@ div.map{
     width: 33%;
     padding-top: 15px; 
     float: right;
-    margin-left: 50px;
+    margin-left: 0px;
 }
 .contacto h3{
     padding-bottom: 40px;

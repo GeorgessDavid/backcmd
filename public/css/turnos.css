@@ -15,7 +15,7 @@ h1{
 }
 
 h3{
-    font-size: 24px; /* o 1.5em*/
+    font-size: 26px; /* o 1.5em*/
     font-family: 'Fira Sans Condensed';
 }
 h2{
@@ -345,7 +345,7 @@ section.banner h1{
 
 .cancelButton:hover{
     background-color: #727272;
-    font-weight: bold;    
+        
 }
 
 /* -------------*/
@@ -364,7 +364,7 @@ section.banner h1{
 
     section.banner-turnos h1{
         width:33% ;
-        font-size: 18px;
+     
        
     }
 
@@ -431,10 +431,8 @@ section.banner-turnos h1{
     
     padding-top: 1vw;
     padding-bottom:2vw;
-
     position: relative;
     left: 9vw;
 
 }
-
-
+}
