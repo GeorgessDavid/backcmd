@@ -404,23 +404,36 @@ section.turnos{
     }
   
     .contacto-logo img{
-       
-            align-items: baseline;
-          /*  display: none; */
-        }
-    div.map{
-
-        width: 33%;
-        margin-right: 20px;
+            display: none;
         }
 
-    .contacto{
-            align-items: baseline;
-            width: 33%;
-            margin-left: 10px;
-            margin-right: 10px;
+        div.map iframe{
+            width: 300px;
+            height: 200px;
         }
-    
+        div.map h3{
+            padding-bottom: 0px;
+            
+        }
+
+        div.contacto{
+           /*  padding-top: 420px; -cuando cambie contacto-*/
+            width: 250px;
+            padding-bottom: 30px;
+            
+        }
+        div.contacto p {
+            padding-top: 5px; 
+            font-size: 12px;
+        }
+
+        div.contacto h3{
+            padding-top: 30px;
+            padding-bottom: 0px;
+            font-weight: bolder;
+           
+        }
+    }
 
 @media (min-width: 769px){
 
@@ -432,7 +445,6 @@ section.turnos{
         width: 22%;
     }
     .contacto-logo img {
-        align-items: baseline;
         display: none;
     }
     div.map iframe{
@@ -455,12 +467,13 @@ section.turnos{
         margin-left: 35px;
     }
 
-@media (min-width: 1400px){
+@media (min-width: 1366px){
     .contacto-logo img {
         align-items: baseline;
         display: inline-block;
     }
 }
+
 /* ---  footer ----- */
 footer{
     display: flex;
@@ -480,7 +493,7 @@ footer{
     color:aliceblue;
     padding-right:10px;
 }
-}
+
 /* ---TURNOS---*/
 
 .divTurnosSection{
@@ -547,7 +560,6 @@ div.map{
 .contacto-logo{
     float: right!important;
     background-position: right;
-   
     margin-top:10px;
 
 }
