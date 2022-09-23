@@ -3,13 +3,14 @@
 
 .tituloEspecialidades{
     text-align: center;
-    font-size: xx-large;
+    font-size: large;
 }
 
 .parrafoEspecialidades{
     display: flex;
     align-items: center;
     justify-content: center;
+    font-size: x-small;
 
 }
 
@@ -30,4 +31,19 @@
     background-position: left top;
     width: 90px;
     height: 90px;
+}
+
+@media (min-width: 600px) and (min-height: 600px){
+    .tituloEspecialidades{
+        text-align: center;
+        font-size: xx-large;
+    }
+
+    .parrafoEspecialidades{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: medium;
+    }
+
 }
