@@ -1,26 +1,21 @@
-const turnosRoutes = require("./src/routes/turnosRoutes")
-const indexRoutes = require("./src/routes/indexRoutes")
-const userRoutes = require("./src/routes/indexRoutes")
-
+const port = process.env.PORT || 3005
+const index = require("./src/routes/index.routes")
 const express = require('express');
 const app = express();
-
 const path = require('path');
 
-app.use(express.static('public'));
-
-
-app.listen(process.env.PORT || 3002, (req, res) => {
-    console.log("Servidor activo")
-}
-);
-
+//view engine
 app.set('view engine', 'ejs')
 app.set('views','./src/views')
 
-app.use("/", indexRoutes)
-app.use("/turnos", turnosRoutes)
-app.use("/users", userRoutes)
+//static files
+app.use(express.static(__dirname+'/public'))
+
+//routes
+app.use("/", index)
 
 
 
+//server
+app.listen(port, () => {console.log(`Servidor activo en el puerto ${port}`)}
+);
