@@ -1,0 +1,22 @@
+[
+ {
+  "nombre": "test",
+  "apellido": "test"
+ },
+ {
+  "nombre": "martin",
+  "apellido": "garibaldi",
+  "email": [
+   "martin@martin",
+   "martin@martin"
+  ]
+ },
+ {
+  "nombre": "martin",
+  "apellido": "garibaldi",
+  "email": [
+   "martin@martin",
+   "martin@martin"
+  ]
+ }
+]

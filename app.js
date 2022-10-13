@@ -2,7 +2,9 @@ const port = process.env.PORT || 3005
 const index = require("./src/routes/index.routes")
 const express = require('express');
 const app = express();
-const path = require('path');
+
+// middlewares
+app.use(express.urlencoded({extended: false}))
 
 //view engine
 app.set('view engine', 'ejs')
