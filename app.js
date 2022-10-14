@@ -22,4 +22,4 @@ app.use("/", index)
 app.listen(port, () => {console.log(`Servidor activo en el puerto ${port}`)}
 );
 
-//cmoent
+//Comentarios
