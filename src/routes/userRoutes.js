@@ -9,4 +9,9 @@ router.get("/register",userController.register )
 
 router.post("/register",userController.save )
 
+router.get("/editar",userController.vistaEditar )
+
+router.post("/editar",userController.editar )
+
+
 module.exports = router;

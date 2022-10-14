@@ -18,5 +18,22 @@
    "martin@martin",
    "martin@martin"
   ]
+ },
+ {
+  "id": 3,
+  "nombre": "test",
+  "apellido": "testttt",
+  "email": [
+   "testttt@testttt",
+   "testttt@testttt"
+  ],
+  "password": "$2a$10$5E9Fp1Psrl0T3JQADaUvvuNcBbkd/JlEada8B0PmVJHj6p2jAnaPm"
+ },
+ {
+  "id": 4,
+  "nombre": "test",
+  "apellido": "tsetttt",
+  "email": "email@tsetttt",
+  "password": "$2a$10$nH3VYCncpZ4WDku4Fea60utjjkQR/z.fCTOgfQ90QBbXL3KSuatSq"
  }
 ]
