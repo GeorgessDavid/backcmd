@@ -1,0 +1,9 @@
+[
+    {
+        "nombre": "Carlos Eduardo",
+        "apellido": "David",
+        "sexo": "Masculino",
+        "especialidad": ["Gastroenterología", "Medicina Clínica", "PAMI"],
+        "estudios": "No"
+    }
+]
