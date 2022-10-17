@@ -28,7 +28,7 @@
                 <div class="divFormulario">
                 <form action="/pacientes/register" method="POST">
                     <label name="usuario">
-                    <input type="text" class="formCMD" name="usuario" placeholder="Usuario">
+                    <input type="text" class="formCMD" name="usuario" placeholder="Usuario" required>
                     <label name="contraseña">
                     <input type="password" class="formCMD" name="password" value="password" placeholder="Clave">
                     <label name="contraseña">
@@ -36,13 +36,13 @@
                     <br>
                     <br>
                     <label name="nombre">
-                    <input type="text" class="formCMD" name="nombre" placeholder="Nombre">
+                    <input type="text" class="formCMD" name="nombre" placeholder="Nombre" required>
                     <label name="apellido">
-                    <input type="text" class="formCMD" name="apellido" placeholder="Apellido">
+                    <input type="text" class="formCMD" name="apellido" placeholder="Apellido" required>
                     <label name="email">
-                    <input name="email" class="formCMD" type="email" placeholder="Email">
+                    <input name="email" class="formCMD" type="email" placeholder="Email" required>
                     <label name="email">
-                    <input name="emailConf" class="formCMD" type="email" placeholder="Confirmar Email">
+                    <input name="email" class="formCMD" type="email" placeholder="Confirmar Email" required>
                     <br>
                     <button type="submit" class="btn btn-registrar">Registrar</button>
                 </form>
