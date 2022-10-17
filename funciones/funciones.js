@@ -1,16 +1,22 @@
+const multer = require('multer');
+const fs = require('fs')
+
+let publicMedicos = require('../datos/publicMedicos.json')
+
 const funciones = {
     agregarMedicoPublico: (req, res) =>{
         let nuevoMedico = {       
-            nombre: req.body.name,
+            nombre: req.body.nombre,
             apellido: req.body.apellido,
             especialidad: [req.body.especialidad, req.body.especialidad2],
             sexo: req.body.sexo,
-            estudios: req.body.estudios
+            estudios: req.body.estudios,
+            profileImg: req.file
             };
     
-        medicos.push(nuevoMedico)
+        publicMedicos.push(nuevoMedico)
         
-        fs.writeFileSync("./datos/publicMedicos.json", JSON.stringify(medicos, null, " "));
+        fs.writeFileSync("./datos/publicMedicos.json", JSON.stringify(publicMedicos, null, " "));
         
         res.redirect("/home")
     }

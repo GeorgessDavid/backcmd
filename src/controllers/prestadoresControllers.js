@@ -1,4 +1,5 @@
 const path = require('path')
+const multer = require('multer');
 
 
 const prestadoresController = {
@@ -9,7 +10,7 @@ const prestadoresController = {
         res.render('prestadoresViews/prestadoresHome')
     },
     login: (req,res) =>{
-        res.redirect("/home")
+        res.redirect("/prestadores/home")
     },
     agregarMedico: (req,res) =>{
         res.render('prestadoresViews/secretariaAgregarMedicoPublico')

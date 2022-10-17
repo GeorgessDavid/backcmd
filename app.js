@@ -3,6 +3,7 @@ const index = require("./src/routes/index.routes")
 const express = require('express');
 const app = express();
 const path = require('path')
+const multer = require('multer');
 
 //static files
 app.use(express.static(__dirname+'/public'))
