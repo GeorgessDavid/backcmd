@@ -26,13 +26,13 @@
             <div class="divRegistrarse">
                 <h1 class="titleRegistrarse">Editar paciente</h1>
                 <div class="divFormulario">
-                    <form action="/users/editar/<%= paciente.id %>?_method=PUT" method="POST">
+                    <form action="/pacientes/editar/<%= paciente.id %>?_method=PUT" method="POST">
                         <label name="usuario">
                         <input type="text" class="formCMD" name="usuario" value="<%= paciente.usuario %>" placeholder="Usuario">
                         <label name="contraseña">
-                        <input type="password" class="formCMD" name="password" placeholder="Clave">
+                        <input type="password" class="formCMD" name="password" value="password" placeholder="Clave">
                         <label name="contraseña">
-                        <input type="password" class="formCMD" name="passwordConf" placeholder="Confirmar Clave">
+                        <input type="password" class="formCMD" name="passwordConf" value="password" placeholder="Confirmar Clave">
                         <br>
                         <br>
                         <label name="nombre">
@@ -46,7 +46,7 @@
                         <br>
                         <button type="submit" class="btn btn-registrar">Editar</button>
                     </form>
-                    <form action="/users/delete/<%= paciente.id %>?_method=DELETE" method="POST">
+                    <form action="/pacientes/delete/<%= paciente.id %>?_method=DELETE" method="POST">
                         <button type="submit" class="btn btn-registrar">Borrar</button>
                     </form>
                 </div>

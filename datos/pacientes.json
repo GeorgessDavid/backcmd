@@ -1,18 +1,18 @@
 [
  {
-  "id": 1,
-  "usuario": "jpelotas",
-  "nombre": "Juan",
-  "apellido": "Pelotas",
-  "email": "juan@pelotas",
-  "password": "$2a$10$EHFFSz40xgjsI3/0pBDpRugJFcUgQRpkw3ckZe4NoqaqQeOMSDm.W"
+  "id": 5,
+  "usuario": "mmgari",
+  "nombre": "Martin",
+  "apellido": "Gariba",
+  "email": "martin.garibaldi@gmail.com",
+  "password": "password"
  },
  {
-  "id": 4,
-  "usuario": "test",
-  "nombre": "test",
-  "apellido": "test",
-  "email": "test@test",
-  "password": "$2a$10$IvY.cP2ZRGGHZSvQlvKZhuzL.Uaj/u77kg5KDeXlvrlNBmyGe6ldy"
+  "id": 6,
+  "usuario": "mgaribaldi",
+  "nombre": "Martin",
+  "apellido": "Garibaldi",
+  "email": "m@m",
+  "password": "$2a$10$PwXv6aAV7X/LSKvZoG2.hOYtdzUX3F06VOO31BTY88h9TRQGw8/DO"
  }
 ]
