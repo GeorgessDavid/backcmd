@@ -6,7 +6,7 @@ https://dh-grupo3.herokuapp.com/
 
 ### Updates Sprint 4
 - Agregado listado de pacientes en: https://dh-grupo3.herokuapp.com/pacientes
-- Agregada edicion de pacientes en: https://dh-grupo3.herokuapp.com/[id]
+- Agregada edicion de pacientes en: https://dh-grupo3.herokuapp.com/pacientes/[id]
   - Accesible si clickeamos en un paciente en el listado de pacientes
 - Agregado el borrado de pacientes, desde la vista de edicion, boton "Borrar"
 - Claves storeadas de manera encriptada
