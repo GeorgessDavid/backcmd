@@ -5,7 +5,8 @@ let publicMedicos = require('../datos/publicMedicos.json')
 
 const funciones = {
     agregarMedicoPublico: (req, res) =>{
-        let nuevoMedico = {       
+        let nuevoMedico = {     
+            id: "CMD" + Date.now() + "P" ,  
             nombre: req.body.nombre,
             apellido: req.body.apellido,
             especialidad: [req.body.especialidad, req.body.especialidad2],
@@ -18,7 +19,7 @@ const funciones = {
         
         fs.writeFileSync("./datos/publicMedicos.json", JSON.stringify(publicMedicos, null, " "));
         
-        res.redirect("/home")
+        res.redirect("/prestadores/home")
     }
 }
 

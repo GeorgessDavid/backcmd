@@ -1,5 +1,6 @@
 [
  {
+  "id": 0,
   "nombre": "Carlos Eduardo",
   "apellido": "David",
   "sexo": "Masculino",
@@ -9,44 +10,5 @@
    "PAMI"
   ],
   "estudios": "No"
- },
- {
-  "apellido": "Gojo",
-  "especialidad": [
-   "Maestro",
-   ""
-  ],
-  "sexo": "masculino",
-  "estudios": "no",
-  "profileImg": {
-   "fieldname": "profileImg",
-   "originalname": "Gojo png.png",
-   "encoding": "7bit",
-   "mimetype": "image/png",
-   "destination": "H:\\Trabajos\\consultoriosMedicosDavid\\dh-grupo3\\public\\img\\profilepictures",
-   "filename": "1666041957253Gojo png.png",
-   "path": "H:\\Trabajos\\consultoriosMedicosDavid\\dh-grupo3\\public\\img\\profilepictures\\1666041957253Gojo png.png",
-   "size": 119431
-  }
- },
- {
-  "nombre": "Kanao",
-  "apellido": "Tsuyuri",
-  "especialidad": [
-   "Espadachin",
-   "Aliento de la Flor"
-  ],
-  "sexo": "femenino",
-  "estudios": "si",
-  "profileImg": {
-   "fieldname": "profileImg",
-   "originalname": "Kanao 4x4.png",
-   "encoding": "7bit",
-   "mimetype": "image/png",
-   "destination": "H:\\Trabajos\\consultoriosMedicosDavid\\dh-grupo3\\public\\img\\profilepictures",
-   "filename": "1666042083918Kanao 4x4.png",
-   "path": "H:\\Trabajos\\consultoriosMedicosDavid\\dh-grupo3\\public\\img\\profilepictures\\1666042083918Kanao 4x4.png",
-   "size": 246354
-  }
  }
 ]
