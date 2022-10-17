@@ -5,24 +5,113 @@ body{
     font-family: 'Fira Sans Condensed';
 }
 
-/* HEADER'S STYLES */
-header{
+/* /* HEADER'S STYLES */
+/* header{
     max-width: 100%;
     background-color:#005725 ;
 }
-
+ */ 
 /* MAIN'S STYLES */
 
 #main{
-    padding: 15% 0%;
+    padding: 7.5% 0%;
     background-image: url('/img/prestadoresBackground.jpg');
     background-size: 100%;
     backdrop-filter: blur(10px);
     display: flex;
+    min-height: 100%;
+    box-sizing: content-box;
+}
+.bg{
+    background-image: url('/img/prestadoresBackground.jpg');
+    background-repeat: no-repeat;
+    padding-top: 7.5%;
+    padding-bottom: 7.5%;
+    background-attachment: fixed;
+    background-origin: content-box;
+    background-position: center center;
+    background-size: cover;
 }
 
 .logInContainer{
+    position: relative;
     width: 10vw;
-    margin-left: 30px;
+    margin-left: 10vw;
+    color: #005725;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logInContainer h1{
+    font-weight: bold;
+}
+
+.logInContainer h3{
+    font-size: 14px;
+}
+
+.logInContainer select{
+    padding: 1vh 3.2vw;
+    background-color: rgba(0, 0, 0, 0);
+    border: #005725 2px solid;
+    margin: 5px;
+    color: #005725;
+    text-align: center;
+    border-radius: 0px;
+    transition: all 300ms;
+}
+
+.logInContainer input{
+    padding: 1vh 2vw;
+    background-color: rgba(0, 0, 0, 0);
+    border: #005725 2px solid;
+    margin: 5px;
+    color: #005725;
+    transition: all 300ms;
+}
+
+.logInContainer input::placeholder{
+    color: #005725;
+    text-align: center;
+}
+
+.logInContainer input:focus{
+    box-shadow: 0 0 10px rgb(42, 70, 0);
+    border-radius: 0px;
+}
+
+.logInContainer select:focus{
+    box-shadow: 0 0 10px rgb(42, 70, 0);
+    border-radius: 0px;
 
 }
+
+.logInContainer button{
+    color: white;
+    background-color: #005725;
+    padding: 1vh 2vw;
+    border: none;
+    margin-left: 3vw;
+    margin-top: 2vh;
+    border: white 1px solid;
+    transition: all 300ms;
+}
+
+.logInContainer button:hover{
+    background-color: white;
+    color: #005725;
+    border: #005725 1px solid;
+    box-shadow: 0 0 10px #005725;
+}
+
+/* FOOTER'S STYLE */
+/* 
+footer{
+    width: 100%;
+    padding: 0.45% 0px;
+    color: white;
+    text-align: center;
+    background-color: #005725;
+    font-size: 12px;
+} */

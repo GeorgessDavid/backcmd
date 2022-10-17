@@ -1,0 +1,13 @@
+header{
+    max-width: 100%;
+    background-color:#005725 ;
+}
+
+footer{
+    width: 100%;
+    padding: 0.45% 0px;
+    color: white;
+    text-align: center;
+    background-color: #005725;
+    font-size: 12px;
+}
