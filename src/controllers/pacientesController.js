@@ -52,7 +52,7 @@ const controlador = {
                 pacientes[i].nombre = req.body.nombre
                 pacientes[i].apellido = req.body.apellido
                 pacientes[i].email = req.body.email
-                pacientes[i].password = req.body.password
+                pacientes[i].password = bcrypt.hashSync(req.body.password,10)
             }
         }
 
