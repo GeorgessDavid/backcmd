@@ -24,13 +24,11 @@
         </div>
         <div class="divContainerRegister blurBackground">
             <div  class="divRegistrarse">
-                <h1 class="titleRegistrarse">Edtar usuario</h1>
+                <h1 class="titleRegistrarse">Editar usuario</h1>
                 <div class="divFormulario">
-                <form action="/users/editar" method="POST">
-
+                <form action="/users/buscar/:email" method="POST">
                     <label name="email">
                     <input name="email" class="formCMD" type="email" placeholder="Email">
-
                     <button type="submit" class="btn btn-registrar">Buscar</button>
                 </form>
                 </div>

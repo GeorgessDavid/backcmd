@@ -4,14 +4,13 @@ const express = require('express');
 const router = express.Router();
 
 router.get("/login",userController.login )
-
 router.get("/register",userController.register )
-
 router.post("/register",userController.save )
 
-router.get("/editar",userController.vistaEditar )
+router.get("/",userController.index )
+router.get("/:id",userController.detalleUser )
+router.put("/editar/:id",userController.editarUser )
 
-router.post("/editar",userController.editar )
-
+router.delete('/delete/:id', userController.delete);
 
 module.exports = router;

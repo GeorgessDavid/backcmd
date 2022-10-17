@@ -1,39 +1,18 @@
 [
  {
-  "nombre": "test",
-  "apellido": "test"
- },
- {
-  "nombre": "martin",
-  "apellido": "garibaldi",
-  "email": [
-   "martin@martin",
-   "martin@martin"
-  ]
- },
- {
-  "nombre": "martin",
-  "apellido": "garibaldi",
-  "email": [
-   "martin@martin",
-   "martin@martin"
-  ]
- },
- {
-  "id": 3,
-  "nombre": "test",
-  "apellido": "testttt",
-  "email": [
-   "testttt@testttt",
-   "testttt@testttt"
-  ],
-  "password": "$2a$10$5E9Fp1Psrl0T3JQADaUvvuNcBbkd/JlEada8B0PmVJHj6p2jAnaPm"
+  "id": 1,
+  "usuario": "jpelotas",
+  "nombre": "Juan",
+  "apellido": "Pelotas",
+  "email": "juan@pelotas",
+  "password": "$2a$10$EHFFSz40xgjsI3/0pBDpRugJFcUgQRpkw3ckZe4NoqaqQeOMSDm.W"
  },
  {
   "id": 4,
+  "usuario": "test",
   "nombre": "test",
-  "apellido": "tsetttt",
-  "email": "email@tsetttt",
-  "password": "$2a$10$nH3VYCncpZ4WDku4Fea60utjjkQR/z.fCTOgfQ90QBbXL3KSuatSq"
+  "apellido": "test",
+  "email": "test@test",
+  "password": "$2a$10$IvY.cP2ZRGGHZSvQlvKZhuzL.Uaj/u77kg5KDeXlvrlNBmyGe6ldy"
  }
 ]
