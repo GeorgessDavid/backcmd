@@ -1,22 +1,18 @@
 [
  {
-  "nombre": "test",
-  "apellido": "test"
+  "id": 5,
+  "usuario": "mmgari",
+  "nombre": "Martin",
+  "apellido": "Gariba",
+  "email": "martin.garibaldi@gmail.com",
+  "password": "$2a$10$y6ndc6iFBEGyJXj8QZ9Jde7yAfoSrHKLpKpepTcP5WZR6QbC.HL7u"
  },
  {
-  "nombre": "martin",
-  "apellido": "garibaldi",
-  "email": [
-   "martin@martin",
-   "martin@martin"
-  ]
- },
- {
-  "nombre": "martin",
-  "apellido": "garibaldi",
-  "email": [
-   "martin@martin",
-   "martin@martin"
-  ]
+  "id": 6,
+  "usuario": "mgaribaldi",
+  "nombre": "Martin",
+  "apellido": "Garibaldi",
+  "email": "m@m",
+  "password": "$2a$10$PwXv6aAV7X/LSKvZoG2.hOYtdzUX3F06VOO31BTY88h9TRQGw8/DO"
  }
 ]

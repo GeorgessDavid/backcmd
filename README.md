@@ -1,6 +1,17 @@
 # Proyecto NAHP (Not Another Health Platform)
 ## Autores: DH grupo 3
 
+### Main site URL
+https://dh-grupo3.herokuapp.com/
+
+### Updates Sprint 4
+- Agregado listado de pacientes en: https://dh-grupo3.herokuapp.com/pacientes
+- Agregada edicion de pacientes en: https://dh-grupo3.herokuapp.com/pacientes/[id]
+  - Accesible si clickeamos en un paciente en el listado de pacientes
+- Agregado el borrado de pacientes, desde la vista de edicion, boton "Borrar"
+- Claves storeadas de manera encriptada
+- Comenzamos a usar en algunas vistas, los headers y footers modularizados en "partials"
+
 ### Temática y descripción del sitio
 El proyecto propuesto apunta a ser un portal de salud, donde se pueda manejar toda la información relevante para los pacientes, medicos y personal administrativo.
 
@@ -8,7 +19,6 @@ El proyecto propuesto apunta a ser un portal de salud, donde se pueda manejar to
 **Paciente:** Persona que quiere sacar turno con algun especialista. Saca turno desde la web o telefonicamente de acuerdo a edad y sus capacidades socioeconomicas. la administrativa cuando atiende el por telefono al paciente saca el turno del mismo a traves de la misma pagina de turnos. (siempre se utiliza el mismo sistema) 
 
 **Profesionales medicos:** Acceden al portal con clave. Pueden ver los turnos e historia clinica de sus pacientes. Pueden modificar la historia clinica.
-
 
 **Personal administrativo:**  Acceden al portal con clave. Pueden asignar y borrar turnos. Pueden eliminar una historia clinica.
 
@@ -24,7 +34,6 @@ El proyecto propuesto apunta a ser un portal de salud, donde se pueda manejar to
 
 
 ### Listado del grupo con una breve descripción de cada uno
-de Sá, Janet Estudiante de Full Stack, sin conocimientos previos al respecto.
 
 Donnoli, Mariela: Diseñadora Industrial, con conocimientos de paquete adobe y diseño grafico en general.
 
