@@ -5,10 +5,12 @@ const methodOverride =  require('method-override');
 const app = express();
 const path = require('path')
 const multer = require('multer');
+const session = require('express-session');
 
 // middlewares
 app.use(express.urlencoded({extended: false}))
 app.use(methodOverride('_method'));
+app.use(session({secret: "Somos nosotros", resave: false, saveUninitialized: false,}))
 
 
 //view engine
@@ -17,10 +19,6 @@ app.set('views','./src/views')
 
 //static files
 app.use(express.static(__dirname+'/public'))
-
-// middlewares
-app.use(express.urlencoded({extended: false}))
-app.use(express.json());
 
 //view engine
 app.set('view engine', 'ejs')

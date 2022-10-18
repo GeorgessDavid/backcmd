@@ -18,12 +18,13 @@
             <div class="logInContainer">
                 <h1>Log In</h1>
                 <h3>PRESTADORES</h3> 
-                <form action="/prestadores/home" method="POST">
-                    <select>
+                <form action="/prestadores/login" method="POST">
+                    <label for="userType"></label>
+                    <select name="userType">
                         <option selected>TIPO DE USUARIO</option>
-                        <option value="medico">MÉDICO</option>
-                        <option value="secretario">SECRETARÍA</option>
-                        <option value="administrador">ADMINISTRADOR</option>
+                        <option name="userType" value="medico">MÉDICO</option>
+                        <option name="userType" value="secretario">SECRETARÍA</option>
+                        <option name="userType" value="administrador">ADMINISTRADOR</option>
                     </select>
                     <input type="text" name="user" placeholder="USUARIO">
                     <input type="password" name="password" placeholder="CLAVE">
