@@ -20,6 +20,15 @@ const funciones = {
         fs.writeFileSync("./datos/publicMedicos.json", JSON.stringify(publicMedicos, null, " "));
         
         res.redirect("/prestadores/home")
+    },
+    eliminarMedicoPublico: (req,res) => {
+        let medicoEliminar = publicMedicos.filter(function(numero){
+            return numero.id != req.body.id;
+        })
+
+        fs.writeFileSync("./datos/publicMedicos.json", JSON.stringify(publicMedicos, null, " "));
+
+        res.redirect("/prestadores/home")
     }
 }
 

@@ -1,3 +1,15 @@
+/* IGNORAR ESTE DOCUMENTO */
+
+
+
+
+
+
+
+
+
+
+
 let fs = require('fs');
 var rl = require('readline-sync');
 // const { documento, nombre, apellido, sexo, matricula, especialidad, nacimiento } = require('../datos/userMainData');
@@ -24,24 +36,6 @@ function agregarMedicos(medicos){
     fs.writeFileSync("./datos/medicos.json", JSON.stringify(medicos, null, " "));
 
 }
-
-function agregarMedicosPublicos(){
-
-    let nuevoMedico = {       
-        nombre: req.body.name,
-        apellido: req.body.apellido,
-        especialidad: [req.body.especialidad, req.body.especialidad2],
-        sexo: req.body.sexo,
-        estudios: req.body.estudios
-        };
-
-    medicos.push(nuevoMedico)
-    
-    fs.writeFileSync("./datos/publicMedicos.json", JSON.stringify(medicos, null, " "));
-
-}
-
-
 
 
 function borrarMedico(medicos, documentoMedico){

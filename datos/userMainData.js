@@ -14,4 +14,8 @@ let especialidad = [rl.question("Especialidad: ")];
 
 let nacimiento = rl.question("Nacimiento (DD de Mes del AAAA): ");
 
-module.exports = {documento, nombre, apellido, sexo, matricula, especialidad, nacimiento};
+module.exports = { documento, nombre, apellido, sexo, matricula, especialidad, nacimiento };
+
+
+
+/* IGNORAR ESTE DOCUMENTO */
