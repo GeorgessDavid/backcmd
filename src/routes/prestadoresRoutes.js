@@ -1,7 +1,6 @@
 /* REQUIRES CONTROLLERS */
 const path = require('path')
 const prestadoresController = require('../controllers/prestadoresControllers.js');
-const funciones = require('../../funciones/funciones.js')
 const express = require('express');
 const router = express.Router();
 const multer = require('multer');
@@ -30,6 +29,6 @@ router.get("/home", prestadoresController.home)
 
 router.get("/agregarMedico", prestadoresController.agregarMedico)
 
-router.post("/agregarMedico", uploadFile.single('profileImg'), funciones.agregarMedicoPublico)
+router.post("/agregarMedico", uploadFile.single('profileImg'), prestadoresController.agregarMedicoPublico)
 
 module.exports = router;
