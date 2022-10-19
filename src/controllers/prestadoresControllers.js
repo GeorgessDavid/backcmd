@@ -31,7 +31,7 @@ const prestadoresController = {
             especialidad: [req.body.especialidad, req.body.especialidad2],
             sexo: req.body.sexo,
             estudios: req.body.estudios,
-            profileImg: req.file
+            profileImg: req.file.filename
         };
 
         publicMedicos.push(nuevoMedico)
