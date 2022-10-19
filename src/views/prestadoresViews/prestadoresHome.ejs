@@ -16,6 +16,22 @@
         <nav>
             <a href="/prestadores/agregarMedico">Agregar Médico Público</a>
         </nav>
+        </div>
+        <br>
+        <% for (let prestador of ps) {%>
+            <div class="col-12 col-sm-6 col-lg-3">
+                <section class="product-box">
+                    <a href="/prestadores/home/<%= prestador.id %>">
+                        <article class="product-box_data">
+                            <p><%= prestador.nombre %></p>
+                            <p><%= prestador.apellido %></p>
+                            <p><%= prestador.especialidad %></p>
+                        </article>
+                    </a>
+                </section>
+            </div>
+        <% } %>
+        </div>
     </main>
     <footer>
         <%- include('../partials/prestadoresFooter.ejs')%> 

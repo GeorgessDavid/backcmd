@@ -27,6 +27,8 @@ router.post("/login", prestadoresController.login)
 
 router.get("/home", prestadoresController.home)
 
+router.get("/home/:id", prestadoresController.detallePrestador)
+
 router.get("/agregarMedico", prestadoresController.agregarMedico)
 
 router.post("/agregarMedico", uploadFile.single('profileImg'), prestadoresController.agregarMedicoPublico)

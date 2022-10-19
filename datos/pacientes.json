@@ -1,13 +1,5 @@
 [
  {
-  "id": 5,
-  "usuario": "mmgari",
-  "nombre": "Martin",
-  "apellido": "Gariba",
-  "email": "martin.garibaldi@gmail.com",
-  "password": "$2a$10$y6ndc6iFBEGyJXj8QZ9Jde7yAfoSrHKLpKpepTcP5WZR6QbC.HL7u"
- },
- {
   "id": 6,
   "usuario": "mgaribaldi",
   "nombre": "Martin",

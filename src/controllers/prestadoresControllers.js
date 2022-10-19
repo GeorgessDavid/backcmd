@@ -10,7 +10,7 @@ const prestadoresController = {
         res.render("prestadoresLogin")
     },
     home: (req,res) =>{
-        res.render('prestadoresViews/prestadoresHome')
+        res.render('prestadoresViews/prestadoresHome', {ps: publicMedicos})
     },
     login: (req,res) =>{
         req.session.userType = req.body.userType;
@@ -39,7 +39,19 @@ const prestadoresController = {
         fs.writeFileSync("./datos/publicMedicos.json", JSON.stringify(publicMedicos, null, " "));
 
         res.redirect("/prestadores/home")
-    }
+    },
+    detallePrestador: (req,res) => {
+        let idPrestador = req.params.id;
+        let objPrestador;
+
+        for (let o of publicMedicos){
+            if (idPrestador == o.id){
+                objPrestador=o;
+                break;
+            }
+        }
+        res.render('prestadoresViews/editarPrestador',{prestador: objPrestador})
+    },
 }
 
 module.exports = prestadoresController;
