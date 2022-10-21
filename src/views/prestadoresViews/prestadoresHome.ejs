@@ -23,15 +23,30 @@
     </header>
     <main>
         <br>
+        <div class="encabezado">
+            <h1>Listado de Médicos Públicos</h1>
+            <div>
+                <span>Los médicos públicos son aquellos que se muestran en la página para usuarios que <span style="font-weight: bold;">no</span> son trabajadores de los Consultorios Médicos David</span>
+            </div>    
+        </div>
         <div class="prestadorSection">
+            
             <% for (let prestador of ps) {%>
                 <div>
                     <section class="prestadorBox">
                         <img src="../../../img/profilepictures/<%= prestador.profileImg%>" alt="profileImg">
                         <div class="prestadorInfo">
                             <div class="prestadorNombre">
-                                <span style="text-transform: uppercase"><%= prestador.apellido %>,</span>
-                                <span><%= prestador.nombre %></span>
+                                <% if(prestador.sexo == "masculino" && prestador.especialidad != ("Psicología" || "Nutrición" || "Psicopedagogía" || "Kinesiología")){ %>
+                                    <span>Dr. </span><span style="text-transform: uppercase"><%= prestador.apellido %>,</span>
+                                    <span><%= prestador.nombre %></span>
+                                <% }else if (prestador.sexo == "femenino" && prestador.especialidad != ("Psicología" || "Nutrición" || "Psicopedagogía" || "Kinesiología")){ %>
+                                    <span>Dra. </span><span style="text-transform: uppercase"><%= prestador.apellido %>,</span>
+                                    <span><%= prestador.nombre %></span>
+                                <% } else { %>
+                                    <span>Lic. </span><span style="text-transform: uppercase"><%= prestador.apellido %>,</span>
+                                    <span><%= prestador.nombre %></span>
+                                <% } %>
                             </div>
                             <p><%= prestador.especialidad %></p>
                             <a href="/prestadores/editandoPrestador/<%= prestador.id %>"><button type="button" class="btn btn-primary">Editar</button></a>

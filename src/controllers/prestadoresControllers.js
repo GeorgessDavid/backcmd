@@ -5,6 +5,7 @@ const userDatabase = require('../../datos/innerDatabase.json')
 const session = require('express-session')
 const prestadoresFilePath = path.join(__dirname, '../../datos/publicMedicos.json')
 const publicMedicos = JSON.parse(fs.readFileSync(prestadoresFilePath, 'utf-8'))
+const licenciaturas = ["Psicología", "Nutrición", "Kinesiología", "Psicopedagogía"];
 
 
 const prestadoresController = {
