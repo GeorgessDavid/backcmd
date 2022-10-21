@@ -6,13 +6,13 @@ const publicMedicos = require("../../datos/publicMedicos.json");
 const fs = require("fs");
 
 const prestadoresController = {
-    index: (req,res) => {
+    index: (req, res) => {
         res.render("prestadoresLogin")
     },
-    home: (req,res) =>{
-        res.render('prestadoresViews/prestadoresHome', {ps: publicMedicos})
+    home: (req, res) => {
+        res.render('prestadoresViews/prestadoresHome', { ps: publicMedicos })
     },
-    login: (req,res) =>{
+    login: (req, res) => {
         req.session.userType = req.body.userType;
         req.session.user = req.body.user;
         req.session.pass = req.body.password;
@@ -20,37 +20,51 @@ const prestadoresController = {
 
         res.redirect("/prestadores/home")
     },
-    agregarMedico: (req,res) =>{
+    agregarMedico: (req, res) => {
         res.render('prestadoresViews/secretariaAgregarMedicoPublico')
     },
-    agregarMedicoPublico: (req, res) =>{
-        let nuevoMedico = {
-            id: "CMD" + Date.now() + "P" ,
-            nombre: req.body.nombre,
-            apellido: req.body.apellido,
-            especialidad: [req.body.especialidad, req.body.especialidad2],
-            sexo: req.body.sexo,
-            estudios: req.body.estudios,
-            profileImg: req.file.filename
-        };
-
-        publicMedicos.push(nuevoMedico)
-
+    agregarMedicoPublico: (req, res) => {
+        if (req.file) {
+            let nuevoMedico = {
+                id: "CMD" + Date.now() + "P",
+                nombre: req.body.nombre,
+                apellido: req.body.apellido,
+                especialidad: req.body.especialidad,
+                especialidad2: req.body.especialidad2,
+                sexo: req.body.sexo,
+                estudios: req.body.estudios,
+                profileImg: req.file.filename
+            };
+            publicMedicos.push(nuevoMedico)
+        } else {
+            let nuevoMedico = {
+                id: "CMD" + Date.now() + "P",
+                nombre: req.body.nombre,
+                apellido: req.body.apellido,
+                especialidad: req.body.especialidad,
+                especialidad2: req.body.especialidad2,
+                sexo: req.body.sexo,
+                estudios: req.body.estudios,
+                profileImg: "default_profile_img.png"
+            }
+            publicMedicos.push(nuevoMedico)
+        }    
+        
         fs.writeFileSync("./datos/publicMedicos.json", JSON.stringify(publicMedicos, null, " "));
 
         res.redirect("/prestadores/home")
     },
-    detallePrestador: (req,res) => {
+    detallePrestador: (req, res) => {
         let idPrestador = req.params.id;
         let objPrestador;
 
-        for (let o of publicMedicos){
-            if (idPrestador == o.id){
-                objPrestador=o;
+        for (let o of publicMedicos) {
+            if (idPrestador == o.id) {
+                objPrestador = o;
                 break;
             }
         }
-        res.render('prestadoresViews/editarPrestador',{prestador: objPrestador})
+        res.render('prestadoresViews/editarPrestador', { prestador: objPrestador })
     },
 }
 

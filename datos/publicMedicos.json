@@ -4,11 +4,9 @@
   "nombre": "Carlos Eduardo",
   "apellido": "David",
   "sexo": "Masculino",
-  "especialidad": [
-   "Gastroenterología",
-   "Medicina Clínica",
-   "PAMI"
-  ],
-  "estudios": "No"
+  "especialidad": "Gastroenterología",
+  "especialidad2": "Medicina Clínica - PAMI",
+  "estudios": "No",
+  "profileImg": "default_profile_img.png"
  }
 ]
