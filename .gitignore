@@ -107,3 +107,5 @@ dist
 
 public/img/profilepictures/*.jpeg
 
+public/img/profilepictures/*.png
+public/img/profilepictures/*.jpg
