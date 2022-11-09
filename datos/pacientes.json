@@ -6,5 +6,21 @@
   "apellido": "Garibaldi",
   "email": "m@m",
   "password": "$2a$10$PwXv6aAV7X/LSKvZoG2.hOYtdzUX3F06VOO31BTY88h9TRQGw8/DO"
+ },
+ {
+  "id": 7,
+  "usuario": "ssdd",
+  "nombre": "s",
+  "apellido": "d",
+  "email": "m@m.com",
+  "password": "$2a$10$Ch4e1GQ0eP0P078r0BbpN.riLe6xwtMr5m.csMLWKCADtNt1b60OG"
+ },
+ {
+  "id": 8,
+  "usuario": "s",
+  "nombre": "ds",
+  "apellido": "asd",
+  "email": "m@m.com",
+  "password": "$2a$10$cwtWMC8X5uyQULYimatr3OltC9yaf9hISJ48RvIFvzrZhKhjG3p/e"
  }
 ]

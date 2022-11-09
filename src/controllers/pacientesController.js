@@ -5,6 +5,7 @@ const pacientesFilePath = path.join(__dirname, '../../datos/pacientes.json');
 const pacientes = JSON.parse(fs.readFileSync(pacientesFilePath, 'utf-8'));
 const bcrypt = require('bcryptjs');
 
+const { validationResult } = require('express-validator')
 
 const controlador = {
     login: (req,res) => {
@@ -14,20 +15,31 @@ const controlador = {
         res.render("registro")
     },
     save: (req, res) => {
-        let id = pacientes[pacientes.length-1].id + 1;
-        let paciente = {
-            id: id,
-            usuario: req.body.usuario,
-            nombre: req.body.nombre,
-            apellido: req.body.apellido,
-            email: req.body.email,
-            password: bcrypt.hashSync(req.body.password,10),
+
+        let errors = validationResult(req)
+
+        console.log(errors)
+        if (errors.isEmpty()) {
+
+            let id = pacientes[pacientes.length - 1].id + 1;
+            let paciente = {
+                id: id,
+                usuario: req.body.usuario,
+                nombre: req.body.nombre,
+                apellido: req.body.apellido,
+                email: req.body.email,
+                password: bcrypt.hashSync(req.body.password, 10),
+            }
+
+            pacientes.push(paciente);
+            fs.writeFileSync(pacientesFilePath, JSON.stringify(pacientes, null, " "));
+
+            res.redirect('/');
+        }
+        else {
+            res.render('registro',{errors: errors.array()})
         }
 
-        pacientes.push(paciente);
-        fs.writeFileSync(pacientesFilePath,JSON.stringify(pacientes,null," "));
-
-        res.redirect('/');
     },
     index: (req,res) => {
         res.render("pacientes",{ps: pacientes});

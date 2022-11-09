@@ -30,9 +30,14 @@
                     <label name="usuario">
                     <input type="text" class="formCMD" name="usuario" placeholder="Usuario" required>
                     <label name="contraseña">
-                    <input type="password" class="formCMD" name="password" value="password" placeholder="Clave">
+                    <input type="password" class="formCMD" name="password" placeholder="Clave">
+                        <% if (locals && locals.errors) { %>
+                            <% if (locals.errors[0].param == 'password') { %>
+                                <h10> <%= locals.errors[0].msg %>ffff</h10>
+                            <% } %>
+                        <% } %>
                     <label name="contraseña">
-                    <input type="password" class="formCMD" name="passwordConf" value="password" placeholder="Confirmar Clave">
+                    <input type="password" class="formCMD" name="passwordConf" placeholder="Confirmar Clave">
                     <br>
                     <br>
                     <label name="nombre">
