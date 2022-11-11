@@ -39,9 +39,10 @@ router.post("/register",pacientesController.save )
 
 router.get("/",pacientesController.index )
 router.get("/:id",pacientesController.detallePaciente )
-router.put("/editar/:id",pacientesController.editarPaciente )
+router.put("/editar/:id",pacientesController.editarPaciente ) 
+router.put("/pacientes/:id", pacientesController.editarPaciente) //duda
 
 router.delete('/delete/:id', pacientesController.delete);
-//router.put("/editarPaciente/:id", uploadFile.single('profileImg'), pacientesController.editarPaciente) // ver archivo o imagen a subir
+//router.put("/editarPaciente/:id", uploadFile.single('profileImg'), pacientesController.editarPaciente) //no hay img o archivo
 
 module.exports = router;
