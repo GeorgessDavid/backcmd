@@ -13,7 +13,7 @@ let validaciones = [
     body('usuario').notEmpty().withMessage('Debe escribir un nombre de usuario.'),
     body('nombre').notEmpty().withMessage('Debe escribir un nombre.'),
     body('apellido').notEmpty().withMessage('Debe escribir un apellido.')
-  //  body('email').notEmpty().withMessage('Debe escribir un email valido.'), hacer validar email
+   // body('email').notEmpty().withMessage('Debe escribir un email válido.'), //hacer validar email
 
 ]
 
@@ -42,6 +42,6 @@ router.get("/:id",pacientesController.detallePaciente )
 router.put("/editar/:id",pacientesController.editarPaciente )
 
 router.delete('/delete/:id', pacientesController.delete);
-router.put("/editarPaciente/:id", uploadFile.single('profileImg'), pacientesController.editarPaciente) // ver archivo o imagen a subir
+//router.put("/editarPaciente/:id", uploadFile.single('profileImg'), pacientesController.editarPaciente) // ver archivo o imagen a subir
 
 module.exports = router;
