@@ -16,6 +16,11 @@ header{
 
 }
 
+.error{
+    color: red;
+    font-size: small;
+}
+
 main{
     min-height: 93vh;
     display: flex;

@@ -7,8 +7,8 @@ const { body } = require('express-validator')
 let validaciones = [
     body('nombre').notEmpty().withMessage('Completar Nombre'),
     body('apellido').notEmpty().withMessage('Completar Apellido'),
-    body('email').notEmpty().withMessage('Completar Email'),
-    body('password').isLength({ min: 8 }).withMessage('La clave debe tener 8 caracteres o mas')
+    body('email').isEmail().withMessage('Email inválido'),
+    body('password').isLength({ min: 15 }).withMessage('La contraseña debe tener al menos 15 caracteres'),
 ]
 
 router.get("/login",pacientesController.login )

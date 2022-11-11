@@ -37,12 +37,12 @@ const controlador = {
             res.redirect('/');
         }
         else {
-            res.render('registro',{errors: errors.array()})
+            res.render('pacientesRegistro',{errors: errors.mapped()})
         }
 
     },
     index: (req,res) => {
-        res.render("pacientes",{ps: pacientes});
+        res.render("pacientesLogin",{ps: pacientes});
     },
     detallePaciente: (req,res) => {
         let idPaciente = req.params.id;
@@ -54,7 +54,7 @@ const controlador = {
                 break;
             }
         }
-        res.render('editarPaciente',{paciente: objPaciente})
+        res.render('pacientesEditar',{paciente: objPaciente});
     },
     editarPaciente: (req,res) => {
         let id = req.params.id
