@@ -10,9 +10,11 @@ const { body } = require('express-validator');
 /* VALIDACIONES - EXPRESS VALIDATOR */
 
 let validaciones = [
+    body('usuario').notEmpty().withMessage('Debe escribir un nombre de usuario.'),
     body('nombre').notEmpty().withMessage('Debe escribir un nombre.'),
-    body('apellido').notEmpty().withMessage('Debe escribir un apellido.'),
-    body('especialidad').notEmpty().withMessage('Debe escribir una especialidad.')
+    body('apellido').notEmpty().withMessage('Debe escribir un apellido.')
+  //  body('email').notEmpty().withMessage('Debe escribir un email valido.'), hacer validar email
+
 ]
 
 /* MULTER CONFIGURACIÓN  */
@@ -30,11 +32,6 @@ const imgConfiguration = multer.diskStorage({
 const uploadFile = multer({ storage: imgConfiguration }); //chequear archivos
 
 
-
-
-
-
-
 /* RUTAS */
 router.get("/login",pacientesController.login )
 router.get("/register",pacientesController.register )
@@ -45,6 +42,6 @@ router.get("/:id",pacientesController.detallePaciente )
 router.put("/editar/:id",pacientesController.editarPaciente )
 
 router.delete('/delete/:id', pacientesController.delete);
-router.put("/editarPaciente/:id", uploadFile.single('profileImg'), pacientesController.editarPaciente)
+router.put("/editarPaciente/:id", uploadFile.single('profileImg'), pacientesController.editarPaciente) // ver archivo o imagen a subir
 
 module.exports = router;
