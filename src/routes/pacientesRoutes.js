@@ -12,8 +12,8 @@ const { body } = require('express-validator');
 let validaciones = [
     body('usuario').notEmpty().withMessage('Debe escribir un nombre de usuario.'),
     body('nombre').notEmpty().withMessage('Debe escribir un nombre.'),
-    body('apellido').notEmpty().withMessage('Debe escribir un apellido.')
-   // body('email').notEmpty().withMessage('Debe escribir un email válido.'), //hacer validar email
+    body('apellido').notEmpty().withMessage('Debe escribir un apellido.'),
+    body('email').notEmpty().withMessage('Debe escribir un email válido.'), //hacer validar email
 
 ]
 
@@ -40,9 +40,8 @@ router.post("/register",pacientesController.save )
 router.get("/",pacientesController.index )
 router.get("/:id",pacientesController.detallePaciente )
 router.put("/editar/:id",pacientesController.editarPaciente ) 
-router.put("/pacientes/:id", pacientesController.editarPaciente) //duda
 
 router.delete('/delete/:id', pacientesController.delete);
-//router.put("/editarPaciente/:id", uploadFile.single('profileImg'), pacientesController.editarPaciente) //no hay img o archivo
+router.put("/editarpaciente/:id", validaciones,pacientesController.editarPaciente)
 
 module.exports = router;
