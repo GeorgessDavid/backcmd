@@ -43,10 +43,9 @@ router.get("/register", pacientesController.register )
 router.post("/register",validacionesRegistro,pacientesController.save )
 
 router.get("/",pacientesController.index )
-router.get("/:id",pacientesController.detallePaciente )
-router.put("/editar/:id",pacientesController.editarPaciente ) 
+router.get("/:id",pacientesController.pacientesDetalle )
+router.put("/editar/:id",validaciones, pacientesController.pacientesEditar )
 
 router.delete('/delete/:id', pacientesController.delete);
-router.put("/editarpaciente/:id", validaciones,pacientesController.editarPaciente)
 
 module.exports = router;

@@ -7,10 +7,10 @@ const bcrypt = require('bcryptjs');
 
 const controlador = {
     login: (req,res) => {
-        res.render("login")
+        res.render("pacientesLogin")
     },
     register: (req,res) => {
-        res.render("registro")
+        res.render("pacientesRegistro")
     },
     save: (req, res) => {
 
@@ -40,9 +40,9 @@ const controlador = {
 
     },
     index: (req,res) => {
-        res.render("pacientesLogin",{ps: pacientes});
+        res.render("pacientesListado",{ps: pacientes});
     },
-    detallePaciente: (req,res) => {
+    pacientesDetalle: (req,res) => {
         let idPaciente = req.params.id;
         let objPaciente;
 
@@ -54,7 +54,7 @@ const controlador = {
         }
         res.render('pacientesEditar',{paciente: objPaciente});
     },
-    editarPaciente: (req,res) => {
+    pacientesEditar: (req,res) => {
         let errors = validationResult(req);
         if (errors.isEmpty) {
             let id = req.params.id
