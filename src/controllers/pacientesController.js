@@ -73,11 +73,11 @@ const controlador = {
             res.redirect('/pacientes');
 
         }
-         else{
-            //volver a renderear la vista de renderear 
-         }
-    },
+        else {
+            res.render('pacientesEditar',{errors: errors.mapped()})
+        }
 
+    },
 
     delete: (req, res) => {
 
