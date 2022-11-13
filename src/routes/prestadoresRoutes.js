@@ -11,7 +11,13 @@ const { body } = require('express-validator');
 let validaciones = [
     body('nombre').notEmpty().withMessage('Debe escribir un nombre.'),
     body('apellido').notEmpty().withMessage('Debe escribir un apellido.'),
-    body('especialidad').notEmpty().withMessage('Debe escribir una especialidad.')
+    body('especialidad').notEmpty().withMessage('Debe escribir una especialidad.'),
+    body('sexo').notEmpty().withMessage('Debe elegir un sexo').custom(value => {
+        let input = req.body.sexo
+    }),
+    body('estudios').notEmpty().withMessage('Debe seleccionar si realiza estudios o no.').custom(value => {
+        let input = req.body.estudios
+    })
 ]
 
 /* MUILTER CONFIGURACIÓN  */
