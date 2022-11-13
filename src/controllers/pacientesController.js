@@ -1,6 +1,6 @@
 const path = require('path')
 const fs = require('fs');
-
+const { validationResult } = require("express-validator");
 const pacientesFilePath = path.join(__dirname, '../../datos/pacientes.json');
 const pacientes = JSON.parse(fs.readFileSync(pacientesFilePath, 'utf-8'));
 const bcrypt = require('bcryptjs');
@@ -57,21 +57,29 @@ const controlador = {
         res.render('pacientesEditar',{paciente: objPaciente});
     },
     editarPaciente: (req,res) => {
-        let id = req.params.id
-        for (let i = 0; i < pacientes.length; i++) {
-            if (pacientes[i].id == id) {
-                pacientes[i].usuario = req.body.usuario;
-                pacientes[i].nombre = req.body.nombre
-                pacientes[i].apellido = req.body.apellido
-                pacientes[i].email = req.body.email
-                pacientes[i].password = bcrypt.hashSync(req.body.password,10)
+        let errors = validationResult(req);
+        if (errors.isEmpty) {
+            let id = req.params.id
+            for (let i = 0; i < pacientes.length; i++) {
+                if (pacientes[i].id == id) {
+                    pacientes[i].usuario = req.body.usuario;
+                    pacientes[i].nombre = req.body.nombre
+                    pacientes[i].apellido = req.body.apellido
+                    pacientes[i].email = req.body.email
+                    pacientes[i].password = bcrypt.hashSync(req.body.password,10)
+                }
             }
+    
+            fs.writeFileSync(pacientesFilePath,JSON.stringify(pacientes,null," "));
+    
+            res.redirect('/pacientes');
+
         }
-
-        fs.writeFileSync(pacientesFilePath,JSON.stringify(pacientes,null," "));
-
-        res.redirect('/pacientes');
+         else{
+            //volver a renderear la vista de renderear 
+         }
     },
+
 
     delete: (req, res) => {
 
