@@ -6,8 +6,13 @@ const router = express.Router();
 const multer = require('multer');
 const { body } = require('express-validator');
 
-
 /* VALIDACIONES - EXPRESS VALIDATOR */
+let validacionesRegistro = [
+    body('nombre').notEmpty().withMessage('Completar Nombre'),
+    body('apellido').notEmpty().withMessage('Completar Apellido'),
+    body('email').isEmail().withMessage('Email inválido'),
+    body('password').isLength({ min: 15 }).withMessage('La contraseña debe tener al menos 15 caracteres'),
+]
 
 let validaciones = [
     body('usuario').notEmpty().withMessage('Debe escribir un nombre de usuario.'),
@@ -34,8 +39,8 @@ const uploadFile = multer({ storage: imgConfiguration }); //chequear archivos
 
 /* RUTAS */
 router.get("/login",pacientesController.login )
-router.get("/register",pacientesController.register )
-router.post("/register",pacientesController.save )
+router.get("/register", pacientesController.register )
+router.post("/register",validacionesRegistro,pacientesController.save )
 
 router.get("/",pacientesController.index )
 router.get("/:id",pacientesController.detallePaciente )
