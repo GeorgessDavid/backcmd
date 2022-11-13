@@ -5,8 +5,6 @@ const pacientesFilePath = path.join(__dirname, '../../datos/pacientes.json');
 const pacientes = JSON.parse(fs.readFileSync(pacientesFilePath, 'utf-8'));
 const bcrypt = require('bcryptjs');
 
-const { validationResult } = require('express-validator')
-
 const controlador = {
     login: (req,res) => {
         res.render("login")
