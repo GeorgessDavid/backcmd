@@ -3,7 +3,7 @@ const path = require('path')
 const multer = require('multer');
 const userDatabase = require('../../datos/innerDatabase.json')
 const session = require('express-session');
-const { validationResult } = require("express-validator"); 
+const { validationResult } = require("express-validator");
 const prestadoresFilePath = path.join(__dirname, '../../datos/publicMedicos.json')
 const publicMedicos = JSON.parse(fs.readFileSync(prestadoresFilePath, 'utf-8'))
 const licenciaturas = ["Psicología", "Nutrición", "Kinesiología", "Psicopedagogía"]
@@ -16,12 +16,18 @@ const prestadoresController = {
         res.render('prestadoresViews/prestadoresHome', { ps: publicMedicos })
     },
     login: (req, res) => {
-        req.session.userType = req.body.userType;
-        req.session.user = req.body.user;
-        req.session.pass = req.body.password;
-        req.session.secondPassword = req.body.secondPassword;
+        let errors = validationResult(req)
+        console.log(errors);
+        if (errors.isEmpty()) {
+            req.session.userType = req.body.userType;
+            req.session.user = req.body.user;
+            req.session.pass = req.body.password;
+            req.session.secondPassword = req.body.secondPassword;
 
-        res.redirect("/prestadores/home")
+            res.redirect("/prestadores/home")
+        } else {
+            res.render('prestadoresLogin', { errors: errors.mapped() })
+        }
     },
     agregarMedico: (req, res) => {
         res.render('prestadoresViews/secretariaAgregarMedicoPublico')
