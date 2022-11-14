@@ -26,7 +26,30 @@ let validaciones = {
     agregarMedicoPublico: [
         body('nombre').notEmpty().withMessage('Debe escribir un nombre.'),
         body('apellido').notEmpty().withMessage('Debe escribir un apellido.'),
-        body('especialidad').notEmpty().withMessage('Debe escribir una especialidad.')],
+        body('especialidad').notEmpty().withMessage('Debe escribir una especialidad.'),
+        body('sexo').custom((value, { req }) => {
+            let sexo = req.body.sexo;
+
+            if (!sexo) {
+
+                throw new Error ('Debe seleccionar el sexo');
+            
+            }
+
+            return true
+        }),
+        body('estudios').custom((value, { req }) => {
+            let estudios = req.body.estudios;
+
+            if (!estudios) {
+
+                throw new Error ('Debe seleccionar si realiza estudios o no.');
+            
+            }
+
+            return true
+        })
+    ],
     login: [
         body('userType').notEmpty().withMessage('Debe seleccionar el tipo de usuario.'),
         body('user').notEmpty().withMessage('Debe ingresar un nombre de usuario.'),
