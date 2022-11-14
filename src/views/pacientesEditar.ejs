@@ -29,6 +29,9 @@
                     <form action="/pacientes/editar/<%= paciente.id %>?_method=PUT" method="POST">
                         <label name="usuario">
                         <input type="text" class="formCMD" name="usuario" value="<%= paciente.usuario %>" placeholder="Usuario">
+                        <% if (locals && locals.errors) { %>
+                            <p class="error"> <%= locals.errors.usuario.msg %> </p>
+                        <% } %>
                         <label name="contraseña">
                         <input type="password" class="formCMD" name="password" value="password" placeholder="Clave"> 
                         <% if (locals && locals.errors) { %>

@@ -14,13 +14,13 @@ let validaciones = [
     body('especialidad').notEmpty().withMessage('Debe escribir una especialidad.')
 ]
 
-let validacionMedicoPublico = [ // editar validacion
+let validacionMedicoPublico = [  //falta las opciones
     body('nombre').notEmpty().withMessage('Debe escribir un nombre.'),
     body('apellido').notEmpty().withMessage('Debe escribir un apellido.'),
     body('especialidad').notEmpty().withMessage('Debe escribir una especialidad.')
 ]
 
-/* MUILTER CONFIGURACIÓN  */
+/* MULTER CONFIGURACIÓN  */
 
 const imgConfiguration = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -48,7 +48,7 @@ router.get("/agregarMedico", prestadoresController.agregarMedico)
 
 router.post("/agregarMedico", uploadFile.single('profileImg'), validaciones, prestadoresController.agregarMedicoPublico)
 
-router.post("/editandoPrestador", validacionMedicoPublico, prestadoresController.editarMedicoPublico) 
+router.post("/editandoPrestador/:id",uploadFile.single('profileImg') ,validacionMedicoPublico, prestadoresController.editarMedicoPublico) //
 
 router.get("/home/confirmDelete/:id", prestadoresController.confirmarEliminacion);
 

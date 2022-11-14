@@ -15,10 +15,12 @@ let validacionesRegistro = [
 ]
 
 let validaciones = [
-    body('usuario').notEmpty().withMessage('Debe escribir un nombre de usuario.'),
+    body('usuario').notEmpty().withMessage('Usuario incorrecto.'),
     body('nombre').notEmpty().withMessage('Debe escribir un nombre.'),
     body('apellido').notEmpty().withMessage('Debe escribir un apellido.'),
-    body('email').isEmail().withMessage('Debe escribir un email válido.'), 
+    body('email').isEmail().withMessage('Debe escribir un email válido.'),
+    body('password').isLength({ min: 15 }).withMessage('contraseña incorrecta'),
+
 
 ]
 

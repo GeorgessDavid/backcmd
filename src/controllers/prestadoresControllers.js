@@ -101,7 +101,7 @@ const prestadoresController = {
             res.redirect("/prestadores/home")
 
         } else {
-            res.render('prestadoresViews/secretariaAgregarMedicoPublico', { errors: errors.mapped() })
+            res.render('prestadoresViews/editarPrestador/:id', { errors: errors.mapped() }) 
         }
     },
     editandoPrestador: (req, res) => {
