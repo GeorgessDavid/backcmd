@@ -7,7 +7,37 @@ const bcrypt = require('bcryptjs');
 
 const controlador = {
     login: (req,res) => {
-        res.render("pacientesLogin")
+        if (req.session.usuario) {
+            return res.redirect("/")
+        }
+        else {
+            res.render("pacientesLogin")
+        }
+    },
+    loginProcess: (req,res) => {
+        let errors = validationResult(req);
+        if (errors.isEmpty()) {
+            let paciente = pacientes.find(paciente => paciente.usuario == req.body.usuario)
+            if (paciente) {
+                let password = bcrypt.compareSync(req.body.password, paciente.password)
+                if (password) {
+                    req.session.usuario = { id: paciente.id, nombre: paciente.nombre, apellido: paciente.apellido, email: paciente.email, usuario: paciente.usuario }
+                    req.session.usuarioLogueado = true
+                    return res.redirect("/")
+                } else {
+                    console.log(errors)
+                    res.render("pacientesLogin", { errors: { password: {msg: "Contraseña incorrecta"}} } )
+                }
+            } else {
+                res.render("pacientesLogin", { errors: { usuario: {msg: "Usuario inexistente"}} } )
+            }
+        } else {
+            res.render("pacientesLogin", {errors: errors.mapped()})
+        }
+    },
+    logout: (req,res) => {
+        req.session.destroy();
+        res.redirect("/")
     },
     register: (req,res) => {
         res.render("pacientesRegistro")

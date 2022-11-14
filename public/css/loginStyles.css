@@ -20,6 +20,13 @@ header{
     padding-right: 2vw;
 }
 
+.error{
+    color: red;
+    font-size: 10px;
+    font-weight: bold;
+    text-align: center;
+}
+
 .divHeaderContact{
     color: white;
     font-family: 'Fira Sans Condensed';

@@ -11,7 +11,10 @@ const session = require('express-session');
 app.use(express.urlencoded({extended: false}))
 app.use(methodOverride('_method'));
 app.use(session({secret: "Somos nosotros", resave: false, saveUninitialized: false,}))
-
+app.use(function(req, res, next) {
+    res.locals.usuario = req.session.usuario;
+    next();
+});
 
 //view engine
 app.set('view engine', 'ejs')
