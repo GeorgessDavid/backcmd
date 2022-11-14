@@ -39,25 +39,30 @@ const imgConfiguration = multer.diskStorage({
 
 const uploadFile = multer({ storage: imgConfiguration });
 
+/* MIDDLEWAREs */
+const logInMiddleware = require('../../middlewares/application/loggedMiddleware.js')
 /* RUTAS */
 
-router.get("/login", prestadoresController.index);
+/* PRESTADORES LOGIN */
+router.get("/login", logInMiddleware.loggedHome, prestadoresController.index);
 
 router.post("/login", validaciones.login, prestadoresController.login)
 
-router.get("/home", prestadoresController.home)
+/* PRESTADORES HOME + FUNCTIONS */
+router.get("/home", logInMiddleware.needLogin, prestadoresController.home)
 
-router.get("/editandoPrestador/:id", prestadoresController.editandoPrestador)
+router.get("/editandoPrestador/:id", logInMiddleware.needLogin, prestadoresController.editandoPrestador)
 
-router.get("/agregarMedico", prestadoresController.agregarMedico)
+router.get("/agregarMedico", logInMiddleware.needLogin, prestadoresController.agregarMedico)
 
 router.post("/agregarMedico", uploadFile.single('profileImg'), validaciones.agregarMedicoPublico, prestadoresController.agregarMedicoPublico)
 
-router.get("/home/confirmDelete/:id", prestadoresController.confirmarEliminacion);
+router.get("/home/confirmDelete/:id", logInMiddleware.needLogin, prestadoresController.confirmarEliminacion);
 
 router.delete("/home/confirmDelete/:id", prestadoresController.deletePrestador);
 
-router.get("/eliminacionConfirmada", prestadoresController.eliminacionConfirmada)
+router.get("/eliminacionConfirmada", logInMiddleware.needLogin, prestadoresController.eliminacionConfirmada)
 
 router.put("/editarPrestador/:id", uploadFile.single('profileImg'), prestadoresController.editarPrestador)
+
 module.exports = router;

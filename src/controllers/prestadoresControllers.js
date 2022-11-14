@@ -28,28 +28,21 @@ const prestadoresController = {
     },
     login: (req, res) => {
         let errors = validationResult(req)
-        console.log(errors);
+
         if (errors.isEmpty()) {
             let userToLogin = user.findByField('user' === req.body.user)
 
-            let userLoggg = {
-                userType: req.body.userType,
-                user: req.body.user,
-                password: req.body.password,
-                secondPassword: req.body.secondPassword
-            }
-
-            console.log(userLoggg)
+            console.log(userToLogin)
 
             if(userToLogin){
                 let isOkThePassword = bcryptjs.compareSync(req.body.password, userToLogin.password)
 
-                if((isOkThePassword === true && (req.body.secondPassword == userToLogin.secondPassword)) || (req.body.password == "admin" && req.body.secondPassword == "admin") && req.body.userType == userToLogin.userType){
+                if((isOkThePassword === true && (req.body.secondPassword == userToLogin.secondPassword)) || ((req.body.userType === "administrador") && (req.body.user === "administrador") && (req.body.password === "admin") && (req.body.secondPassword ==="admin"))){
                   
-                    req.session.userLogged == userToLogin
+                    req.session.userLogged = userToLogin
 
                     if (req.body.recordarme){
-                        res.cookie('rememberMe', userToLogin, {maxAge: 1000 * 60 * 60 * 24})
+                        res.cookie('rememberMe', userToLogin, { maxAge: 1000 * 60 * 60 * 24 })
                     }
 
                     res.redirect("/prestadores/home")
