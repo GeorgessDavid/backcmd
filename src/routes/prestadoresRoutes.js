@@ -26,13 +26,7 @@ let validaciones = {
     agregarMedicoPublico: [
         body('nombre').notEmpty().withMessage('Debe escribir un nombre.'),
         body('apellido').notEmpty().withMessage('Debe escribir un apellido.'),
-        body('especialidad').notEmpty().withMessage('Debe escribir una especialidad.'),
-        body('sexo').notEmpty().withMessage('Debe elegir un sexo').custom(value => {
-            let input = req.body.sexo
-        }),
-        body('estudios').notEmpty().withMessage('Debe seleccionar si realiza estudios o no.').custom(value => {
-            let input = req.body.estudios
-        })],
+        body('especialidad').notEmpty().withMessage('Debe escribir una especialidad.')],
     login: [
         body('userType').notEmpty().withMessage('Debe seleccionar el tipo de usuario.'),
         body('user').notEmpty().withMessage('Debe ingresar un nombre de usuario.'),
