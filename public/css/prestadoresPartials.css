@@ -18,3 +18,13 @@ footer{
     background-color: #005725;
     font-size: 12px;
 }
+
+.logout a{
+    color: white;
+    text-decoration: none;
+    transition: all 300ms;
+}
+
+.logout a:hover{
+    text-shadow: 0 0 10px white;
+}

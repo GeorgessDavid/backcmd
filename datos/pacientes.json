@@ -6,5 +6,13 @@
   "apellido": "Garibaldi",
   "email": "m@m",
   "password": "$2a$10$9Y9nGa6aWoTeshpD2iyjsOnU7rgF/59XRTDW4IDdaZ74GUanZ/2Qa"
+ },
+ {
+  "id": 7,
+  "usuario": "GeorgessDavid",
+  "nombre": "Georges Ammiel",
+  "apellido": "David",
+  "email": "georgessdavid@gmail.com",
+  "password": "$2a$10$mxS8EryaidSQHaOKKJ/4MOKyc9/WkqjtV4pIbCoJQ7cstX5DgwPMC"
  }
 ]

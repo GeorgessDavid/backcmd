@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans+Condensed');
+
+.errors {
+    color: red;
+    font-style: italic;
+    font-size: 14px;
+    margin: 5px;
+    padding: 10px;
+    border: 1px solid red;
+    background-color: rgb(255, 210, 210);
+    border-radius: 5px;
+}

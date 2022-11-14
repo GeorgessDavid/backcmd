@@ -7,6 +7,11 @@ const multer = require('multer');
 const { body } = require('express-validator');
 
 /* VALIDACIONES - EXPRESS VALIDATOR */
+let validacionesLogin = [
+    body('usuario').notEmpty().withMessage('Debes ingresar un usuario'),
+    body('password').notEmpty().withMessage('Debes ingresar una contraseña')
+]
+
 let validacionesRegistro = [
     body('nombre').notEmpty().withMessage('Completar Nombre'),
     body('apellido').notEmpty().withMessage('Completar Apellido'),
@@ -20,8 +25,6 @@ let validaciones = [
     body('apellido').notEmpty().withMessage('Debe escribir un apellido.'),
     body('email').isEmail().withMessage('Debe escribir un email válido.'),
     body('password').isLength({ min: 15 }).withMessage('contraseña incorrecta'),
-
-
 ]
 
 /* MULTER CONFIGURACIÓN  */
@@ -41,8 +44,10 @@ const uploadFile = multer({ storage: imgConfiguration }); //chequear archivos
 
 /* RUTAS */
 router.get("/login",pacientesController.login )
+router.post("/login",validacionesLogin, pacientesController.loginProcess)
 router.get("/register", pacientesController.register )
 router.post("/register",validacionesRegistro,pacientesController.save )
+router.get("/logout", pacientesController.logout)
 
 router.get("/",pacientesController.index )
 router.get("/:id",pacientesController.pacientesDetalle )
