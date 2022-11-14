@@ -18,7 +18,7 @@ let validaciones = [
     body('usuario').notEmpty().withMessage('Debe escribir un nombre de usuario.'),
     body('nombre').notEmpty().withMessage('Debe escribir un nombre.'),
     body('apellido').notEmpty().withMessage('Debe escribir un apellido.'),
-    body('email').notEmpty().withMessage('Debe escribir un email válido.'), //hacer validar email
+    body('email').isEmail().withMessage('Debe escribir un email válido.'), 
 
 ]
 
