@@ -14,6 +14,12 @@ let validaciones = [
     body('especialidad').notEmpty().withMessage('Debe escribir una especialidad.')
 ]
 
+let validacionMedicoPublico = [ // editar validacion
+    body('nombre').notEmpty().withMessage('Debe escribir un nombre.'),
+    body('apellido').notEmpty().withMessage('Debe escribir un apellido.'),
+    body('especialidad').notEmpty().withMessage('Debe escribir una especialidad.')
+]
+
 /* MUILTER CONFIGURACIÓN  */
 
 const imgConfiguration = multer.diskStorage({
@@ -41,6 +47,8 @@ router.get("/editandoPrestador/:id", prestadoresController.editandoPrestador)
 router.get("/agregarMedico", prestadoresController.agregarMedico)
 
 router.post("/agregarMedico", uploadFile.single('profileImg'), validaciones, prestadoresController.agregarMedicoPublico)
+
+router.post("/editandoPrestador", validacionMedicoPublico, prestadoresController.editarMedicoPublico) 
 
 router.get("/home/confirmDelete/:id", prestadoresController.confirmarEliminacion);
 

@@ -65,6 +65,45 @@ const prestadoresController = {
             res.render('prestadoresViews/secretariaAgregarMedicoPublico', { errors: errors.mapped() })
         }
     },
+    editarMedicoPublico: (req, res) => { // comienzo edicion Mariela
+        let errors = validationResult(req);
+        console.log(errors)
+
+        if (errors.isEmpty()) {
+            if (req.file) {
+                let nuevoMedico = {
+                    id: "CMD" + Date.now() + "P",
+                    nombre: req.body.nombre,
+                    apellido: req.body.apellido,
+                    especialidad: req.body.especialidad,
+                    especialidad2: req.body.especialidad2,
+                    sexo: req.body.sexo,
+                    estudios: req.body.estudios,
+                    profileImg: req.file.filename
+                };
+                publicMedicos.push(nuevoMedico)
+            } else {
+                let nuevoMedico = {
+                    id: "CMD" + Date.now() + "P",
+                    nombre: req.body.nombre,
+                    apellido: req.body.apellido,
+                    especialidad: req.body.especialidad,
+                    especialidad2: req.body.especialidad2,
+                    sexo: req.body.sexo,
+                    estudios: req.body.estudios,
+                    profileImg: "default_profile_img.png"
+                }
+                publicMedicos.push(nuevoMedico)
+            }
+
+            fs.writeFileSync("./datos/publicMedicos.json", JSON.stringify(publicMedicos, null, " "));
+
+            res.redirect("/prestadores/home")
+
+        } else {
+            res.render('prestadoresViews/secretariaAgregarMedicoPublico', { errors: errors.mapped() })
+        }
+    },
     editandoPrestador: (req, res) => {
         let idPrestador = req.params.id;
         let objPrestador;
