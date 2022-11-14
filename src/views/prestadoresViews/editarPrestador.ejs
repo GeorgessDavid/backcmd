@@ -25,17 +25,27 @@
                         <label for="exampleFormControlInput1" class="form-label">* Nombre(s):</label>
                         <input type="text" class="form-control" id="exampleFormControlInput1" name="nombre"
                                value="<%= prestador.nombre %>" placeholder="Nombre" required>
+                               <% if (locals && locals.errors) { %>
+                                <p class="error"> <%= locals.errors.nombre.msg %> </p>
+                            <% } %>
                         <label for="exampleFormControlInput1" class="form-label">* Apellido(s):</label>
                         <input type="text" class="form-control" id="exampleFormControlInput1" name="apellido"
                                value="<%= prestador.apellido %>" placeholder="Apellido" required>
+                               <% if (locals && locals.errors) { %>
+                                <p class="error"> <%= locals.errors.apellido.msg %> </p>
+                            <% } %>
                     </div>
                     <label for="exampleFormControlInput1" class="form-label">* Especialidad:</label>
                     <input type="text" class="form-control" id="exampleFormControlInput1" name="especialidad"
                            value="<%= prestador.especialidad %>" placeholder="Especialidad" required>
+                           <% if (locals && locals.errors) { %>
+                            <p class="error"> <%= locals.errors.especialidad.msg %> </p>
+                        <% } %>
                     <label for="exampleFormControlInput1" class="form-label">Especialidad 2:</label>
                     <input type="text" class="form-control" id="exampleFormControlInput1" name="especialidad2"
                            value="<%= prestador.especialidad2 %>" placeholder="Especialidad 2">
                     <div class="divOpcionales">
+
                         <label for="sexo">* Sexo:
                             <div class="form-check">
                                 <% if (prestador.sexo == "femenino") { %>
