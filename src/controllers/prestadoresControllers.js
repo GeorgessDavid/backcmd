@@ -61,7 +61,6 @@ const prestadoresController = {
     agregarMedicoPublico: (req, res) => {
         let errors = validationResult(req);
         console.log(errors)
-
         if (errors.isEmpty()) {
             if (req.file) {
                 let nuevoMedico = {
