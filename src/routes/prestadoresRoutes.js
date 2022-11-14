@@ -4,16 +4,27 @@ const prestadoresController = require('../controllers/prestadoresControllers.js'
 const express = require('express');
 const router = express.Router();
 const multer = require('multer');
-const { body } = require('express-validator');
-
+const { body } = require('express-validator')
 /* VALIDACIONES - EXPRESS VALIDATOR */
 
-let validaciones = [
-    body('nombre').notEmpty().withMessage('Debe escribir un nombre.'),
-    body('apellido').notEmpty().withMessage('Debe escribir un apellido.'),
-    body('especialidad').notEmpty().withMessage('Debe escribir una especialidad.')
-]
-
+let validaciones = {
+    agregarMedicoPublico: [
+        body('nombre').notEmpty().withMessage('Debe escribir un nombre.'),
+        body('apellido').notEmpty().withMessage('Debe escribir un apellido.'),
+        body('especialidad').notEmpty().withMessage('Debe escribir una especialidad.'),
+        body('sexo').notEmpty().withMessage('Debe elegir un sexo').custom(value => {
+            let input = req.body.sexo
+        }),
+        body('estudios').notEmpty().withMessage('Debe seleccionar si realiza estudios o no.').custom(value => {
+            let input = req.body.estudios
+        })],
+    login: [
+        body('userType').notEmpty().withMessage('Debe seleccionar el tipo de usuario.'),
+        body('user').notEmpty().withMessage('Debe ingresar un nombre de usuario.'),
+        body('password').notEmpty().withMessage('Debe ingresar una contraseña.'),
+        body('secondPassword').notEmpty().withMessage('Debe ingresar la clave laboral asignada. En caso de no recordarla, debe consultar con las secretarias o el administrador.')
+    ]
+};
 /* MUILTER CONFIGURACIÓN  */
 
 const imgConfiguration = multer.diskStorage({
@@ -32,7 +43,7 @@ const uploadFile = multer({ storage: imgConfiguration });
 
 router.get("/login", prestadoresController.index);
 
-router.post("/login", prestadoresController.login)
+router.post("/login", validaciones.login, prestadoresController.login)
 
 router.get("/home", prestadoresController.home)
 
@@ -40,7 +51,7 @@ router.get("/editandoPrestador/:id", prestadoresController.editandoPrestador)
 
 router.get("/agregarMedico", prestadoresController.agregarMedico)
 
-router.post("/agregarMedico", uploadFile.single('profileImg'), validaciones, prestadoresController.agregarMedicoPublico)
+router.post("/agregarMedico", uploadFile.single('profileImg'), validaciones.agregarMedicoPublico, prestadoresController.agregarMedicoPublico)
 
 router.get("/home/confirmDelete/:id", prestadoresController.confirmarEliminacion);
 

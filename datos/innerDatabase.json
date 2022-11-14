@@ -2,7 +2,7 @@
  {
     "userType": "administrador",
     "user": "administrador",
-    "pass": "admin",
+    "password": "admin",
     "secondPassword": "admin"
  }
 ]
