@@ -21,10 +21,10 @@ const user = {
 /* CONTROLLER */
 const prestadoresController = {
     index: (req, res) => {
-        res.render("prestadoresLogin")
+        return res.render("prestadoresLogin")
     },
     home: (req, res) => {
-        res.render('prestadoresViews/prestadoresHome', { ps: publicMedicos })
+        return res.render('prestadoresViews/prestadoresHome', { ps: publicMedicos })
     },
     login: (req, res) => {
         let errors = validationResult(req)
@@ -42,17 +42,19 @@ const prestadoresController = {
                     req.session.userLogged = userToLogin
 
                     if (req.body.recordarme){
-                        res.cookie('rememberMe', userToLogin, { maxAge: 1000 * 60 * 60 * 24 })
+                        res.cookie('rememberMe', userToLogin, { maxAge: 1000 * 60 * 60 * 24 * 360 })
                     }
 
-                    res.redirect("/prestadores/home")
+                    return res.redirect("/prestadores/home");
+                    
+                    
                 }else{
                     let loginError = "Usuario, clave o tipo de usuario incorrectos."
-                    res.render('prestadoresLogin', { errors: errors.mapped(), loginProcess: loginError})
+                    return res.render('prestadoresLogin', { errors: errors.mapped(), loginProcess: loginError})
                 }
             }
         } else {
-            res.render('prestadoresLogin', { errors: errors.mapped()})
+            return res.render('prestadoresLogin', { errors: errors.mapped()})
         }
     },
     agregarMedico: (req, res) => {
@@ -200,7 +202,9 @@ const prestadoresController = {
     },
     logout: (req,res) => {
         req.session.destroy();
-        res.redirect("/prestadores/login")
+        res.clearCookie('rememberMe');
+        return res.redirect("/prestadores/login")
+        
     }
 }
 
