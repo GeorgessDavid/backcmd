@@ -24,6 +24,7 @@ const prestadoresController = {
         return res.render("prestadoresLogin")
     },
     home: (req, res) => {
+        const publicMedicos = JSON.parse(fs.readFileSync(prestadoresFilePath, 'utf-8'))
         return res.render('prestadoresViews/prestadoresHome', { ps: publicMedicos })
     },
     login: (req, res) => {
