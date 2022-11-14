@@ -43,6 +43,7 @@ const uploadFile = multer({ storage: imgConfiguration });
 const logInMiddleware = require('../../middlewares/application/loggedMiddleware.js')
 /* RUTAS */
 
+router.use(logInMiddleware.defaultLocals)
 /* PRESTADORES LOGIN */
 router.get("/login", logInMiddleware.loggedHome, prestadoresController.index);
 
@@ -64,5 +65,7 @@ router.delete("/home/confirmDelete/:id", prestadoresController.deletePrestador);
 router.get("/eliminacionConfirmada", logInMiddleware.needLogin, prestadoresController.eliminacionConfirmada)
 
 router.put("/editarPrestador/:id", uploadFile.single('profileImg'), prestadoresController.editarPrestador)
+
+router.get("/logout", prestadoresController.logout )
 
 module.exports = router;

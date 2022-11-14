@@ -159,6 +159,10 @@ const prestadoresController = {
         fs.writeFileSync(prestadoresFilePath, JSON.stringify(publicMedicos, null, " "));
 
         res.redirect('/prestadores/home');
+    },
+    logout: (req,res) => {
+        req.session.destroy();
+        res.redirect("/prestadores/login")
     }
 }
 
