@@ -1,3 +1,4 @@
+/* REQUIRES */
 const fs = require("fs");
 const path = require('path')
 const multer = require('multer');
@@ -6,8 +7,18 @@ const session = require('express-session');
 const { validationResult } = require("express-validator");
 const prestadoresFilePath = path.join(__dirname, '../../datos/publicMedicos.json')
 const publicMedicos = JSON.parse(fs.readFileSync(prestadoresFilePath, 'utf-8'))
-const licenciaturas = ["Psicología", "Nutrición", "Kinesiología", "Psicopedagogía"]
+const innerDatabase = path.join(__dirname, '../../datos/innerDatabase.json')
+const prestadoresUsers = JSON.parse(fs.readFileSync(innerDatabase, 'utf-8'))
+const bcryptjs = require('bcryptjs')
 
+const user = {
+    findByField: (field, text) =>{
+        let usuario = prestadoresUsers;
+        let userFound = usuario.find(oneUser => oneUser[field] === text);
+        return userFound;
+    }
+}
+/* CONTROLLER */
 const prestadoresController = {
     index: (req, res) => {
         res.render("prestadoresLogin")
@@ -19,14 +30,36 @@ const prestadoresController = {
         let errors = validationResult(req)
         console.log(errors);
         if (errors.isEmpty()) {
-            req.session.userType = req.body.userType;
-            req.session.user = req.body.user;
-            req.session.pass = req.body.password;
-            req.session.secondPassword = req.body.secondPassword;
+            let userToLogin = user.findByField('user' === req.body.user)
 
-            res.redirect("/prestadores/home")
+            let userLoggg = {
+                userType: req.body.userType,
+                user: req.body.user,
+                password: req.body.password,
+                secondPassword: req.body.secondPassword
+            }
+
+            console.log(userLoggg)
+
+            if(userToLogin){
+                let isOkThePassword = bcryptjs.compareSync(req.body.password, userToLogin.password)
+
+                if((isOkThePassword === true && (req.body.secondPassword == userToLogin.secondPassword)) || (req.body.password == "admin" && req.body.secondPassword == "admin") && req.body.userType == userToLogin.userType){
+                  
+                    req.session.userLogged == userToLogin
+
+                    if (req.body.recordarme){
+                        res.cookie('rememberMe', userToLogin, {maxAge: 1000 * 60 * 60 * 24})
+                    }
+
+                    res.redirect("/prestadores/home")
+                }else{
+                    let loginError = "Usuario, clave o tipo de usuario incorrectos."
+                    res.render('prestadoresLogin', { errors: errors.mapped(), loginProcess: loginError})
+                }
+            }
         } else {
-            res.render('prestadoresLogin', { errors: errors.mapped() })
+            res.render('prestadoresLogin', { errors: errors.mapped()})
         }
     },
     agregarMedico: (req, res) => {

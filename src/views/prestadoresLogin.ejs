@@ -50,6 +50,14 @@
                             <h3 class="errors" style="border-radius: 0px !important"><i class="fa-sharp fa-solid fa-xmark"></i> <%= locals.errors.secondPassword.msg %>  </h3>
                         <% } %>
                     <% } %>
+
+                    <% if (locals.loginProcess) { %>
+                        <h3 class="errors" style="border-radius: 0px !important; text-align: center;"><i class="fa-sharp fa-solid fa-xmark"></i> Usuario, clave o tipo de usuario incorrectos. </h3>
+                    <% } %>
+                    <div style="margin-left: 1vw; margin-top: 10px">
+                        <input type="checkbox" name="recordarme">
+                        <label for="recordarme">Mantener sesión iniciada.</label>
+                    </div>
                     <button type="submit">INICIAR SESIÓN</button>
                 </form>
             </div>

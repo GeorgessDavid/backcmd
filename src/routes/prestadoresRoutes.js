@@ -4,8 +4,7 @@ const prestadoresController = require('../controllers/prestadoresControllers.js'
 const express = require('express');
 const router = express.Router();
 const multer = require('multer');
-const { body } = require('express-validator');
-
+const { body } = require('express-validator')
 /* VALIDACIONES - EXPRESS VALIDATOR */
 
 let validaciones = {
