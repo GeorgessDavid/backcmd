@@ -10,3 +10,7 @@
     background-color: rgb(255, 210, 210);
     border-radius: 5px;
 }
+
+.inputError{
+    border: 1px solid red;
+}
