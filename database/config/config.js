@@ -1,9 +1,9 @@
 module.exports = {
   "development": {
     "username": "root",
-    "password": "micontraseña",
-    "database": "cuchujero_okp",
-    "host": "dh-grupo3",
+    "password": "victorino1691",
+    "database": "dh-grupo3",
+    "host": "127.0.0.1",
     "dialect": "mysql",
     "port": 3306
   },
