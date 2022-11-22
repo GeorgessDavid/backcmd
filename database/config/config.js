@@ -1,8 +1,8 @@
 module.exports = {
   "development": {
     "username": "root",
-    "password": "victorino1691",
-    "database": "dh-grupo3",
+    "password": "root",
+    "database": "Clinica_Db",
     "host": "127.0.0.1",
     "dialect": "mysql",
     "port": 3306
