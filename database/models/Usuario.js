@@ -61,6 +61,17 @@ function usuariosDatabase(sequelize, DataTypes) {
 
     const usuarios = sequelize.define(alias, cols, config);
 
+    usuarios.Asociate = function(models) {
+        usuarios.belongsTo(models.Obra_Social, {
+            as: 'obra_social',
+            foreignKey: 'Obra_Social_id'
+        })
+        usuarios.belongsTo(models.Rol, {
+            as: 'rol',
+            foreignKey: 'Rol_id'
+        })
+    }
+
     return usuarios;
 
 }
