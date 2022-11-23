@@ -53,7 +53,6 @@ const controlador = {
         if (errors.isEmpty()) {
 
             let paciente = {
-                id: pacientes.length > 0 ? pacientes[pacientes.length - 1].id + 1 : 1,
                 alias: req.body.usuario,
                 nombre: req.body.nombre,
                 apellido: req.body.apellido,
@@ -61,9 +60,9 @@ const controlador = {
                 dni: req.body.dni,
                 telefono: req.body.telefono,
                 email: req.body.email,
-                sexo: true,
-                Rol_id: 1,
-                Obra_Social_id: 1,
+                sexo: true,  //req.body.sexo,
+                Rol_id: 1, //req.body.Rol_id,
+                Obra_Social_id: 1, //req.body.Obra_Social_id,
                 clave: bcrypt.hashSync(req.body.password, 10),
             }
 

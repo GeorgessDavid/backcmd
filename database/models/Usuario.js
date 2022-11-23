@@ -5,7 +5,7 @@ function usuariosDatabase(sequelize, DataTypes) {
         id: {
             type: DataTypes.INTEGER,
             primaryKey: true,
-            autoIncrement: true
+            autoIncrement: true,
         },
         alias: {
             type: DataTypes.STRING(30),
