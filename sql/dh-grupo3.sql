@@ -6,7 +6,7 @@ USE Clinica_db;
 -- CREACIÓN DE TABLAS 
 
 CREATE TABLE `Usuario` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `alias` varchar(30) NOT NULL ,
   `nombre` varchar(30) NOT NULL ,
   `apellido` varchar(30) NOT NULL ,
@@ -26,7 +26,7 @@ COLLATE='utf8mb4_general_ci'
 ;
 
 CREATE TABLE `Rol` (
-  `id`  INT NOT NULL ,
+  `id`  INT NOT NULL AUTO_INCREMENT,
   `nombre` varchar(70) NOT NULL , 
  PRIMARY KEY (`id`)
 )
@@ -34,7 +34,7 @@ COLLATE='utf8mb4_general_ci'
 ;
 
 CREATE TABLE `Especialidad` (
-  `id`  INT NOT NULL ,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `nombre` varchar(30) NOT NULL , 
  PRIMARY KEY (`id`)
 ) 
@@ -42,7 +42,7 @@ COLLATE='utf8mb4_general_ci'
 ;
 
 CREATE TABLE `Profesional_Especialidad` (
-  `id`  INT NOT NULL ,
+  `id`  INT NOT NULL AUTO_INCREMENT,
   `Profesional_id` INT NOT NULL ,
   `Especialidad_id` INT NOT NULL , 
  PRIMARY KEY (`id`)
@@ -50,8 +50,8 @@ CREATE TABLE `Profesional_Especialidad` (
 COLLATE='utf8mb4_general_ci'
 ;
 
-CREATE TABLE `Tramiento` (
-  `id`  INT NOT NULL ,
+CREATE TABLE `Tratamiento` (
+  `id`  INT NOT NULL AUTO_INCREMENT,
   `nombre` varchar(30) NOT NULL , 
  PRIMARY KEY (`id`)
 ) 
@@ -59,7 +59,7 @@ COLLATE='utf8mb4_general_ci'
 ;
 
 CREATE TABLE `Profesional_Tratamiento` (
-  `id`  INT NOT NULL ,
+  `id`  INT NOT NULL AUTO_INCREMENT,
   `Profesional_id` INT NOT NULL ,
   `Tratamiento_id` INT NOT NULL , 
  PRIMARY KEY (`id`)
@@ -68,7 +68,7 @@ COLLATE='utf8mb4_general_ci'
 ;
 
 CREATE TABLE `Turno` (
-  `id`  INT NOT NULL ,
+  `id`  INT NOT NULL AUTO_INCREMENT,
   `Paciente_id` INT NOT NULL ,
   `Profesional_id` INT NOT NULL ,
   `fecha_creacion` datetime NOT NULL ,
@@ -82,7 +82,7 @@ COLLATE='utf8mb4_general_ci'
  
 
 CREATE TABLE `Planilla_Horaria` (
-  `id`  INT NOT NULL ,
+  `id`  INT NOT NULL AUTO_INCREMENT,
   `dia_semana` varchar(50) NOT NULL ,
   `hora_inicio` varchar(50) NOT NULL ,
   `hora_fin` varchar(50) NOT NULL ,
@@ -93,7 +93,7 @@ COLLATE='utf8mb4_general_ci'
 ;
 
 CREATE TABLE `Diagnostico` (
-  `id`  INT NOT NULL ,
+  `id`  INT NOT NULL AUTO_INCREMENT,
   `descripcion` text NOT NULL ,
   `fecha` datetime NOT NULL ,
   `nombre_adjunto` varchar(50) ,
@@ -106,7 +106,7 @@ COLLATE='utf8mb4_general_ci'
 ;
 
 CREATE TABLE `Obra_Social_Adherida` (
-  `id`  INT NOT NULL ,
+  `id`  INT NOT NULL AUTO_INCREMENT,
   `nombre` varchar(60) NOT NULL ,
   `Obra_Social_id` INT NOT NULL ,
   `Profesional_id` INT NOT NULL , 
@@ -116,7 +116,7 @@ COLLATE='utf8mb4_general_ci'
 ;
 
 CREATE TABLE `Obra_Social` (
-  `id`  INT NOT NULL ,
+  `id`  INT NOT NULL AUTO_INCREMENT,
   `nombre` varchar(80) NOT NULL , 
  PRIMARY KEY (`id`)
 ) 
@@ -125,7 +125,7 @@ COLLATE='utf8mb4_general_ci'
  
 
 CREATE TABLE `Clinica` (
-  `id`  INT NOT NULL ,
+  `id`  INT NOT NULL AUTO_INCREMENT,
   `nombre` varchar(60) NOT NULL ,
   `direccion` varchar(50) NOT NULL , 
  PRIMARY KEY (`id`)
@@ -134,7 +134,7 @@ COLLATE='utf8mb4_general_ci'
 ;
 
 CREATE TABLE `Trabajador_Clinica` (
-  `id`  INT NOT NULL ,
+  `id`  INT NOT NULL AUTO_INCREMENT,
   `fechaInicio` datetime NOT NULL ,
   `fechaFin` datetime ,
   `Usuario_id` INT ,
@@ -146,7 +146,7 @@ COLLATE='utf8mb4_general_ci'
  
 
 CREATE TABLE `Registro_Caja` (
-  `id`  INT NOT NULL ,
+  `id`  INT NOT NULL AUTO_INCREMENT,
   `descripcion` text ,
   `ingreso` bit NOT NULL ,
   `monto` decimal ,

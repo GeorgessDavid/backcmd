@@ -1,0 +1,16 @@
+set foreign_key_checks = 0;
+alter table Usuario modify column id INT NOT NULL AUTO_INCREMENT;
+alter table Trabajador_Clinica modify column id INT NOT NULL AUTO_INCREMENT;
+alter table Tramiento modify column id INT NOT NULL AUTO_INCREMENT;
+alter table Turno modify column id INT NOT NULL AUTO_INCREMENT;
+alter table Planilla_Horaria modify column id INT NOT NULL AUTO_INCREMENT;
+alter table Profesional_Especialidad modify column id INT NOT NULL AUTO_INCREMENT;
+alter table Obra_Social modify column id INT NOT NULL AUTO_INCREMENT;
+alter table Obra_Social_Adherida modify column id INT NOT NULL AUTO_INCREMENT;
+alter table Clinica modify column id INT NOT NULL AUTO_INCREMENT;
+alter table Diagnostico modify column id INT NOT NULL AUTO_INCREMENT;
+alter table Especialidad modify column id INT NOT NULL AUTO_INCREMENT;
+alter table Profesional_Tratamiento modify column id INT NOT NULL AUTO_INCREMENT;
+alter table Registro_Caja modify column id INT NOT NULL AUTO_INCREMENT;
+alter table Rol modify column id INT NOT NULL AUTO_INCREMENT;
+set foreign_key_checks = 1;

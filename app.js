@@ -26,17 +26,9 @@ app.set('views','./src/views')
 //static files
 app.use(express.static(__dirname+'/public'))
 
-//view engine
-app.set('view engine', 'ejs')
-app.set('views', path.join(__dirname,'./src/views'));
-
 //routes
 app.use("/", index)
-
-
 
 //server
 app.listen(port, () => {console.log(`Servidor activo en el puerto ${port}`)}
 );
-
-//Comentarios

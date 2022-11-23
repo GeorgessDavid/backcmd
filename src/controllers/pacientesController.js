@@ -5,6 +5,9 @@ const pacientesFilePath = path.join(__dirname, '../../datos/pacientes.json');
 const pacientes = JSON.parse(fs.readFileSync(pacientesFilePath, 'utf-8'));
 const bcrypt = require('bcryptjs');
 
+const db = require('../../database/models');
+
+
 const controlador = {
     login: (req,res) => {
         if (req.session.usuario) {
@@ -49,20 +52,21 @@ const controlador = {
         console.log(errors)
         if (errors.isEmpty()) {
 
-            let id = pacientes[pacientes.length - 1].id + 1;
             let paciente = {
-                id: id,
-                usuario: req.body.usuario,
+                alias: req.body.usuario,
                 nombre: req.body.nombre,
                 apellido: req.body.apellido,
+                domicilio: req.body.domicilio,
+                dni: req.body.dni,
+                telefono: req.body.telefono,
                 email: req.body.email,
-                password: bcrypt.hashSync(req.body.password, 10),
+                sexo: true,  //req.body.sexo,
+                Rol_id: 1, //req.body.Rol_id,
+                Obra_Social_id: 1, //req.body.Obra_Social_id,
+                clave: bcrypt.hashSync(req.body.password, 10),
             }
 
-            pacientes.push(paciente);
-            fs.writeFileSync(pacientesFilePath, JSON.stringify(pacientes, null, " "));
-
-            res.redirect('/');
+            db.Usuario.create(paciente).then(() => { res.redirect('/') })
         }
         else {
             res.render('pacientesRegistro',{errors: errors.mapped()})
@@ -70,6 +74,9 @@ const controlador = {
 
     },
     index: (req,res) => {
+        db.Usuario.findAll().then(pacientes => {
+            console.log(pacientes)
+        })
         res.render("pacientesListado",{ps: pacientes});
     },
     pacientesDetalle: (req,res) => {

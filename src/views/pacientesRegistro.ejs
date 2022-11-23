@@ -51,6 +51,21 @@
                     <% if (locals.errors && errors.apellido) { %>
                         <p class="error"> <%= errors.apellido.msg %> </p>
                     <% } %>
+                    <label name="dni">
+                    <input type="number" class="formCMD" name="dni" placeholder="DNI" required>
+                    <% if (locals.errors && errors.dni) { %>
+                        <p class="error"> <%= errors.dni.msg %> </p>
+                    <% } %>
+                    <label name="domicilio">
+                    <input type="text" class="formCMD" name="domicilio" placeholder="Domicilio" required>
+                    <% if (locals.errors && errors.domicilio) { %>
+                        <p class="error"> <%= errors.domicilio.msg %> </p>
+                    <% } %>
+                    <label name="telefono">
+                    <input type="text" class="formCMD" name="telefono" placeholder="Telefono" required>
+                    <% if (locals.errors && errors.telefono) { %>
+                        <p class="error"> <%= errors.telefono.msg %> </p>
+                    <% } %>
                     <label name="email">
                     <input name="email" class="formCMD" type="email" placeholder="Email" required>
                     <% if (locals.errors && errors.email) { %>

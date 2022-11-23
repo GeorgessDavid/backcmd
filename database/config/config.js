@@ -2,12 +2,12 @@ require('dotenv').config();
 
 module.exports = {
   "development": {
-    "username": "root", 
-    "password": "micontraseña", 
-    "database": "dh-grupo3", 
-    "host": "127.0.0.1", 
-    "dialect": "mysql", 
-    "port": 3306  
+    "username": "root",
+    "password": "root",
+    "database": "Clinica_Db",
+    "host": "127.0.0.1",
+    "dialect": "mysql",
+    "port": 3306
   },
 
   "test": {
