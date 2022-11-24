@@ -170,13 +170,13 @@ ALTER TABLE `Profesional_Especialidad` ADD FOREIGN KEY (Especialidad_id) REFEREN
 				
 ALTER TABLE `Profesional_Tratamiento` ADD FOREIGN KEY (Profesional_id) REFERENCES `Usuario` (`id`);
 				
-ALTER TABLE `Profesional_Tratamiento` ADD FOREIGN KEY (Tratamiento_id) REFERENCES `Tramiento` (`id`);
+ALTER TABLE `Profesional_Tratamiento` ADD FOREIGN KEY (Tratamiento_id) REFERENCES `Tratamiento` (`id`);
 				
 ALTER TABLE `Turno` ADD FOREIGN KEY (Paciente_id) REFERENCES `Usuario` (`id`);
 				
 ALTER TABLE `Turno` ADD FOREIGN KEY (Profesional_id) REFERENCES `Usuario` (`id`);
 				
-ALTER TABLE `Turno` ADD FOREIGN KEY (Tratamiento_id) REFERENCES `Tramiento` (`id`);
+ALTER TABLE `Turno` ADD FOREIGN KEY (Tratamiento_id) REFERENCES `Tratamiento` (`id`);
 				
 ALTER TABLE `Planilla_Horaria` ADD FOREIGN KEY (Profesional_id) REFERENCES `Usuario` (`id`);
 				
