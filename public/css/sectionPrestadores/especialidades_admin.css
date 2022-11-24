@@ -1,0 +1,77 @@
+body {
+    background-color: rgb(236, 236, 236);
+}
+
+.listContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-items: space-around;
+}
+
+.titulo {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.itemContainer {
+    display: flex;
+    flex-direction: column;
+    min-width: 80%;
+    max-width: 100%;
+    background-color: white;
+    padding: 3vw;
+}
+
+.itemBox {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    justify-content: space-between;
+    border: 1px solid gray;
+    border-radius: 5px;
+    margin: 15px;
+    background-color: rgb(243, 243, 243);
+    transition: all 300ms;
+}
+
+.itemBox h2 {
+    margin: 10px 2vw;
+    font-size: 24px;
+    color: rgb(51, 51, 51);
+}
+
+.itemBox:hover{
+    box-shadow: 0 0 10px black;
+}
+
+.itemBox button{
+    margin: 10px 0.5vw;
+    opacity: 0%;
+    transition: all 300ms;
+}
+
+.itemBox:hover button{
+    opacity: 100%;
+}
+
+.itemBox button a{
+    color: white;
+    text-decoration: none;
+}
+
+.navBarContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    justify-content: space-between;
+    background-color: #f8f9fa;
+    margin: 0px 2vw;
+}
+
+.navBarContainer button a{
+    color: white;
+    text-decoration: none;
+    margin: 2vw;
+}
+

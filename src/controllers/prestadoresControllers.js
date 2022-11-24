@@ -224,7 +224,7 @@ const prestadoresController = {
                 datos.push(datosPush);
             }
             console.log(datos)
-            res.render('prestadoresViews/especialidades', {especialidades: datos})
+            res.render('prestadoresViews/especialidades_admin', {especialidades: datos})
         })
 
     },
