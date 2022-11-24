@@ -77,3 +77,4 @@ function usuariosDatabase(sequelize, DataTypes) {
 }
 
 module.exports = usuariosDatabase;
+
