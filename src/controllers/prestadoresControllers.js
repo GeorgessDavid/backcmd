@@ -10,9 +10,10 @@ const publicMedicos = JSON.parse(fs.readFileSync(prestadoresFilePath, 'utf-8'))
 const innerDatabase = path.join(__dirname, '../../datos/innerDatabase.json')
 const prestadoresUsers = JSON.parse(fs.readFileSync(innerDatabase, 'utf-8'))
 const bcryptjs = require('bcryptjs')
+const db = require('../../database/models')
 
 const user = {
-    findByField: (field, text) =>{
+    findByField: (field, text) => {
         let usuario = prestadoresUsers;
         let userFound = usuario.find(oneUser => oneUser[field] === text);
         return userFound;
@@ -35,27 +36,27 @@ const prestadoresController = {
 
             console.log(userToLogin)
 
-            if(userToLogin){
+            if (userToLogin) {
                 let isOkThePassword = bcryptjs.compareSync(req.body.password, userToLogin.password)
 
-                if((isOkThePassword === true && (req.body.secondPassword == userToLogin.secondPassword)) || ((req.body.userType === "administrador") && (req.body.user === "administrador") && (req.body.password === "admin") && (req.body.secondPassword ==="admin"))){
-                  
+                if ((isOkThePassword === true && (req.body.secondPassword == userToLogin.secondPassword)) || ((req.body.userType === "administrador") && (req.body.user === "administrador") && (req.body.password === "admin") && (req.body.secondPassword === "admin"))) {
+
                     req.session.userLogged = userToLogin
 
-                    if (req.body.recordarme){
+                    if (req.body.recordarme) {
                         res.cookie('rememberMe', userToLogin, { maxAge: 1000 * 60 * 60 * 24 * 360 })
                     }
 
                     return res.redirect("/prestadores/home");
-                    
-                    
-                }else{
+
+
+                } else {
                     let loginError = "Usuario, clave o tipo de usuario incorrectos."
-                    return res.render('prestadoresLogin', { errors: errors.mapped(), loginProcess: loginError})
+                    return res.render('prestadoresLogin', { errors: errors.mapped(), loginProcess: loginError })
                 }
             }
         } else {
-            return res.render('prestadoresLogin', { errors: errors.mapped()})
+            return res.render('prestadoresLogin', { errors: errors.mapped() })
         }
     },
     agregarMedico: (req, res) => {
@@ -135,7 +136,7 @@ const prestadoresController = {
             res.redirect("/prestadores/home")
 
         } else {
-            res.render('prestadoresViews/editarPrestador/:id', { errors: errors.mapped() }) 
+            res.render('prestadoresViews/editarPrestador/:id', { errors: errors.mapped() })
         }
     },
     editandoPrestador: (req, res) => {
@@ -201,11 +202,50 @@ const prestadoresController = {
 
         res.redirect('/prestadores/home');
     },
-    logout: (req,res) => {
+    logout: (req, res) => {
         req.session.destroy();
         res.clearCookie('rememberMe');
         return res.redirect("/prestadores/login")
-        
+
+    },
+
+    especialidades: (req, res) => {
+
+        db.Especialidad.findAll().then((data) => {
+            
+            let datos = [];
+
+            for ( let especialidad of data){
+                let datosPush = {
+                    id: especialidad.id,
+                    nombre: especialidad.nombre
+                }
+
+                datos.push(datosPush);
+            }
+            console.log(datos)
+            res.render('prestadoresViews/especialidades', {especialidades: datos})
+        })
+
+    },
+    
+    agregarEspecialidad: (req, res) => {
+        res.render('prestadoresViews/agregarEspecialidad')
+    },
+
+    agregarEspecialidadSubmit: (req, res) => {
+        let errors = validationResult(req);
+        console.log(errors)
+        if (errors.isEmpty()) {
+            db.Especialidad.create({
+                nombre: req.body.especialidadNombre
+            }).then((result) => {
+                res.redirect('/prestadores/especialidades')
+                console.log(result)
+            })
+        } else {
+            return res.render('prestadoresViews/agregarEspecialidad', {errors: errors.mapped()})
+        }
     }
 }
 
