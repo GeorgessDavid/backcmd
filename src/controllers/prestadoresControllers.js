@@ -26,6 +26,26 @@ const prestadoresController = {
     },
     home: (req, res) => {
         const publicMedicos = JSON.parse(fs.readFileSync(prestadoresFilePath, 'utf-8'))
+/*      --------------------------  OBTENER DATOS DE LA BASE DE DATOS -------------------------- 
+                Hay que tener el XAMPP/MAMPP corriendo. --- Hay que tener datos en la base de datos.
+
+
+        db.Rol.findAll().then((data) => {
+            let datosEncontrados = [];
+
+            for (let x of data) {
+
+                let objectDato = {
+                    id: x.id,
+                    nombre: x.nombre
+                }
+
+                datosEncontrados.push(objectDato)
+            }
+            console.log(datosEncontrados)
+
+            return res.render('prestadoresViews/prestadoresHome', { ps: publicMedicos })
+        }) */
         return res.render('prestadoresViews/prestadoresHome', { ps: publicMedicos })
     },
     login: (req, res) => {
@@ -212,10 +232,10 @@ const prestadoresController = {
     especialidades: (req, res) => {
 
         db.Especialidad.findAll().then((data) => {
-            
+
             let datos = [];
 
-            for ( let especialidad of data){
+            for (let especialidad of data) {
                 let datosPush = {
                     id: especialidad.id,
                     nombre: especialidad.nombre
@@ -224,11 +244,11 @@ const prestadoresController = {
                 datos.push(datosPush);
             }
             console.log(datos)
-            res.render('prestadoresViews/especialidades_admin', {especialidades: datos})
+            res.render('prestadoresViews/especialidades_admin', { especialidades: datos })
         })
 
     },
-    
+
     agregarEspecialidad: (req, res) => {
         res.render('prestadoresViews/agregarEspecialidad')
     },
@@ -244,7 +264,7 @@ const prestadoresController = {
                 console.log(result)
             })
         } else {
-            return res.render('prestadoresViews/agregarEspecialidad', {errors: errors.mapped()})
+            return res.render('prestadoresViews/agregarEspecialidad', { errors: errors.mapped() })
         }
     }
 }
