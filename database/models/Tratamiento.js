@@ -6,13 +6,13 @@ function tratamientosDatabase(sequelize, DataTypes) {
         nombre: {type: DataTypes.STRING(30),allowNull: false},
       }
 
-      config = {camelCase: false, timestamps: false}; 
+      config = {camelCase: false, timestamps: false,freezeTableName: true}; 
 
 
-const tratamientos = sequelize.define(alias,cols,config) 
+const tratamiento = sequelize.define(alias,cols,config) 
 
 
-return tratamientos;
+return tratamiento;
 }
 
 module.exports = tratamientosDatabase;

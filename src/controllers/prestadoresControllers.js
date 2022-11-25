@@ -26,8 +26,8 @@ const prestadoresController = {
     },
     home: (req, res) => {
         const publicMedicos = JSON.parse(fs.readFileSync(prestadoresFilePath, 'utf-8'))
-/*      --------------------------  OBTENER DATOS DE LA BASE DE DATOS -------------------------- 
-                Hay que tener el XAMPP/MAMPP corriendo. --- Hay que tener datos en la base de datos.
+    //  --------------------------  OBTENER DATOS DE LA BASE DE DATOS -------------------------- 
+    //             Hay que tener el XAMPP/MAMPP corriendo. --- Hay que tener datos en la base de datos.
 
 
         db.Rol.findAll().then((data) => {
@@ -45,8 +45,8 @@ const prestadoresController = {
             console.log(datosEncontrados)
 
             return res.render('prestadoresViews/prestadoresHome', { ps: publicMedicos })
-        }) */
-        return res.render('prestadoresViews/prestadoresHome', { ps: publicMedicos })
+        })
+       // return res.render('prestadoresViews/prestadoresHome', { ps: publicMedicos })
     },
     login: (req, res) => {
         let errors = validationResult(req)
