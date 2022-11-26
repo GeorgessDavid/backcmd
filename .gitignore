@@ -104,3 +104,8 @@ dist
 .tern-port
 .idea
 .DS_Store
+
+public/img/profilepictures/*.jpeg
+
+public/img/profilepictures/*.png
+public/img/profilepictures/*.jpg

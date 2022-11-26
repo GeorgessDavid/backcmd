@@ -1,0 +1,86 @@
+/* GLOBAL */
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans+Condensed');
+
+body {
+    font-family: 'Fira Sans Condensed';
+    margin: 0;
+}
+
+
+/* SECOND HEADER */
+
+.secondHeader a {
+    color: white;
+    margin-left: 2vw;
+    margin-bottom: 10px;
+    text-decoration: none;
+    transition: all 200ms;
+}
+
+.secondHeader a:hover {
+    text-shadow: 0 0 10px white;
+}
+
+/* MAIN */
+main {
+    height: 110vh;
+}
+
+.prestadorSection {
+    display: flex;
+    justify-content: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.encabezado{
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.encabezado span{
+    font-style: italic;
+    font-size: 14px;
+}
+
+.prestadorBox {
+    width: 20vw;
+    position: relative;
+    border: 1px solid gray;
+    margin-left: 2vw;
+    transition: all 300ms;
+    /* margin-top: 2vw; */
+    margin-bottom: 4vw;
+}
+
+.prestadorBox img {
+    width: 100%;
+    border-bottom: 1px solid gray;
+}
+
+.prestadorNombre span {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.prestadorInfo {
+    margin-left: 2vw;
+    margin-bottom: 2%;
+    margin-right: 2vw;
+}
+
+.prestadorInfo a button {
+    border-radius: 0px !important;
+    display: none;
+    transition: all 300ms;
+    text-decoration: none !important;
+}
+
+.prestadorBox:hover {
+    box-shadow: 0 0 10px black;
+}
+
+.prestadorBox:hover a button {
+    display: inline;
+    text-decoration: none;
+}

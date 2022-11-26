@@ -6,4 +6,75 @@
     </div>
     <div class="col">
     </div>
+    <div class="col">
+    </div>
+    <div class="col">
+    </div>
+    <div class="col">
+    </div>
+    <div class="col">
+    </div>
+    <div class="col">
+    </div>
+    <% if (locals.isLogged) { %>
+      <div class="col logout">
+        <a href="/prestadores/logout"><i class="fa-solid fa-power-off"></i> Cerrar sesión</a>
+      </div>
+    <% } %>
+</div>
+<div>
+  <nav class="navbar navbar-expand-lg bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/prestadores/home">Home</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+
+                        Usuario
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="/prestadores/agregarMedico">Agregar
+                                usuario</a></li>
+                        <li><a class="dropdown-item" href="#">Editar usuario</a></li>
+                        <li><a class="dropdown-item" href="#">Eliminar usuario</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="#">Ver todos los usuarios</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Especialidad
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="/prestadores/agregarEspecialidad">Agregar
+                                especialidad</a></li>
+                        <li><a class="dropdown-item" href="#">Editar especialidad</a></li>
+                        <li><a class="dropdown-item" href="#">Eliminar especialidad</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="/prestadores/especialidades">Ver todas las especialidades</a></li>
+                    </ul>
+                </li>
+                <!--  <li class="nav-item">
+        <a class="nav-link disabled">Disabled</a>
+      </li>
+    </ul>
+    <form class="d-flex" role="search">
+      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success" type="submit">Search</button>
+    </form> -->
+        </div>
+    </div>
+</nav>
 </div>
