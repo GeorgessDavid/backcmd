@@ -39,17 +39,17 @@ function turnoDatabase(sequelize, DataTypes){
 
     turnos.Associate = function(models){
 
-        turnos.hasMany(models.Usuario, {
+        turnos.belongsTo(models.Usuario, {
           as: 'paciente',
           foreignKey: "Paciente_id"  
         })
 
-        turnos.hasMany(models.Usuario, {
+        turnos.belongsTo(models.Usuario, {
             as: 'profesional',
             foreignKey: "Profesional_id"
         })
 
-        turnos.hasMany(models.Tratamiento, {
+        turnos.belongsTo(models.Tratamiento, {
             as: "tratamiento",
             foreignKey: "Tratamiento_id"
         })

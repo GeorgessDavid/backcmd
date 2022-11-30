@@ -70,6 +70,18 @@ function usuariosDatabase(sequelize, DataTypes) {
             as: 'rol',
             foreignKey: 'Rol_id'
         })
+        turnos.hasMany(models.Turno, {
+            as: 'paciente',
+            foreignKey: "Paciente_id"
+        })
+        turnos.hasMany(models.Turno, {
+            as: 'profesional',
+            foreignKey: "Profesional_id"
+        })
+        usuarios.hasMany(models.PlanillaHoraria, {
+            as: 'planillas_horarias',
+            foreignKey: 'Profesional_id'
+        })
     }
 
     return usuarios;
