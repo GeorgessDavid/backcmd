@@ -1,15 +1,5 @@
 [
  {
-  "id": "CMD1666341870950P",
-  "nombre": "Carlos",
-  "apellido": "David",
-  "especialidad2": "Medicina Clínica",
-  "profileImg": "default_profile_img.png",
-  "especialidad": "Gastroenterología",
-  "sexo": "masculino",
-  "estudios": "no"
- },
- {
   "id": "CMD1666341977029P",
   "nombre": "Marcela",
   "apellido": "Gurzi",
