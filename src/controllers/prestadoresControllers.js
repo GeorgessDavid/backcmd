@@ -42,7 +42,6 @@ const prestadoresController = {
 
                 datosEncontrados.push(objectDato)
             }
-            console.log(datosEncontrados)
 
             return res.render('prestadoresViews/prestadoresHome', { ps: publicMedicos })
         })
@@ -225,7 +224,7 @@ const prestadoresController = {
     logout: (req, res) => {
         req.session.destroy();
         res.clearCookie('rememberMe');
-        return res.redirect("/prestadores/login")
+        return res.redirect("/pacientes/login")
 
     },
 

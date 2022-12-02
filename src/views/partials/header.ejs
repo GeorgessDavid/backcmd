@@ -7,12 +7,14 @@
 
   <nav class="nav-top-header">
      <ul class="top-header-ul">
-      <li><p><a  href="/pacientes/login">Pacientes</a></p></li>
-      <li><p><a  href="/prestadores/home">Prestadores</a></p></li>
+<!--       <li><p><a  href="/pacientes/login">Pacientes</a></p></li>
+      <li><p><a  href="/prestadores/home">Prestadores</a></p></li> -->
          <% if (locals && usuario) { %>
-             <li><p class="error"> Bienvenido:  <%= usuario.nombre %> </p></li>
+             <li><p class="error" style="margin-right: 2vw;"> Bienvenido:  <%= usuario.nombre %> </p></li>
              <li><p><a  href="/pacientes/logout"> Cerrar Sesión </a></p></li>
-         <% } %>
+         <% } else{ %>
+             <li><p><a  href="/pacientes/login">Iniciar Sesión</a></p></li>
+         <% } %> 
      </ul>
   </nav>
 </div>

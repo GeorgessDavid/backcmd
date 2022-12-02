@@ -29,6 +29,10 @@
                 <% if (locals.errors && errors.password) { %>
                     <p class="error"> <%= errors.password.msg %> </p>
                 <% } %>
+                <div style="margin-left: 1vw; margin-top: 10px; color: #012B78">
+                    <input type="checkbox" name="recordarme">
+                    <label for="recordarme">Mantener sesión iniciada.</label>
+                </div>
                 <button type="submit" class="logInButton">INICIAR SESIÓN</button>
                 <a href="/forgotPassword">¿Olvidaste tu contraseña?</a>
             </div>

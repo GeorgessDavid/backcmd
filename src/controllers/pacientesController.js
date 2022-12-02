@@ -9,7 +9,7 @@ const db = require('../../database/models');
 
 
 const controlador = {
-    login: (req,res) => {
+    login: (req, res) => {
         if (req.session.usuario) {
             return res.redirect("/")
         }
@@ -17,32 +17,58 @@ const controlador = {
             res.render("pacientesLogin")
         }
     },
-    loginProcess: (req,res) => {
+    loginProcess: (req, res) => {
+        // PRIMERAS VALIDACIONES DEL CAMPO
         let errors = validationResult(req);
         if (errors.isEmpty()) {
-            let paciente = pacientes.find(paciente => paciente.usuario == req.body.usuario)
-            if (paciente) {
-                let password = bcrypt.compareSync(req.body.password, paciente.password)
-                if (password) {
-                    req.session.usuario = { id: paciente.id, nombre: paciente.nombre, apellido: paciente.apellido, email: paciente.email, usuario: paciente.usuario }
-                    req.session.usuarioLogueado = true
-                    return res.redirect("/")
+            // BUSQUEDA DEL USUARIO
+            db.Usuario.findOne({ where: { alias: req.body.usuario } }).then((usuarioEncontrado) => {
+
+                if (usuarioEncontrado) {
+
+                    // VALIDACIÓN DE CONTRASEÑA
+
+                    let password = bcrypt.compareSync(req.body.password, usuarioEncontrado.clave);
+
+                    if (password) {
+                        // CONTRASEÑA OK - CONTINUA AL LOGIN.
+
+                        req.session.usuario = usuarioEncontrado;
+
+                        req.session.userType = usuarioEncontrado.Rol_id;
+
+                        if (req.body.recordarme) { // CHECKBOX DE "MANTENER SESIÓN INICIADA"
+                            res.cookie('rememberMe', usuarioEncontrado, { maxAge: 1000 * 60 * 60 * 24 * 360 })
+                        }
+
+                        // REDIRECCIÓN A HOME SEGÚN EL TIPO DE USUARIO
+                        if (usuarioEncontrado.Rol_id == 1) {
+                            return res.redirect("/prestadores/home")
+                        } else if (usuarioEncontrado.Rol_id == 2) {
+                            return res.redirect("/secretaria/home")
+                        } else if (usuarioEncontrado.Rol_id == 3) {
+                            return res.redirect("/prestadores/home")
+                        } else {
+                            return res.redirect('/')
+                        }
+
+                    } else {
+                        console.log(errors)
+                        return res.render("pacientesLogin", { errors: { password: { msg: "Contraseña incorrecta" } } })
+                    }
                 } else {
-                    console.log(errors)
-                    res.render("pacientesLogin", { errors: { password: {msg: "Contraseña incorrecta"}} } )
+                    return res.render("pacientesLogin", { errors: { usuario: { msg: "Usuario inexistente" } } })
                 }
-            } else {
-                res.render("pacientesLogin", { errors: { usuario: {msg: "Usuario inexistente"}} } )
-            }
+            })
         } else {
-            res.render("pacientesLogin", {errors: errors.mapped()})
+            return res.render("pacientesLogin", { errors: errors.mapped() })
         }
     },
-    logout: (req,res) => {
+    logout: (req, res) => {
         req.session.destroy();
         res.redirect("/")
     },
-    register: (req,res) => {
+    register: (req, res) => {
         res.render("pacientesRegistro")
     },
     save: (req, res) => {
@@ -69,29 +95,29 @@ const controlador = {
             db.Usuario.create(paciente).then(() => { res.redirect('/') })
         }
         else {
-            res.render('pacientesRegistro',{errors: errors.mapped()})
+            res.render('pacientesRegistro', { errors: errors.mapped() })
         }
 
     },
-    index: (req,res) => {
+    index: (req, res) => {
         db.Usuario.findAll().then(pacientes => {
             console.log(pacientes)
         })
-        res.render("pacientesListado",{ps: pacientes});
+        res.render("pacientesListado", { ps: pacientes });
     },
-    pacientesDetalle: (req,res) => {
+    pacientesDetalle: (req, res) => {
         let idPaciente = req.params.id;
         let objPaciente;
 
-        for (let o of pacientes){
-            if (idPaciente == o.id){
-                objPaciente=o;
+        for (let o of pacientes) {
+            if (idPaciente == o.id) {
+                objPaciente = o;
                 break;
             }
         }
-        res.render('pacientesEditar',{paciente: objPaciente});
+        res.render('pacientesEditar', { paciente: objPaciente });
     },
-    pacientesEditar: (req,res) => {
+    pacientesEditar: (req, res) => {
         let errors = validationResult(req);
         if (errors.isEmpty) {
             let id = req.params.id
@@ -101,17 +127,17 @@ const controlador = {
                     pacientes[i].nombre = req.body.nombre
                     pacientes[i].apellido = req.body.apellido
                     pacientes[i].email = req.body.email
-                    pacientes[i].password = bcrypt.hashSync(req.body.password,10)
+                    pacientes[i].password = bcrypt.hashSync(req.body.password, 10)
                 }
             }
-    
-            fs.writeFileSync(pacientesFilePath,JSON.stringify(pacientes,null," "));
-    
+
+            fs.writeFileSync(pacientesFilePath, JSON.stringify(pacientes, null, " "));
+
             res.redirect('/pacientes');
 
         }
         else {
-            res.render('pacientesEditar',{errors: errors.mapped()})
+            res.render('pacientesEditar', { errors: errors.mapped() })
         }
 
     },
@@ -121,7 +147,7 @@ const controlador = {
         let id = req.params.id
         let filteredPacientes = pacientes.filter(paciente => paciente.id != id)
 
-        fs.writeFileSync(pacientesFilePath,JSON.stringify(filteredPacientes,null," "));
+        fs.writeFileSync(pacientesFilePath, JSON.stringify(filteredPacientes, null, " "));
 
         res.redirect('/');
     }

@@ -16,7 +16,7 @@ let validacionesRegistro = [
     body('nombre').notEmpty().withMessage('Completar Nombre'),
     body('apellido').notEmpty().withMessage('Completar Apellido'),
     body('email').isEmail().withMessage('Email inválido'),
-    body('password').isLength({ min: 15 }).withMessage('La contraseña debe tener al menos 15 caracteres'),
+    body('password').isLength({ min: 6 }).withMessage('La contraseña debe tener al menos 6 caracteres'),
 ]
 
 let validaciones = [
@@ -24,8 +24,12 @@ let validaciones = [
     body('nombre').notEmpty().withMessage('Debe escribir un nombre.'),
     body('apellido').notEmpty().withMessage('Debe escribir un apellido.'),
     body('email').isEmail().withMessage('Debe escribir un email válido.'),
-    body('password').isLength({ min: 15 }).withMessage('contraseña incorrecta'),
+    body('password').isLength({ min: 6 }).withMessage('contraseña incorrecta'),
 ]
+
+/* MIDDLEWARES REQUIRE */
+
+const logInMiddleware = require('../../middlewares/application/loggedMiddleware.js')
 
 /* MULTER CONFIGURACIÓN  */
 
@@ -43,7 +47,7 @@ const uploadFile = multer({ storage: imgConfiguration }); //chequear archivos
 
 
 /* RUTAS */
-router.get("/login",pacientesController.login )
+router.get("/login", logInMiddleware.loggedHome, pacientesController.login )
 router.post("/login",validacionesLogin, pacientesController.loginProcess)
 router.get("/register", pacientesController.register )
 router.post("/register",validacionesRegistro,pacientesController.save )

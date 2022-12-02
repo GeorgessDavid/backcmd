@@ -19,7 +19,7 @@ function especialidadDatabase(sequelize, DataTypes){
 
     especialidad.Associate = function(models){
         
-        especialidad.belongsToMany(models.Profesional), {
+        especialidad.belongsToMany(models.Usuario), {
             as: 'profesionales',
             through: 'Profesional_Especialidad',
             foreignKey: 'Especialidad_id',
