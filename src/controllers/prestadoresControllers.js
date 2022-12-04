@@ -78,8 +78,25 @@ const prestadoresController = {
             return res.render('prestadoresLogin', { errors: errors.mapped() })
         }
     },
-    agregarMedico: (req, res) => {
-        res.render('prestadoresViews/secretariaAgregarMedicoPublico')
+    agregarMedico: (req, res) =>{
+
+        db.Especialidad.findAll().then((especialidad) => {
+            let especialidades = [];
+
+            for(let x of especialidad){
+                let especialidadEncontrada = {
+                    id: x.id,
+                    nombre: x.nombre
+                }
+
+                especialidades.push(especialidadEncontrada)
+            }
+
+            console.log(especialidades)
+
+            res.render('prestadoresViews/agregarUsuario', {especialidades: especialidades} )
+        })
+        
     },
     agregarMedicoPublico: (req, res) => {
         let errors = validationResult(req);

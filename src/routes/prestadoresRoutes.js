@@ -93,7 +93,7 @@ router.get("/home", logInMiddleware.needLogin, userTypeAuth.admin, prestadoresCo
 /* USUARIOS ROUTES */
 router.get("/editandoPrestador/:id", logInMiddleware.needLogin, prestadoresController.editandoPrestador)
 
-router.get("/agregarMedico", logInMiddleware.needLogin, prestadoresController.agregarMedico)
+router.get("/agregarMedico", logInMiddleware.needLogin, userTypeAuth.admin, prestadoresController.agregarMedico)
 
 router.post("/agregarMedico", uploadFile.single('profileImg'), validaciones.agregarMedicoPublico, prestadoresController.agregarMedicoPublico)
 
