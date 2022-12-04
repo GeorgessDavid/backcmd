@@ -30,6 +30,7 @@ let validaciones = [
 /* MIDDLEWARES REQUIRE */
 
 const logInMiddleware = require('../../middlewares/application/loggedMiddleware.js')
+const userTypeAuth = require('../../middlewares/application/privilegeAuthMiddleware.js')
 
 /* MULTER CONFIGURACIÓN  */
 

@@ -77,16 +77,17 @@ const uploadFile = multer({ storage: imgConfiguration });
 
 /* MIDDLEWAREs */
 const logInMiddleware = require('../../middlewares/application/loggedMiddleware.js')
+const userTypeAuth = require('../../middlewares/application/privilegeAuthMiddleware.js')
 /* RUTAS */
 
 router.use(logInMiddleware.defaultLocals)
+
 /* PRESTADORES LOGIN */
 router.get("/login", logInMiddleware.loggedHome, prestadoresController.index);
-
 router.post("/login", validaciones.login, prestadoresController.login)
 
 /*  HOME + FUNCTIONS */
-router.get("/home", logInMiddleware.needLogin, prestadoresController.home)
+router.get("/home", logInMiddleware.needLogin, userTypeAuth.admin, prestadoresController.home)
 
 
 /* USUARIOS ROUTES */

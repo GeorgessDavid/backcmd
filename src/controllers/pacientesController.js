@@ -66,7 +66,8 @@ const controlador = {
     },
     logout: (req, res) => {
         req.session.destroy();
-        res.redirect("/")
+        res.clearCookie('rememberMe');
+        return res.redirect("/")
     },
     register: (req, res) => {
         res.render("pacientesRegistro")
