@@ -26,8 +26,8 @@ const prestadoresController = {
     },
     home: (req, res) => {
         const publicMedicos = JSON.parse(fs.readFileSync(prestadoresFilePath, 'utf-8'))
-    //  --------------------------  OBTENER DATOS DE LA BASE DE DATOS -------------------------- 
-    //             Hay que tener el XAMPP/MAMPP corriendo. --- Hay que tener datos en la base de datos.
+        //  --------------------------  OBTENER DATOS DE LA BASE DE DATOS -------------------------- 
+        //             Hay que tener el XAMPP/MAMPP corriendo. --- Hay que tener datos en la base de datos.
 
 
         db.Rol.findAll().then((data) => {
@@ -45,7 +45,7 @@ const prestadoresController = {
 
             return res.render('prestadoresViews/prestadoresHome', { ps: publicMedicos })
         })
-       // return res.render('prestadoresViews/prestadoresHome', { ps: publicMedicos })
+        // return res.render('prestadoresViews/prestadoresHome', { ps: publicMedicos })
     },
     login: (req, res) => {
         let errors = validationResult(req)
@@ -83,7 +83,7 @@ const prestadoresController = {
         db.Especialidad.findAll().then((especialidad) => {
             let especialidades = [];
 
-            for(let x of especialidad){
+            for (let x of especialidad) {
                 let especialidadEncontrada = {
                     id: x.id,
                     nombre: x.nombre
@@ -94,9 +94,9 @@ const prestadoresController = {
 
             console.log(especialidades)
 
-            res.render('prestadoresViews/agregarUsuario', {especialidades: especialidades} )
+            res.render('prestadoresViews/agregarUsuario', { especialidades: especialidades })
         })
-        
+
     },
     agregarMedicoPublico: (req, res) => {
         let errors = validationResult(req);
@@ -133,7 +133,22 @@ const prestadoresController = {
             res.redirect("/prestadores/home")
 
         } else {
-            res.render('prestadoresViews/secretariaAgregarMedicoPublico', { errors: errors.mapped() })
+            db.Especialidad.findAll().then((especialidad) => {
+                let especialidades = [];
+
+                for (let x of especialidad) {
+                    let especialidadEncontrada = {
+                        id: x.id,
+                        nombre: x.nombre
+                    }
+
+                    especialidades.push(especialidadEncontrada)
+                }
+
+        
+                res.render('prestadoresViews/agregarUsuario', { errors: errors.mapped(), especialidades: especialidades })
+            })
+
         }
     },
     editarMedicoPublico: (req, res) => { // comienzo edicion Mariela

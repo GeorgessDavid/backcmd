@@ -25,29 +25,48 @@
                     <div class="formMedicoNombre">
                         <div class="input-group mb-3">
                             <label class="input-group-text" for="inputGroupSelect01">Tipo de Usuario</label>
-                            <select class="form-select" id="userType">
+                            <select name="userType" class="form-select" id="userType">
                                 <!-- <select class="form-select" id="inputGroupSelect01"> -->
                                 <option selected disabled>Seleccionar</option>
                                 <option value="1">Administrador</option>
                                 <option value="2">Secretaría</option>
                                 <option value="3">Médico</option>
                             </select>
+                            <% if(locals && locals.errors) {%>
+                                <% if (locals.errors.userType) {%>
+                                    <h3 class="errors"><i class="fa-sharp fa-solid fa-xmark"></i>
+                                        <%= locals.errors.userType.msg %>
+                                    </h3>
+                                <% } %>
+                            <% } %>
                         </div>
                         <div class="input-group flex-nowrap">
-                            <span class="input-group-text" id="addon-wrapping">@</span>
-                            <input type="text" class="form-control" placeholder="Nombre de usuario"
+                            <span class="input-group-text <%= locals.errors && errors.alias ? 'inputError' : null %>" id="addon-wrapping">@</span>
+                            <input type="text" class="form-control <%= locals.errors && errors.alias ? 'inputError' : null %>" placeholder="Nombre de usuario"
                                 aria-label="Username" name="alias" aria-describedby="addon-wrapping">
                         </div>
+                        <% if(locals && locals.errors) {%>
+                            <% if (locals.errors.alias) {%>
+                                <h3 class="errors"><i class="fa-sharp fa-solid fa-xmark"></i>
+                                    <%= locals.errors.alias.msg %>
+                                </h3>
+                            <% } %>
+                        <% } %>
                         <br>
-                        <div class="input-group mb-3">
-                            <span class="input-group-text" id="inputGroup-sizing-default">Contraseña</span>
-                            <input type="password" class="form-control" name="password"
+                        <div class="input-group mb-3 ">
+                            <span class="input-group-text <%= locals.errors && errors.password ? 'inputError' : null %>" id="inputGroup-sizing-default">Contraseña</span>
+                            <input id="password" type="password" class="form-control <%= locals.errors && errors.password ? 'inputError' : null %>" name="password"
                                 aria-label="Sizing example input" placeholder="Debe tener mínimo 6 caracteres."
                                 aria-describedby="inputGroup-sizing-default">
+                                
                         </div>
-                        <!--  <div style="margin-bottom: 2vw;">
-                            <h6>La contraseña debe tener como mínimo 6 caracteres.</h6>
-                        </div> -->
+                        <% if(locals && locals.errors) {%>
+                            <% if (locals.errors.alias) {%>
+                                <h3 class="errors"><i class="fa-sharp fa-solid fa-xmark"></i>
+                                    <%= locals.errors.alias.msg %>
+                                </h3>
+                            <% } %>
+                        <% } %>
 
                         <h3>Datos del usuario</h3>
                         <div class="row">
@@ -61,45 +80,73 @@
                                         <h3 class="errors"><i class="fa-sharp fa-solid fa-xmark"></i>
                                             <%= locals.errors.nombre.msg %>
                                         </h3>
-                                        <% } %>
-                                            <% } %>
+                                    <% } %>
+                                <% } %>
                             </div>
                             <div class="col">
                                 <label for="exampleFormControlInput1"
-                                    class="form-label <%= locals.errors && errors.apellido ? 'inputError' : null %>">Apellido(s)*</label>
-                                <input type="text" class="form-control" id="exampleFormControlInput1" name="apellido"
+                                    class="form-label">Apellido(s)*</label>
+                                <input type="text" class="form-control <%= locals.errors && errors.apellido ? 'inputError' : null %>" id="exampleFormControlInput1" name="apellido"
                                     placeholder="Apellido" required>
                                 <% if(locals && locals.errors) {%>
                                     <% if (locals.errors.apellido) {%>
                                         <h3 class="errors"><i class="fa-sharp fa-solid fa-xmark"></i>
                                             <%= locals.errors.apellido.msg %>
                                         </h3>
-                                        <% } %>
-                                            <% } %>
+                                    <% } %>
+                                <% } %>
                             </div>
                         </div>
                     </div>
                     <div class="mb-3">
                         <label for="exampleFormControlInput1" class="form-label">Email*</label>
-                        <input type="email" name="email" class="form-control" id="exampleFormControlInput1"
+                        <input type="email" name="email" class="form-control <%= locals.errors && errors.email ? 'inputError' : null %>" id="exampleFormControlInput1"
                             placeholder="ejemplo@ejemplo.com" required>
+                            <% if(locals && locals.errors) {%>
+                                <% if (locals.errors.email) {%>
+                                    <h3 class="errors"><i class="fa-sharp fa-solid fa-xmark"></i>
+                                        <%= locals.errors.email.msg %>
+                                    </h3>
+                                <% } %>
+                            <% } %>
                     </div>
                     <div class="row">
                         <div class="col">
                             <label for="exampleFormControlInput1" class="form-label">Documento*</label>
-                            <input type="text" class="form-control" name="dni" placeholder="Número de Documento"
+                            <input type="text" class="form-control <%= locals.errors && errors.dni ? 'inputError' : null %>" name="dni" placeholder="Número de Documento"
                                 aria-label="First name" required>
+                                <% if(locals && locals.errors) {%>
+                                    <% if (locals.errors.dni) {%>
+                                        <h3 class="errors"><i class="fa-sharp fa-solid fa-xmark"></i>
+                                            <%= locals.errors.dni.msg %>
+                                        </h3>
+                                    <% } %>
+                                <% } %>                            
                         </div>
                         <div class="col">
                             <label for="exampleFormControlInput1" class="form-label">Teléfono*</label>
-                            <input type="text" class="form-control" placeholder="Número de Teléfono"
+                            <input type="text" class="form-control <%= locals.errors && errors.telefono ? 'inputError' : null %>" placeholder="Número de Teléfono"
                                 aria-label="Last name" required>
+                                <% if(locals && locals.errors) {%>
+                                    <% if (locals.errors.telefono) {%>
+                                        <h3 class="errors"><i class="fa-sharp fa-solid fa-xmark"></i>
+                                            <%= locals.errors.telefono.msg %>
+                                        </h3>
+                                    <% } %>
+                                <% } %>
                         </div>
                     </div>
                     <div class="col-12">
                         <label for="inputAddress" class="form-label">Domicilio*</label>
-                        <input type="text" class="form-control" name="domicilio" id="inputAddress"
+                        <input type="text" class="form-control <%= locals.errors && errors.domicilio ? 'inputError' : null %>" name="domicilio" id="inputAddress"
                             placeholder="Padre Silberman 1740, Santos Lugares" required>
+                            <% if(locals && locals.errors) {%>
+                                <% if (locals.errors.domicilio) {%>
+                                    <h3 class="errors"><i class="fa-sharp fa-solid fa-xmark"></i>
+                                        <%= locals.errors.domicilio.msg %>
+                                    </h3>
+                                <% } %>
+                            <% } %>
                     </div>
                     <br>
                     <div>
@@ -120,6 +167,13 @@
                                             Masculino
                                         </label>
                                     </div>
+                                    <% if(locals && locals.errors) {%>
+                                        <% if (locals.errors.sexo) {%>
+                                            <h3 class="errors"><i class="fa-sharp fa-solid fa-xmark"></i>
+                                                <%= locals.errors.sexo.msg %>
+                                            </h3>
+                                        <% } %>
+                                    <% } %>
                             </div>
                             <div class="col">
                                 <label for="nacimiento">Fecha de nacimiento</label>
@@ -134,43 +188,43 @@
                                 name="profileImg">
                         </div>
                     </div>
-                    <div class="displayNone" id="medicData">
-                        <h3>Datos del Médico</h3>
-                        <div class="col">
-                            <label for="exampleFormControlInput1"
-                                class="form-label <%= locals.errors && errors.especialidad ? 'inputError' : null %>">
-                                Especialidad*</label>
-                            <select class="form-select" aria-label="Default select example" name="especialidad">
-                                <option selected disabled>Seleccione una especialidad.</option>
-                                <% for( let especialidad of especialidades) { %>
-                                    <option value="<%= especialidad.nombre %> ">
-                                        <%= especialidad.nombre %>
-                                    </option>
-                                    <% } %>
-                                        <% if(locals && locals.errors) {%>
-                                            <% if (locals.errors.especialidad) {%>
-                                                <h3 class="errors"><i class="fa-sharp fa-solid fa-xmark"></i>
-                                                    <%= locals.errors.especialidad.msg %>
-                                                </h3>
+                </div>
+                <div class="displayNone" id="medicData">
+                    <h3>Datos del Médico</h3>
+                    <div class="col">
+                        <label for="exampleFormControlInput1"
+                            class="form-label <%= locals.errors && errors.especialidad ? 'inputError' : null %>">
+                            Especialidad*</label>
+                        <select class="form-select" aria-label="Default select example" name="specialida">
+                            <option selected disabled>Seleccione una especialidad.</option>
+                            <% for( let especialidad of especialidades) { %>
+                                <option value="<%= especialidad.nombre %> ">
+                                    <%= especialidad.nombre %>
+                                </option>
+                                <% } %>
+                                    <% if(locals && locals.errors) {%>
+                                        <% if (locals.errors.especialidad) {%>
+                                            <h3 class="errors"><i class="fa-sharp fa-solid fa-xmark"></i>
+                                                <%= locals.errors.especialidad.msg %>
+                                            </h3>
+                                            <% } %>
                                                 <% } %>
-                                                    <% } %>
-                            </select>
-                        </div>
-                        <div>
-                            <div class="col">
-                                <label>Matrícula*</label>
-                                <div class="input-group mb-3">
-                                    <select class="btn btn-outline-secondary dropdown-toggle">
-                                        <option selected disabled>Tipo</option>
-                                        <option value="MN" name="matriculaType">M.N.</option>
-                                        <option value="MP" name="matriculaType">M.P.</option>
-                                    </select>
-                                    <input type="text" name="matricula" class="form-control"
-                                        aria-label="Text input with dropdown button" placeholder="Máximo 6 dígitos.">
-                                </div>
+                        </select>
+                    </div>
+                    <div>
+                        <div class="col">
+                            <label>Matrícula*</label>
+                            <div class="input-group mb-3">
+                                <select class="btn btn-outline-secondary dropdown-toggle">
+                                    <option selected disabled>Tipo</option>
+                                    <option value="MN" name="matriculaType">M.N.</option>
+                                    <option value="MP" name="matriculaType">M.P.</option>
+                                </select>
+                                <input type="text" name="matricula" class="form-control"
+                                    aria-label="Text input with dropdown button" placeholder="Máximo 6 dígitos.">
                             </div>
-
                         </div>
+
                     </div>
                 </div>
                 <h6>* Campos obligatorios</h6>
