@@ -30,6 +30,10 @@ function turnoDatabase(sequelize, DataTypes){
         Tratamiento_id: {
             type: DataTypes.INTEGER,
             allowNull: true
+        },
+        presente: {
+            type: DataTypes.BOOLEAN,
+            allowNull: false
         }
     }
 
