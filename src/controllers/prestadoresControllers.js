@@ -9,7 +9,7 @@ const prestadoresFilePath = path.join(__dirname, '../../datos/publicMedicos.json
 const publicMedicos = JSON.parse(fs.readFileSync(prestadoresFilePath, 'utf-8'))
 const innerDatabase = path.join(__dirname, '../../datos/innerDatabase.json')
 const prestadoresUsers = JSON.parse(fs.readFileSync(innerDatabase, 'utf-8'))
-const bcryptjs = require('bcryptjs')
+const bcrypt = require('bcryptjs')
 const db = require('../../database/models')
 
 const user = {
@@ -92,46 +92,154 @@ const prestadoresController = {
                 especialidades.push(especialidadEncontrada)
             }
 
-            console.log(especialidades)
 
             res.render('prestadoresViews/agregarUsuario', { especialidades: especialidades })
         })
 
     },
-    agregarMedicoPublico: (req, res) => {
+    agregarMedicoPublico: async (req, res) => {
         let errors = validationResult(req);
         console.log(errors)
         if (errors.isEmpty()) {
-            if (req.file) {
-                let nuevoMedico = {
-                    id: "CMD" + Date.now() + "P",
-                    nombre: req.body.nombre,
-                    apellido: req.body.apellido,
-                    especialidad: req.body.especialidad,
-                    especialidad2: req.body.especialidad2,
-                    sexo: req.body.sexo,
-                    estudios: req.body.estudios,
-                    profileImg: req.file.filename
-                };
-                publicMedicos.push(nuevoMedico)
-            } else {
-                let nuevoMedico = {
-                    id: "CMD" + Date.now() + "P",
-                    nombre: req.body.nombre,
-                    apellido: req.body.apellido,
-                    especialidad: req.body.especialidad,
-                    especialidad2: req.body.especialidad2,
-                    sexo: req.body.sexo,
-                    estudios: req.body.estudios,
-                    profileImg: "default_profile_img.png"
+
+            let aliasExistente = await db.Usuario.findOne({ where: { alias: req.body.alias } })
+
+            let emailExistente = await db.Usuario.findOne({ where: { email: req.body.email } })
+
+            if (!aliasExistente) {
+                if (!emailExistente) {
+                    if (req.file) {
+                        if (req.body.userType != 3) {
+                            db.Usuario.create({
+                                Rol_id: req.body.userType,
+                                alias: req.body.alias,
+                                clave: bcrypt.hashSync(req.body.password, 10),
+                                nombre: req.body.nombre,
+                                apellido: req.body.apellido,
+                                email: req.body.email,
+                                dni: req.body.dni,
+                                telefono: req.body.telefono,
+                                domicilio: req.body.domicilio,
+                                sexo: req.body.sexo,
+                                nacimiento: req.body.nacimiento,
+                                matricula: null,
+                                Obra_Social_id: null,
+                                imagen: req.file.filename
+                            }).then((resultados) => {
+                                console.log("Usuario agregado: " + resultados)
+                                return res.redirect("/prestadores/home")
+                            })
+                        } else {
+                            db.Usuario.create({
+                                Rol_id: req.body.userType,
+                                alias: req.body.alias,
+                                clave: bcrypt.hashSync(req.body.password, 10),
+                                nombre: req.body.nombre,
+                                apellido: req.body.apellido,
+                                email: req.body.email,
+                                dni: req.body.dni,
+                                telefono: req.body.telefono,
+                                domicilio: req.body.domicilio,
+                                sexo: req.body.sexo,
+                                nacimiento: req.body.nacimiento,
+                                matricula: req.body.matricula,
+                                Obra_Social_id: null,
+                                imagen: req.file.filename
+                            }).then((profesional) => {
+                                db.Usuario.findOne({ where: { alias: req.body.alias } })
+
+                                db.Profesional_Especialidad.create({
+                                    Profesional_id: profesional.id,
+                                    Especialidad_id: req.body.especialidad
+                                }).then(() => {
+                                    return res.redirect("/prestadores/home")
+                                })
+                            })
+                        }
+                    } else {
+                        if (req.body.userType != 3) {
+                            db.Usuario.create({
+                                Rol_id: req.body.userType,
+                                alias: req.body.alias,
+                                clave: bcrypt.hashSync(req.body.password, 10),
+                                nombre: req.body.nombre,
+                                apellido: req.body.apellido,
+                                email: req.body.email,
+                                dni: req.body.dni,
+                                telefono: req.body.telefono,
+                                domicilio: req.body.domicilio,
+                                sexo: req.body.sexo,
+                                nacimiento: req.body.nacimiento,
+                                matricula: null,
+                                Obra_Social_id: null,
+                                imagen: "default_profile_img.png"
+                            }).then((resultados) => {
+                                console.log("Usuario agregado: " + resultados)
+                                return res.redirect("/prestadores/home")
+                            })
+                        } else {
+                            console.log(req.body.especialidad)
+
+                            db.Usuario.create({
+                                Rol_id: req.body.userType,
+                                alias: req.body.alias,
+                                clave: bcrypt.hashSync(req.body.password, 10),
+                                nombre: req.body.nombre,
+                                apellido: req.body.apellido,
+                                email: req.body.email,
+                                dni: req.body.dni,
+                                telefono: req.body.telefono,
+                                domicilio: req.body.domicilio,
+                                sexo: req.body.sexo,
+                                nacimiento: req.body.nacimiento,
+                                matricula: req.body.matricula,
+                                Obra_Social_id: null,
+                                imagen: "default_profile_img.png"
+                            }).then((profesional) => {
+                                db.Usuario.findOne({ where: { alias: req.body.alias } })
+
+                                db.Profesional_Especialidad.create({
+                                    Profesional_id: profesional.id,
+                                    Especialidad_id: req.body.especialidad
+                                }).then(() => {
+                                    return res.redirect("/prestadores/home")
+                                })
+                            })
+                        }
+                    }
+                } else {
+                    db.Especialidad.findAll().then((especialidad) => {
+                        let especialidades = [];
+
+                        for (let x of especialidad) {
+                            let especialidadEncontrada = {
+                                id: x.id,
+                                nombre: x.nombre
+                            }
+
+                            especialidades.push(especialidadEncontrada)
+                        }
+
+                        return res.render('prestadoresViews/agregarUsuario', { errors: { email: { msg: "Este email ya está en uso." } }, especialidades: especialidades })
+                    })
                 }
-                publicMedicos.push(nuevoMedico)
+            } else {
+                db.Especialidad.findAll().then((especialidad) => {
+                    let especialidades = [];
+
+                    for (let x of especialidad) {
+                        let especialidadEncontrada = {
+                            id: x.id,
+                            nombre: x.nombre
+                        }
+
+                        especialidades.push(especialidadEncontrada)
+                    }
+
+
+                    res.render('prestadoresViews/agregarUsuario', { errors: { alias: { msg: "Este nombre de usuario ya está en uso." } }, especialidades: especialidades })
+                })
             }
-
-            fs.writeFileSync("./datos/publicMedicos.json", JSON.stringify(publicMedicos, null, " "));
-
-            res.redirect("/prestadores/home")
-
         } else {
             db.Especialidad.findAll().then((especialidad) => {
                 let especialidades = [];
@@ -145,8 +253,7 @@ const prestadoresController = {
                     especialidades.push(especialidadEncontrada)
                 }
 
-        
-                res.render('prestadoresViews/agregarUsuario', { errors: errors.mapped(), especialidades: especialidades })
+                return res.render('prestadoresViews/agregarUsuario', { errors: errors.mapped(), especialidades: especialidades })
             })
 
         }

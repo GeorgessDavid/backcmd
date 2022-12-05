@@ -12,7 +12,7 @@ function profesional_especialidadDatabase(sequelize, DataTypes){
             type: DataTypes.INTEGER,
             allowNull: false
         },
-        Tratamiento_id: {
+        Especialidad_id: {
             type: DataTypes.INTEGER,
             allowNull: false
         }

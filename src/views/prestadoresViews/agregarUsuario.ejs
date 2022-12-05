@@ -61,9 +61,9 @@
                                 
                         </div>
                         <% if(locals && locals.errors) {%>
-                            <% if (locals.errors.alias) {%>
+                            <% if (locals.errors.password) {%>
                                 <h3 class="errors"><i class="fa-sharp fa-solid fa-xmark"></i>
-                                    <%= locals.errors.alias.msg %>
+                                    <%= locals.errors.password.msg %>
                                 </h3>
                             <% } %>
                         <% } %>
@@ -126,7 +126,7 @@
                         <div class="col">
                             <label for="exampleFormControlInput1" class="form-label">Teléfono*</label>
                             <input type="text" class="form-control <%= locals.errors && errors.telefono ? 'inputError' : null %>" placeholder="Número de Teléfono"
-                                aria-label="Last name" required>
+                                aria-label="Last name" name="telefono" required>
                                 <% if(locals && locals.errors) {%>
                                     <% if (locals.errors.telefono) {%>
                                         <h3 class="errors"><i class="fa-sharp fa-solid fa-xmark"></i>
@@ -195,10 +195,10 @@
                         <label for="exampleFormControlInput1"
                             class="form-label <%= locals.errors && errors.especialidad ? 'inputError' : null %>">
                             Especialidad*</label>
-                        <select class="form-select" aria-label="Default select example" name="specialida">
+                        <select class="form-select" aria-label="Default select example" name="especialidad">
                             <option selected disabled>Seleccione una especialidad.</option>
                             <% for( let especialidad of especialidades) { %>
-                                <option value="<%= especialidad.nombre %> ">
+                                <option value="<%= especialidad.id %> ">
                                     <%= especialidad.nombre %>
                                 </option>
                                 <% } %>
