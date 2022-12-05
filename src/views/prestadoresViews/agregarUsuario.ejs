@@ -25,16 +25,34 @@
                     <div class="formMedicoNombre">
                         <div class="input-group mb-3">
                             <label class="input-group-text" for="inputGroupSelect01">Tipo de Usuario</label>
-                            <select class="form-select" id="inputGroupSelect01">
+                            <select class="form-select" id="userType">
+                                <!-- <select class="form-select" id="inputGroupSelect01"> -->
                                 <option selected disabled>Seleccionar</option>
                                 <option value="1">Administrador</option>
                                 <option value="2">Secretaría</option>
                                 <option value="3">Médico</option>
                             </select>
                         </div>
+                        <div class="input-group flex-nowrap">
+                            <span class="input-group-text" id="addon-wrapping">@</span>
+                            <input type="text" class="form-control" placeholder="Nombre de usuario"
+                                aria-label="Username" name="alias" aria-describedby="addon-wrapping">
+                        </div>
+                        <br>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="inputGroup-sizing-default">Contraseña</span>
+                            <input type="password" class="form-control" name="password"
+                                aria-label="Sizing example input" placeholder="Debe tener mínimo 6 caracteres."
+                                aria-describedby="inputGroup-sizing-default">
+                        </div>
+                        <!--  <div style="margin-bottom: 2vw;">
+                            <h6>La contraseña debe tener como mínimo 6 caracteres.</h6>
+                        </div> -->
+
+                        <h3>Datos del usuario</h3>
                         <div class="row">
                             <div class="col">
-                                <label for="exampleFormControlInput1" class="form-label">* Nombre(s):</label>
+                                <label for="exampleFormControlInput1" class="form-label">Nombre(s)*</label>
                                 <input type="text"
                                     class="form-control <%= locals.errors && errors.nombre ? 'inputError' : null %>"
                                     id="exampleFormControlInput1" name="nombre" placeholder="Nombre" required>
@@ -48,8 +66,7 @@
                             </div>
                             <div class="col">
                                 <label for="exampleFormControlInput1"
-                                    class="form-label <%= locals.errors && errors.apellido ? 'inputError' : null %>">*
-                                    Apellido(s):</label>
+                                    class="form-label <%= locals.errors && errors.apellido ? 'inputError' : null %>">Apellido(s)*</label>
                                 <input type="text" class="form-control" id="exampleFormControlInput1" name="apellido"
                                     placeholder="Apellido" required>
                                 <% if(locals && locals.errors) {%>
@@ -62,90 +79,99 @@
                             </div>
                         </div>
                     </div>
-                    <label for="exampleFormControlInput1"
-                        class="form-label <%= locals.errors && errors.especialidad ? 'inputError' : null %>">*
-                        Especialidad:</label>
-                    <input type="text" class="form-control" id="exampleFormControlInput1" name="especialidad"
-                        placeholder="Especialidad" required>
-                    <% if(locals && locals.errors) {%>
-                        <% if (locals.errors.especialidad) {%>
-                            <h3 class="errors"><i class="fa-sharp fa-solid fa-xmark"></i>
-                                <%= locals.errors.especialidad.msg %>
-                            </h3>
-                            <% } %>
-                                <% } %>
-                                    <select class="form-select" aria-label="Default select example">
-                                        <option selected disabled>Seleccione una especialidad.</option>
-                                        <% for( let especialidad of especialidades) { %>
-                                            <option value="<%= especialidad.nombre %> ">
-                                                <%= especialidad.nombre %>
-                                            </option>
-                                            <% } %>
-
-                                    </select>
-                                    <label for="exampleFormControlInput1" class="form-label">Especialidad 2:</label>
-                                    <input type="text" class="form-control" id="exampleFormControlInput1"
-                                        name="especialidad2" placeholder="Especialidad 2">
-                                    <div class="divOpcionales">
-                                        <label for="sexo">* Sexo:
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="sexo"
-                                                    id="flexRadioDefault1" value="femenino">
-                                                <label class="form-check-label" for="flexRadioDefault1">
-                                                    Femenino
-                                                </label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="sexo"
-                                                    id="flexRadioDefault1" value="masculino">
-                                                <label class="form-check-label" for="flexRadioDefault1">
-                                                    Masculino
-                                                </label>
-                                            </div>
-                                            <% if(locals && locals.errors) {%>
-                                                <% if (locals.errors.sexo) {%>
-                                                    <h3 class="errors"><i class="fa-sharp fa-solid fa-xmark"></i>
-                                                        <%= locals.errors.sexo.msg %>
-                                                    </h3>
-                                                    <% } %>
-                                                        <% } %>
-                                                            <label for="estudios">* Realiza estudios:
-                                                                <div class="form-check">
-                                                                    <input class="form-check-input" type="radio"
-                                                                        name="estudios" id="flexRadioDefault1"
-                                                                        value="si">
-                                                                    <label class="form-check-label"
-                                                                        for="flexRadioDefault1">
-                                                                        Si
-                                                                    </label>
-                                                                </div>
-                                                                <div class="form-check">
-                                                                    <input class="form-check-input" type="radio"
-                                                                        name="estudios" id="flexRadioDefault1"
-                                                                        value="no">
-                                                                    <label class="form-check-label"
-                                                                        for="flexRadioDefault1">
-                                                                        No
-                                                                    </label>
-                                                                </div>
-                                                            </label>
-                                                            <% if(locals && locals.errors) {%>
-                                                                <% if (locals.errors.estudios) {%>
-                                                                    <h3 class="errors"><i
-                                                                            class="fa-sharp fa-solid fa-xmark"></i>
-                                                                        <%= locals.errors.estudios.msg %>
-                                                                    </h3>
-                                                                    <% } %>
-                                                                        <% } %>
-                                                                            <div class="input-group mb-3">
-                                                                                <label class="input-group-text"
-                                                                                    for="inputGroupFile01">Foto de
-                                                                                    Perfil</label>
-                                                                                <input type="file" class="form-control"
-                                                                                    id="inputGroupFile01"
-                                                                                    accept="image/*" name="profileImg">
-                                                                            </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Email*</label>
+                        <input type="email" name="email" class="form-control" id="exampleFormControlInput1"
+                            placeholder="ejemplo@ejemplo.com" required>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label for="exampleFormControlInput1" class="form-label">Documento*</label>
+                            <input type="text" class="form-control" name="dni" placeholder="Número de Documento"
+                                aria-label="First name" required>
+                        </div>
+                        <div class="col">
+                            <label for="exampleFormControlInput1" class="form-label">Teléfono*</label>
+                            <input type="text" class="form-control" placeholder="Número de Teléfono"
+                                aria-label="Last name" required>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <label for="inputAddress" class="form-label">Domicilio*</label>
+                        <input type="text" class="form-control" name="domicilio" id="inputAddress"
+                            placeholder="Padre Silberman 1740, Santos Lugares" required>
+                    </div>
+                    <br>
+                    <div>
+                        <div class="row">
+                            <div class="col">
+                                <label for="sexo">Sexo*
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="sexo" id="flexRadioDefault1"
+                                            value="0">
+                                        <label class="form-check-label" for="flexRadioDefault1">
+                                            Femenino
+                                        </label>
                                     </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="sexo" id="flexRadioDefault1"
+                                            value="1">
+                                        <label class="form-check-label" for="flexRadioDefault1">
+                                            Masculino
+                                        </label>
+                                    </div>
+                            </div>
+                            <div class="col">
+                                <label for="nacimiento">Fecha de nacimiento</label>
+                                <input type="date" name="nacimiento" class="dateInput" min="1915-01-01" id="datefield" required>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="input-group mb-3">
+                            <label class="input-group-text" for="inputGroupFile01">Foto de
+                                Perfil</label>
+                            <input type="file" class="form-control" id="inputGroupFile01" accept="image/*"
+                                name="profileImg">
+                        </div>
+                    </div>
+                    <div class="displayNone" id="medicData">
+                        <h3>Datos del Médico</h3>
+                        <div class="col">
+                            <label for="exampleFormControlInput1"
+                                class="form-label <%= locals.errors && errors.especialidad ? 'inputError' : null %>">
+                                Especialidad*</label>
+                            <select class="form-select" aria-label="Default select example" name="especialidad">
+                                <option selected disabled>Seleccione una especialidad.</option>
+                                <% for( let especialidad of especialidades) { %>
+                                    <option value="<%= especialidad.nombre %> ">
+                                        <%= especialidad.nombre %>
+                                    </option>
+                                    <% } %>
+                                        <% if(locals && locals.errors) {%>
+                                            <% if (locals.errors.especialidad) {%>
+                                                <h3 class="errors"><i class="fa-sharp fa-solid fa-xmark"></i>
+                                                    <%= locals.errors.especialidad.msg %>
+                                                </h3>
+                                                <% } %>
+                                                    <% } %>
+                            </select>
+                        </div>
+                        <div>
+                            <div class="col">
+                                <label>Matrícula*</label>
+                                <div class="input-group mb-3">
+                                    <select class="btn btn-outline-secondary dropdown-toggle">
+                                        <option selected disabled>Tipo</option>
+                                        <option value="MN" name="matriculaType">M.N.</option>
+                                        <option value="MP" name="matriculaType">M.P.</option>
+                                    </select>
+                                    <input type="text" name="matricula" class="form-control"
+                                        aria-label="Text input with dropdown button" placeholder="Máximo 6 dígitos.">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
                 </div>
                 <h6>* Campos obligatorios</h6>
                 <button type="submit" class="btn btn-success">Añadir usuario </button>
@@ -156,6 +182,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
         crossorigin="anonymous"></script>
+    <script src="../js/agregarUsuario.js"></script>
+    <script src="../js/dateToday.js"></script>
 
 </body>
 

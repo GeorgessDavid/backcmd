@@ -78,7 +78,7 @@ const prestadoresController = {
             return res.render('prestadoresLogin', { errors: errors.mapped() })
         }
     },
-    agregarMedico: (req, res) =>{
+    agregarMedico: async (req, res) => {
 
         db.Especialidad.findAll().then((especialidad) => {
             let especialidades = [];
