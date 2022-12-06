@@ -36,17 +36,19 @@ const controlador = {
                         // CONTRASEÑA OK - CONTINUA AL LOGIN.
 
                         req.session.usuario = usuarioEncontrado;
-
                         req.session.userType = usuarioEncontrado.Rol_id;
+
+                        let data = {
+                            time: Date(),
+                            userId: usuarioEncontrado.id,
+                        }
+                        const token = jwt.sign(data, TOKEN_SECRET, { expiresIn: '1h' });
+                        req.session.token = token;
+
+                        console.log(req.session.token);
 
                         if (req.body.recordarme) { // CHECKBOX DE "MANTENER SESIÓN INICIADA"
                             res.cookie('rememberMe', usuarioEncontrado, { maxAge: 1000 * 60 * 60 * 24 * 360 })
-                            let data = {
-                                time: Date(),
-                                userId: usuarioEncontrado.id,
-                            }
-                            const token = jwt.sign(data, TOKEN_SECRET, { expiresIn: '1h' });
-                            req.session.token = token;
                         }
 
                         // REDIRECCIÓN A HOME SEGÚN EL TIPO DE USUARIO
