@@ -1,3 +1,21 @@
+const jwt = require('jsonwebtoken');
+
+function validateToken(req, res, next) {
+  const token = req.session.token;
+  if (!token) {
+    return res.status(401).json({ message: 'Token no encontrado' });
+  }
+  try {
+    const decoded = jwt.verify(token, process.env.TOKEN_SECRET);
+    console.log("Token valido, usuario" + decoded.userId);
+    req.user = decoded;
+    next();
+  } catch (error) {
+    console.log(error);
+    return res.status(401).json({ message: 'Token expirado' });
+  }
+}
+
 let userLoginValidation = {
     defaultLocals: (req, res, next) => {
         res.locals.isLogged = false;
@@ -9,7 +27,7 @@ let userLoginValidation = {
     },
 
     loggedHome: (req, res, next) => {
-        if (req.session.usuario) {
+        if (req.session.usuario && validateToken(req, res, next)) {
             res.locals.isLogged = req.session.usuario
 
             if (req.session.userType == 1) {

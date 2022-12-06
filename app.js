@@ -7,6 +7,8 @@ const path = require('path')
 const multer = require('multer');
 const session = require('express-session');
 const cookies = require('cookie-parser')
+const TOKEN_SECRET = 'SOMOSNOSOTROS';
+
 
 
 // middlewares
@@ -32,3 +34,5 @@ app.use("/", index)
 //server
 app.listen(port, () => {console.log(`Servidor activo en el puerto ${port}`)}
 );
+
+module.exports = TOKEN_SECRET;
