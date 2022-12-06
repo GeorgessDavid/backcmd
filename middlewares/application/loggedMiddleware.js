@@ -1,14 +1,17 @@
+const jwt = require('jsonwebtoken');
+
 function validateToken(req, res, next) {
   const token = req.session.token;
   if (!token) {
     return res.status(401).json({ message: 'Token no encontrado' });
   }
   try {
-    const decoded = jwt.verify(token, secret);
+    const decoded = jwt.verify(token, process.env.TOKEN_SECRET);
     console.log("Token valido, usuario" + decoded.userId);
     req.user = decoded;
     next();
   } catch (error) {
+    console.log(error);
     return res.status(401).json({ message: 'Token expirado' });
   }
 }

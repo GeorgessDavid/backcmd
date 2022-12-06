@@ -5,8 +5,6 @@ const pacientesFilePath = path.join(__dirname, '../../datos/pacientes.json');
 const pacientes = JSON.parse(fs.readFileSync(pacientesFilePath, 'utf-8'));
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const TOKEN_SECRET = 'SOMOSNOSOTROS';
-
 const db = require('../../database/models');
 
 
@@ -42,7 +40,7 @@ const controlador = {
                             time: Date(),
                             userId: usuarioEncontrado.id,
                         }
-                        const token = jwt.sign(data, TOKEN_SECRET, { expiresIn: '1h' });
+                        const token = jwt.sign(data, process.env.TOKEN_SECRET, { expiresIn: '1h' });
                         req.session.token = token;
 
                         console.log(req.session.token);
