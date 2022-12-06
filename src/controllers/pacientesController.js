@@ -95,6 +95,7 @@ const controlador = {
                 dni: req.body.dni,
                 telefono: req.body.telefono,
                 email: req.body.email,
+                nacimiento: req.body.nacimiento,
                 sexo: true,  //req.body.sexo,
                 Rol_id: 4, //req.body.Rol_id,
                 Obra_Social_id: 1, //req.body.Obra_Social_id,

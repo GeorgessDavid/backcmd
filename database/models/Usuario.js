@@ -55,6 +55,10 @@ function usuariosDatabase(sequelize, DataTypes) {
         Rol_id: {
             type: DataTypes.INTEGER,
             allowNull: false
+        },
+        nacimiento: {
+            type: DataTypes.DATE,
+            allowNull: false
         }
     };
     config = {freezeTableName: true,timestamps: false};
