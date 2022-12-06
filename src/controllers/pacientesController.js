@@ -4,6 +4,8 @@ const { validationResult } = require("express-validator");
 const pacientesFilePath = path.join(__dirname, '../../datos/pacientes.json');
 const pacientes = JSON.parse(fs.readFileSync(pacientesFilePath, 'utf-8'));
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const TOKEN_SECRET = 'SOMOSNOSOTROS';
 
 const db = require('../../database/models');
 
@@ -39,6 +41,12 @@ const controlador = {
 
                         if (req.body.recordarme) { // CHECKBOX DE "MANTENER SESIÓN INICIADA"
                             res.cookie('rememberMe', usuarioEncontrado, { maxAge: 1000 * 60 * 60 * 24 * 360 })
+                            let data = {
+                                time: Date(),
+                                userId: usuarioEncontrado.id,
+                            }
+                            const token = jwt.sign(data, TOKEN_SECRET, { expiresIn: '1h' });
+                            req.session.token = token;
                         }
 
                         // REDIRECCIÓN A HOME SEGÚN EL TIPO DE USUARIO
