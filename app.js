@@ -33,5 +33,3 @@ app.use("/", index)
 //server
 app.listen(port, () => {console.log(`Servidor activo en el puerto ${port}`)}
 );
-
-module.exports = TOKEN_SECRET;

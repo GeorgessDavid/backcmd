@@ -120,21 +120,21 @@ const controlador = {
     pacientesEditar: (req, res) => {
         let errors = validationResult(req);
         if (errors.isEmpty) {
-            let id = req.params.id
-            for (let i = 0; i < pacientes.length; i++) {
-                if (pacientes[i].id == id) {
-                    pacientes[i].usuario = req.body.usuario;
-                    pacientes[i].nombre = req.body.nombre
-                    pacientes[i].apellido = req.body.apellido
-                    pacientes[i].email = req.body.email
-                    pacientes[i].password = bcrypt.hashSync(req.body.password, 10)
+            db.Usuario.update({
+                nombre: req.body.nombre,
+                apellido: req.body.apellido,
+                domicilio: req.body.domicilio,
+                dni: req.body.dni,
+                telefono: req.body.telefono,
+                email: req.body.email,
+            },
+            {
+                where: {
+                    id: req.params.id
                 }
-            }
-
-            fs.writeFileSync(pacientesFilePath, JSON.stringify(pacientes, null, " "));
-
-            res.redirect('/pacientes');
-
+            }).then(() => {
+                res.redirect('/pacientes')
+            })
         }
         else {
             res.render('pacientesEditar', { errors: errors.mapped() })
