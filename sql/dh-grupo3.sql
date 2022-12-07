@@ -18,6 +18,7 @@ CREATE TABLE `Usuario` (
   `domicilio` varchar(50) NOT NULL ,
   `telefono` varchar(20) NOT NULL ,
   `imagen` varchar(80) ,
+  `nacimiento` date NOT NULL ,
   `Obra_Social_id` INT ,
   `Rol_id` INT NOT NULL , 
  PRIMARY KEY (`id`)
@@ -74,6 +75,7 @@ CREATE TABLE `Turno` (
   `fecha_creacion` datetime NOT NULL ,
   `fecha_cancelacion` datetime ,
   `fecha_turno` datetime NOT NULL ,
+  `presente` bit NOT NULL ,
   `Tratamiento_id` INT , 
  PRIMARY KEY (`id`)
 ) 

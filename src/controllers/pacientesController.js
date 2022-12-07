@@ -1,8 +1,6 @@
 const path = require('path')
 const fs = require('fs');
 const { validationResult } = require("express-validator");
-const pacientesFilePath = path.join(__dirname, '../../datos/pacientes.json');
-const pacientes = JSON.parse(fs.readFileSync(pacientesFilePath, 'utf-8'));
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const db = require('../../database/models');
@@ -110,22 +108,14 @@ const controlador = {
 
     },
     index: (req, res) => {
-        db.Usuario.findAll().then(pacientes => {
-            console.log(pacientes)
+        db.Usuario.findAll().then((pacientes) => {
+            res.render("pacientesListado", { pacientes: pacientes })
         })
-        res.render("pacientesListado", { ps: pacientes });
     },
     pacientesDetalle: (req, res) => {
-        let idPaciente = req.params.id;
-        let objPaciente;
-
-        for (let o of pacientes) {
-            if (idPaciente == o.id) {
-                objPaciente = o;
-                break;
-            }
-        }
-        res.render('pacientesEditar', { paciente: objPaciente });
+        db.Usuario.findByPk(req.params.id).then((paciente) => {
+            res.render("pacientesEditar", { paciente: paciente })
+        })
     },
     pacientesEditar: (req, res) => {
         let errors = validationResult(req);
