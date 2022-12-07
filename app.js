@@ -7,7 +7,6 @@ const path = require('path')
 const multer = require('multer');
 const session = require('express-session');
 const cookies = require('cookie-parser')
-const TOKEN_SECRET = 'SOMOSNOSOTROS';
 
 
 
