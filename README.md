@@ -2,7 +2,27 @@
 ## Autores: DH grupo 3
 
 ### Main site URL
-https://dh-grupo3.herokuapp.com/
+https://dh-grupo3.onrender.com/
+
+# Usuarios prueba
+
+admin:
+
+    user: jero
+    pass: 12345678
+
+paciente
+
+    user: martin
+    pass: 12345678
+
+### Updates Sprint 6
+- Se crearon todos los modelos de la base de datos
+- Se ha añadido la funcionalidad de añadir un nuevo usuario a la base de datos.
+- Se ha añadido la funcionalidad de añadir un nuevo paciente a la base de datos.
+- Se ha añadido la funcionalidad de añadir un nuevo médico a la base de datos.
+- Se ha añadido la funcionalidad de añadir un nuevo administrador a la base de datos.
+- Se agrego login con jwt para pacientes
 
 ### Updates Sprint 4
 - Agregado listado de pacientes en: https://dh-grupo3.herokuapp.com/pacientes
