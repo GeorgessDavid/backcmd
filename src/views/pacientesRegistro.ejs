@@ -57,10 +57,10 @@
                         <p class="error"> <%= errors.dni.msg %> </p>
                     <% } %>
                     <label name="nacimiento">
-                        Nacimiento:
-                    </label>
-                    <input type="date" name="nacimiento">
-                    
+                    <input type="date" class="formCMD" name="nacimiento" placeholder="Fecha de Nacimiento" required>
+                    <% if (locals.errors && errors.nacimiento) { %>
+                        <p class="error"> <%= errors.nacimiento.msg %> </p>
+                    <% } %>
                     <label name="domicilio">
                     <input type="text" class="formCMD" name="domicilio" placeholder="Domicilio" required>
                     <% if (locals.errors && errors.domicilio) { %>

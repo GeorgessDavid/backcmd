@@ -18,6 +18,7 @@ CREATE TABLE `Usuario` (
   `domicilio` varchar(50) NOT NULL ,
   `telefono` varchar(20) NOT NULL ,
   `imagen` varchar(80) ,
+  `nacimiento` date ,
   `Obra_Social_id` INT ,
   `Rol_id` INT NOT NULL , 
  PRIMARY KEY (`id`)
