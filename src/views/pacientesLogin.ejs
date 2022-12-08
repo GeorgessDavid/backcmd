@@ -20,7 +20,7 @@
             <form action="/pacientes/login" method="POST">
             <div class="logInBox">
                 <h1>Log In</h1>
-                <a href="/register">REGISTRARSE</a>
+                <a href="/pacientes/register">REGISTRARSE</a>
                 <input class="userDataBox" name="usuario" type="text" placeholder="USUARIO">
                 <% if (locals.errors && errors.usuario) { %>
                     <p class="error"> <%= errors.usuario.msg %> </p>
