@@ -99,7 +99,9 @@ const prestadoresController = {
     },
     agregarMedicoPublico: async (req, res) => {
         let errors = validationResult(req);
-        console.log(errors)
+
+        let especialidad = await db.Especialidad.findAll();
+
         if (errors.isEmpty()) {
 
             let aliasExistente = await db.Usuario.findOne({ where: { alias: req.body.alias } })
@@ -208,53 +210,16 @@ const prestadoresController = {
                         }
                     }
                 } else {
-                    db.Especialidad.findAll().then((especialidad) => {
-                        let especialidades = [];
 
-                        for (let x of especialidad) {
-                            let especialidadEncontrada = {
-                                id: x.id,
-                                nombre: x.nombre
-                            }
-
-                            especialidades.push(especialidadEncontrada)
-                        }
-
-                        return res.render('prestadoresViews/agregarUsuario', { errors: { email: { msg: "Este email ya está en uso." } }, especialidades: especialidades })
-                    })
+                    return res.render('prestadoresViews/agregarUsuario', { errors: { email: { msg: "Este email ya está en uso." } }, especialidades: especialidad })
                 }
             } else {
-                db.Especialidad.findAll().then((especialidad) => {
-                    let especialidades = [];
 
-                    for (let x of especialidad) {
-                        let especialidadEncontrada = {
-                            id: x.id,
-                            nombre: x.nombre
-                        }
-
-                        especialidades.push(especialidadEncontrada)
-                    }
-
-
-                    res.render('prestadoresViews/agregarUsuario', { errors: { alias: { msg: "Este nombre de usuario ya está en uso." } }, especialidades: especialidades })
-                })
+                return res.render('prestadoresViews/agregarUsuario', { errors: { alias: { msg: "Este nombre de usuario ya está en uso." } }, especialidades: especialidad })
             }
         } else {
-            db.Especialidad.findAll().then((especialidad) => {
-                let especialidades = [];
 
-                for (let x of especialidad) {
-                    let especialidadEncontrada = {
-                        id: x.id,
-                        nombre: x.nombre
-                    }
-
-                    especialidades.push(especialidadEncontrada)
-                }
-
-                return res.render('prestadoresViews/agregarUsuario', { errors: errors.mapped(), especialidades: especialidades })
-            })
+            return res.render('prestadoresViews/agregarUsuario', { errors: errors.mapped(), especialidades: especialidad })
 
         }
     },
