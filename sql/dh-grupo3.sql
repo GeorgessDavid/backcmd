@@ -199,3 +199,9 @@ ALTER TABLE `Trabajador_Clinica` ADD FOREIGN KEY (Clinica_id) REFERENCES `Clinic
 ALTER TABLE `Registro_Caja` ADD FOREIGN KEY (Usuario_id) REFERENCES `Usuario` (`id`);
 				
 ALTER TABLE `Registro_Caja` ADD FOREIGN KEY (Clinica_id) REFERENCES `Clinica` (`id`);
+
+INSERT INTO `Rol` VALUES (1, 'Administrador'), (2, 'Secretaría'), (3, 'Profesional'), (4, 'Paciente');
+
+INSERT INTO `Obra_Social` VALUES (1, 'Particular'), (2, 'PAMI');
+
+INSERT INTO `Especialidad` VALUES (1, 'Medicina Clínica');
