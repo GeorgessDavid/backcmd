@@ -17,7 +17,7 @@ const controlador = {
     },
     store: (req,res) => {
         let turno = {
-            fecha_creacion: Date(),
+            fecha_creacion: new Date(),
             fecha_turno: req.body.fecha,
             Paciente_id: req.session.usuario.id,
             Profesional_id: req.body.profesional,
