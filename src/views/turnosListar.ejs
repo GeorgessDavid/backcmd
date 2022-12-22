@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" >
+    <link rel="stylesheet" type= "text/css" herf= "http.//fonts.googleapis.com/css">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/turnos.css">
+    
+    <title>Consultorios Médicos David</title>
+</head>
+<body> <!--START BODY-->
+  <%- include('partials/header') %>
+
+<main>
+     <section>   <!--SECTION BANNER TURNOS-->
+      <section class="banner-turnos"> 
+    <img src="../img/banner_turnos_02.png" alt="Banner turnos">
+    <!--<h1>SOLICITA TU TURNO</h1>-->
+  </section>
+         <section>
+             <h3>Mis Turnos</h3>
+
+         </section>
+     <section>   <!--SECTION TURNOS-->
+      <div class="divTurnosSection">
+          <% for (turno of turnos) { %>
+            <div class="divTurnos">
+              <p><%= turno.fecha_turno %></p>
+              <p><%= turno.Profesional_id %></p>
+              <p><%= turno.presente %></p>
+            </div>
+            <% } %>
+      </div>
+    </section>
+    
+</main>
+<%- include('partials/footer') %>
+
+</body>
+</html>

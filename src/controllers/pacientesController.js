@@ -47,6 +47,7 @@ const controlador = {
                             res.cookie('rememberMe', usuarioEncontrado, { maxAge: 1000 * 60 * 60 * 24 * 360 })
                         }
 
+
                         // REDIRECCIÓN A HOME SEGÚN EL TIPO DE USUARIO
                         if (usuarioEncontrado.Rol_id == 1) {
                             return res.redirect("/prestadores/home")
@@ -55,7 +56,10 @@ const controlador = {
                         } else if (usuarioEncontrado.Rol_id == 3) {
                             return res.redirect("/prestadores/home")
                         } else {
-                            return res.redirect('/')
+                            db.Turno.findOne({ where: { Paciente_id: usuarioEncontrado.id } }).then((turnos) => {
+                                req.session.turno = turnos;
+                                return res.redirect("/")
+                            })
                         }
 
                     } else {
