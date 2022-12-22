@@ -17,6 +17,7 @@ app.use(session({secret: "Somos nosotros", resave: false, saveUninitialized: fal
 app.use(cookies());
 app.use(function(req, res, next) {
     res.locals.usuario = req.session.usuario;
+    res.locals.turno = req.session.turno;
     next();
 });
 

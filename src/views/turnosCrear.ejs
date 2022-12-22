@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" >
+    <link rel="stylesheet" type= "text/css" herf= "http.//fonts.googleapis.com/css">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/turnos.css">
+    
+    <title>Consultorios Médicos David</title>
+</head>
+<body> <!--START BODY-->
+  <%- include('partials/header') %>
+
+<main>
+     <section>   <!--SECTION BANNER TURNOS-->
+      <section class="banner-turnos"> 
+    <img src="../img/banner_turnos_02.png" alt="Banner turnos">
+    <!--<h1>SOLICITA TU TURNO</h1>-->
+  </section>  
+     <section>   <!--SECTION TURNOS-->
+      <div class="divTurnosSection">
+        <div class="turnos">
+          <form action="/turnos/crear" method="POST">
+            <div class="column1">
+              <h3>MIS TURNOS</h3>
+              <p>Turnos Para:</p>
+              <select name="turnoPara" class="selectorCMD">
+                  <option value="Estudios">ESTUDIOS</option>
+                  <option value="Especialidades">ESPECIALIDADES</option>
+              </select>
+              <p>Especialidad:</p>
+              <select name="especialidad" class="selectorCMD">
+                  <option value="1">ALERGIA</option>
+                  <option value="2">CARDIOLOGIA</option>
+                  <option value="3">CLINICA MEDICA</option>
+                  <option value="4">DERMATILOGÍA</option>
+                  <option value="5">ENDOCRINOLOGIA</option>
+                  <option value="6">FLEBOLOGIA</option>
+                  <option value="7">GASTROENTEROLOGIA</option>
+                  <option value="8">GINECOLOGIA</option>
+                  <option value="9">ODONTOLOGIA</option>
+              </select>
+              <p>Dr/Dra:</p>
+              <select name="profesional" class="selectorCMD">
+                  <% for  (let profesional of profesionales)  { %>
+                    <option value="<%= profesional.id %>"><%= profesional.nombre %></option>
+                    <% } %>
+                </select>
+
+              <p>Fecha:</p>
+              <select name="fecha" >
+                <input type="date" name="fecha" value="2022-09-22" min="2022-09-01"max="2022-12-31">
+              </select>
+
+                <button type="submit" class="btnTurnos">SOLICITAR TURNO</button>
+            </div>
+
+        </div>
+        </form>
+        <img src="/img/turnos.png">
+      </div>
+      </div>
+    </div>
+    </section>
+    
+</main>
+<%- include('partials/footer') %>
+
+</body>
+</html>
