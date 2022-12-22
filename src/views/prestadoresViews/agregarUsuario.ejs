@@ -20,7 +20,12 @@
     <main>
         <div class="divFormContainer">
             <h1>Agregar Usuario</h1>
-            <form action="/prestadores/agregarMedico" method="POST" enctype="multipart/form-data">
+            <form action="/prestadores/agregarMedico" method="POST" enctype="multipart/form-data" id="formAddUser">
+                <div class="displayNone alert alert-danger" role="alert" id="divAlert">
+                    <ul id="errorList">
+
+                    </ul>                    
+                </div>
                 <div class="mb-3">
                     <div class="formMedicoNombre">
                         <div class="input-group mb-3">
@@ -41,9 +46,9 @@
                             <% } %>
                         </div>
                         <div class="input-group flex-nowrap">
-                            <span class="input-group-text <%= locals.errors && errors.alias ? 'inputError' : null %>" id="addon-wrapping">@</span>
+                            <span class="input-group-text <%= locals.errors && errors.alias ? 'inputError' : null %>">@</span>
                             <input type="text" class="form-control <%= locals.errors && errors.alias ? 'inputError' : null %>" placeholder="Nombre de usuario"
-                                aria-label="Username" name="alias" aria-describedby="addon-wrapping">
+                                aria-label="Username" id="alias" name="alias" aria-describedby="addon-wrapping">
                         </div>
                         <% if(locals && locals.errors) {%>
                             <% if (locals.errors.alias) {%>
@@ -54,9 +59,9 @@
                         <% } %>
                         <br>
                         <div class="input-group mb-3 ">
-                            <span class="input-group-text <%= locals.errors && errors.password ? 'inputError' : null %>" id="inputGroup-sizing-default">Contraseña</span>
+                            <span class="input-group-text <%= locals.errors && errors.password ? 'inputError' : null %>">Contraseña</span>
                             <input id="password" type="password" class="form-control <%= locals.errors && errors.password ? 'inputError' : null %>" name="password"
-                                aria-label="Sizing example input" placeholder="Debe tener mínimo 6 caracteres."
+                                aria-label="Sizing example input" id="password" placeholder="Debe tener mínimo 6 caracteres."
                                 aria-describedby="inputGroup-sizing-default">
                                 
                         </div>
@@ -74,7 +79,7 @@
                                 <label for="exampleFormControlInput1" class="form-label">Nombre(s)*</label>
                                 <input type="text"
                                     class="form-control <%= locals.errors && errors.nombre ? 'inputError' : null %>"
-                                    id="exampleFormControlInput1" name="nombre" placeholder="Nombre" required>
+                                    id="nombre" name="nombre" placeholder="Nombre"  >
                                 <% if(locals && locals.errors) {%>
                                     <% if (locals.errors.nombre) {%>
                                         <h3 class="errors"><i class="fa-sharp fa-solid fa-xmark"></i>
@@ -86,8 +91,8 @@
                             <div class="col">
                                 <label for="exampleFormControlInput1"
                                     class="form-label">Apellido(s)*</label>
-                                <input type="text" class="form-control <%= locals.errors && errors.apellido ? 'inputError' : null %>" id="exampleFormControlInput1" name="apellido"
-                                    placeholder="Apellido" required>
+                                <input type="text" class="form-control <%= locals.errors && errors.apellido ? 'inputError' : null %>" id="apellido" name="apellido"
+                                    placeholder="Apellido"  >
                                 <% if(locals && locals.errors) {%>
                                     <% if (locals.errors.apellido) {%>
                                         <h3 class="errors"><i class="fa-sharp fa-solid fa-xmark"></i>
@@ -100,8 +105,8 @@
                     </div>
                     <div class="mb-3">
                         <label for="exampleFormControlInput1" class="form-label">Email*</label>
-                        <input type="email" name="email" class="form-control <%= locals.errors && errors.email ? 'inputError' : null %>" id="exampleFormControlInput1"
-                            placeholder="ejemplo@ejemplo.com" required>
+                        <input type="email" name="email" class="form-control <%= locals.errors && errors.email ? 'inputError' : null %>" id="email"
+                            placeholder="ejemplo@ejemplo.com"  >
                             <% if(locals && locals.errors) {%>
                                 <% if (locals.errors.email) {%>
                                     <h3 class="errors"><i class="fa-sharp fa-solid fa-xmark"></i>
@@ -114,7 +119,7 @@
                         <div class="col">
                             <label for="exampleFormControlInput1" class="form-label">Documento*</label>
                             <input type="text" class="form-control <%= locals.errors && errors.dni ? 'inputError' : null %>" name="dni" placeholder="Número de Documento"
-                                aria-label="First name" required>
+                                aria-label="First name" id="dni" pattern="[0-9]+"  >
                                 <% if(locals && locals.errors) {%>
                                     <% if (locals.errors.dni) {%>
                                         <h3 class="errors"><i class="fa-sharp fa-solid fa-xmark"></i>
@@ -126,7 +131,7 @@
                         <div class="col">
                             <label for="exampleFormControlInput1" class="form-label">Teléfono*</label>
                             <input type="text" class="form-control <%= locals.errors && errors.telefono ? 'inputError' : null %>" placeholder="Número de Teléfono"
-                                aria-label="Last name" name="telefono" required>
+                                aria-label="Last name" name="telefono" id="telefono"  >
                                 <% if(locals && locals.errors) {%>
                                     <% if (locals.errors.telefono) {%>
                                         <h3 class="errors"><i class="fa-sharp fa-solid fa-xmark"></i>
@@ -139,7 +144,7 @@
                     <div class="col-12">
                         <label for="inputAddress" class="form-label">Domicilio*</label>
                         <input type="text" class="form-control <%= locals.errors && errors.domicilio ? 'inputError' : null %>" name="domicilio" id="inputAddress"
-                            placeholder="Padre Silberman 1740, Santos Lugares" required>
+                            placeholder="Padre Silberman 1740, Santos Lugares"  >
                             <% if(locals && locals.errors) {%>
                                 <% if (locals.errors.domicilio) {%>
                                     <h3 class="errors"><i class="fa-sharp fa-solid fa-xmark"></i>
@@ -177,7 +182,7 @@
                             </div>
                             <div class="col">
                                 <label for="nacimiento">Fecha de nacimiento</label>
-                                <input type="date" name="nacimiento" class="dateInput" min="1915-01-01" id="datefield" required>
+                                <input type="date" name="nacimiento" class="dateInput" min="1915-01-01" id="datefield"  >
                             </div>
                         </div>
                         <br>
@@ -228,8 +233,8 @@
                     </div>
                 </div>
                 <h6>* Campos obligatorios</h6>
-                <button type="submit" class="btn btn-success">Añadir usuario </button>
-                <a href="/prestadores/home"><button type="button" class="btn btn-danger">Volver</button></a>
+                <button type="submit" class="btn btn-success" id="liveAlertBtn">Añadir usuario </button>
+                <a href="/prestadores/home"><button type="button" class="btn btn-danger" >Volver</button></a>
             </form>
         </div>
     </main>
@@ -238,7 +243,8 @@
         crossorigin="anonymous"></script>
     <script src="../js/agregarUsuario.js"></script>
     <script src="../js/dateToday.js"></script>
-
+    <script src="../js/validations/agregarUsuarioValidations.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 
 </html>
