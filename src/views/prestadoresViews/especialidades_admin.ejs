@@ -20,6 +20,9 @@
         <%- include('../partials/prestadoresHeader.ejs')%>
     </header>
     <main>
+        <div id="mainBody">
+
+        </div>
         <div class="titulo">
             <h1>Listado de especialidades</h1>
         </div>
@@ -27,8 +30,41 @@
             <div class="itemContainer">
                 <div class="navBarContainer">
 
-                    <button type="button" class="btn btn-success btn-sm"><a
-                            href="/prestadores/agregarEspecialidad">Añadir</a></button>
+                    <!-- Añadir trigger -->
+                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        Añadir
+                    </button>
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Añadir especialidad</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form action="/prestadores/agregarEspecialidad" method="post"
+                                        id="addEspecialidadForm">
+                                        <div class="input-group input-group-sm mb-3">
+                                            <span class="input-group-text" id="inputGroup-sizing-sm">Especialidad</span>
+                                            <input type="text" class="form-control" aria-label="Sizing example input"
+                                                aria-describedby="inputGroup-sizing-sm" name="especialidadNombre"
+                                                id="addEspecialidadInput">
+                                        </div>
+                                        <div id="divError">
+
+                                        </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Cerrar</button>
+                                    <button type="submit" class="btn btn-success" id="addButton">Agregar</button>
+                                </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                     <nav class="navbar navbar-expand-lg bg-light">
 
                         <div class="container-fluid">
@@ -45,12 +81,13 @@
                         <div class="itemBox">
                             <h2>
                                 <%= especialidad.nombre %>
-                                    </h2>
+                            </h2>
                             <div class="buttons">
                                 <button type="button" class="btn btn-primary"><a href="#">Editar</a></button>
                                 <button type="button" class="btn btn-danger"><a href="#">Eliminar</a></button>
                             </div>
                         </div>
+
                         <% } %>
                 </div>
             </div>
@@ -59,6 +96,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
         crossorigin="anonymous"></script>
+    <script src="../js/validations/agregarEspecialidadValidations.js"></script>
 </body>
 
 </html>
