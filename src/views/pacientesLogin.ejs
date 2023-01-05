@@ -17,15 +17,19 @@
             <div class="mainBackgroundLogo">
                 <img src="../img/logoCMD.png">
             </div>
-            <form action="/pacientes/login" method="POST">
+            <form action="/pacientes/login" method="POST" enctype="multipart/form-data" id="loginForm">
+                <div class="displayNone alert alert-danger" role="alert" id="divAlert">
+                    <ul id="errores">
+
+                    </ul>                    
             <div class="logInBox">
                 <h1>Log In</h1>
                 <a href="/pacientes/register">REGISTRARSE</a>
-                <input class="userDataBox" name="usuario" type="text" placeholder="USUARIO">
+                <input class="userDataBox loginUser" name="usuario" type="text" placeholder="USUARIO">
                 <% if (locals.errors && errors.usuario) { %>
                     <p class="error"> <%= errors.usuario.msg %> </p>
                 <% } %>
-                <input class="userDataBox" name="password" type="password" placeholder="CONTRASEÑA">
+                <input class="userDataBox loginPass" name="password" type="password" placeholder="CONTRASEÑA">
                 <% if (locals.errors && errors.password) { %>
                     <p class="error"> <%= errors.password.msg %> </p>
                 <% } %>
@@ -41,6 +45,6 @@
     </main>
     <!-- Include Footer -->
     <%- include('partials/footer') %>
-    <script src="/js/loginValidation.js"></script>
+    <script src="../js/loginValidation.js"></script>
 </body>
 </html>
