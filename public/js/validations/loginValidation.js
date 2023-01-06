@@ -1,33 +1,33 @@
-Window.addEventListener('load', function() {
-    let formulario = document.querySelector("loginForm");
+window.addEventListener('load', function() {
+    let formulario = document.getElementById("loginForm");
  
     let loginInput = {
-        username: document.getElementByclassName('loginUser'),
-        password: document.getElementByclassName('loginPass'),
-        submit: document.getElementByclassName('logInButton')
+        username: document.getElementById('loginUser'),
+        password: document.getElementById('loginPass')
+    
     }
 
     formulario.addEventListener('submit', function(e) {
         let errores = [];   
         
         
-        if (loginInput.loginUser.value == "") {
+        if (loginInput.username.value == "") {
            errores.push('Debe introducir un nombre de usuario.')
-           //document.querySelector(".loginUser").innerHTML = "Debe introducir un nombre de usuario" 
+          
         }
 
-        if (loginInput.loginPass.value == "") { // asignar el evento onfocus al input contraseña
+
+        if (loginInput.password.value == "") { // asignar el evento onfocus al input contraseña
             errores.push('Debe introducir una contraseña.')
-        } else if (inputs.password.value.length < 6) {
-            errores.push('La contraseña debe tener, como mínimo, 6 caracteres alfanuméricos.')
-        }
+            console.log("entramos");
+        } 
 
         if (errores.length != 0) {
             e.preventDefault();
 
             let divAlert = document.getElementById("divAlert")
-
-            divAlert.classList.remove('displayNone')
+           divAlert.classList.remove('displayNone')
+            
 
             let ulErrores = document.getElementById("errores")
 

@@ -19,6 +19,9 @@ header{
     padding-top: 13px;
     padding-right: 2vw;
 }
+.displayNone{
+    display:none;
+}
 
 .error{
     color: red;
