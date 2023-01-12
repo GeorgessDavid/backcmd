@@ -1,4 +1,5 @@
 const turnosController = require("../controllers/turnosController.js");
+const turnosServices = require("../services/turnosServices.js")
 
 const express = require('express');
 const router = express.Router();
@@ -11,5 +12,7 @@ router.get("/crear",logInMiddleware.needLogin,turnosController.crear )
 router.post("/crear",logInMiddleware.needLogin,turnosController.store )
 
 router.get("/listar",logInMiddleware.needLogin,turnosController.listar )
+
+router.get("/api/listar",turnosServices.apiListar )
 
 module.exports = router;
