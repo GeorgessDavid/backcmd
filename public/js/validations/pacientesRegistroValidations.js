@@ -1,5 +1,6 @@
 window.addEventListener("load", function () {
     let formulario = document.getElementById("pacientesRegister")
+
     let inputs = {
         usuario: document.getElementById('usuarioId'),
         password: document.getElementById('passwordId'),
@@ -8,9 +9,11 @@ window.addEventListener("load", function () {
         documento: document.getElementById('dniId'),
         email: document.getElementById('emailId'),
     }
+
     formulario.addEventListener('submit', function(e) {
         let errores = [];
-        if (inputs.username.value == "") {
+
+        if (inputs.usuario.value == "") {
             errores.push('Debe introducir un nombre de usuario.')
         }
         if (inputs.password.value == "") {
@@ -36,9 +39,18 @@ window.addEventListener("load", function () {
         }
         if (errores.length != 0) {
             e.preventDefault();
-            let divError = document.getElementById("divError")
-            divError.innerHTML += `<h2 class="errors">${errores}</h2>`
+
+            let divError = document.getElementById("divRegisterErrors")
+            divError.classList.remove('displayNone')
+
+            let ulErrores = document.getElementById("ulErrores")
+            for (let i = 0; i < errores.length; i++) {
+                ulErrores.innerHTML += `<li>${errores[i]}</li>`
+            }
+
+
         }
+
     })
 
 })

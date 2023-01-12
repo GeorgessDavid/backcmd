@@ -101,10 +101,14 @@ footer{
     width: 20vw;
     height: 55vh;
     position: relative;
-    left: 75vw;
+    left: 55vw;
     align-self: center; 
     border-style: solid;
     backdrop-filter: blur(5px);
+}
+
+.displayNone{
+    display:none;
 }
 
 .divRegistrarse{
@@ -330,11 +334,10 @@ footer{
     }
 
     .divContainerRegister{
-        background-color: #d4dae6;
         width: 25vw;
         height: 76vh;
         position: relative;
-        left: 63vw;
+        left: 43vw;
         top: 4vh;
         border-radius: 0.5rem;
     }
