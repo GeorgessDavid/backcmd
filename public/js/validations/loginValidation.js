@@ -17,7 +17,7 @@ window.addEventListener('load', function() {
         }
 
 
-        if (loginInput.password.value == "") { // asignar el evento onfocus al input contraseña
+        if (loginInput.password.value == "") { 
             errores.push('Debe introducir una contraseña.')
             console.log("entramos");
         } 
