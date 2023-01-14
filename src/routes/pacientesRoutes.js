@@ -60,4 +60,6 @@ router.put("/editar/:id",validaciones, pacientesController.pacientesEditar )
 
 router.delete('/delete/:id', pacientesController.delete);
 
+
+
 module.exports = router;
