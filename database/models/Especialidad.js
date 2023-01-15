@@ -17,14 +17,15 @@ function especialidadDatabase(sequelize, DataTypes){
 
     const especialidad = sequelize.define(alias, cols, config);
 
-    especialidad.Associate = function(models){
+    especialidad.associate = function(models){
         
-        especialidad.belongsToMany(models.Usuario), {
-            as: 'profesionales',
+        especialidad.belongsToMany(models.Usuario, {
+            as: 'especialidad',
             through: 'Profesional_Especialidad',
             foreignKey: 'Especialidad_id',
-            otherKey: 'Profesional_id'
-        }
+            otherKey: 'Profesional_id',
+            timestamps: false
+        })
     }
 
     return especialidad

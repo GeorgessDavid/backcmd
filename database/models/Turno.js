@@ -41,7 +41,7 @@ function turnoDatabase(sequelize, DataTypes){
 
     const turnos = sequelize.define(alias, cols, config)
 
-    turnos.Associate = function(models){
+    turnos.associate = function(models){
 
         turnos.belongsTo(models.Usuario, {
           as: 'paciente',

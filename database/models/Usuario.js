@@ -65,7 +65,7 @@ function usuariosDatabase(sequelize, DataTypes) {
 
     const usuarios = sequelize.define(alias, cols, config);
 
-    usuarios.Asociate = function(models) {
+    usuarios.associate = function(models) {
         usuarios.belongsTo(models.Obra_Social, {
             as: 'obra_social',
             foreignKey: 'Obra_Social_id'
@@ -74,17 +74,24 @@ function usuariosDatabase(sequelize, DataTypes) {
             as: 'rol',
             foreignKey: 'Rol_id'
         })
-        turnos.hasMany(models.Turno, {
+        usuarios.hasMany(models.Turno, {
             as: 'paciente',
             foreignKey: "Paciente_id"
         })
-        turnos.hasMany(models.Turno, {
+        usuarios.hasMany(models.Turno, {
             as: 'profesional',
             foreignKey: "Profesional_id"
         })
-        usuarios.hasMany(models.PlanillaHoraria, {
+        usuarios.hasMany(models.Planilla_Horaria, {
             as: 'planillas_horarias',
             foreignKey: 'Profesional_id'
+        })
+        usuarios.belongsToMany (models.Especialidad, {
+            as: 'especialidad',
+            through: 'Profesional_Especialidad',
+            foreignKey: 'Profesional_id',
+            otherKey: 'Especialidad_id',
+            timestamps: false
         })
     }
 
