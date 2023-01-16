@@ -3,5 +3,6 @@ const especialidadesController = require("../controllers/especialidadesControlle
 const router = express.Router();
 
 router.get("/",especialidadesController.index )
+router.get('/api', especialidadesController.getEspecialidades)
 
 module.exports = router;
