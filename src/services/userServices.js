@@ -1,18 +1,20 @@
 const db = require('../../database/models')
+const { validationResult } = require("express-validator");
+const bcrypt = require('bcryptjs')
 
 let usuarios = {
-    getAllUsers: async (req,res) =>{
+    getAllUsers: async (req, res) => {
         try {
-            const usuarios = await db.Usuario.findAll({include: [{association: 'especialidad'}, {association: 'rol'}, {association: 'obra_social'}]})
+            const usuarios = await db.Usuario.findAll({ include: [{ association: 'especialidad' }, { association: 'rol' }, { association: 'obra_social' }] })
 
 
             let data = {
                 "data": usuarios,
-                "status": 200,                
+                "status": 200,
             }
             res.json(data)
 
-        } catch(err){
+        } catch (err) {
             res.render(err)
             console.log(err)
         }
@@ -21,12 +23,12 @@ let usuarios = {
 
     getAdmins: async (req, res) => {
         try {
-            const usuarios = await db.Usuario.findAll({include: [{association: 'especialidad'}, {association: 'rol'}, {association: 'obra_social'}]})
+            const usuarios = await db.Usuario.findAll({ include: [{ association: 'especialidad' }, { association: 'rol' }, { association: 'obra_social' }] })
 
             let administradores = []
 
-            for (x of usuarios){
-                if (x.Rol_id == 1){
+            for (x of usuarios) {
+                if (x.Rol_id == 1) {
                     administradores.push(x)
                 }
             }
@@ -37,31 +39,31 @@ let usuarios = {
             }
 
             res.json(data)
-        } catch (err){
+        } catch (err) {
             res.render(err)
             console.log(err)
         }
     },
 
-    getSecretarias: async(req, res) => {
-        try{
-            const usuarios = await db.Usuario.findAll({include: [{association: 'especialidad'}, {association: 'rol'}, {association: 'obra_social'}]})
+    getSecretarias: async (req, res) => {
+        try {
+            const usuarios = await db.Usuario.findAll({ include: [{ association: 'especialidad' }, { association: 'rol' }, { association: 'obra_social' }] })
 
             let secretarias = []
 
-            for(x of usuarios){
-                if (x.Rol_id == 2){
+            for (x of usuarios) {
+                if (x.Rol_id == 2) {
                     secretarias.push(x)
                 }
             }
-            
+
             let data = {
                 "data": secretarias,
                 "status": 200
             }
 
             res.json(data)
-        } catch (err){
+        } catch (err) {
             res.render(err)
             console.log(err)
         }
@@ -70,46 +72,212 @@ let usuarios = {
 
     getProfesionales: async (req, res) => {
         try {
-            const profesionales = await db.Usuario.findAll({include: [{association: 'especialidad'}, {association: 'rol'}]})
+            const profesionales = await db.Usuario.findAll({ include: [{ association: 'especialidad' }, { association: 'rol' }] })
 
             let especialistas = []
 
-            for(x of profesionales){
-                
-                if (x.Rol_id == 3){
+            for (x of profesionales) {
+
+                if (x.Rol_id == 3) {
                     especialistas.push(x)
                 }
             }
 
-            res.json({"data": especialistas, "status": 200})
-        } catch (error){
+            res.json({ "data": especialistas, "status": 200 })
+        } catch (error) {
             res.render(error);
             console.log(error)
         }
     },
 
-    getPacientes: async(req, res) => {
+    getPacientes: async (req, res) => {
         try {
-            const usuarios = await db.Usuario.findAll({include: [{association: 'especialidad'}, {association: 'rol'}, {association: 'obra_social'}]})
+            const usuarios = await db.Usuario.findAll({ include: [{ association: 'especialidad' }, { association: 'rol' }, { association: 'obra_social' }] })
 
             let pacientes = []
 
-            for(x of usuarios){
-                
-                if (x.Rol_id == 4){
+            for (x of usuarios) {
+
+                if (x.Rol_id == 4) {
                     pacientes.push(x)
                 }
-            } 
+            }
 
             let data = {
                 "data": pacientes,
-                "status": 200 
+                "status": 200
             }
 
             res.json(data)
-        } catch (err){
+        } catch (err) {
             res.render(err)
             console.log(err)
+        }
+    },
+
+    createTrabajador: async (req, res) => {
+        let errors = validationResult(req);
+
+        if (errors.isEmpty()) {
+
+            let aliasExistente = await db.Usuario.findOne({ where: { alias: req.body.alias } })
+
+            let emailExistente = await db.Usuario.findOne({ where: { email: req.body.email } })
+
+            if (!aliasExistente) {
+                if (!emailExistente) {
+                    if (req.file) {
+                        if (req.body.userType != 3) {
+                            db.Usuario.create({
+                                Rol_id: req.body.userType,
+                                alias: req.body.alias,
+                                clave: bcrypt.hashSync(req.body.password, 10),
+                                nombre: req.body.nombre,
+                                apellido: req.body.apellido,
+                                email: req.body.email,
+                                dni: req.body.dni,
+                                telefono: req.body.telefono,
+                                domicilio: req.body.domicilio,
+                                sexo: req.body.sexo,
+                                nacimiento: req.body.nacimiento,
+                                matricula: null,
+                                Obra_Social_id: null,
+                                imagen: req.file.filename
+                            }).then((resultados) => {
+                                res.json({
+                                    "data": resultados,
+                                    "status": 201,
+                                    "msg": "Creado exitosamente."
+                                })
+                                return res.redirect("/prestadores/home")
+                            })
+                        } else {
+                            db.Usuario.create({
+                                Rol_id: req.body.userType,
+                                alias: req.body.alias,
+                                clave: bcrypt.hashSync(req.body.password, 10),
+                                nombre: req.body.nombre,
+                                apellido: req.body.apellido,
+                                email: req.body.email,
+                                dni: req.body.dni,
+                                telefono: req.body.telefono,
+                                domicilio: req.body.domicilio,
+                                sexo: req.body.sexo,
+                                nacimiento: req.body.nacimiento,
+                                matricula: req.body.matricula,
+                                Obra_Social_id: null,
+                                imagen: req.file.filename
+                            }).then((profesional) => {
+                                db.Usuario.findOne({ where: { alias: req.body.alias } })
+
+                                db.Profesional_Especialidad.create({
+                                    Profesional_id: profesional.id,
+                                    Especialidad_id: req.body.especialidad
+                                }).then(() => {
+                                    res.json({
+                                        "data": profesional,
+                                        "status": 201,
+                                        "msg": "Creado exitosamente."
+                                    })
+                                    return res.redirect("/prestadores/home")
+                                })
+                            })
+                        }
+                    } else {
+                        if (req.body.userType != 3) {
+                            db.Usuario.create({
+                                Rol_id: req.body.userType,
+                                alias: req.body.alias,
+                                clave: bcrypt.hashSync(req.body.password, 10),
+                                nombre: req.body.nombre,
+                                apellido: req.body.apellido,
+                                email: req.body.email,
+                                dni: req.body.dni,
+                                telefono: req.body.telefono,
+                                domicilio: req.body.domicilio,
+                                sexo: req.body.sexo,
+                                nacimiento: req.body.nacimiento,
+                                matricula: null,
+                                Obra_Social_id: null,
+                                imagen: "default_profile_img.png"
+                            }).then((resultados) => {
+                                return res.json({
+                                    "data": resultados,
+                                    "status": 201,
+                                    "msg": "Creado exitosamente."
+                                })
+
+                            })
+                        } else {
+                            console.log(req.body.especialidad)
+
+                            db.Usuario.create({
+                                Rol_id: req.body.userType,
+                                alias: req.body.alias,
+                                clave: bcrypt.hashSync(req.body.password, 10),
+                                nombre: req.body.nombre,
+                                apellido: req.body.apellido,
+                                email: req.body.email,
+                                dni: req.body.dni,
+                                telefono: req.body.telefono,
+                                domicilio: req.body.domicilio,
+                                sexo: req.body.sexo,
+                                nacimiento: req.body.nacimiento,
+                                matricula: req.body.matricula,
+                                Obra_Social_id: null,
+                                imagen: "default_profile_img.png"
+                            }).then((profesional) => {
+                                db.Usuario.findOne({ where: { alias: req.body.alias } })
+
+                                db.Profesional_Especialidad.create({
+                                    Profesional_id: profesional.id,
+                                    Especialidad_id: req.body.especialidad
+                                }).then(() => {
+                                    res.json({
+                                        "data": profesional,
+                                        "status": 201,
+                                        "msg": "Creado exitosamente."
+                                    })
+                                    return res.redirect("/prestadores/home")
+                                })
+                            })
+                        }
+                    }
+                } else {
+
+                    let info = {
+                        "status": 400,
+                        "errorType": "400.3 - Email is already in use.",
+                        "errors": {
+                            "alias": {
+                                "msg": "Esta dirección de email ya está en uso."
+                            }
+                        }
+                    }
+
+                    return res.json(info)
+                }
+            } else {
+                let info = {
+                    "status": 400,
+                    "errorType": "400.2 - User is already in use.",
+                    "errors": {
+                        "alias": {
+                            "msg": "Este nombre de usuario ya está en uso."
+                        }
+                    }
+                }
+
+                return res.json(info)
+            }
+        } else {
+            let info = {
+                "status": 400,
+                "errorType": "400.1 - Campos vacíos",
+                "errors": errors.mapped()
+            }
+            return res.json(info)
+
         }
     }
 }

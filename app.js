@@ -7,6 +7,7 @@ const path = require('path')
 const multer = require('multer');
 const session = require('express-session');
 const cookies = require('cookie-parser')
+const cors = require('cors')
 
 
 
@@ -21,13 +22,14 @@ app.use(function(req, res, next) {
     next();
 });
 
+
 //view engine
 app.set('view engine', 'ejs')
 app.set('views','./src/views')
 
 //static files
 app.use(express.static(__dirname+'/public'))
-
+app.use(cors())
 //routes
 app.use("/", index)
 
