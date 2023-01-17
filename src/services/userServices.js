@@ -9,6 +9,7 @@ let usuarios = {
 
 
             let data = {
+                "total": usuarios.length,
                 "data": usuarios,
                 "status": 200,
             }
@@ -34,6 +35,7 @@ let usuarios = {
             }
 
             let data = {
+                "total": administradores.length,
                 "data": administradores,
                 "status": 200
             }
@@ -58,6 +60,7 @@ let usuarios = {
             }
 
             let data = {
+                "total": secretarias.length,
                 "data": secretarias,
                 "status": 200
             }
@@ -83,7 +86,7 @@ let usuarios = {
                 }
             }
 
-            res.json({ "data": especialistas, "status": 200 })
+            res.json({ "total": especialistas.length, "data": especialistas, "status": 200 })
         } catch (error) {
             res.render(error);
             console.log(error)
@@ -104,6 +107,7 @@ let usuarios = {
             }
 
             let data = {
+                "total": pacientes.length,
                 "data": pacientes,
                 "status": 200
             }
