@@ -78,7 +78,7 @@ router.get("/especialidades", logInMiddleware.needLogin, prestadoresController.e
 
 router.get("/agregarEspecialidad", logInMiddleware.needLogin, prestadoresController.agregarEspecialidad);
 
-router.post("/agregarEspecialidad", validaciones.addEspecialidad, prestadoresController.agregarEspecialidadSubmit)
+router.post("/agregarEspecialidad", validaciones.addEspecialidad, prestadoresController.agregarEspecialidadSubmit);
 
 
 /* LOGOUT */

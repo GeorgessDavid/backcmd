@@ -2,13 +2,14 @@ const path = require('path')
 const db = require('../../database/models')
 
 const controlador = {
-    index: (req,res) => {
+    index: (req, res) => {
         res.render("especialidades")
     },
 
     getEspecialidades: async (req, res) => {
-        
-        try{let especialidades = await db.Especialidad.findAll()
+
+        try {
+            let especialidades = await db.Especialidad.findAll()
 
             let data = {
                 "data": especialidades,
@@ -16,10 +17,34 @@ const controlador = {
             }
 
             return res.json(data)
-        } catch(err){
+        } catch (err) {
             console.log(err)
             res.render(err)
         }
+    },
+
+    delete: (req, res) => {
+        db.Especialidad.destroy({ where: { id: req.params.id } }).then(() => {
+            return res.redirect('/prestadores/especialidades')
+        }).catch(err => {
+            console.log(err)
+            res.render(err)
+        })
+    },
+
+    update: (req, res) => {
+
+        console.log(req.body.especialidadNombre)
+        console.log(req.params.id)
+        db.Especialidad.update({nombre: req.body.especialidadNombre},{where: {
+            id: req.params.id
+        }}).then((resultados) => {
+            console.log(resultados)
+            return res.redirect('/prestadores/especialidades')
+        }).catch(err => {
+            console.log(err)
+            res.render(err)
+        })
     }
 }
 
