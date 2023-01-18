@@ -86,7 +86,7 @@ body {
 
 .editButton:hover{  
     color: rgb(43, 103, 253);
-    text-shadow: 0 0 10px blue;
+    text-shadow: 0 0 5px blue;
 }
 .deleteButton{
     margin-top: 5px;
@@ -98,5 +98,5 @@ body {
 
 .trashButton:hover{
     color: red;
-    text-shadow: 0 0 10px red;
+    text-shadow: 0 0 5px red;
 }

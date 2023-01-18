@@ -1,5 +1,7 @@
 window.addEventListener('load', () => {
 
+    
+
     let container = document.getElementById('divEspecialidades')
 
     fetch("https://dh-grupo3.onrender.com/especialidades/api")
@@ -8,6 +10,11 @@ window.addEventListener('load', () => {
         })
         .then((datos) => {
 
+            let spinner = document.getElementById('loadingSpinner')
+
+            spinner.style.visibility = 'hidden';
+            spinner.style.opacity = '0';
+            spinner.classList.remove('m-5')
 
             for (let i = 0; i < datos.data.length; i++) {
 
