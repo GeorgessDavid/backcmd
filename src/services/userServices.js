@@ -1,6 +1,7 @@
 const db = require('../../database/models')
 const { validationResult } = require("express-validator");
 const bcrypt = require('bcryptjs')
+const {where} = require("sequelize");
 
 let usuarios = {
     getAllUsers: async (req, res) => {
@@ -75,18 +76,17 @@ let usuarios = {
 
     getProfesionales: async (req, res) => {
         try {
-            const profesionales = await db.Usuario.findAll({ include: [{ association: 'especialidad' }, { association: 'rol' }] })
 
-            let especialistas = []
-
-            for (x of profesionales) {
-
-                if (x.Rol_id == 3) {
-                    especialistas.push(x)
+            const profesionales = await db.Usuario.findAll(
+                {
+                    where: {
+                        Rol_id: 3
+                    },
+                    include: [{ association: 'especialidad' }, { association: 'rol' }]
                 }
-            }
+            )
 
-            res.json({ "total": especialistas.length, "data": especialistas, "status": 200 })
+            res.json({ "total": profesionales.length, "data": profesionales, "status": 200 })
         } catch (error) {
             res.render(error);
             console.log(error)

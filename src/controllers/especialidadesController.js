@@ -9,13 +9,7 @@ const controlador = {
     getEspecialidades: async (req, res) => {
         
         try{let especialidades = await db.Especialidad.findAll()
-
-            let data = {
-                "data": especialidades,
-                "status": 200
-            }
-
-            return res.json(data)
+            return res.json(especialidades)
         } catch(err){
             console.log(err)
             res.render(err)
