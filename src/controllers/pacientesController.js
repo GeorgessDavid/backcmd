@@ -101,6 +101,7 @@ const controlador = {
                 Rol_id: 4, //req.body.Rol_id,
                 Obra_Social_id: 1, //req.body.Obra_Social_id,
                 clave: bcrypt.hashSync(req.body.password, 10),
+                imagen: "default_profile_img.png"
             }
 
             db.Usuario.create(paciente).then(() => { res.redirect('/') })

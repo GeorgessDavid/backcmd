@@ -24,6 +24,9 @@ const prestadoresController = {
     index: (req, res) => {
         return res.render("prestadoresLogin")
     },
+    users: (req, res) => {
+        return res.render('prestadoresViews/administradorViews/usuarios_admin')
+    },
     home: (req, res) => {
         const publicMedicos = JSON.parse(fs.readFileSync(prestadoresFilePath, 'utf-8'))
         //  --------------------------  OBTENER DATOS DE LA BASE DE DATOS -------------------------- 
@@ -262,17 +265,13 @@ const prestadoresController = {
             res.render('prestadoresViews/editarPrestador/:id', { errors: errors.mapped() })
         }
     },
-    editandoPrestador: (req, res) => {
-        let idPrestador = req.params.id;
-        let objPrestador;
+    editandoPrestador: async (req, res) => {
 
-        for (let o of publicMedicos) {
-            if (idPrestador == o.id) {
-                objPrestador = o;
-                break;
-            }
-        }
-        res.render('prestadoresViews/editarPrestador', { prestador: objPrestador })
+        let usuario = await db.Usuario.findByPk(req.params.id)
+
+        console.log(usuario)
+        
+        res.render('prestadoresViews/editarPrestador', { prestador: usuario })
     },
 
     confirmarEliminacion: (req, res) => {
@@ -292,11 +291,9 @@ const prestadoresController = {
     deletePrestador: (req, res) => {
 
         let id = req.params.id
-        let filteredPrestadores = publicMedicos.filter(prestador => prestador.id != id)
-
-        fs.writeFileSync(prestadoresFilePath, JSON.stringify(filteredPrestadores, null, " "));
-
-        res.redirect('/prestadores/eliminacionConfirmada');
+        db.Usuario.destroy({where: {id: id}}).then(() => {
+            return  res.redirect('/prestadores/eliminacionConfirmada');
+        })
     },
 
     eliminacionConfirmada: (req, res) => {

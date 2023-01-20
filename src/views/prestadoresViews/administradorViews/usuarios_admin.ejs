@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usuarios - CMD</title>
+    <%- include('../../partials/headPartials.ejs') %>
+    <link rel="stylesheet" href="/css/sectionPrestadores/usuarios_admin.css">
+</head>
+<body>
+    <header>
+        <%- include('../../partials/prestadoresHeader.ejs') %>
+    </header>
+    <main>
+        <h1 style="text-align: center;">Usuarios</h1>
+        <div class="container">
+            <div class="listContainer">
+                <div class="itemContainer">
+                    <div class="navBarContainer">
+
+                        <!-- Añadir trigger -->
+                        <button type="button" class="btn btn-success">
+                            <a href="/prestadores/agregarMedico" style="color: white; text-decoration: none;">Añadir</a>
+                        </button>
+                        <nav class="navbar navbar-expand-lg bg-light">
+
+                            <div class="container-fluid">
+                                <form class="d-flex" role="search">
+                                    <input class="form-control me-2" type="search" placeholder="Buscar usuario"
+                                        aria-label="Search">
+                                    <button class="btn btn-outline-success" type="submit">Buscar</button>
+                                </form>
+                            </div>
+                        </nav>
+                    </div>
+                    <div id="usuariosListado">
+                        <div class="d-flex justify-content-center">
+                            <div class="spinner-border m-5 text-success" role="status" id="loadingSpinner">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+    <%- include('../../partials/scriptPartials.ejs')  %>
+    <script src="/js/usuarios.js"></script>
+</body>
+</html>

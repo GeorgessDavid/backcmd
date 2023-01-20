@@ -3,7 +3,9 @@
 
 body {
     font-family: 'Fira Sans Condensed';
+    max-width: 100%;
     margin: 0;
+    background-image: url('../../img/prestadores_home_background.png');
 }
 
 

@@ -1,6 +1,7 @@
 <div class="row align-items-center">
     <div class="col">
-      <a href="/"><img src="../../img/logoCMD.png" width="65px" height="65px" alt="logo_CMD.png" style="margin-left: 2vw;"></a>
+        <a href="/"><img src="../../img/logoCMD.png" width="65px" height="65px" alt="logo_CMD.png"
+                style="margin-left: 2vw;"></a>
     </div>
     <div class="col">
     </div>
@@ -14,62 +15,71 @@
     </div>
     <div class="col">
     </div>
-    <div class="col">
-    </div>
-    <% if (locals.isLogged) { %>
-      <div class="col logout">
-        <a href="/prestadores/logout"><i class="fa-solid fa-power-off"></i> Cerrar sesión</a>
-      </div>
+    <% if (locals && usuario.Rol_id == 1) { %>
+        <div class="col">
+            <p style="color: white; text-align: center; margin-top: 15px;"><b>Hola, <%= usuario.nombre %>!</b> - <em style="font-size: 12px;">Administrador</em></p>
+        </div>
+        <% } else if (locals && usuario.Rol_id == 2) { %>
+            <div class="col">
+                <p style="color: white; text-align: center; margin-top: 15px;"><b>Hola, <% usuario.nombre %>!</b> - <em style="font-size: 12px;">Secretaría</em></p>
+            </div> 
+        <% } else if (locals && usuario.Rol_id == 3) { %>
+            <div class="col">
+                <p style="color: white; text-align: center; margin-top: 15px;"><b>Hola, <% usuario.nombre %>!</b> - <em style="font-size: 12px;">Profesional</em></p>
+            </div>         
     <% } %>
+    <% if (locals.isLogged) { %>
+        <div class="col logout">
+            <a href="/prestadores/logout"><i class="fa-solid fa-power-off"></i> Cerrar sesión</a>
+        </div>
+        <% } %>
 </div>
 <div>
-  <nav class="navbar navbar-expand-lg bg-light">
-    <div class="container-fluid" style="margin-left: 2vw;">
-        <% if (locals && usuario.Rol_id == 1) { %>
-            <a class="navbar-brand" href="/prestadores/admin/home">Home</a>
-        
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-            aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                        Usuario
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="/prestadores/agregarMedico">Agregar
-                                usuario</a></li>
-                        <li><a class="dropdown-item" href="#">Ver todos los usuarios</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link" href="/prestadores/especialidades"
-                        aria-expanded="false">
-                        Especialidades
-                    </a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link" href="/prestadores/admin/practicasMedicas"
-                        aria-expanded="false">
-                        Practicas Médicas
-                    </a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link" href="https://cmd-dashboard.onrender.com/"
-                        aria-expanded="false" target="_blank">
-                        Estadísticas <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                    </a>
-                </li>
-            <% } else if (locals && usuario.Rol_id == 2) { %>
-                <a class="navbar-brand" href="/prestadores/secretaria/home">Home</a>
-            <% } else if (locals && usuario.Rol_id == 3) { %>
-                <a class="navbar-brand" href="/prestadores/profesional/home">Home</a>
-            <% } %>
+    <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid" style="margin-left: 2vw;">
+            <% if (locals && usuario.Rol_id==1) { %>
+                <a class="navbar-brand" href="/prestadores/admin/home">Home</a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Usuario
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="/prestadores/agregarMedico">Agregar
+                                        usuario</a></li>
+                                <li><a class="dropdown-item" href="/prestadores/admin/users">Ver todos los usuarios</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="/prestadores/especialidades" aria-expanded="false">
+                                Especialidades
+                            </a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="/prestadores/admin/practicasMedicas" aria-expanded="false">
+                                Practicas Médicas
+                            </a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="https://cmd-dashboard.onrender.com/" aria-expanded="false"
+                                target="_blank">
+                                Estadísticas <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </li>
+                        <% } else if (locals && usuario.Rol_id==2) { %>
+                            <a class="navbar-brand" href="/prestadores/secretaria/home">Home</a>
+                            <% } else if (locals && usuario.Rol_id==3) { %>
+                                <a class="navbar-brand" href="/prestadores/profesional/home">Home</a>
+                                <% } %>
+                </div>
         </div>
-    </div>
-</nav>
+    </nav>
 </div>

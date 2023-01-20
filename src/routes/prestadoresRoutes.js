@@ -50,10 +50,11 @@ router.post("/login", prestadoresController.login)
 /*  ADMINS ROUTES */
 router.get("/admin/home", logInMiddleware.needLogin, userTypeAuth.admin, prestadoresController.home)
 router.get('/admin/practicasMedicas', logInMiddleware.needLogin, userTypeAuth.admin, prestadoresController.practicasMedicas)
+router.get('/admin/users', logInMiddleware.needLogin, userTypeAuth.admin, prestadoresController.users)
 
 
 /* USUARIOS ROUTES */
-router.get("/editandoPrestador/:id", logInMiddleware.needLogin, prestadoresController.editandoPrestador)
+router.get("/editandoPrestador/:id", logInMiddleware.needLogin, userTypeAuth.admin, prestadoresController.editandoPrestador)
 
 router.get("/agregarMedico", logInMiddleware.needLogin, userTypeAuth.admin, prestadoresController.agregarMedico)
 
@@ -62,14 +63,12 @@ router.post("/agregarMedico", uploadFile.single('profileImg'), validaciones.addU
 
 router.post("/editandoPrestador/:id",uploadFile.single('profileImg') ,validacionMedicoPublico, prestadoresController.editarMedicoPublico) //
 
-router.get("/home/confirmDelete/:id", prestadoresController.confirmarEliminacion);
-
-router.get("/home/confirmDelete/:id", logInMiddleware.needLogin, prestadoresController.confirmarEliminacion);
+router.get("/home/confirmDelete/:id", logInMiddleware.needLogin,  userTypeAuth.admin, prestadoresController.confirmarEliminacion);
 
 
 router.delete("/home/confirmDelete/:id", prestadoresController.deletePrestador);
 
-router.get("/eliminacionConfirmada", logInMiddleware.needLogin, prestadoresController.eliminacionConfirmada)
+router.get("/eliminacionConfirmada", logInMiddleware.needLogin, userTypeAuth.admin, prestadoresController.eliminacionConfirmada)
 
 router.put("/editarPrestador/:id", uploadFile.single('profileImg'), prestadoresController.editarPrestador)
 
