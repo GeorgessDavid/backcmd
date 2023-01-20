@@ -2,7 +2,7 @@ window.addEventListener('load', () => {
 
     let container = document.getElementById('divPracticasMedicas')
 
-    fetch('http://localhost:3005/tratamientos/api').then(response => {
+    fetch('https://dh-grupo3.onrender.com/tratamientos/api').then(response => {
         return response.json()
     }).then(datos => {
 
