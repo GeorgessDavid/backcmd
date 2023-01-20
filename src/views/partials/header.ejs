@@ -11,6 +11,14 @@
       <li><p><a  href="/prestadores/home">Prestadores</a></p></li> -->
          <% if (locals && usuario) { %>
             <li><p class="error" style="margin-right: 2vw;"> Bienvenido:  <%= usuario.nombre %> </p></li>
+            
+            <% if (locals && usuario.Rol_id == 1) { %>
+              <li><p><a  href="/prestadores/admin/home"> Home </a></p></li>
+              <% } else if (locals && usuario.Rol_id == 2) { %>
+                <li><p><a  href="/prestadores/secretaria/home"> Home </a></p></li>
+              <% } else if (locals && usuario.Rol_id == 3) { %>
+                <li><p><a  href="/prestadores/profesional/home"> Home </a></p></li>                              
+            <% } %>
          <% if (locals && turno)  { %>
              <li><p><a  href="/turnos/listar"> Mis Turnos </a></p></li>
          <% } %>

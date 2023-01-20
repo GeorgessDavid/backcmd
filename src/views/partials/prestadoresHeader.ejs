@@ -25,7 +25,9 @@
 <div>
   <nav class="navbar navbar-expand-lg bg-light">
     <div class="container-fluid" style="margin-left: 2vw;">
-        <a class="navbar-brand" href="/prestadores/home">Home</a>
+        <% if (locals && usuario.Rol_id == 1) { %>
+            <a class="navbar-brand" href="/prestadores/admin/home">Home</a>
+        
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
             data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
             aria-expanded="false" aria-label="Toggle navigation">
@@ -36,44 +38,37 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
-
                         Usuario
                     </a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="/prestadores/agregarMedico">Agregar
                                 usuario</a></li>
-                        <li><a class="dropdown-item" href="#">Editar usuario</a></li>
-                        <li><a class="dropdown-item" href="#">Eliminar usuario</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
                         <li><a class="dropdown-item" href="#">Ver todos los usuarios</a></li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                    <a class="nav-link" href="/prestadores/especialidades"
                         aria-expanded="false">
-                        Especialidad
+                        Especialidades
                     </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="/prestadores/agregarEspecialidad">Agregar
-                                especialidad</a></li>
-                        <li><a class="dropdown-item" href="#">Editar especialidad</a></li>
-                        <li><a class="dropdown-item" href="#">Eliminar especialidad</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="/prestadores/especialidades">Ver todas las especialidades</a></li>
-                    </ul>
                 </li>
-                <!--  <li class="nav-item">
-        <a class="nav-link disabled">Disabled</a>
-      </li>
-    </ul>
-    <form class="d-flex" role="search">
-      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success" type="submit">Search</button>
-    </form> -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link" href="/prestadores/admin/practicasMedicas"
+                        aria-expanded="false">
+                        Practicas Médicas
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link" href="https://cmd-dashboard.onrender.com/"
+                        aria-expanded="false" target="_blank">
+                        Estadísticas <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </a>
+                </li>
+            <% } else if (locals && usuario.Rol_id == 2) { %>
+                <a class="navbar-brand" href="/prestadores/secretaria/home">Home</a>
+            <% } else if (locals && usuario.Rol_id == 3) { %>
+                <a class="navbar-brand" href="/prestadores/profesional/home">Home</a>
+            <% } %>
         </div>
     </div>
 </nav>

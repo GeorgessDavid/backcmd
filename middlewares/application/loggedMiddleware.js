@@ -29,9 +29,10 @@ let userLoginValidation = {
     loggedHome: (req, res, next) => {
         if (req.session.usuario && validateToken(req, res, next)) {
             res.locals.isLogged = req.session.usuario
+            res.locals.userType = req.session.userType
 
             if (req.session.userType == 1) {
-                return res.redirect('/prestadores/home')
+                return res.redirect('/prestadores/admin/home')
             } else if (req.session.userType == 2) {
                 return res.redirect('/secretaria/home')
             } else if (req.session.userType == 3) {
@@ -39,6 +40,8 @@ let userLoginValidation = {
             } else {
                 return res.redirect('/')
             }
+
+    
         } else if (req.cookies.rememberMe) {
             req.session.usuario = req.cookies.rememberMe
             res.locals.isLogged = req.session.usuario;
@@ -47,8 +50,9 @@ let userLoginValidation = {
 
             let tipoUsuario = req.cookies.rememberMe.Rol_id;
 
+
             if (tipoUsuario == 1) {
-                return res.redirect('/prestadores/home')
+                return res.redirect('/prestadores/admin/home')
             } else if (tipoUsuario == 2) {
                 return res.redirect('/secretaria/home')
             } else if (tipoUsuario == 3) {

@@ -47,8 +47,9 @@ router.use(logInMiddleware.defaultLocals)
 router.get("/login", logInMiddleware.loggedHome, prestadoresController.index);
 router.post("/login", prestadoresController.login)
 
-/*  HOME + FUNCTIONS */
-router.get("/home", logInMiddleware.needLogin, userTypeAuth.admin, prestadoresController.home)
+/*  ADMINS ROUTES */
+router.get("/admin/home", logInMiddleware.needLogin, userTypeAuth.admin, prestadoresController.home)
+router.get('/admin/practicasMedicas', logInMiddleware.needLogin, userTypeAuth.admin, prestadoresController.practicasMedicas)
 
 
 /* USUARIOS ROUTES */

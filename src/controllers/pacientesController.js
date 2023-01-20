@@ -47,10 +47,9 @@ const controlador = {
                             res.cookie('rememberMe', usuarioEncontrado, { maxAge: 1000 * 60 * 60 * 24 * 360 })
                         }
 
-
                         // REDIRECCIÓN A HOME SEGÚN EL TIPO DE USUARIO
                         if (usuarioEncontrado.Rol_id == 1) {
-                            return res.redirect("/prestadores/home")
+                            return res.redirect("/prestadores/admin/home")
                         } else if (usuarioEncontrado.Rol_id == 2) {
                             return res.redirect("/secretaria/home")
                         } else if (usuarioEncontrado.Rol_id == 3) {

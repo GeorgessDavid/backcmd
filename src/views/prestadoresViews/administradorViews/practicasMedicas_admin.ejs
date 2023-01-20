@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prácticas médicas</title>
+    <%- include('../../partials/headPartials.ejs') %>
+        <link rel="stylesheet" href="/css/sectionPrestadores/especialidades_admin.css">
+</head>
+
+<body>
+    <header>
+        <%- include('../../partials/prestadoresHeader.ejs') %>
+    </header>
+    <main>
+        <h1 style="text-align: center;">Listado de prácticas médicas</h1>
+        <div class="container">
+            <div class="listContainer">
+                <div class="itemContainer">
+                    <div class="navBarContainer">
+
+                        <!-- Añadir trigger -->
+                        <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                            data-bs-target="#exampleModal">
+                            Añadir
+                        </button>
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Añadir práctica médica</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form action="/tratamientos/create" method="post" id="addTratamientoForm">
+<!--                                         <form id="addTratamientoForm"> -->
+                                            <div class="input-group input-group-sm mb-3">
+                                                <span class="input-group-text" id="inputGroup-sizing-sm">Práctica
+                                                    médica</span>
+                                                <input type="text" class="form-control"
+                                                    aria-label="Sizing example input"
+                                                    aria-describedby="inputGroup-sizing-sm" name="tratamiento"
+                                                    id="addPracticaMedicaInput">
+                                            </div>
+                                            <div id="divInput">
+
+                                            </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Cerrar</button>
+                                        <button type="submit" class="btn btn-success" id="addButton">Agregar</button>
+                                    </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <nav class="navbar navbar-expand-lg bg-light">
+
+                            <div class="container-fluid">
+                                <form class="d-flex" role="search">
+                                    <input class="form-control me-2" type="search" placeholder="Buscar especialidad"
+                                        aria-label="Search">
+                                    <button class="btn btn-outline-success" type="submit">Buscar</button>
+                                </form>
+                            </div>
+                        </nav>
+                    </div>
+                    <div id="divPracticasMedicas">
+                        <div class="d-flex justify-content-center">
+                            <div class="spinner-border m-5 text-success" role="status" id="loadingSpinner">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="/js/practicasMedicas.js"></script>
+    <%- include('../../partials/scriptPartials.ejs') %>
+</body>
+
+</html>

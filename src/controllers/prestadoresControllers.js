@@ -369,6 +369,10 @@ const prestadoresController = {
         } else {
             return res.render('prestadoresViews/agregarEspecialidad', { errors: errors.mapped() })
         }
+    },
+
+    practicasMedicas: (req, res) => {
+        return res.render('prestadoresViews/administradorViews/practicasMedicas_admin')
     }
 }
 
