@@ -66,7 +66,7 @@ const prestadoresController = {
                         res.cookie('rememberMe', userToLogin, { maxAge: 1000 * 60 * 60 * 24 * 360 })
                     }
 
-                    return res.redirect("/prestadores/home");
+                    return res.redirect("/prestadores/admin/home");
 
 
                 } else {
@@ -129,7 +129,7 @@ const prestadoresController = {
                                 imagen: req.file.filename
                             }).then((resultados) => {
                                 console.log("Usuario agregado: " + resultados)
-                                return res.redirect("/prestadores/home")
+                                return res.redirect("/prestadores/admin/home")
                             })
                         } else {
                             db.Usuario.create({
@@ -154,7 +154,7 @@ const prestadoresController = {
                                     Profesional_id: profesional.id,
                                     Especialidad_id: req.body.especialidad
                                 }).then(() => {
-                                    return res.redirect("/prestadores/home")
+                                    return res.redirect("/prestadores/admin/home")
                                 })
                             })
                         }
@@ -177,7 +177,7 @@ const prestadoresController = {
                                 imagen: "default_profile_img.png"
                             }).then((resultados) => {
                                 console.log("Usuario agregado: " + resultados)
-                                return res.redirect("/prestadores/home")
+                                return res.redirect("/prestadores/admin/home")
                             })
                         } else {
                             console.log(req.body.especialidad)
@@ -204,7 +204,7 @@ const prestadoresController = {
                                     Profesional_id: profesional.id,
                                     Especialidad_id: req.body.especialidad
                                 }).then(() => {
-                                    return res.redirect("/prestadores/home")
+                                    return res.redirect("/prestadores/admin/home")
                                 })
                             })
                         }
@@ -256,7 +256,7 @@ const prestadoresController = {
 
             fs.writeFileSync("./datos/publicMedicos.json", JSON.stringify(publicMedicos, null, " "));
 
-            res.redirect("/prestadores/home")
+            res.redirect("/prestadores/admin/home")
 
         } else {
             res.render('prestadoresViews/editarPrestador/:id', { errors: errors.mapped() })
@@ -323,7 +323,7 @@ const prestadoresController = {
 
         fs.writeFileSync(prestadoresFilePath, JSON.stringify(publicMedicos, null, " "));
 
-        res.redirect('/prestadores/home');
+        res.redirect('/prestadores/admin/home');
     },
     logout: (req, res) => {
         req.session.destroy();
