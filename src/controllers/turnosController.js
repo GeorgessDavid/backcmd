@@ -8,7 +8,7 @@ const controlador = {
     crear: (req,res) => {
         db.Usuario.findAll({
             where: {
-                Rol_id: 2
+                Rol_id: 3
             }
         }).then((profesionales) => {
             res.render("turnosCrear", {profesionales: profesionales})

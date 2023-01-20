@@ -7,7 +7,6 @@ const controlador = {
     },
 
     getEspecialidades: async (req, res) => {
-
         try {
             let especialidades = await db.Especialidad.findAll()
 

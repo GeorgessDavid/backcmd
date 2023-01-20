@@ -16,6 +16,16 @@ paciente
     user: martin
     pass: 12345678
 
+### Updates Spint 8
+
+- Creación de un dashboard inicial hecho en react: https://cmd-dashboard.onrender.com/
+- Creción de APIs para acceso desde el front-end
+  - https://dh-grupo3.onrender.com/apiUsuarios/pacientes
+  - https://dh-grupo3.onrender.com/turnos/api/listar
+  - https://dh-grupo3.onrender.com/apiUsuarios/profesionales
+  - https://dh-grupo3.onrender.com/especialidades/api
+
+
 ### Updates Sprint 6
 - Se crearon todos los modelos de la base de datos
 - Se ha añadido la funcionalidad de añadir un nuevo usuario a la base de datos.
