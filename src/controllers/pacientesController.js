@@ -51,9 +51,9 @@ const controlador = {
                         if (usuarioEncontrado.Rol_id == 1) {
                             return res.redirect("/prestadores/admin/home")
                         } else if (usuarioEncontrado.Rol_id == 2) {
-                            return res.redirect("/secretaria/home")
+                            return res.redirect("/prestadores/secretaria/home")
                         } else if (usuarioEncontrado.Rol_id == 3) {
-                            return res.redirect("/prestadores/home")
+                            return res.redirect("/prestadores/profesional/home")
                         } else {
                             db.Turno.findOne({ where: { Paciente_id: usuarioEncontrado.id } }).then((turnos) => {
                                 req.session.turno = turnos;

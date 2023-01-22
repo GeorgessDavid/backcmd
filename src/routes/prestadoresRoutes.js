@@ -52,6 +52,17 @@ router.get("/admin/home", logInMiddleware.needLogin, userTypeAuth.admin, prestad
 router.get('/admin/practicasMedicas', logInMiddleware.needLogin, userTypeAuth.admin, prestadoresController.practicasMedicas)
 router.get('/admin/users', logInMiddleware.needLogin, userTypeAuth.admin, prestadoresController.users)
 
+/* SECRETARIA ROUTES */
+router.get('/secretaria/home', logInMiddleware.loggedHome, userTypeAuth.secretaria, prestadoresController.home)
+
+
+/* PROFESIONALES ROUTES */
+router.get('/profesional/home', logInMiddleware.loggedHome, userTypeAuth.medic, prestadoresController.home)
+
+
+
+
+
 
 /* USUARIOS ROUTES */
 router.get("/editandoPrestador/:id", logInMiddleware.needLogin, userTypeAuth.admin, prestadoresController.editandoPrestador)
