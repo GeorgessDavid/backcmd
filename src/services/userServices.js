@@ -93,6 +93,19 @@ let usuarios = {
         }
     },
 
+    getOneUser: async (req, res) => {
+        try {
+            const usuario = await db.Usuario.findOne({where: 
+                {alias: req.params.id},
+                include: [{association: 'rol'}, {association: 'especialidad'}]})
+
+            return res.json({"data": usuario, "status": 200})
+        } catch (err) {
+            console.log(err)
+            res.render(err)
+        }
+    },
+
     getPacientes: async (req, res) => {
         try {
             const usuarios = await db.Usuario.findAll({ include: [{ association: 'especialidad' }, { association: 'rol' }, { association: 'obra_social' }] })

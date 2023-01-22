@@ -11,6 +11,7 @@ router.get('/administradores', apiController.getAdmins)
 router.get('/secretaria', apiController.getSecretarias)
 router.get("/profesionales", apiController.getProfesionales)
 router.get('/pacientes', apiController.getPacientes)
+router.get('/profesional/:id', apiController.getOneUser)
 
 router.post('/trabajadores', validations.addUsuario, apiController.createTrabajador)
 

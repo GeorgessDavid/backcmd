@@ -69,19 +69,15 @@ router.get("/editandoPrestador/:id", logInMiddleware.needLogin, userTypeAuth.adm
 
 router.get("/agregarMedico", logInMiddleware.needLogin, userTypeAuth.admin, prestadoresController.agregarMedico)
 
-router.post("/agregarMedico", uploadFile.single('profileImg'), validaciones.addUsuario, prestadoresController.agregarMedicoPublico)
-
-
-router.post("/editandoPrestador/:id",uploadFile.single('profileImg') ,validacionMedicoPublico, prestadoresController.editarMedicoPublico) //
+router.post("/agregarMedico", uploadFile.single('profileImg'), validaciones.addUsuario, prestadoresController.agregarMedicoPublico)//
 
 router.get("/home/confirmDelete/:id", logInMiddleware.needLogin,  userTypeAuth.admin, prestadoresController.confirmarEliminacion);
-
 
 router.delete("/home/confirmDelete/:id", prestadoresController.deletePrestador);
 
 router.get("/eliminacionConfirmada", logInMiddleware.needLogin, userTypeAuth.admin, prestadoresController.eliminacionConfirmada)
 
-router.put("/editarPrestador/:id", uploadFile.single('profileImg'), prestadoresController.editarPrestador)
+router.put("/editarUsuario/:id", uploadFile.single('profileImg'), prestadoresController.editarUsuario)
 
 /* ESPECIALIDAD ROUTES */
 

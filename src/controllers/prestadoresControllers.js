@@ -10,7 +10,8 @@ const publicMedicos = JSON.parse(fs.readFileSync(prestadoresFilePath, 'utf-8'))
 const innerDatabase = path.join(__dirname, '../../datos/innerDatabase.json')
 const prestadoresUsers = JSON.parse(fs.readFileSync(innerDatabase, 'utf-8'))
 const bcrypt = require('bcryptjs')
-const db = require('../../database/models')
+const db = require('../../database/models');
+const { response } = require("express");
 
 const user = {
     findByField: (field, text) => {
@@ -130,7 +131,7 @@ const prestadoresController = {
                                 domicilio: req.body.domicilio,
                                 sexo: req.body.sexo,
                                 nacimiento: req.body.nacimiento,
-                                matricula: req.body.matricula,
+                                matricula: "MN"+req.body.matricula,
                                 Obra_Social_id: null,
                                 imagen: req.file.filename
                             }).then((profesional) => {
@@ -166,7 +167,6 @@ const prestadoresController = {
                                 return res.redirect("/prestadores/admin/home")
                             })
                         } else {
-                            console.log(req.body.especialidad)
 
                             db.Usuario.create({
                                 Rol_id: req.body.userType,
@@ -180,7 +180,7 @@ const prestadoresController = {
                                 domicilio: req.body.domicilio,
                                 sexo: req.body.sexo,
                                 nacimiento: req.body.nacimiento,
-                                matricula: req.body.matricula,
+                                matricula: "MN"+req.body.matricula,
                                 Obra_Social_id: null,
                                 imagen: "default_profile_img.png"
                             }).then((profesional) => {
@@ -209,52 +209,114 @@ const prestadoresController = {
 
         }
     },
-    editarMedicoPublico: (req, res) => { // comienzo edicion Mariela
+    editarUsuario: (req, res) => { // comienzo edicion Mariela
         let errors = validationResult(req);
         console.log(errors)
 
+        let userToEdit = []
+
         if (errors.isEmpty()) {
             if (req.file) {
-                let nuevoMedico = {
-                    id: "CMD" + Date.now() + "P",
-                    nombre: req.body.nombre,
-                    apellido: req.body.apellido,
-                    especialidad: req.body.especialidad,
-                    especialidad2: req.body.especialidad2,
-                    sexo: req.body.sexo,
-                    estudios: req.body.estudios,
-                    profileImg: req.file.filename
-                };
-                publicMedicos.push(nuevoMedico)
-            } else {
-                let nuevoMedico = {
-                    id: "CMD" + Date.now() + "P",
-                    nombre: req.body.nombre,
-                    apellido: req.body.apellido,
-                    especialidad: req.body.especialidad,
-                    especialidad2: req.body.especialidad2,
-                    sexo: req.body.sexo,
-                    estudios: req.body.estudios,
-                    profileImg: "default_profile_img.png"
+                if(req.body.userType != 3){
+                    let o = {
+                        alias: req.body.alias,
+                        nombre: req.body.nombre,
+                        apellido: req.body.apellido,
+                        dni: req.body.dni,
+                        email: req.body.email,
+                        matricula: null,
+                        sexo: req.body.sexo,
+                        domicilio: req.body.domicilio,
+                        telerfono: req.body.telefono,
+                        imagen: req.file.filename,
+                        nacimiento: req.body.nacimiento,
+                        Obra_Social_id: null,
+                        Rol_id: req.body.userType,
+                        especialidad: null
+                    }
+
+                    userToEdit.push(o)
+                } else {
+                    let o = {
+                        alias: req.body.alias,
+                        nombre: req.body.nombre,
+                        apellido: req.body.apellido,
+                        dni: req.body.dni,
+                        email: req.body.email,
+                        matricula: "MN" + req.body.matricula,
+                        sexo: req.body.sexo,
+                        domicilio: req.body.domicilio,
+                        telerfono: req.body.telefono,
+                        imagen: req.file.filename,
+                        nacimiento: req.body.nacimiento,
+                        Obra_Social_id: null,
+                        Rol_id: req.body.userType,
+                        especialidad: [{
+                            id: req.body.especialidad
+                        }]
+                    }
+
+                    userToEdit.push(o)
                 }
-                publicMedicos.push(nuevoMedico)
+            } else {
+                if(req.body.userType != 3){
+                    let o = {
+                        alias: req.body.alias,
+                        nombre: req.body.nombre,
+                        apellido: req.body.apellido,
+                        dni: req.body.dni,
+                        email: req.body.email,
+                        matricula: null,
+                        sexo: req.body.sexo,
+                        domicilio: req.body.domicilio,
+                        telerfono: req.body.telefono,
+                        imagen: "default_profile_img.png",
+                        nacimiento: req.body.nacimiento,
+                        Obra_Social_id: null,
+                        Rol_id: req.body.userType,
+                        especialidad: null
+                    }
+
+                    userToEdit.push(o)
+                } else {
+                    let o = {
+                        alias: req.body.alias,
+                        nombre: req.body.nombre,
+                        apellido: req.body.apellido,
+                        dni: req.body.dni,
+                        email: req.body.email,
+                        matricula: "MN" + req.body.matricula,
+                        sexo: req.body.sexo,
+                        domicilio: req.body.domicilio,
+                        telerfono: req.body.telefono,
+                        imagen: "default_profile_img.png",
+                        nacimiento: req.body.nacimiento,
+                        Obra_Social_id: null,
+                        Rol_id: req.body.userType,
+                        especialidad: [{
+                            id: req.body.especialidad
+                        }]
+                    }
+
+                    userToEdit.push(o)
+                }
             }
-
-            fs.writeFileSync("./datos/publicMedicos.json", JSON.stringify(publicMedicos, null, " "));
-
-            res.redirect("/prestadores/admin/home")
-
+            console.log(userToEdit);
+            db.Usuario.update(userToEdit[0], {where: {
+                id: req.params.id
+            }, include: [{association: 'especialidad'}]}).then(response => {
+                console.log(response)
+                return res.redirect("/prestadores/admin/users")
+            })
         } else {
-            res.render('prestadoresViews/editarPrestador/:id', { errors: errors.mapped() })
+            return res.render('prestadoresViews/editarPrestador/:id', { errors: errors.mapped() })
         }
     },
     editandoPrestador: async (req, res) => {
 
-        let usuario = await db.Usuario.findByPk(req.params.id)
-
-        console.log(usuario)
+        let usuario = await db.Usuario.findByPk(req.params.id, {include: [{association: 'rol'}, {association:'especialidad'}]})
         
-        res.render('prestadoresViews/editarPrestador', { prestador: usuario })
+        res.render('prestadoresViews/editarPrestador', { userToEdit: usuario })
     },
 
     confirmarEliminacion: (req, res) => {

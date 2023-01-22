@@ -12,6 +12,15 @@ function profesionalTratDatabase(sequelize, DataTypes) {
 
 const profesionalTrat = sequelize.define(alias,cols,config) 
 
+profesionalTrat.associate = (models) => {
+  profesionalTrat.belongsToMany (models.Usuario, {
+    as: 'tratamiento',
+    through: 'Profesional_Tratamiento',
+    foreignKey: 'Tratamiento_id',
+    otherKey: 'Profesional_id+',
+    timestamps: false
+})
+}
 
 return profesionalTrat;
 }

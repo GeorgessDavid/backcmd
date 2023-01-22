@@ -4,12 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editando médico Público</title>
+    <title>Editando a <%= userToEdit.alias %> </title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
         integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <link rel="stylesheet" href="../../css/prestadoresPartials.css">
     <link rel="stylesheet" href="../../css/sectionPrestadores/secretariaAgregarMedicoPublico.css">
+    <link rel="icon" type="image/png" href="/img/logoCMD.png">
 </head>
 
 <body>
@@ -18,98 +19,210 @@
     </header>
     <main>
         <div class="divFormContainer">
-            <h1>Editar Médico Público</h1> <!---->
-            <form action="/prestadores/editarPrestador/<%= prestador.id %>?_method=PUT" method="POST" enctype="multipart/form-data">
+            <h1>Editar Usuario</h1> <!---->
+            <form action="/prestadores/editarUsuario/<%= userToEdit.id %>?_method=PUT" method="POST" enctype="multipart/form-data" id="formEditUser">
+                <div class="displayNone alert alert-danger" role="alert" id="divAlert">
+                    <ul id="errorList">
+
+                    </ul>
+                </div>
                 <div class="mb-3">
                     <div class="formMedicoNombre">
-                        <label for="exampleFormControlInput1" class="form-label">* Nombre(s):</label>
-                        <input type="text" class="form-control" id="exampleFormControlInput1" name="nombre"
-                               value="<%= prestador.nombre %>" placeholder="Nombre" required>
-                               <% if (locals && locals.errors) { %>
-                                <p class="error"> <%= locals.errors.nombre.msg %> </p>
-                            <% } %>
-                        <label for="exampleFormControlInput1" class="form-label">* Apellido(s):</label>
-                        <input type="text" class="form-control" id="exampleFormControlInput1" name="apellido"
-                               value="<%= prestador.apellido %>" placeholder="Apellido" required>
-                               <% if (locals && locals.errors) { %>
-                                <p class="error"> <%= locals.errors.apellido.msg %> </p>
-                            <% } %>
+                        <div class="input-group mb-3">
+                            <label class="input-group-text" for="inputGroupSelect01">Tipo de Usuario</label>
+                            <select name="userType" class="form-select" id="userType">
+                                <option selecter value="<%= userToEdit.Rol_id %>">
+                                    <%= userToEdit.rol.nombre %>
+                                </option>
+                                <option value="1">Administrador</option>
+                                <option value="2">Secretaría</option>
+                                <option value="3">Profesional</option>
+                            </select>
+                            <% if(locals && locals.errors) {%>
+                                <% if (locals.errors.userType) {%>
+                                    <h3 class="errors"><i class="fa-sharp fa-solid fa-xmark"></i>
+                                        <%= locals.errors.userType.msg %>
+                                    </h3>
+                                    <% } %>
+                                        <% } %>
+                        </div>
+                        <div class="input-group flex-nowrap">
+                            <span
+                                class="input-group-text <%= locals.errors && errors.alias ? 'inputError' : null %>">@</span>
+                            <input type="text"
+                                class="form-control <%= locals.errors && errors.alias ? 'inputError' : null %>"
+                                placeholder="Nombre de userToEdit" aria-label="Username" id="alias" name="alias"
+                                aria-describedby="addon-wrapping" value="<%= userToEdit.alias %> ">
+                        </div>
+                        <% if(locals && locals.errors) {%>
+                            <% if (locals.errors.alias) {%>
+                                <h3 class="errors"><i class="fa-sharp fa-solid fa-xmark"></i>
+                                    <%= locals.errors.alias.msg %>
+                                </h3>
+                                <% } %>
+                                    <% } %>
+                                        <br>
+                                        <h3>Datos del Usuario</h3>
+                                        <div class="row">
+                                            <div class="col">
+                                                <label for="exampleFormControlInput1"
+                                                    class="form-label">Nombre(s)*</label>
+                                                <input type="text"
+                                                    class="form-control <%= locals.errors && errors.nombre ? 'inputError' : null %>"
+                                                    id="nombre" name="nombre" placeholder="Nombre"
+                                                    value="<%= userToEdit.nombre %>">
+                                                <% if(locals && locals.errors) {%>
+                                                    <% if (locals.errors.nombre) {%>
+                                                        <h3 class="errors"><i class="fa-sharp fa-solid fa-xmark"></i>
+                                                            <%= locals.errors.nombre.msg %>
+                                                        </h3>
+                                                        <% } %>
+                                                            <% } %>
+                                            </div>
+                                            <div class="col">
+                                                <label for="exampleFormControlInput1"
+                                                    class="form-label">Apellido(s)*</label>
+                                                <input type="text"
+                                                    class="form-control <%= locals.errors && errors.apellido ? 'inputError' : null %>"
+                                                    id="apellido" name="apellido" placeholder="Apellido"
+                                                    value="<%= userToEdit.apellido %>">
+                                                <% if(locals && locals.errors) {%>
+                                                    <% if (locals.errors.apellido) {%>
+                                                        <h3 class="errors"><i class="fa-sharp fa-solid fa-xmark"></i>
+                                                            <%= locals.errors.apellido.msg %>
+                                                        </h3>
+                                                        <% } %>
+                                                            <% } %>
+                                            </div>
+                                        </div>
                     </div>
-                    <label for="exampleFormControlInput1" class="form-label">* Especialidad:</label>
-                    <input type="text" class="form-control" id="exampleFormControlInput1" name="especialidad"
-                           value="<%= prestador.especialidad %>" placeholder="Especialidad" required>
-                           <% if (locals && locals.errors) { %>
-                            <p class="error"> <%= locals.errors.especialidad.msg %> </p>
-                        <% } %>
-                    <label for="exampleFormControlInput1" class="form-label">Especialidad 2:</label>
-                    <input type="text" class="form-control" id="exampleFormControlInput1" name="especialidad2"
-                           value="<%= prestador.especialidad2 %>" placeholder="Especialidad 2">
-                    <div class="divOpcionales">
-
-                        <label for="sexo">* Sexo:
-                            <div class="form-check">
-                                <% if (prestador.sexo == "femenino") { %>
-                                <input class="form-check-input" type="radio" name="sexo" id="flexRadioDefault1"
-                                    value="femenino" checked>
-                                <% } else { %>
-                                <input class="form-check-input" type="radio" name="sexo" id="flexRadioDefault1"
-                                       value="femenino" >
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Email*</label>
+                        <input type="email" name="email"
+                            class="form-control <%= locals.errors && errors.email ? 'inputError' : null %>" id="email"
+                            placeholder="ejemplo@ejemplo.com" value="<%= userToEdit.email %>">
+                        <% if(locals && locals.errors) {%>
+                            <% if (locals.errors.email) {%>
+                                <h3 class="errors"><i class="fa-sharp fa-solid fa-xmark"></i>
+                                    <%= locals.errors.email.msg %>
+                                </h3>
                                 <% } %>
-                                <label class="form-check-label" for="flexRadioDefault1">
-                                    Femenino
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <% if (prestador.sexo == "masculino") { %>
-                                    <input class="form-check-input" type="radio" name="sexo" id="flexRadioDefault1"
-                                           value="masculino" checked>
-                                <% } else { %>
-                                    <input class="form-check-input" type="radio" name="sexo" id="flexRadioDefault1"
-                                           value="masculino">
+                                    <% } %>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label for="exampleFormControlInput1" class="form-label">Documento*</label>
+                            <input type="text"
+                                class="form-control <%= locals.errors && errors.dni ? 'inputError' : null %>" name="dni"
+                                placeholder="Número de Documento" aria-label="First name" id="dni" pattern="[0-9]+"
+                                value="<%= userToEdit.dni %>">
+                            <% if(locals && locals.errors) {%>
+                                <% if (locals.errors.dni) {%>
+                                    <h3 class="errors"><i class="fa-sharp fa-solid fa-xmark"></i>
+                                        <%= locals.errors.dni.msg %>
+                                    </h3>
+                                    <% } %>
+                                        <% } %>
+                        </div>
+                        <div class="col">
+                            <label for="exampleFormControlInput1" class="form-label">Teléfono*</label>
+                            <input type="text"
+                                class="form-control <%= locals.errors && errors.telefono ? 'inputError' : null %>"
+                                placeholder="Número de Teléfono" aria-label="Last name" name="telefono" id="telefono"
+                                value="<%= userToEdit.telefono %>">
+                            <% if(locals && locals.errors) {%>
+                                <% if (locals.errors.telefono) {%>
+                                    <h3 class="errors"><i class="fa-sharp fa-solid fa-xmark"></i>
+                                        <%= locals.errors.telefono.msg %>
+                                    </h3>
+                                    <% } %>
+                                        <% } %>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <label for="inputAddress" class="form-label">Domicilio*</label>
+                        <input type="text"
+                            class="form-control <%= locals.errors && errors.domicilio ? 'inputError' : null %>"
+                            name="domicilio" id="inputAddress" placeholder="Padre Silberman 1740, Santos Lugares"
+                            value="<%= userToEdit.domicilio %>">
+                        <% if(locals && locals.errors) {%>
+                            <% if (locals.errors.domicilio) {%>
+                                <h3 class="errors"><i class="fa-sharp fa-solid fa-xmark"></i>
+                                    <%= locals.errors.domicilio.msg %>
+                                </h3>
                                 <% } %>
-                                <label class="form-check-label" for="flexRadioDefault1">
-                                    Masculino
-                                </label>
-                            </div>
-                            <label for="estudios">* Realiza estudios:
-                                <div class="form-check">
-                                    <% if (prestador.estudios == "si") { %>
-                                        <input class="form-check-input" type="radio" name="estudios" id="flexRadioDefault1"
-                                               value="si" checked>
-                                    <% } else { %>
-                                        <input class="form-check-input" type="radio" name="estudios" id="flexRadioDefault1"
-                                               value="si">
                                     <% } %>
-                                    <label class="form-check-label" for="flexRadioDefault1">
-                                        Si
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <% if (prestador.estudios == "no") { %>
-                                        <input class="form-check-input" type="radio" name="estudios" id="flexRadioDefault1"
-                                               value="no" checked>
-                                    <% } else { %>
-                                        <input class="form-check-input" type="radio" name="estudios" id="flexRadioDefault1"
-                                               value="no">
-                                    <% } %>
-                                    <label class="form-check-label" for="flexRadioDefault1">
-                                        No
-                                    </label>
-                                </div>
-                            </label>
-                            <div class="input-group mb-3">
-                                <label class="input-group-text" for="inputGroupFile01">Foto de Perfil</label>
-                                <input type="file" class="form-control" id="inputGroupFile01" accept="image/*"
-                                    name="profileImg">
+                    </div>
+                    <br>
+                    <div>
+                        <div class="row">
+                            <div class="col">
+                                <label for="sexo">Sexo*
+                                    <% if (userToEdit.sexo==false) { %>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="sexo"
+                                                id="flexRadioDefault1" value="0" checked>
+                                            <label class="form-check-label" for="flexRadioDefault1">
+                                                Femenino
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="sexo"
+                                                id="flexRadioDefault1" value="1">
+                                            <label class="form-check-label" for="flexRadioDefault1">
+                                                Masculino
+                                            </label>
+                                        </div>
+                                        <% } else { %>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="sexo"
+                                                    id="flexRadioDefault1" value="0">
+                                                <label class="form-check-label" for="flexRadioDefault1">
+                                                    Femenino
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="sexo"
+                                                    id="flexRadioDefault1" value="1" checked>
+                                                <label class="form-check-label" for="flexRadioDefault1">
+                                                    Masculino
+                                                </label>
+                                            </div>
+                                        <% } %> 
+                                            <% if(locals && locals.errors) {%>
+                                                <% if (locals.errors.sexo) {%>
+                                                    <h3 class="errors"><i class="fa-sharp fa-solid fa-xmark"></i>
+                                                        <%= locals.errors.sexo.msg %>
+                                                    </h3>
+                                                    <% } %>
+                                                        <% } %>
                             </div>
+                            <div class="col">
+                                <label for="nacimiento">Fecha de nacimiento</label>
+                                <input type="date" name="nacimiento" class="dateInput" min="1915-01-01" id="datefield" value="<%= userToEdit.nacimiento %>">
+                            </div>
+                        </div>
+                        <br>
+                        <div class="input-group mb-3">
+                            <label class="input-group-text" for="inputGroupFile01">Foto de
+                                Perfil</label>
+                            <input type="file" class="form-control" id="inputGroupFile01" accept="image/*"
+                                name="profileImg">
+                        </div>
                     </div>
                 </div>
+                <div id="medicData">
+
+                </div>
                 <h6>* Campos obligatorios</h6>
-                <button type="submit" class="btn btn-success">Editar Médico Público</button>
+                <button type="submit" class="btn btn-success" id="liveAlertBtn">Editar Usuario </button>
                 <a href="/prestadores/admin/users"><button type="button" class="btn btn-danger">Volver</button></a>
             </form>
         </div>
     </main>
+    <script src="/js/editarUsuario.js"></script>
+    <script src="/js/dateToday.js"></script>
+    <%- include('../partials/scriptPartials.ejs') %>
 </body>
 
 </html>

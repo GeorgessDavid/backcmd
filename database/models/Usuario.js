@@ -93,6 +93,14 @@ function usuariosDatabase(sequelize, DataTypes) {
             otherKey: 'Especialidad_id',
             timestamps: false
         })
+
+        usuarios.belongsToMany (models.Tratamiento, {
+            as: 'tratamiento',
+            through: 'Profesional_Tratamiento',
+            foreignKey: 'Profesional_id',
+            otherKey: 'Tratamiento_id',
+            timestamps: false
+        })
     }
 
     return usuarios;
