@@ -18,9 +18,6 @@ window.addEventListener('load', () => {
 
             for (let i = 0; i < datos.data.length; i++) {
 
-                console.log(datos.data[i].nombre)
-                console.log(datos.data[i].id)
-
                 container.innerHTML += `<div class="itemBox">
                     <h2>${datos.data[i].nombre}</h2>
                     <div class="buttons">
@@ -77,7 +74,7 @@ window.addEventListener('load', () => {
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                                     <form action="/especialidades/eliminar/${datos.data[i].id}?_method=DELETE" method="POST" id="deleteForm${i}">
                                         <button type="submit" class="btn btn-danger">Eliminar</button>
-                                    </form
+                                    </form>
                                 </div>
                             </div>
                             </div>

@@ -82,16 +82,15 @@ window.addEventListener('load', () => {
         }
     })
 
-    let form = document.getElementById('addTratamientoForm')
+    let button = document.getElementById('addButton')
 
 
 
-    form.addEventListener('submit', (e) => {
+    button.addEventListener('click', async (e) => {
         let errores = [];
 
         let inputNombre = document.getElementById('addPracticaMedicaInput')
 
-        console.log(inputNombre.value)
 
         if (inputNombre.value == "") {
             errores.push('Debe introducir el nombre de la práctica.')
@@ -109,53 +108,25 @@ window.addEventListener('load', () => {
             divInput.style.color = "red"
         } else {
 
-            let timerInterval
-            Swal.fire({
-                html: 'La práctica médica ha sido creada exitosamente.',
-                timer: 2000,
-                timerProgressBar: true,
-                background: '#9effd0',
-                position: 'top-end',
-                didOpen: () => {
-                    Swal.showLoading()
-                    const b = Swal.getHtmlContainer().querySelector('b')
-                    timerInterval = setInterval(() => {
-                        b.textContent = Swal.getTimerLeft()
-                    }, 100)
-                },
-                willClose: () => {
-                    clearInterval(timerInterval)
-                }
-            }).then((result) => {
-                if (result.dismiss === Swal.DismissReason.timer) {
-                    console.log('I was closed by the timer')
-
-                }
-            })
-s
-            /* let informacion = {
+            let informacion = {
                 tratamiento: inputNombre.value
             }
 
-            let settings = {
-                "method": "POST",
-                "headers": {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                "body": JSON.stringify(informacion)
-            }
+            const requestOptions = {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(informacion)
+            };
 
-            console.log(settings.body)
 
-            fetch("http://localhost:3005/tratamientos/create", settings)
+            fetch("https://dh-grupo3.onrender.com/tratamientos/create", requestOptions)
                 .then(response => {
                     return response.json()
                 }).then(info => {
                     if (info.status == 201) {
                         let timerInterval
                         Swal.fire({
-                            html: 'La práctica médica ha sido creada exitosamente.',
+                            html: 'La práctica médica ha sido creada exitosamente. Se recargará la página.',
                             timer: 2000,
                             timerProgressBar: true,
                             background: '#9effd0',
@@ -202,8 +173,7 @@ s
                     }
                 }).catch(err => {
                     console.log(err)
-                }) */
+                })
         }
-
     })
 })

@@ -13,6 +13,7 @@ const cors = require('cors')
 
 // middlewares
 app.use(express.urlencoded({extended: false}))
+app.use(express.json())
 app.use(methodOverride('_method'));
 app.use(session({secret: "Somos nosotros", resave: false, saveUninitialized: false,}))
 app.use(cookies());
