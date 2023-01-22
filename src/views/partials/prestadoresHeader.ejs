@@ -21,11 +21,11 @@
         </div>
         <% } else if (locals && usuario.Rol_id == 2) { %>
             <div class="col">
-                <p style="color: white; text-align: center; margin-top: 15px;"><b>Hola, <% usuario.nombre %>!</b> - <em style="font-size: 12px;">Secretaría</em></p>
+                <p style="color: white; text-align: center; margin-top: 15px;"><b>Hola, <%= usuario.nombre %>!</b> - <em style="font-size: 12px;">Secretaría</em></p>
             </div> 
         <% } else if (locals && usuario.Rol_id == 3) { %>
             <div class="col">
-                <p style="color: white; text-align: center; margin-top: 15px;"><b>Hola, <% usuario.nombre %>!</b> - <em style="font-size: 12px;">Profesional</em></p>
+                <p style="color: white; text-align: center; margin-top: 15px;"><b>Hola, <%= usuario.nombre %>!</b> - <em style="font-size: 12px;">Profesional</em></p>
             </div>         
     <% } %>
     <% if (locals.isLogged) { %>
