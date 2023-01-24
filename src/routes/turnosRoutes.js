@@ -14,6 +14,7 @@ router.post("/crear",logInMiddleware.needLogin,turnosController.store )
 router.get("/listar",logInMiddleware.needLogin,turnosController.listar )
 
 router.get("/api/listar",turnosServices.apiListar ) //api
+router.get("/api/today", turnosServices.currentDay)
 
 
 module.exports = router;

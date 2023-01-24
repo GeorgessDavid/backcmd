@@ -1,26 +1,26 @@
 function rolesDatabase(sequelize, DataTypes) {
-    alias = 'Rol';
+  alias = 'Rol';
 
-    cols = {  
-        id: {type: DataTypes.INTEGER, primaryKey: true},
-        nombre: {type: DataTypes.STRING(70),allowNull: false}, 
-      }
+  cols = {
+    id: { type: DataTypes.INTEGER, primaryKey: true },
+    nombre: { type: DataTypes.STRING(70), allowNull: false },
+  }
 
-      config = {camelCase: false, timestamps: false, freezeTableName: true}; 
+  config = { camelCase: false, timestamps: false, freezeTableName: true };
 
 
-const roles = sequelize.define(alias,cols,config);
+  const roles = sequelize.define(alias, cols, config);
 
-roles.Associate = function(models){
-        
-  roles.hasMany(models.Usuario, {
+  roles.Associate = function (models) {
+
+    roles.hasMany(models.Usuario, {
       as: 'usuarios',
       foreignKey: 'Usuario_id',
     })
 
-}
+  }
 
-return roles;
+  return roles;
 }
 
 module.exports = rolesDatabase;

@@ -34,9 +34,9 @@ let userLoginValidation = {
             if (req.session.userType == 1) {
                 return res.redirect('/prestadores/admin/home')
             } else if (req.session.userType == 2) {
-                return res.redirect('/secretaria/home')
+                return res.redirect('/prestadores/secretaria/home')
             } else if (req.session.userType == 3) {
-                return res.redirect('/prestadores/home')
+                return res.redirect('/prestadores/profesional/home')
             } else {
                 return res.redirect('/')
             }
@@ -50,13 +50,14 @@ let userLoginValidation = {
 
             let tipoUsuario = req.cookies.rememberMe.Rol_id;
 
+            req.session.token = req.session.rememberMeToken
 
             if (tipoUsuario == 1) {
                 return res.redirect('/prestadores/admin/home')
             } else if (tipoUsuario == 2) {
-                return res.redirect('/secretaria/home')
+                return res.redirect('/prestadores/secretaria/home')
             } else if (tipoUsuario == 3) {
-                return res.redirect('/prestadores/home')
+                return res.redirect('/prestadores/profesional/home')
             } else {
                 return res.redirect('/')
             }

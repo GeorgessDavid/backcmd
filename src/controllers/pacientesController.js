@@ -45,6 +45,7 @@ const controlador = {
 
                         if (req.body.recordarme) { // CHECKBOX DE "MANTENER SESIÓN INICIADA"
                             res.cookie('rememberMe', usuarioEncontrado, { maxAge: 1000 * 60 * 60 * 24 * 360 })
+                            res.cookie('rememberMeToken', token, { maxAge: 1000 * 60 * 60 * 24 * 360 })
                         }
 
                         // REDIRECCIÓN A HOME SEGÚN EL TIPO DE USUARIO

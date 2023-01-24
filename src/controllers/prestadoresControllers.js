@@ -415,6 +415,10 @@ const prestadoresController = {
 
     practicasMedicas: (req, res) => {
         return res.render('prestadoresViews/administradorViews/practicasMedicas_admin')
+    },
+
+    secretariaTurnos: (req, res) => {
+        return res.render('prestadoresViews/secretariaViews/turnosListado')
     }
 }
 

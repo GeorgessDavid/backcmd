@@ -75,22 +75,22 @@ let usuarios = {
 
 
     getProfesionales: async (req, res) => {
-        try {
+/*         try { */
 
             const profesionales = await db.Usuario.findAll(
                 {
                     where: {
                         Rol_id: 3
                     },
-                    include: [{ association: 'especialidad' }, { association: 'rol' }]
+                    include: [{ association: 'especialidad' }, { association: 'rol' }, {association: 'tratamiento'}]
                 }
             )
 
             res.json({ "total": profesionales.length, "data": profesionales, "status": 200 })
-        } catch (error) {
+        /* } catch (error) {
             res.render(error);
             console.log(error)
-        }
+        } */
     },
 
     getOneUser: async (req, res) => {

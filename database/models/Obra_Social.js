@@ -19,7 +19,7 @@ function obrasSocialesDatabase(sequelize, DataTypes) {
     obras_sociales.Associate = function(models) {
 
         obras_sociales.hasMany(models.Usuario, {
-            as: 'usuarios',
+            as: 'obra_social',
             foreignKey: 'Obra_Social_id'
         })
         obras_sociales.belongsToMany(models.Profesional, {

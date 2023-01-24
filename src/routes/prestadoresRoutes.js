@@ -53,11 +53,12 @@ router.get('/admin/practicasMedicas', logInMiddleware.needLogin, userTypeAuth.ad
 router.get('/admin/users', logInMiddleware.needLogin, userTypeAuth.admin, prestadoresController.users)
 
 /* SECRETARIA ROUTES */
-router.get('/secretaria/home', logInMiddleware.loggedHome, userTypeAuth.secretaria, prestadoresController.home)
+router.get('/secretaria/home', logInMiddleware.needLogin, userTypeAuth.secretaria, prestadoresController.home)
+router.get('/secretaria/turnos', logInMiddleware.needLogin, userTypeAuth.secretaria, prestadoresController.secretariaTurnos);
 
 
 /* PROFESIONALES ROUTES */
-router.get('/profesional/home', logInMiddleware.loggedHome, userTypeAuth.medic, prestadoresController.home)
+router.get('/profesional/home', logInMiddleware.needLogin, userTypeAuth.medic, prestadoresController.home)
 
 
 
