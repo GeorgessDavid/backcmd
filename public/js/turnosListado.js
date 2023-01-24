@@ -1,41 +1,29 @@
-var today = new Date();
-var dd = today.getDate();
-var mm = today.getMonth() + 1; //January is 0!
-var yyyy = today.getFullYear();
-var hh = today.getHours()
-var mm = today.getMinutes()
-
-if (dd < 10) {
-   dd = '0' + dd;
-}
-
-if (mm < 10) {
-   mm = '0' + mm;
-}
-
-today = yyyy + '-' + mm + '-' + dd;
-
-
 window.addEventListener('load', () => {
     let e = document.getElementById('profesionalSelect')
-    
-    document.getElementById("calendary").setAttribute("min", today)
 
-    fetch('http://localhost:3005/apiUsuarios/profesionales').then(r => {
+    
+
+    fetch('https://dh-grupo3.onrender.com/apiUsuarios/profesionales').then(r => {
         return r.json()
     }).then(l => {
         for (let i = 0; i < l.data.length; i++) {
             const p = l.data[i];
-            
+
             e.innerHTML += `<option value="${p.id}"> ${p.apellido.toUpperCase()}, ${p.nombre} </option>`
         }
     })
 
     let tableData = document.getElementById('datosTabla')
 
-    fetch('http://localhost:3005/turnos/api/listar').then(r => {
+    fetch('https://dh-grupo3.onrender.com/turnos/api/listar').then(r => {
         return r.json()
     }).then(g => {
+        let spinner = document.getElementById('loadingSpinner')
+
+        spinner.style.visibility = 'hidden';
+        spinner.style.opacity = '0';
+        spinner.classList.remove('m-5')
+        
         for (let i = 0; i < g.data.length; i++) {
             const p = g.data[i];
 

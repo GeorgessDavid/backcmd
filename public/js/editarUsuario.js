@@ -9,7 +9,7 @@ window.addEventListener('load', () => {
     let form = document.getElementById('formEditUser')
 
     if (userType.value == 3) {
-        let direccion = "http://localhost:3005/apiUsuarios/profesional/" + alias
+        let direccion = "https://dh-grupo3.onrender.com/apiUsuarios/profesional/" + alias
         fetch(direccion).then(res => {
             return res.json()
         }).then(datos => {

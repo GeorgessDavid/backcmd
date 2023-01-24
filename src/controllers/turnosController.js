@@ -21,7 +21,7 @@ const controlador = {
             fecha_turno: req.body.fecha,
             Paciente_id: req.session.usuario.id,
             Profesional_id: req.body.profesional,
-            presente: true
+            presente: false
         }
         console.log(turno)
         db.Turno.create(turno).then(() => { res.redirect('/turnos/listar') })

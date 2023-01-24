@@ -89,6 +89,8 @@ const controlador = {
         console.log(errors)
         if (errors.isEmpty()) {
 
+            console.log(req.body.sexo)
+
             let paciente = {
                 alias: req.body.usuario,
                 nombre: req.body.nombre,
@@ -98,9 +100,9 @@ const controlador = {
                 telefono: req.body.telefono,
                 email: req.body.email,
                 nacimiento: req.body.nacimiento,
-                sexo: true,  //req.body.sexo,
-                Rol_id: 4, //req.body.Rol_id,
-                Obra_Social_id: 1, //req.body.Obra_Social_id,
+                sexo: req.body.sexo,
+                Rol_id: 4,
+                Obra_Social_id: req.body.obraSocial,
                 clave: bcrypt.hashSync(req.body.password, 10),
                 imagen: "default_profile_img.png"
             }

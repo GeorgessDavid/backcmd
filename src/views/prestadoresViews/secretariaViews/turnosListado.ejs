@@ -28,7 +28,7 @@
             </div>
             <div class="daySelection">
                 <h4>Calendario</h4>
-                <input type="date" id="calendary">
+                <input type="date" min="2023-01-01" id="calendary">
             </div>
         </nav>
         <div class="mainBody table-responsive">
@@ -51,6 +51,11 @@
                     
                 </tbody>
             </table>
+            <div class="d-flex justify-content-center">
+                <div class="spinner-border m-5 text-success" role="status" id="loadingSpinner">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
         </div>
     </main>
     <%- include('../../partials/scriptPartials.ejs') %>
