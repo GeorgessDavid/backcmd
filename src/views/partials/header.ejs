@@ -19,7 +19,7 @@
               <% } else if (locals && usuario.Rol_id == 3) { %>
                 <li><p><a  href="/prestadores/profesional/home"> Home </a></p></li>                              
             <% } %>
-         <% if (locals && turno)  { %>
+         <% if (locals && usuario)  { %>
              <li><p><a  href="/turnos/listar"> Mis Turnos </a></p></li>
          <% } %>
          <li><p><a  href="/pacientes/logout"> Cerrar Sesión </a></p></li>

@@ -29,7 +29,9 @@
               <label class="tituloTurnos">Fecha del turno:</label> <%= turno.fecha_turno %>
               <label class="tituloTurnos">Nombre del profesional:</label> <%= turno.profesional.nombre %>
               <label class="tituloTurnos">Apellido del profesional:</label><%= turno.profesional.apellido %>
-            <form action="/turnos/borrar/<%= turno.id %>?_method=DELETE" method="POST">
+                <label class="tituloTurnos">Correo electronico:</label><%= turno.profesional.email %>
+
+                <form action="/turnos/borrar/<%= turno.id %>?_method=DELETE" method="POST">
                 <button type="submit" class="btn btn-danger">Cancelar Turno</button>
             </form>
             </div>
