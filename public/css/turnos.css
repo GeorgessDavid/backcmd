@@ -387,12 +387,36 @@ section.banner-turnos h1{
 }
 
 /* ---TURNOS---*/
+.divTurnos{
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    border: #0a53be 2px solid;
+}
+
+.tituloTurnos{
+    font-family: 'Fira Sans Condensed';
+    font-weight: bold;
+    font-size: 1.5em;
+    color: #012B78;
+    padding-top: 1vw;
+    padding-bottom: 1vw;
+}
 
 .divTurnosSection{
     width: 90%;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
+    position: relative;
+}
+
+.divTurnosLista{
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     position: relative;
 }
 

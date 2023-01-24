@@ -24,15 +24,27 @@ const controlador = {
             presente: true
         }
         console.log(turno)
-        db.Turno.create(turno).then(() => { res.redirect('/') })
+        db.Turno.create(turno).then(() => { res.redirect('/turnos/listar') })
+    },
+    delete: (req,res) => {
+        db.Turno.destroy({
+            where: {
+                id: req.params.id
+            }
+        }).then(() => { res.redirect('/turnos/listar') })
     },
     listar: (req,res) => {
         db.Turno.findAll({
             where: {
                 Paciente_id: req.session.usuario.id
-            }
+            },
+            include: [
+                {association: "profesional"},
+            ]
         }).then((turnos) => {
+            console.log(turnos.fecha_turno)
             res.render("turnosListar", {turnos: turnos})
+
         })
     }
 
