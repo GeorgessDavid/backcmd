@@ -13,6 +13,8 @@ router.post("/crear",logInMiddleware.needLogin,turnosController.store )
 
 router.get("/listar",logInMiddleware.needLogin,turnosController.listar )
 
+router.delete("/borrar/:id",logInMiddleware.needLogin,turnosController.delete )
+
 router.get("/api/listar",turnosServices.apiListar ) //api
 
 

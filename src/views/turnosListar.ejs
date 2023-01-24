@@ -21,16 +21,19 @@
   </section>
          <section>
              <h3>Mis Turnos</h3>
-
          </section>
      <section>   <!--SECTION TURNOS-->
-      <div class="divTurnosSection">
+      <div class="divTurnosLista">
           <% for (turno of turnos) { %>
             <div class="divTurnos">
-              <p><%= turno.fecha_turno %></p>
-              <p><%= turno.Profesional_id %></p>
-              <p><%= turno.presente %></p>
+              <label class="tituloTurnos">Fecha del turno:</label> <%= turno.fecha_turno %>
+              <label class="tituloTurnos">Nombre del profesional:</label> <%= turno.profesional.nombre %>
+              <label class="tituloTurnos">Apellido del profesional:</label><%= turno.profesional.apellido %>
+            <form action="/turnos/borrar/<%= turno.id %>?_method=DELETE" method="POST">
+                <button type="submit" class="btn btn-danger">Cancelar Turno</button>
+            </form>
             </div>
+
             <% } %>
       </div>
     </section>
