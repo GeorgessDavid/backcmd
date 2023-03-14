@@ -143,19 +143,19 @@ const prestadoresController = {
 
                                 let profTratamiento = {
                                     Profesional_id: profesional.id,
-                                    Tratamiento_id: req.body.practicaMedica 
+                                    Tratamiento_id: req.body.practicaMedica
                                 }
 
                                 db.Profesional_Especialidad.create(profEspecialidad).then(() => {
-                                    for(let x of profTratamiento.Tratamiento_id){
-                                        
+                                    for (let x of profTratamiento.Tratamiento_id) {
+
                                         profTratamiento.Tratamiento_id = x
 
                                         db.Profesional_Tratamiento.create(profTratamiento).then(() => {
                                             console.log("Creado")
                                         })
                                     }
-                                }).then( ()=> {
+                                }).then(() => {
                                     return res.redirect("/prestadores/admin/home")
                                 })
                             })
@@ -208,19 +208,19 @@ const prestadoresController = {
 
                                 let profTratamiento = {
                                     Profesional_id: profesional.id,
-                                    Tratamiento_id: req.body.practicaMedica 
+                                    Tratamiento_id: req.body.practicaMedica
                                 }
 
                                 db.Profesional_Especialidad.create(profEspecialidad).then(() => {
-                                    for(let x of profTratamiento.Tratamiento_id){
-                                        
+                                    for (let x of profTratamiento.Tratamiento_id) {
+
                                         profTratamiento.Tratamiento_id = x
 
                                         db.Profesional_Tratamiento.create(profTratamiento).then(() => {
                                             console.log("Creado")
                                         })
                                     }
-                                }).then( ()=> {
+                                }).then(() => {
                                     return res.redirect("/prestadores/admin/home")
                                 })
                             })
@@ -369,8 +369,12 @@ const prestadoresController = {
     deletePrestador: (req, res) => {
 
         let id = req.params.id
-        db.Usuario.destroy({ where: { id: id } }).then(() => {
-            return res.redirect('/prestadores/eliminacionConfirmada');
+        db.Profesional_Especialidad.destroy({ where: { Profesional_id: id } }).then(() => {
+            db.Profesional_Tratamiento.destroy({ where: { Profesional_id: id } }).then(() => {
+                db.Usuario.destroy({ where: { id: id } }).then(() => {
+                    return res.redirect('/prestadores/eliminacionConfirmada');
+                })
+            })
         })
     },
 
