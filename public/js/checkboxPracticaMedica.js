@@ -10,14 +10,20 @@ window.addEventListener('load', () => {
     for (let i = 0; i < l.data.length; i++) {
       const e = l.data[i];
 
+      let spanLoad = document.getElementById('loadSpan')
+
       let spinner = document.getElementById('loadingSpinner')
 
             spinner.style.visibility = 'hidden';
             spinner.style.opacity = '0';
             spinner.classList.remove('m-5')
 
+            spanLoad.style.visibility ="hidden";
+            spanLoad.style.opacity = '0'
+
       checkboxArea.innerHTML += `
-        <div class="col">
+      <div class="col">
+        <div class="d-flex justify-content-between" id="checkboxArea">
             <div class="form-check">
               <input class="form-check-input" type="checkbox" value="${e.id}" id="flexCheckDefault ${i}">
               <label class="form-check-label" for="flexCheckDefault" name="practicaMedica">
@@ -30,7 +36,8 @@ window.addEventListener('load', () => {
                 ${l.data[i+1].nombre}
               </label>
             </div>
-        </div>`
+        </div>
+      </div>`
       i = i + 1
     }
   })
