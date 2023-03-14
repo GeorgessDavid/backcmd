@@ -25,13 +25,13 @@ window.addEventListener('load', () => {
       <div class="col">
         <div class="d-flex justify-content-between" id="checkboxArea">
             <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="${e.id}" id="flexCheckDefault ${i}">
-              <label class="form-check-label" for="flexCheckDefault" name="practicaMedica">
+              <input class="form-check-input" type="checkbox" value="${e.id}" id="flexCheckDefault ${i}" name="practicaMedica">
+              <label class="form-check-label" for="flexCheckDefault">
                 ${e.nombre}
               </label>
             </div>
             <div class="form-check form-check-reverse">
-              <input class="form-check-input" type="checkbox" value="${l.data[i + 1].value}" id="reverseCheck1${i+1}" name="practicaMedica">
+              <input class="form-check-input" type="checkbox" value="${l.data[i + 1].id}" id="reverseCheck1${i+1}" name="practicaMedica">
               <label class="form-check-label" for="reverseCheck1">
                 ${l.data[i+1].nombre}
               </label>

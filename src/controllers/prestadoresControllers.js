@@ -30,8 +30,8 @@ const prestadoresController = {
     },
     home: (req, res) => {
 
-            return res.render('prestadoresViews/prestadoresHome')
-        
+        return res.render('prestadoresViews/prestadoresHome')
+
         // return res.render('prestadoresViews/prestadoresHome', { ps: publicMedicos })
     },
     login: (req, res) => {
@@ -84,7 +84,7 @@ const prestadoresController = {
         })
 
     },
-    agregarMedicoPublico: async (req, res) => {
+    addUserPost: async (req, res) => {
         let errors = validationResult(req);
 
         let especialidad = await db.Especialidad.findAll();
@@ -115,7 +115,6 @@ const prestadoresController = {
                                 Obra_Social_id: null,
                                 imagen: req.file.filename
                             }).then((resultados) => {
-                                console.log("Usuario agregado: " + resultados)
                                 return res.redirect("/prestadores/admin/home")
                             })
                         } else {
@@ -131,16 +130,32 @@ const prestadoresController = {
                                 domicilio: req.body.domicilio,
                                 sexo: req.body.sexo,
                                 nacimiento: req.body.nacimiento,
-                                matricula: "MN"+req.body.matricula,
+                                matricula: "MN" + req.body.matricula,
                                 Obra_Social_id: null,
                                 imagen: req.file.filename
                             }).then((profesional) => {
                                 db.Usuario.findOne({ where: { alias: req.body.alias } })
 
-                                db.Profesional_Especialidad.create({
+                                let profEspecialidad = {
                                     Profesional_id: profesional.id,
                                     Especialidad_id: req.body.especialidad
-                                }).then(() => {
+                                }
+
+                                let profTratamiento = {
+                                    Profesional_id: profesional.id,
+                                    Tratamiento_id: req.body.practicaMedica 
+                                }
+
+                                db.Profesional_Especialidad.create(profEspecialidad).then(() => {
+                                    for(let x of profTratamiento.Tratamiento_id){
+                                        
+                                        profTratamiento.Tratamiento_id = x
+
+                                        db.Profesional_Tratamiento.create(profTratamiento).then(() => {
+                                            console.log("Creado")
+                                        })
+                                    }
+                                }).then( ()=> {
                                     return res.redirect("/prestadores/admin/home")
                                 })
                             })
@@ -180,16 +195,32 @@ const prestadoresController = {
                                 domicilio: req.body.domicilio,
                                 sexo: req.body.sexo,
                                 nacimiento: req.body.nacimiento,
-                                matricula: "MN"+req.body.matricula,
+                                matricula: "MN" + req.body.matricula,
                                 Obra_Social_id: null,
                                 imagen: "default_profile_img.png"
                             }).then((profesional) => {
                                 db.Usuario.findOne({ where: { alias: req.body.alias } })
 
-                                db.Profesional_Especialidad.create({
+                                let profEspecialidad = {
                                     Profesional_id: profesional.id,
                                     Especialidad_id: req.body.especialidad
-                                }).then(() => {
+                                }
+
+                                let profTratamiento = {
+                                    Profesional_id: profesional.id,
+                                    Tratamiento_id: req.body.practicaMedica 
+                                }
+
+                                db.Profesional_Especialidad.create(profEspecialidad).then(() => {
+                                    for(let x of profTratamiento.Tratamiento_id){
+                                        
+                                        profTratamiento.Tratamiento_id = x
+
+                                        db.Profesional_Tratamiento.create(profTratamiento).then(() => {
+                                            console.log("Creado")
+                                        })
+                                    }
+                                }).then( ()=> {
                                     return res.redirect("/prestadores/admin/home")
                                 })
                             })
@@ -217,7 +248,7 @@ const prestadoresController = {
 
         if (errors.isEmpty()) {
             if (req.file) {
-                if(req.body.userType != 3){
+                if (req.body.userType != 3) {
                     let o = {
                         alias: req.body.alias,
                         nombre: req.body.nombre,
@@ -259,7 +290,7 @@ const prestadoresController = {
                     userToEdit.push(o)
                 }
             } else {
-                if(req.body.userType != 3){
+                if (req.body.userType != 3) {
                     let o = {
                         alias: req.body.alias,
                         nombre: req.body.nombre,
@@ -302,9 +333,11 @@ const prestadoresController = {
                 }
             }
             console.log(userToEdit);
-            db.Usuario.update(userToEdit[0], {where: {
-                id: req.params.id
-            }, include: [{association: 'especialidad'}]}).then(response => {
+            db.Usuario.update(userToEdit[0], {
+                where: {
+                    id: req.params.id
+                }, include: [{ association: 'especialidad' }]
+            }).then(response => {
                 console.log(response)
                 return res.redirect("/prestadores/admin/users")
             })
@@ -314,8 +347,8 @@ const prestadoresController = {
     },
     editandoPrestador: async (req, res) => {
 
-        let usuario = await db.Usuario.findByPk(req.params.id, {include: [{association: 'rol'}, {association:'especialidad'}]})
-        
+        let usuario = await db.Usuario.findByPk(req.params.id, { include: [{ association: 'rol' }, { association: 'especialidad' }] })
+
         res.render('prestadoresViews/editarPrestador', { userToEdit: usuario })
     },
 
@@ -336,8 +369,8 @@ const prestadoresController = {
     deletePrestador: (req, res) => {
 
         let id = req.params.id
-        db.Usuario.destroy({where: {id: id}}).then(() => {
-            return  res.redirect('/prestadores/eliminacionConfirmada');
+        db.Usuario.destroy({ where: { id: id } }).then(() => {
+            return res.redirect('/prestadores/eliminacionConfirmada');
         })
     },
 

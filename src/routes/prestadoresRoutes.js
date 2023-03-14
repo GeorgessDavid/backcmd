@@ -70,7 +70,7 @@ router.get("/editandoPrestador/:id", logInMiddleware.needLogin, userTypeAuth.adm
 
 router.get("/agregarMedico", logInMiddleware.needLogin, userTypeAuth.admin, prestadoresController.agregarMedico)
 
-router.post("/agregarMedico", uploadFile.single('profileImg'), validaciones.addUsuario, prestadoresController.agregarMedicoPublico)//
+router.post("/agregarMedico", uploadFile.single('profileImg'), validaciones.addUsuario, prestadoresController.addUserPost)//
 
 router.get("/home/confirmDelete/:id", logInMiddleware.needLogin,  userTypeAuth.admin, prestadoresController.confirmarEliminacion);
 
