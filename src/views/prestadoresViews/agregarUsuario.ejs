@@ -25,7 +25,7 @@
                 <div class="displayNone alert alert-danger" role="alert" id="divAlert">
                     <ul id="errorList">
 
-                    </ul>                    
+                    </ul>
                 </div>
                 <div class="mb-3">
                     <div class="formMedicoNombre">
@@ -43,116 +43,131 @@
                                     <h3 class="errors"><i class="fa-sharp fa-solid fa-xmark"></i>
                                         <%= locals.errors.userType.msg %>
                                     </h3>
-                                <% } %>
-                            <% } %>
+                                    <% } %>
+                                        <% } %>
                         </div>
                         <div class="input-group flex-nowrap">
-                            <span class="input-group-text <%= locals.errors && errors.alias ? 'inputError' : null %>">@</span>
-                            <input type="text" class="form-control <%= locals.errors && errors.alias ? 'inputError' : null %>" placeholder="Nombre de usuario"
-                                aria-label="Username" id="alias" name="alias" aria-describedby="addon-wrapping">
+                            <span
+                                class="input-group-text <%= locals.errors && errors.alias ? 'inputError' : null %>">@</span>
+                            <input type="text"
+                                class="form-control <%= locals.errors && errors.alias ? 'inputError' : null %>"
+                                placeholder="Nombre de usuario" aria-label="Username" id="alias" name="alias"
+                                aria-describedby="addon-wrapping">
                         </div>
                         <% if(locals && locals.errors) {%>
                             <% if (locals.errors.alias) {%>
                                 <h3 class="errors"><i class="fa-sharp fa-solid fa-xmark"></i>
                                     <%= locals.errors.alias.msg %>
                                 </h3>
-                            <% } %>
-                        <% } %>
-                        <br>
-                        <div class="input-group mb-3 ">
-                            <span class="input-group-text <%= locals.errors && errors.password ? 'inputError' : null %>">Contraseña</span>
-                            <input id="password" type="password" class="form-control <%= locals.errors && errors.password ? 'inputError' : null %>" name="password"
-                                aria-label="Sizing example input" id="password" placeholder="Debe tener mínimo 6 caracteres."
-                                aria-describedby="inputGroup-sizing-default">
-                                
-                        </div>
-                        <% if(locals && locals.errors) {%>
-                            <% if (locals.errors.password) {%>
-                                <h3 class="errors"><i class="fa-sharp fa-solid fa-xmark"></i>
-                                    <%= locals.errors.password.msg %>
-                                </h3>
-                            <% } %>
-                        <% } %>
+                                <% } %>
+                                    <% } %>
+                                        <br>
+                                        <div class="input-group mb-3 ">
+                                            <span
+                                                class="input-group-text <%= locals.errors && errors.password ? 'inputError' : null %>">Contraseña</span>
+                                            <input id="password" type="password"
+                                                class="form-control <%= locals.errors && errors.password ? 'inputError' : null %>"
+                                                name="password" aria-label="Sizing example input" id="password"
+                                                placeholder="Debe tener mínimo 6 caracteres."
+                                                aria-describedby="inputGroup-sizing-default">
 
-                        <h3>Datos del usuario</h3>
-                        <div class="row">
-                            <div class="col">
-                                <label for="exampleFormControlInput1" class="form-label">Nombre(s)*</label>
-                                <input type="text"
-                                    class="form-control <%= locals.errors && errors.nombre ? 'inputError' : null %>"
-                                    id="nombre" name="nombre" placeholder="Nombre"  >
-                                <% if(locals && locals.errors) {%>
-                                    <% if (locals.errors.nombre) {%>
-                                        <h3 class="errors"><i class="fa-sharp fa-solid fa-xmark"></i>
-                                            <%= locals.errors.nombre.msg %>
-                                        </h3>
-                                    <% } %>
-                                <% } %>
-                            </div>
-                            <div class="col">
-                                <label for="exampleFormControlInput1"
-                                    class="form-label">Apellido(s)*</label>
-                                <input type="text" class="form-control <%= locals.errors && errors.apellido ? 'inputError' : null %>" id="apellido" name="apellido"
-                                    placeholder="Apellido"  >
-                                <% if(locals && locals.errors) {%>
-                                    <% if (locals.errors.apellido) {%>
-                                        <h3 class="errors"><i class="fa-sharp fa-solid fa-xmark"></i>
-                                            <%= locals.errors.apellido.msg %>
-                                        </h3>
-                                    <% } %>
-                                <% } %>
-                            </div>
-                        </div>
+                                        </div>
+                                        <% if(locals && locals.errors) {%>
+                                            <% if (locals.errors.password) {%>
+                                                <h3 class="errors"><i class="fa-sharp fa-solid fa-xmark"></i>
+                                                    <%= locals.errors.password.msg %>
+                                                </h3>
+                                                <% } %>
+                                                    <% } %>
+
+                                                        <h3>Datos del usuario</h3>
+                                                        <div class="row">
+                                                            <div class="col">
+                                                                <label for="exampleFormControlInput1"
+                                                                    class="form-label">Nombre(s)*</label>
+                                                                <input type="text"
+                                                                    class="form-control <%= locals.errors && errors.nombre ? 'inputError' : null %>"
+                                                                    id="nombre" name="nombre" placeholder="Nombre">
+                                                                <% if(locals && locals.errors) {%>
+                                                                    <% if (locals.errors.nombre) {%>
+                                                                        <h3 class="errors"><i
+                                                                                class="fa-sharp fa-solid fa-xmark"></i>
+                                                                            <%= locals.errors.nombre.msg %>
+                                                                        </h3>
+                                                                        <% } %>
+                                                                            <% } %>
+                                                            </div>
+                                                            <div class="col">
+                                                                <label for="exampleFormControlInput1"
+                                                                    class="form-label">Apellido(s)*</label>
+                                                                <input type="text"
+                                                                    class="form-control <%= locals.errors && errors.apellido ? 'inputError' : null %>"
+                                                                    id="apellido" name="apellido"
+                                                                    placeholder="Apellido">
+                                                                <% if(locals && locals.errors) {%>
+                                                                    <% if (locals.errors.apellido) {%>
+                                                                        <h3 class="errors"><i
+                                                                                class="fa-sharp fa-solid fa-xmark"></i>
+                                                                            <%= locals.errors.apellido.msg %>
+                                                                        </h3>
+                                                                        <% } %>
+                                                                            <% } %>
+                                                            </div>
+                                                        </div>
                     </div>
                     <div class="mb-3">
                         <label for="exampleFormControlInput1" class="form-label">Email*</label>
-                        <input type="email" name="email" class="form-control <%= locals.errors && errors.email ? 'inputError' : null %>" id="email"
-                            placeholder="ejemplo@ejemplo.com"  >
-                            <% if(locals && locals.errors) {%>
-                                <% if (locals.errors.email) {%>
-                                    <h3 class="errors"><i class="fa-sharp fa-solid fa-xmark"></i>
-                                        <%= locals.errors.email.msg %>
-                                    </h3>
+                        <input type="email" name="email"
+                            class="form-control <%= locals.errors && errors.email ? 'inputError' : null %>" id="email"
+                            placeholder="ejemplo@ejemplo.com">
+                        <% if(locals && locals.errors) {%>
+                            <% if (locals.errors.email) {%>
+                                <h3 class="errors"><i class="fa-sharp fa-solid fa-xmark"></i>
+                                    <%= locals.errors.email.msg %>
+                                </h3>
                                 <% } %>
-                            <% } %>
+                                    <% } %>
                     </div>
                     <div class="row">
                         <div class="col">
                             <label for="exampleFormControlInput1" class="form-label">Documento*</label>
-                            <input type="text" class="form-control <%= locals.errors && errors.dni ? 'inputError' : null %>" name="dni" placeholder="Número de Documento"
-                                aria-label="First name" id="dni" pattern="[0-9]+"  >
-                                <% if(locals && locals.errors) {%>
-                                    <% if (locals.errors.dni) {%>
-                                        <h3 class="errors"><i class="fa-sharp fa-solid fa-xmark"></i>
-                                            <%= locals.errors.dni.msg %>
-                                        </h3>
+                            <input type="text"
+                                class="form-control <%= locals.errors && errors.dni ? 'inputError' : null %>" name="dni"
+                                placeholder="Número de Documento" aria-label="First name" id="dni" pattern="[0-9]+">
+                            <% if(locals && locals.errors) {%>
+                                <% if (locals.errors.dni) {%>
+                                    <h3 class="errors"><i class="fa-sharp fa-solid fa-xmark"></i>
+                                        <%= locals.errors.dni.msg %>
+                                    </h3>
                                     <% } %>
-                                <% } %>                            
+                                        <% } %>
                         </div>
                         <div class="col">
                             <label for="exampleFormControlInput1" class="form-label">Teléfono*</label>
-                            <input type="text" class="form-control <%= locals.errors && errors.telefono ? 'inputError' : null %>" placeholder="Número de Teléfono"
-                                aria-label="Last name" name="telefono" id="telefono"  >
-                                <% if(locals && locals.errors) {%>
-                                    <% if (locals.errors.telefono) {%>
-                                        <h3 class="errors"><i class="fa-sharp fa-solid fa-xmark"></i>
-                                            <%= locals.errors.telefono.msg %>
-                                        </h3>
+                            <input type="text"
+                                class="form-control <%= locals.errors && errors.telefono ? 'inputError' : null %>"
+                                placeholder="Número de Teléfono" aria-label="Last name" name="telefono" id="telefono">
+                            <% if(locals && locals.errors) {%>
+                                <% if (locals.errors.telefono) {%>
+                                    <h3 class="errors"><i class="fa-sharp fa-solid fa-xmark"></i>
+                                        <%= locals.errors.telefono.msg %>
+                                    </h3>
                                     <% } %>
-                                <% } %>
+                                        <% } %>
                         </div>
                     </div>
                     <div class="col-12">
                         <label for="inputAddress" class="form-label">Domicilio*</label>
-                        <input type="text" class="form-control <%= locals.errors && errors.domicilio ? 'inputError' : null %>" name="domicilio" id="inputAddress"
-                            placeholder="Padre Silberman 1740, Santos Lugares"  >
-                            <% if(locals && locals.errors) {%>
-                                <% if (locals.errors.domicilio) {%>
-                                    <h3 class="errors"><i class="fa-sharp fa-solid fa-xmark"></i>
-                                        <%= locals.errors.domicilio.msg %>
-                                    </h3>
+                        <input type="text"
+                            class="form-control <%= locals.errors && errors.domicilio ? 'inputError' : null %>"
+                            name="domicilio" id="inputAddress" placeholder="Padre Silberman 1740, Santos Lugares">
+                        <% if(locals && locals.errors) {%>
+                            <% if (locals.errors.domicilio) {%>
+                                <h3 class="errors"><i class="fa-sharp fa-solid fa-xmark"></i>
+                                    <%= locals.errors.domicilio.msg %>
+                                </h3>
                                 <% } %>
-                            <% } %>
+                                    <% } %>
                     </div>
                     <br>
                     <div>
@@ -178,12 +193,12 @@
                                             <h3 class="errors"><i class="fa-sharp fa-solid fa-xmark"></i>
                                                 <%= locals.errors.sexo.msg %>
                                             </h3>
-                                        <% } %>
-                                    <% } %>
+                                            <% } %>
+                                                <% } %>
                             </div>
                             <div class="col">
                                 <label for="nacimiento">Fecha de nacimiento</label>
-                                <input type="date" name="nacimiento" class="dateInput" min="1915-01-01" id="datefield"  >
+                                <input type="date" name="nacimiento" class="dateInput" min="1915-01-01" id="datefield">
                             </div>
                         </div>
                         <br>
@@ -230,12 +245,20 @@
                                     aria-label="Text input with dropdown button" placeholder="Máximo 6 dígitos.">
                             </div>
                         </div>
+                    </div>
+                    <div>
+                        <h5>Prácticas Médicas</h4>
+                            <div class="d-flex justify-content-between" id="checkboxArea">
+                                <div class="spinner-border" role="status" id="loadingSpinner">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
 
+                            </div>
                     </div>
                 </div>
                 <h6>* Campos obligatorios</h6>
                 <button type="submit" class="btn btn-success" id="liveAlertBtn">Añadir usuario </button>
-                <a href="/prestadores/admin/users"><button type="button" class="btn btn-danger" >Volver</button></a>
+                <a href="/prestadores/admin/users"><button type="button" class="btn btn-danger">Volver</button></a>
             </form>
         </div>
     </main>
@@ -246,6 +269,7 @@
     <script src="../js/dateToday.js"></script>
     <script src="../js/validations/agregarUsuarioValidations.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../js/checkboxPracticaMedica.js"></script>
 </body>
 
 </html>
