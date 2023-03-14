@@ -42,11 +42,11 @@ window.addEventListener('load', () => {
                             <h5><b>DNI</b>: ${usuario.dni} </h5>
                             <h5><b>Domicilio</b>: ${usuario.domicilio} </h5>
                             <h5><b>Sexo</b>: ${usuario.sexo} </h5>
+                            <h5><b>Nacimiento</b>: ${usuario.nacimiento} </h5>
                         </div>
-                        <div class="d-flex flex-column mb-3">
+                        <div class="d-flex flex-column mb-3" id="tercerColumna${i}">
                             <h5><b>Domicilio</b>: ${usuario.domicilio} </h5>
                             <h5><b>Email</b>: ${usuario.email} </h5>
-                            <h5><b>Nacimiento</b>: ${usuario.nacimiento} </h5>
                         </div>
                     </div>
                     <div class="d-flex justify-content-end">
@@ -78,6 +78,28 @@ window.addEventListener('load', () => {
             </div>
             </div>`
 
+            if(usuario.Rol_id == 3){
+                let docs = "tercerColumna"+i
+
+                let col = document.getElementById(docs)
+
+                col.innerHTML += `<h5><b>Especialidad</b>: ${usuario.especialidad[0].nombre}</h5>`
+
+                if(usuario.tratamiento.length != 0){
+
+                    col.innerHTML += `<h5><b>Prácticas Médicas</b>:<i id="lola"></i></h5>`
+
+                    let text = document.getElementById('lola')
+
+                    for (let i = 0; i < usuario.tratamiento.length; i++) {
+                        const w = usuario.tratamiento[i];
+                        
+                        text.innerHTML += usuario.tratamiento + ", "
+                    }
+                }else{
+                    col.innerHTML += `<h5><b>Prácticas Médicas</b>: <i>Ninguna.</i> <h5>`
+                }
+            }
         }
     })
 })
