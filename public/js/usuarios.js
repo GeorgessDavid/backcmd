@@ -85,7 +85,7 @@ window.addEventListener('load', () => {
 
                 col.innerHTML += `<h5><b>Especialidad</b>: ${usuario.especialidad[0].nombre}</h5>`
 
-                if(usuario.tratamiento.length != 0){
+                if(usuario.tratamiento.length != 0 && usuario.tratamiento.length > 1){
 
                     col.innerHTML += `<h5><b>Prácticas Médicas</b>:<i id="lola"></i></h5>`
 
@@ -94,7 +94,7 @@ window.addEventListener('load', () => {
                     for (let i = 0; i < usuario.tratamiento.length; i++) {
                         const w = usuario.tratamiento[i];
                         
-                        text.innerHTML += usuario.tratamiento + ", "
+                        text.innerHTML += w.nombre + ", "
                     }
                 }else{
                     col.innerHTML += `<h5><b>Prácticas Médicas</b>: <i>Ninguna.</i> <h5>`
