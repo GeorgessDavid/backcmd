@@ -13,7 +13,6 @@ const controlador = {
                 }
                 datosEncontrados.push(objetoDatoEncontrado)
             }
-            console.log(datosEncontrados)
         }
     )
         res.render("index")
