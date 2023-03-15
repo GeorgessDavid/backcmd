@@ -265,37 +265,37 @@
                         <div class="d-flex justify-content-between">
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" name="diaDeAtencion" type="checkbox"
-                                    id="inlineCheckbox1" value="lunes">
+                                    id="checkboxLunes" value="lunes">
                                 <label class="form-check-label" for="inlineCheckbox1">Lunes</label>
                             </div>
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" name="diaDeAtencion" type="checkbox"
-                                    id="inlineCheckbox1" value="martes">
+                                    id="checkboxMartes" value="martes">
                                 <label class="form-check-label" for="inlineCheckbox1">Martes</label>
                             </div>
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" name="diaDeAtencion" type="checkbox"
-                                    id="inlineCheckbox1" value="miercoles">
+                                    id="checkboxMiercoles" value="miercoles">
                                 <label class="form-check-label" for="inlineCheckbox1">Miércoles</label>
                             </div>
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" name="diaDeAtencion" type="checkbox"
-                                    id="inlineCheckbox1" value="Jueves">
+                                    id="checkboxJueves" value="jueves">
                                 <label class="form-check-label" for="inlineCheckbox1">Jueves</label>
                             </div>
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" name="diaDeAtencion" type="checkbox"
-                                    id="inlineCheckbox1" value="Viernes">
+                                    id="checkboxViernes" value="viernes">
                                 <label class="form-check-label" for="inlineCheckbox1">Viernes</label>
                             </div>
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" name="diaDeAtencion" type="checkbox"
-                                    id="inlineCheckbox1" value="sabado">
+                                    id="checkboxSabado" value="sabado">
                                 <label class="form-check-label" for="inlineCheckbox1">Sábado</label>
                             </div>
                         </div>
-                        <div class="d-flex justify-content-between">
-                            <div class="col" id="lunes">
+                        <div class="d-flex justify-content-between" id="zonaHorariaBox">
+                            <div class="zonaHoraria visibility-hidden" id="lunes">
                                 <h6>Inicio</h6>
                                 <input type="time" min="08:00" max="19:00" name="hora_inicio">
                                 <h6>Fin</h6>
@@ -303,7 +303,7 @@
                                 <h6>Intérvalo</h6>
                                 <input class="intervaloInput" type="number" placeholder="En minutos">
                             </div>
-                            <div class="col" id="martes">
+                            <div class="zonaHoraria visibility-hidden" id="martes">
                                 <h6>Inicio</h6>
                                 <input type="time" min="08:00" max="19:00" name="hora_inicio">
                                 <h6>Fin</h6>
@@ -311,7 +311,7 @@
                                 <h6>Intérvalo</h6>
                                 <input class="intervaloInput" type="number" placeholder="En minutos">
                             </div>
-                            <div class="col" id="miercoles">
+                            <div class="zonaHoraria visibility-hidden" id="miercoles">
                                 <h6>Inicio</h6>
                                 <input type="time" min="08:00" max="19:00" name="hora_inicio">
                                 <h6>Fin</h6>
@@ -319,7 +319,7 @@
                                 <h6>Intérvalo</h6>
                                 <input class="intervaloInput" type="number" placeholder="En minutos">
                             </div>
-                            <div class="col" id="Jueves">
+                            <div class="zonaHoraria visibility-hidden" id="jueves">
                                 <h6>Inicio</h6>
                                 <input type="time" min="08:00" max="19:00" name="hora_inicio">
                                 <h6>Fin</h6>
@@ -327,7 +327,7 @@
                                 <h6>Intérvalo</h6>
                                 <input class="intervaloInput" type="number" placeholder="En minutos">
                             </div>
-                            <div class="col" id="viernes">
+                            <div class="zonaHoraria visibility-hidden" id="viernes">
                                 <h6>Inicio</h6>
                                 <input type="time" min="08:00" max="19:00" name="hora_inicio">
                                 <h6>Fin</h6>
@@ -335,7 +335,7 @@
                                 <h6>Intérvalo</h6>
                                 <input class="intervaloInput" type="number" placeholder="En minutos">
                             </div>
-                            <div class="col" id="sabado">
+                            <div class="zonaHoraria visibility-hidden" id="sabado">
                                 <h6>Inicio</h6>
                                 <input type="time" name="hora_inicio" min="08:00" max="13:00">
                                 <h6>Fin</h6>

@@ -48,9 +48,21 @@ main{
 }
 
 .intervaloInput{
-    max-width: 50%;
+    max-width: 100%;
 }
 
 .intervaloInput::placeholder{
     font-size: 12px;
+}
+
+.zonaHoraria{
+    display: flex;
+    max-width: 15%;
+    margin-right: 10px;
+    margin-top: 10px;
+    flex-direction: column;
+}
+
+.visibility-hidden{
+    visibility: hidden;
 }

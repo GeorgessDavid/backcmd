@@ -71,7 +71,5 @@ Garibaldi, Martin: Estudiante de Desarrollo Web Full Stack en DigitalHouse.
 
 David, Georges Ammiel: Estudiante de Desarrollo Web Full Stack en DigitalHouse, con pocos conocimientos previos en el ámbito de la computación.
 
-Nope Rendon, Anthony: 17 años, colombia. Recién graduado de la secundaria/bachillerato. Estudiante de DH.
-
 ### Link del tablero de trabajo en donde se encuentran trabajando
 https://trello.com/b/u3vdUFBj/sprint-1-mockup
