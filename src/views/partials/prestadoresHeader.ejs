@@ -28,7 +28,8 @@
             <% } else if (locals && usuario.Rol_id==3) { %>
                 <div class="col">
                     <p style="color: white; text-align: center; margin-top: 15px;"><b>Hola, <%= usuario.nombre %>!</b> -
-                        <em style="font-size: 12px;">Profesional</em></p>
+                        <em style="font-size: 12px;">Profesional</em>
+                    </p>
                 </div>
                 <% } %>
                     <% if (locals.isLogged) { %>
@@ -95,9 +96,16 @@
                                     </li>
 
                                     <% } else if (locals && usuario.Rol_id==3) { %>
-                                        <a class="navbar-brand" href="/prestadores/profesional/home">Home</a>
-                                        <% } %>
+                                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                            <ul class="navbar-nav me-auto mb-2 mb-lg-">
+                                                <a class="navbar-brand" href="/prestadores/profesional/home">Home</a>
+                                                <li class="nav-item">
+                                                    <a class="nav-link"
+                                                        href="/prestadores/profesional/turnos">Turnos</a>
+                                                </li>
+                                            </ul>
+                                            <% } %>
+                                        </div>
                             </div>
-                </div>
     </nav>
 </div>

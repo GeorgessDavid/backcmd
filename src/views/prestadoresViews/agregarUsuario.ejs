@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <link rel="stylesheet" href="../css/prestadoresPartials.css">
     <link rel="stylesheet" href="../css/globalFunctions.css">
-    <link rel="stylesheet" href="../css/sectionPrestadores/secretariaAgregarMedicoPublico.css">
+    <link rel="stylesheet" href="../css/sectionPrestadores/agregarUsuario.css">
     <link rel="icon" type="image/png" href="/img/logoCMD.png">
 </head>
 
@@ -175,15 +175,15 @@
                             <div class="col">
                                 <label for="sexo">Sexo*
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="sexo" id="flexRadioDefault1"
-                                            value="0">
+                                        <input class="form-check-input" name="diaDeAtencion" type="radio" name="sexo"
+                                            id="flexRadioDefault1" value="0">
                                         <label class="form-check-label" for="flexRadioDefault1">
                                             Femenino
                                         </label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="sexo" id="flexRadioDefault1"
-                                            value="1">
+                                        <input class="form-check-input" name="diaDeAtencion" type="radio" name="sexo"
+                                            id="flexRadioDefault1" value="1">
                                         <label class="form-check-label" for="flexRadioDefault1">
                                             Masculino
                                         </label>
@@ -249,19 +249,105 @@
                     <div>
                         <h5>Prácticas Médicas</h4>
                             <div id="checkboxArea">
-                                
+
                             </div>
                             <div>
                                 <div class="spinner-border" role="status" id="loadingSpinner">
                                     <span class="visually-hidden">Loading...</span>
                                 </div>
-                                <span id="loadSpan"style="margin-left: 5px; font-style: italic;">Cargando prácticas médicas...</span>
+                                <span id="loadSpan" style="margin-left: 5px; font-style: italic;">Cargando prácticas
+                                    médicas...</span>
                             </div>
                     </div>
-                </div>
-                <h6>* Campos obligatorios</h6>
-                <button type="submit" class="btn btn-success" id="liveAlertBtn">Añadir usuario </button>
-                <a href="/prestadores/admin/users"><button type="button" class="btn btn-danger">Volver</button></a>
+                    <div class="col">
+                        <h5>Horario de atención</h5>
+                        <label>Seleccione los días de atención</label>
+                        <div class="d-flex justify-content-between">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" name="diaDeAtencion" type="checkbox"
+                                    id="inlineCheckbox1" value="lunes">
+                                <label class="form-check-label" for="inlineCheckbox1">Lunes</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" name="diaDeAtencion" type="checkbox"
+                                    id="inlineCheckbox1" value="martes">
+                                <label class="form-check-label" for="inlineCheckbox1">Martes</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" name="diaDeAtencion" type="checkbox"
+                                    id="inlineCheckbox1" value="miercoles">
+                                <label class="form-check-label" for="inlineCheckbox1">Miércoles</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" name="diaDeAtencion" type="checkbox"
+                                    id="inlineCheckbox1" value="Jueves">
+                                <label class="form-check-label" for="inlineCheckbox1">Jueves</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" name="diaDeAtencion" type="checkbox"
+                                    id="inlineCheckbox1" value="Viernes">
+                                <label class="form-check-label" for="inlineCheckbox1">Viernes</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" name="diaDeAtencion" type="checkbox"
+                                    id="inlineCheckbox1" value="sabado">
+                                <label class="form-check-label" for="inlineCheckbox1">Sábado</label>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <div class="col" id="lunes">
+                                <h6>Inicio</h6>
+                                <input type="time" min="08:00" max="19:00" name="hora_inicio">
+                                <h6>Fin</h6>
+                                <input type="time" min="08:00" max="19:00" name="hora_fin">
+                                <h6>Intérvalo</h6>
+                                <input class="intervaloInput" type="number" placeholder="En minutos">
+                            </div>
+                            <div class="col" id="martes">
+                                <h6>Inicio</h6>
+                                <input type="time" min="08:00" max="19:00" name="hora_inicio">
+                                <h6>Fin</h6>
+                                <input type="time" min="08:00" max="19:00" name="hora_fin">
+                                <h6>Intérvalo</h6>
+                                <input class="intervaloInput" type="number" placeholder="En minutos">
+                            </div>
+                            <div class="col" id="miercoles">
+                                <h6>Inicio</h6>
+                                <input type="time" min="08:00" max="19:00" name="hora_inicio">
+                                <h6>Fin</h6>
+                                <input type="time" min="08:00" max="19:00" name="hora_fin">
+                                <h6>Intérvalo</h6>
+                                <input class="intervaloInput" type="number" placeholder="En minutos">
+                            </div>
+                            <div class="col" id="Jueves">
+                                <h6>Inicio</h6>
+                                <input type="time" min="08:00" max="19:00" name="hora_inicio">
+                                <h6>Fin</h6>
+                                <input type="time" min="08:00" max="19:00" name="hora_fin">
+                                <h6>Intérvalo</h6>
+                                <input class="intervaloInput" type="number" placeholder="En minutos">
+                            </div>
+                            <div class="col" id="viernes">
+                                <h6>Inicio</h6>
+                                <input type="time" min="08:00" max="19:00" name="hora_inicio">
+                                <h6>Fin</h6>
+                                <input type="time" min="08:00" max="19:00" name="hora_fin">
+                                <h6>Intérvalo</h6>
+                                <input class="intervaloInput" type="number" placeholder="En minutos">
+                            </div>
+                            <div class="col" id="sabado">
+                                <h6>Inicio</h6>
+                                <input type="time" name="hora_inicio" min="08:00" max="13:00">
+                                <h6>Fin</h6>
+                                <input type="time" name="hora_fin" min="08:00" max="13:00">
+                                <h6>Intérvalo</h6>
+                                <input class="intervaloInput" type="number" placeholder="En minutos">
+                            </div>
+                        </div>
+                    </div>
+                    <h6>* Campos obligatorios</h6>
+                    <button type="submit" class="btn btn-success" id="liveAlertBtn">Añadir usuario </button>
+                    <a href="/prestadores/admin/users"><button type="button" class="btn btn-danger">Volver</button></a>
             </form>
         </div>
     </main>

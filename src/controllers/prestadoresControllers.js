@@ -212,13 +212,16 @@ const prestadoresController = {
                                 }
 
                                 db.Profesional_Especialidad.create(profEspecialidad).then(() => {
-                                    for (let x of profTratamiento.Tratamiento_id) {
 
-                                        profTratamiento.Tratamiento_id = x
+                                    if (profTratamiento.length != 0) {
+                                        for (let x of profTratamiento.Tratamiento_id) {
 
-                                        db.Profesional_Tratamiento.create(profTratamiento).then(() => {
-                                            console.log("Creado")
-                                        })
+                                            profTratamiento.Tratamiento_id = x
+
+                                            db.Profesional_Tratamiento.create(profTratamiento).then(() => {
+                                                console.log("Creado")
+                                            })
+                                        }
                                     }
                                 }).then(() => {
                                     return res.redirect("/prestadores/admin/home")
@@ -456,6 +459,9 @@ const prestadoresController = {
 
     secretariaTurnos: (req, res) => {
         return res.render('prestadoresViews/secretariaViews/turnosListado')
+    },
+    profesionalTurnos: (req, res) => {
+        return res.render('prestadoresViews/profesionalViews/turnos')
     }
 }
 

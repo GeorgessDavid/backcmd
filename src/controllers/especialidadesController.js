@@ -32,9 +32,7 @@ const controlador = {
     },
 
     update: (req, res) => {
-
-        console.log(req.body.especialidadNombre)
-        console.log(req.params.id)
+        
         db.Especialidad.update({nombre: req.body.especialidadNombre},{where: {
             id: req.params.id
         }}).then((resultados) => {

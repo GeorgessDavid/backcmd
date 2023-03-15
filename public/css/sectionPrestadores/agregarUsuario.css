@@ -46,3 +46,11 @@ main{
 .dateInput:focus{
     box-shadow: 0 0 10px gray;
 }
+
+.intervaloInput{
+    max-width: 50%;
+}
+
+.intervaloInput::placeholder{
+    font-size: 12px;
+}

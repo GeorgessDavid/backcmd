@@ -59,6 +59,7 @@ router.get('/secretaria/turnos', logInMiddleware.needLogin, userTypeAuth.secreta
 
 /* PROFESIONALES ROUTES */
 router.get('/profesional/home', logInMiddleware.needLogin, userTypeAuth.medic, prestadoresController.home)
+router.get('/profesional/turnos', logInMiddleware.needLogin, userTypeAuth.medic, prestadoresController.profesionalTurnos)
 
 
 
