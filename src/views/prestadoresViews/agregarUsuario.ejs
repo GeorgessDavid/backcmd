@@ -32,8 +32,14 @@
                         <div class="input-group mb-3">
                             <label class="input-group-text" for="inputGroupSelect01">Tipo de Usuario</label>
                             <select name="userType" class="form-select" id="userType">
-                                <!-- <select class="form-select" id="inputGroupSelect01"> -->
                                 <option selected disabled>Seleccionar</option>
+                                <% if (locals.oldData && locals.oldData.userType == 1) { %>
+                                    <option value="1" selected>Administrador</option>
+                                <% } else if (locals.oldData && locals.oldData.userType == 2) { %>
+                                    <option value="2" selected>Secretaría</option>
+                                <% } else if (locals.oldData && locals.oldData.userType == 3) { %>
+                                    <option value="3" selected>Médico</option>
+                                <% } %>
                                 <option value="1">Administrador</option>
                                 <option value="2">Secretaría</option>
                                 <option value="3">Médico</option>
@@ -52,7 +58,7 @@
                             <input type="text"
                                 class="form-control <%= locals.errors && errors.alias ? 'inputError' : null %>"
                                 placeholder="Nombre de usuario" aria-label="Username" id="alias" name="alias"
-                                aria-describedby="addon-wrapping">
+                                aria-describedby="addon-wrapping" value="<%= locals.oldData ? oldData.alias : null %>">
                         </div>
                         <% if(locals && locals.errors) {%>
                             <% if (locals.errors.alias) {%>
@@ -87,7 +93,8 @@
                                                                     class="form-label">Nombre(s)*</label>
                                                                 <input type="text"
                                                                     class="form-control <%= locals.errors && errors.nombre ? 'inputError' : null %>"
-                                                                    id="nombre" name="nombre" placeholder="Nombre">
+                                                                    id="nombre" name="nombre" placeholder="Nombre"
+                                                                    value="<%= locals.oldData ? oldData.nombre : null %>">
                                                                 <% if(locals && locals.errors) {%>
                                                                     <% if (locals.errors.nombre) {%>
                                                                         <h3 class="errors"><i
@@ -103,6 +110,7 @@
                                                                 <input type="text"
                                                                     class="form-control <%= locals.errors && errors.apellido ? 'inputError' : null %>"
                                                                     id="apellido" name="apellido"
+                                                                    value="<%= locals.oldData ? oldData.apellido : null %>"
                                                                     placeholder="Apellido">
                                                                 <% if(locals && locals.errors) {%>
                                                                     <% if (locals.errors.apellido) {%>
@@ -118,7 +126,8 @@
                     <div class="mb-3">
                         <label for="exampleFormControlInput1" class="form-label">Email*</label>
                         <input type="email" name="email"
-                            class="form-control <%= locals.errors && errors.email ? 'inputError' : null %>" id="email"
+                            class="form-control <%= locals.errors && errors.email ? 'inputError' : null %>"
+                            value="<%= locals.oldData ? oldData.email : null %>" id="email"
                             placeholder="ejemplo@ejemplo.com">
                         <% if(locals && locals.errors) {%>
                             <% if (locals.errors.email) {%>
@@ -133,7 +142,8 @@
                             <label for="exampleFormControlInput1" class="form-label">Documento*</label>
                             <input type="text"
                                 class="form-control <%= locals.errors && errors.dni ? 'inputError' : null %>" name="dni"
-                                placeholder="Número de Documento" aria-label="First name" id="dni" pattern="[0-9]+">
+                                placeholder="Número de Documento" value="<%= locals.oldData ? oldData.dni : null %>"
+                                aria-label="First name" id="dni" pattern="[0-9]+">
                             <% if(locals && locals.errors) {%>
                                 <% if (locals.errors.dni) {%>
                                     <h3 class="errors"><i class="fa-sharp fa-solid fa-xmark"></i>
@@ -146,7 +156,8 @@
                             <label for="exampleFormControlInput1" class="form-label">Teléfono*</label>
                             <input type="text"
                                 class="form-control <%= locals.errors && errors.telefono ? 'inputError' : null %>"
-                                placeholder="Número de Teléfono" aria-label="Last name" name="telefono" id="telefono">
+                                placeholder="Número de Teléfono" aria-label="Last name" name="telefono" id="telefono"
+                                value="<%= locals.oldData ? oldData.telefono : null %>">
                             <% if(locals && locals.errors) {%>
                                 <% if (locals.errors.telefono) {%>
                                     <h3 class="errors"><i class="fa-sharp fa-solid fa-xmark"></i>
@@ -160,7 +171,8 @@
                         <label for="inputAddress" class="form-label">Domicilio*</label>
                         <input type="text"
                             class="form-control <%= locals.errors && errors.domicilio ? 'inputError' : null %>"
-                            name="domicilio" id="inputAddress" placeholder="Padre Silberman 1740, Santos Lugares">
+                            name="domicilio" id="inputAddress" value="<%= locals.oldData ? oldData.domicilio : null %>"
+                            placeholder="Padre Silberman 1740, Santos Lugares">
                         <% if(locals && locals.errors) {%>
                             <% if (locals.errors.domicilio) {%>
                                 <h3 class="errors"><i class="fa-sharp fa-solid fa-xmark"></i>
@@ -175,15 +187,15 @@
                             <div class="col">
                                 <label for="sexo">Sexo*
                                     <div class="form-check">
-                                        <input class="form-check-input" name="diaDeAtencion" type="radio" name="sexo"
-                                            id="flexRadioDefault1" value="0">
+                                        <input class="form-check-input" type="radio" name="sexo" id="flexRadioDefault1"
+                                            value="0">
                                         <label class="form-check-label" for="flexRadioDefault1">
                                             Femenino
                                         </label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" name="diaDeAtencion" type="radio" name="sexo"
-                                            id="flexRadioDefault1" value="1">
+                                        <input class="form-check-input" type="radio" name="sexo" id="flexRadioDefault1"
+                                            value="1">
                                         <label class="form-check-label" for="flexRadioDefault1">
                                             Masculino
                                         </label>
@@ -198,7 +210,7 @@
                             </div>
                             <div class="col">
                                 <label for="nacimiento">Fecha de nacimiento</label>
-                                <input type="date" name="nacimiento" class="dateInput" min="1915-01-01" id="datefield">
+                                <input type="date" name="nacimiento" class="dateInput" min="1915-01-01" id="datefield" value="<%= locals.oldData ? oldData.nacimiento : null %>">
                             </div>
                         </div>
                         <br>
@@ -264,13 +276,13 @@
                         <label>Seleccione los días de atención</label>
                         <div class="d-flex justify-content-between">
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" name="diaDeAtencion" type="checkbox"
-                                    id="checkboxLunes" value="lunes">
+                                <input class="form-check-input" name="diaDeAtencion" type="checkbox" id="checkboxLunes"
+                                    value="lunes">
                                 <label class="form-check-label" for="inlineCheckbox1">Lunes</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" name="diaDeAtencion" type="checkbox"
-                                    id="checkboxMartes" value="martes">
+                                <input class="form-check-input" name="diaDeAtencion" type="checkbox" id="checkboxMartes"
+                                    value="martes">
                                 <label class="form-check-label" for="inlineCheckbox1">Martes</label>
                             </div>
                             <div class="form-check form-check-inline">
@@ -279,8 +291,8 @@
                                 <label class="form-check-label" for="inlineCheckbox1">Miércoles</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" name="diaDeAtencion" type="checkbox"
-                                    id="checkboxJueves" value="jueves">
+                                <input class="form-check-input" name="diaDeAtencion" type="checkbox" id="checkboxJueves"
+                                    value="jueves">
                                 <label class="form-check-label" for="inlineCheckbox1">Jueves</label>
                             </div>
                             <div class="form-check form-check-inline">
@@ -289,8 +301,8 @@
                                 <label class="form-check-label" for="inlineCheckbox1">Viernes</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" name="diaDeAtencion" type="checkbox"
-                                    id="checkboxSabado" value="sabado">
+                                <input class="form-check-input" name="diaDeAtencion" type="checkbox" id="checkboxSabado"
+                                    value="sabado">
                                 <label class="form-check-label" for="inlineCheckbox1">Sábado</label>
                             </div>
                         </div>
@@ -300,54 +312,56 @@
                                 <input type="time" min="08:00" max="19:00" name="hora_inicio">
                                 <h6>Fin</h6>
                                 <input type="time" min="08:00" max="19:00" name="hora_fin">
-                                <h6>Intérvalo</h6>
-                                <input class="intervaloInput" type="number" placeholder="En minutos">
+                                <h6>Duración</h6>
+                                <input class="intervaloInput" name="duracion" type="number" placeholder="En minutos">
                             </div>
                             <div class="zonaHoraria visibility-hidden" id="martes">
                                 <h6>Inicio</h6>
-                                <input type="time" min="08:00" max="19:00" name="hora_inicio">
+                                <input type="time" min="08:00" max="19:00" name="hora_inicio" value="<% null %>">
                                 <h6>Fin</h6>
-                                <input type="time" min="08:00" max="19:00" name="hora_fin">
-                                <h6>Intérvalo</h6>
-                                <input class="intervaloInput" type="number" placeholder="En minutos">
+                                <input type="time" min="08:00" max="19:00" name="hora_fin" value="<% null %>">
+                                <h6>Duración</h6>
+                                <input class="intervaloInput" name="duracion" type="number" placeholder="En minutos">
                             </div>
                             <div class="zonaHoraria visibility-hidden" id="miercoles">
                                 <h6>Inicio</h6>
-                                <input type="time" min="08:00" max="19:00" name="hora_inicio">
+                                <input type="time" min="08:00" max="19:00" name="hora_inicio" value="<% null %>">
                                 <h6>Fin</h6>
-                                <input type="time" min="08:00" max="19:00" name="hora_fin">
-                                <h6>Intérvalo</h6>
-                                <input class="intervaloInput" type="number" placeholder="En minutos">
+                                <input type="time" min="08:00" max="19:00" name="hora_fin" value="<% null %>">
+                                <h6>Duración</h6>
+                                <input class="intervaloInput" name="duracion" type="number" placeholder="En minutos">
                             </div>
                             <div class="zonaHoraria visibility-hidden" id="jueves">
                                 <h6>Inicio</h6>
                                 <input type="time" min="08:00" max="19:00" name="hora_inicio">
                                 <h6>Fin</h6>
                                 <input type="time" min="08:00" max="19:00" name="hora_fin">
-                                <h6>Intérvalo</h6>
-                                <input class="intervaloInput" type="number" placeholder="En minutos">
+                                <h6>Duración</h6>
+                                <input class="intervaloInput" name="duracion" type="number" placeholder="En minutos">
                             </div>
                             <div class="zonaHoraria visibility-hidden" id="viernes">
                                 <h6>Inicio</h6>
                                 <input type="time" min="08:00" max="19:00" name="hora_inicio">
                                 <h6>Fin</h6>
                                 <input type="time" min="08:00" max="19:00" name="hora_fin">
-                                <h6>Intérvalo</h6>
-                                <input class="intervaloInput" type="number" placeholder="En minutos">
+                                <h6>Duración</h6>
+                                <input class="intervaloInput" name="duracion" type="number" placeholder="En minutos">
                             </div>
                             <div class="zonaHoraria visibility-hidden" id="sabado">
                                 <h6>Inicio</h6>
                                 <input type="time" name="hora_inicio" min="08:00" max="13:00">
                                 <h6>Fin</h6>
                                 <input type="time" name="hora_fin" min="08:00" max="13:00">
-                                <h6>Intérvalo</h6>
-                                <input class="intervaloInput" type="number" placeholder="En minutos">
+                                <h6>Duración</h6>
+                                <input class="intervaloInput" name="duracion" type="number" placeholder="En minutos">
                             </div>
                         </div>
                     </div>
-                    <h6>* Campos obligatorios</h6>
-                    <button type="submit" class="btn btn-success" id="liveAlertBtn">Añadir usuario </button>
-                    <a href="/prestadores/admin/users"><button type="button" class="btn btn-danger">Volver</button></a>
+                </div>
+                <h6>* Campos obligatorios</h6>
+                <button type="submit" class="btn btn-success" id="liveAlertBtn">Añadir usuario </button>
+                <a href="/prestadores/admin/users"><button type="button" class="btn btn-danger">Volver</button></a>
+
             </form>
         </div>
     </main>

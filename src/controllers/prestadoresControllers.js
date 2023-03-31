@@ -211,16 +211,53 @@ const prestadoresController = {
                                     Tratamiento_id: req.body.practicaMedica
                                 }
 
+                                let planilla_horaria = {
+                                    dia_semana: req.body.diaDeAtencion,
+                                    hora_inicio: [],
+                                    hora_fin: [],
+                                    duracion: []
+                                }
+
+                                for (let i = 0; i < req.body.hora_inicio.length; i++) {
+                                    if(req.body.hora_inicio[i] != ''){
+                                        planilla_horaria.hora_inicio.push(req.body.hora_inicio[i]),
+                                        planilla_horaria.hora_fin.push(req.body.hora_fin[i]),
+                                        planilla_horaria.duracion.push(req.body.duracion[i])
+                                    }
+                                    
+                                }
+
                                 db.Profesional_Especialidad.create(profEspecialidad).then(() => {
 
-                                    if (profTratamiento.length != 0) {
-                                        for (let x of profTratamiento.Tratamiento_id) {
+                                    console.log(profTratamiento)
+
+                                    if (req.body.practicaMedica) {
+                                        for (let x of profTratamiento) {
 
                                             profTratamiento.Tratamiento_id = x
 
                                             db.Profesional_Tratamiento.create(profTratamiento).then(() => {
                                                 console.log("Creado")
                                             })
+                                        }
+                                    }
+
+                                    if (planilla_horaria.dia_semana) {
+                                        for (let i = 0; i < planilla_horaria.dia_semana.length; i++) {
+                                            const element = planilla_horaria[i];
+
+                                            let horarios = {
+                                                dia_semana: planilla_horaria.dia_semana[i],
+                                                hora_inicio: planilla_horaria.hora_inicio[i],
+                                                hora_fin: planilla_horaria.hora_fin[i],
+                                                duracion: planilla_horaria.duracion[i],
+                                                Profesional_id: profesional.id
+                                            }
+
+                                            db.Planilla_Horaria.create(horarios).then(() => {
+                                                console.log("horarios creados.")
+                                            })                                            
+
                                         }
                                     }
                                 }).then(() => {
@@ -231,15 +268,15 @@ const prestadoresController = {
                     }
                 } else {
 
-                    return res.render('prestadoresViews/agregarUsuario', { errors: { email: { msg: "Este email ya está en uso." } }, especialidades: especialidad })
+                    return res.render('prestadoresViews/agregarUsuario', { errors: { email: { msg: "Este email ya está en uso." } }, especialidades: especialidad, oldData: req.body })
                 }
             } else {
 
-                return res.render('prestadoresViews/agregarUsuario', { errors: { alias: { msg: "Este nombre de usuario ya está en uso." } }, especialidades: especialidad })
+                return res.render('prestadoresViews/agregarUsuario', { errors: { alias: { msg: "Este nombre de usuario ya está en uso." } }, especialidades: especialidad, oldData: req.body })
             }
         } else {
 
-            return res.render('prestadoresViews/agregarUsuario', { errors: errors.mapped(), especialidades: especialidad })
+            return res.render('prestadoresViews/agregarUsuario', { errors: errors.mapped(), especialidades: especialidad, oldData: req.body })
 
         }
     },

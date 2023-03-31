@@ -12,20 +12,20 @@ function planillaHorariaDatabase(sequelize, DataTypes) {
       allowNull: false
     },
     hora_inicio: {
-      type: DataTypes.STRING(50),
+      type: DataTypes.TIME,
       allowNull: false
     },
     hora_fin: {
-      type: DataTypes.STRING(50),
+      type: DataTypes.TIME,
+      allowNull: false
+    },
+    duracion:{
+      type: DataTypes.TINYINT,
       allowNull: false
     },
     Profesional_id: {
         type: DataTypes.INTEGER,
         allowNull: false
-    },
-    Turno_id: {
-      type: DataTypes.INTEGER,
-      allowNull: true
     }
   },
 
