@@ -219,12 +219,12 @@ const prestadoresController = {
                                 }
 
                                 for (let i = 0; i < req.body.hora_inicio.length; i++) {
-                                    if(req.body.hora_inicio[i] != ''){
+                                    if (req.body.hora_inicio[i] != '') {
                                         planilla_horaria.hora_inicio.push(req.body.hora_inicio[i]),
-                                        planilla_horaria.hora_fin.push(req.body.hora_fin[i]),
-                                        planilla_horaria.duracion.push(req.body.duracion[i])
+                                            planilla_horaria.hora_fin.push(req.body.hora_fin[i]),
+                                            planilla_horaria.duracion.push(req.body.duracion[i])
                                     }
-                                    
+
                                 }
 
                                 db.Profesional_Especialidad.create(profEspecialidad).then(() => {
@@ -256,7 +256,7 @@ const prestadoresController = {
 
                                             db.Planilla_Horaria.create(horarios).then(() => {
                                                 console.log("horarios creados.")
-                                            })                                            
+                                            })
 
                                         }
                                     }
@@ -409,10 +409,12 @@ const prestadoresController = {
     deletePrestador: (req, res) => {
 
         let id = req.params.id
-        db.Profesional_Especialidad.destroy({ where: { Profesional_id: id } }).then(() => {
-            db.Profesional_Tratamiento.destroy({ where: { Profesional_id: id } }).then(() => {
-                db.Usuario.destroy({ where: { id: id } }).then(() => {
-                    return res.redirect('/prestadores/eliminacionConfirmada');
+        db.Planilla_Horaria.destroy({ where: { Profesional_id: id } }).then(() => {
+            db.Profesional_Especialidad.destroy({ where: { Profesional_id: id } }).then(() => {
+                db.Profesional_Tratamiento.destroy({ where: { Profesional_id: id } }).then(() => {
+                    db.Usuario.destroy({ where: { id: id } }).then(() => {
+                        return res.redirect('/prestadores/eliminacionConfirmada');
+                    })
                 })
             })
         })

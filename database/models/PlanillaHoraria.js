@@ -40,10 +40,6 @@ function planillaHorariaDatabase(sequelize, DataTypes) {
           foreignKey: 'Profesional_id'
       })
 
-      planilla_horaria.belongsTo(models.Turno, {
-          as: 'turno',
-          foreignKey: 'Turno_id'
-      })
     }
 
     return planilla_horaria;

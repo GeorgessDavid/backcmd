@@ -1,12 +1,13 @@
 const db = require('../../database/models')
 const { validationResult } = require("express-validator");
 const bcrypt = require('bcryptjs')
-const {where} = require("sequelize");
+const { where } = require("sequelize");
+const moment = require('moment')
 
 let usuarios = {
     getAllUsers: async (req, res) => {
         try {
-            const usuarios = await db.Usuario.findAll({ include: [{ association: 'especialidad' }, { association: 'rol' }, { association: 'obra_social' }, {association: 'tratamiento'}] })
+            const usuarios = await db.Usuario.findAll({ include: [{ association: 'especialidad' }, { association: 'rol' }, { association: 'obra_social' }, { association: 'tratamiento' }] })
 
 
             let data = {
@@ -75,31 +76,74 @@ let usuarios = {
 
 
     getProfesionales: async (req, res) => {
-/*         try { */
+        /*   try {
+   */
+        const profesionales = await db.Usuario.findAll(
+            {
+                where: {
+                    Rol_id: 3
+                },
+                include: [{ association: 'especialidad' }, { association: 'rol' }, { association: 'tratamiento' }, { association: 'planilla_horaria' }]
+            }
+        )
+        let data = []
 
-            const profesionales = await db.Usuario.findAll(
-                {
-                    where: {
-                        Rol_id: 3
-                    },
-                    include: [{ association: 'especialidad' }, { association: 'rol' }, {association: 'tratamiento'}]
+        for (let u of profesionales){
+            
+            let horarios = u.planilla_horaria;
+
+            let agenda = []
+
+            for (let i = 0; i < horarios.length; i++) {
+                const element = horarios[i].dia_semana;
+
+                let diaToPush = {
+                    dia_semana: element,
+                    horarios: []
                 }
-            )
 
-            res.json({ "total": profesionales.length, "data": profesionales, "status": 200 })
-        /* } catch (error) {
-            res.render(error);
-            console.log(error)
-        } */
+                let horaDeInicio = moment(horarios[i].hora_inicio, 'HH:mm')
+                let duracion = horarios[i].duracion
+                let horaDeFin = moment(horarios[i].hora_fin, 'HH:mm')
+
+                while (horaDeInicio.isBefore(horaDeFin) && horaDeInicio.clone().add(duracion, 'minutes').isSameOrBefore(horaDeFin)) {
+                    console.log(horaDeInicio.format('HH:mm'))
+                    horaDeInicio.add(duracion, 'minutes')
+
+                    diaToPush.horarios.push(horaDeInicio.format('HH:mm'))
+                }
+
+                agenda.push(diaToPush)
+            }
+            
+            let unProfesional = {
+                profesional: u,
+                horarios: agenda
+            }
+
+            data.push(unProfesional)
+        }
+        
+        
+
+        console.log(data)
+
+        res.json({ "total": profesionales.length, "data": data, "status": 200 })
+        /*     } catch (error) {
+                res.render(error);
+                console.log(error)
+            } */
     },
 
     getOneUser: async (req, res) => {
         try {
-            const usuario = await db.Usuario.findOne({where: 
-                {alias: req.params.id},
-                include: [{association: 'rol'}, {association: 'especialidad'},{association: 'tratamiento'} ]})
+            const usuario = await db.Usuario.findOne({
+                where:
+                    { alias: req.params.id },
+                include: [{ association: 'rol' }, { association: 'especialidad' }, { association: 'tratamiento' }, { association: 'planilla_horaria' }]
+            })
 
-            return res.json({"data": usuario, "status": 200})
+            return res.json({ "data": usuario, "status": 200 })
         } catch (err) {
             console.log(err)
             res.render(err)

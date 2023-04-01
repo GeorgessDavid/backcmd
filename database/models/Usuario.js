@@ -83,7 +83,7 @@ function usuariosDatabase(sequelize, DataTypes) {
             foreignKey: "Profesional_id"
         })
         usuarios.hasMany(models.Planilla_Horaria, {
-            as: 'planillas_horarias',
+            as: 'planilla_horaria',
             foreignKey: 'Profesional_id'
         })
         usuarios.belongsToMany (models.Especialidad, {
