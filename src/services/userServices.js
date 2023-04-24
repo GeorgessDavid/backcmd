@@ -88,23 +88,25 @@ let usuarios = {
         )
         let data = []
 
-        for (let u of profesionales){
-            
+        for (let u of profesionales) {
+
             let horarios = u.planilla_horaria;
 
             let agenda = []
 
             for (let i = 0; i < horarios.length; i++) {
                 const element = horarios[i].dia_semana;
-
-                let diaToPush = {
-                    dia_semana: element,
-                    horarios: []
-                }
-
+                
                 let horaDeInicio = moment(horarios[i].hora_inicio, 'HH:mm')
                 let duracion = horarios[i].duracion
                 let horaDeFin = moment(horarios[i].hora_fin, 'HH:mm')
+                
+                let diaToPush = { 
+                    dia_semana: element,
+                    horarios: [horaDeInicio.format('HH:mm')]
+                }
+
+
 
                 while (horaDeInicio.isBefore(horaDeFin) && horaDeInicio.clone().add(duracion, 'minutes').isSameOrBefore(horaDeFin)) {
                     console.log(horaDeInicio.format('HH:mm'))
@@ -115,7 +117,7 @@ let usuarios = {
 
                 agenda.push(diaToPush)
             }
-            
+
             let unProfesional = {
                 profesional: u,
                 horarios: agenda
@@ -123,8 +125,8 @@ let usuarios = {
 
             data.push(unProfesional)
         }
-        
-        
+
+
 
         console.log(data)
 
