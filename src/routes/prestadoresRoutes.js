@@ -55,6 +55,7 @@ router.get('/admin/users', logInMiddleware.needLogin, userTypeAuth.admin, presta
 /* SECRETARIA ROUTES */
 router.get('/secretaria/home', logInMiddleware.needLogin, userTypeAuth.secretaria, prestadoresController.home)
 router.get('/secretaria/turnos', logInMiddleware.needLogin, userTypeAuth.secretaria, prestadoresController.secretariaTurnos);
+router.get('/secretaria/agregarPaciente', logInMiddleware.needLogin, userTypeAuth.secretaria, prestadoresController.secretariaAddPaciente)
 
 
 /* PROFESIONALES ROUTES */

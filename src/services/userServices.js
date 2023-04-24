@@ -96,12 +96,12 @@ let usuarios = {
 
             for (let i = 0; i < horarios.length; i++) {
                 const element = horarios[i].dia_semana;
-                
+
                 let horaDeInicio = moment(horarios[i].hora_inicio, 'HH:mm')
                 let duracion = horarios[i].duracion
                 let horaDeFin = moment(horarios[i].hora_fin, 'HH:mm')
-                
-                let diaToPush = { 
+
+                let diaToPush = {
                     dia_semana: element,
                     horarios: [horaDeInicio.format('HH:mm')]
                 }
@@ -306,6 +306,78 @@ let usuarios = {
                             })
                         }
                     }
+                } else {
+
+                    let info = {
+                        "status": 400,
+                        "errorType": "400.3 - Email is already in use.",
+                        "errors": {
+                            "alias": {
+                                "msg": "Esta dirección de email ya está en uso."
+                            }
+                        }
+                    }
+
+                    return res.json(info)
+                }
+            } else {
+                let info = {
+                    "status": 400,
+                    "errorType": "400.2 - User is already in use.",
+                    "errors": {
+                        "alias": {
+                            "msg": "Este nombre de usuario ya está en uso."
+                        }
+                    }
+                }
+
+                return res.json(info)
+            }
+        } else {
+            let info = {
+                "status": 400,
+                "errorType": "400.1 - Campos vacíos",
+                "errors": errors.mapped()
+            }
+            return res.json(info)
+
+        }
+    },
+    addPaciente: async (req, res) => {
+        let errors = validationResult(req);
+
+        if (errors.isEmpty()) {
+
+            let aliasExistente = await db.Usuario.findOne({ where: { alias: req.body.alias } })
+
+            let emailExistente = await db.Usuario.findOne({ where: { email: req.body.email } })
+
+            if (!aliasExistente) {
+                if (!emailExistente) {
+                    db.Usuario.create({
+                        Rol_id: 4,
+                        alias: req.body.alias,
+                        clave: req.body.email,
+                        nombre: req.body.nombre,
+                        apellido: req.body.apellido,
+                        email: req.body.email,
+                        dni: req.body.dni,
+                        domicilio: req.body.domicilio,
+                        telefono: req.body.telefono,
+                        sexo: req.body.sexo,
+                        nacimiento: req.body.nacimiento,
+                        matricula: null,
+                        Obra_Social_id: null,
+                        imagen: "default_profile_img.png"
+                    }).then(resultados => {
+                        let data = {
+                            "data": resultados,
+                            "result": "Creado exitosamente",
+                            "status": 201
+                        }
+
+                        return res.json(data)
+                    })
                 } else {
 
                     let info = {
