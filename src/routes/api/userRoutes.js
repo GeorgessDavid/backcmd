@@ -15,4 +15,9 @@ router.get('/profesional/:id', apiController.getOneUser)
 
 router.post('/trabajadores', validations.addUsuario, apiController.createTrabajador)
 
+// POST - SECRETARIA
+
+router.post('/secretaria/addPaciente', validations.addPaciente, apiController.addPaciente)
+
+
 module.exports = router

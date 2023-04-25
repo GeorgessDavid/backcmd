@@ -4,22 +4,7 @@ const prestadoresController = require('../controllers/prestadoresControllers.js'
 const express = require('express');
 const router = express.Router();
 const multer = require('multer');
-const { body } = require('express-validator')
 const validaciones = require('../../middlewares/routes/prestadoresValidations.js')
-
-let validacionMedicoPublico = [  //falta las opciones
-    body('nombre').notEmpty().withMessage('Debe escribir un nombre.'),
-    body('apellido').notEmpty().withMessage('Debe escribir un apellido.'),
-    body('especialidad').notEmpty().withMessage('Debe escribir una especialidad.'),
-    body('sexo').notEmpty().withMessage('Debe elegir un sexo').custom(value => {
-        let input = req.body.sexo
-    }),
-    body('estudios').notEmpty().withMessage('Debe seleccionar si realiza estudios o no.').custom(value => {
-        let input = req.body.estudios
-    })
-]
-
-
 
 /* MUILTER CONFIGURACIÓN  */
 
@@ -55,8 +40,7 @@ router.get('/admin/users', logInMiddleware.needLogin, userTypeAuth.admin, presta
 /* SECRETARIA ROUTES */
 router.get('/secretaria/home', logInMiddleware.needLogin, userTypeAuth.secretaria, prestadoresController.home)
 router.get('/secretaria/turnos', logInMiddleware.needLogin, userTypeAuth.secretaria, prestadoresController.secretariaTurnos);
-router.get('/secretaria/agregarPaciente', logInMiddleware.needLogin, userTypeAuth.secretaria, prestadoresController.secretariaAddPaciente)
-
+router.get('/secretaria/agregarPaciente', logInMiddleware.needLogin, userTypeAuth.secretaria, prestadoresController.secretariaAddPaciente);
 
 /* PROFESIONALES ROUTES */
 router.get('/profesional/home', logInMiddleware.needLogin, userTypeAuth.medic, prestadoresController.home)

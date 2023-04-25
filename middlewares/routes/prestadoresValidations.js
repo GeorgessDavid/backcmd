@@ -37,6 +37,36 @@ const validaciones = {
             return true
         })
         
+    ],
+    addPaciente: [
+        body('alias').notEmpty().trim().withMessage('Debe introducir un nombre de usuario.'),
+        body('email').notEmpty().trim().withMessage('Debe introducir una dirección de email.').isEmail().withMessage('Debe introducir una dirección de email válida.'),
+        body('dni').notEmpty().trim().withMessage('Debe introducir el número de documento.'),
+        body('telefono').notEmpty().trim().withMessage('Debe introducir un número de teléfono.'),
+        body('domicilio').notEmpty().trim().withMessage('Debe introducir un domicilio.'),
+        body('nombre').notEmpty().trim().withMessage('Debe introducir un nombre.'),
+        body('apellido').notEmpty().trim().withMessage('Debe introducir un apellido.'),
+        // CUSTOMS
+        body('sexo').custom((value, {req}) => {
+            let sexo = req.body.sexo;
+
+            if (!sexo) {
+
+                throw new Error ('Debe seleccionar el sexo.');
+
+            }
+            return true
+        }),
+        body('nacimiento').custom((value, {req}) => {
+            let nacimiento = req.body.nacimiento;
+
+            if(!nacimiento) {
+
+                throw new Error  ('Debe introducir una fecha de nacimiento.')
+            }
+
+            return true
+        })
     ]
 }
 
