@@ -153,7 +153,7 @@ let usuarios = {
     },
 
     getPacientes: async (req, res) => {
-        try {
+/*         try { */
             const usuarios = await db.Usuario.findAll({ include: [{ association: 'especialidad' }, { association: 'rol' }, { association: 'obra_social' }] })
 
             let pacientes = []
@@ -161,7 +161,24 @@ let usuarios = {
             for (x of usuarios) {
 
                 if (x.Rol_id == 4) {
-                    pacientes.push(x)
+                    const fechaNacimiento = moment(x.nacimiento).format('DD-MM-YYYY')
+
+                    let objPaciente = {
+                        id: x.id,
+                        alias: x.alias,
+                        nombre: x.nombre,
+                        apellido: x.apellido,
+                        email: x.email,
+                        clave: x.clave,
+                        sexo: x.sexo==true ? 'Masculino' : 'Femenino',
+                        domicilio: x.domicilio,
+                        telefono: x.telefono,
+                        nacimiento: fechaNacimiento,
+                        obra_social: x.obra_social ? x.obra_social : 'PARTICULAR'
+                    }
+
+                    
+                    pacientes.push(objPaciente)
                 }
             }
 
@@ -172,10 +189,10 @@ let usuarios = {
             }
 
             res.json(data)
-        } catch (err) {
+/*         } catch (err) {
             res.render(err)
             console.log(err)
-        }
+        } */
     },
 
     createTrabajador: async (req, res) => {

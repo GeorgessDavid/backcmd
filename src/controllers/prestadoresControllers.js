@@ -504,6 +504,9 @@ const prestadoresController = {
     },
     secretariaAddPaciente: (req, res) => {
         return res.render('prestadoresViews/secretariaViews/agregarPaciente')
+    },
+    historiaClinica: (req, res) => {
+        return res.render('prestadoresViews/profesionalViews/historiaClinica')
     }
 }
 

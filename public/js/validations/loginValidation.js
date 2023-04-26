@@ -34,14 +34,6 @@ window.addEventListener('load', function() {
             for (let i = 0; i < errores.length; i++) {
                 ulErrores.innerHTML += `<li>${errores[i]}</li>`
             }
-        }else{
-            Swal.fire({
-                position: 'top-end',
-                icon: 'success',
-                title: 'Bienvenido',
-                showConfirmButton: false,
-                timer: 1500
-              })
         }
 
     })
