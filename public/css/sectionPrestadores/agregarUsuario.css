@@ -66,3 +66,19 @@ main{
 .visibility-hidden{
     visibility: hidden;
 }
+
+.alerta {
+    position: absolute;
+    margin-top: 7.5%;
+    margin-right: 2%;
+    box-shadow: 0 0 5px red;
+}
+
+.inputError{
+    border: red 1px solid;
+    box-shadow: 0 0 5px red;
+}
+
+.inputError::placeholder{
+    color: red
+}

@@ -180,7 +180,7 @@ let usuarios = {
 
     createTrabajador: async (req, res) => {
         let errors = validationResult(req);
-
+        let oldData = req.body
         if (errors.isEmpty()) {
 
             let aliasExistente = await db.Usuario.findOne({ where: { alias: req.body.alias } })
@@ -310,7 +310,9 @@ let usuarios = {
 
                     let info = {
                         "status": 400,
-                        "errorType": "400.3 - Email is already in use.",
+                        "oldData": oldData,
+                        "errorType": 400.3,
+                        "errorName":"Email is already in use.",
                         "errors": {
                             "alias": {
                                 "msg": "Esta dirección de email ya está en uso."
@@ -323,7 +325,9 @@ let usuarios = {
             } else {
                 let info = {
                     "status": 400,
-                    "errorType": "400.2 - User is already in use.",
+                    "oldData": oldData,
+                    "errorType": 400.2,
+                    "errorName": 'Username is already in use.',
                     "errors": {
                         "alias": {
                             "msg": "Este nombre de usuario ya está en uso."
@@ -336,7 +340,9 @@ let usuarios = {
         } else {
             let info = {
                 "status": 400,
-                "errorType": "400.1 - Campos vacíos",
+                "oldData": oldData,
+                "errorType": 400.1,
+                "errorName":"Email is already in use.",
                 "errors": errors.mapped()
             }
             return res.json(info)
@@ -345,6 +351,8 @@ let usuarios = {
     },
     addPaciente: async (req, res) => {
         let errors = validationResult(req);
+
+        let oldData = req.body
 
         if (errors.isEmpty()) {
 
@@ -357,7 +365,7 @@ let usuarios = {
                     db.Usuario.create({
                         Rol_id: 4,
                         alias: req.body.alias,
-                        clave: req.body.email,
+                        clave: bcrypt.hashSync(req.body.email, 10),
                         nombre: req.body.nombre,
                         apellido: req.body.apellido,
                         email: req.body.email,
@@ -378,11 +386,13 @@ let usuarios = {
 
                         return res.json(data)
                     })
-                } else {
+                }else {
 
                     let info = {
                         "status": 400,
-                        "errorType": "400.3 - Email is already in use.",
+                        "oldData": oldData,
+                        "errorType": 400.3,
+                        "errorName":"Email is already in use.",
                         "errors": {
                             "alias": {
                                 "msg": "Esta dirección de email ya está en uso."
@@ -395,7 +405,9 @@ let usuarios = {
             } else {
                 let info = {
                     "status": 400,
-                    "errorType": "400.2 - User is already in use.",
+                    "oldData": oldData,
+                    "errorType": 400.2,
+                    "errorName": 'Username is already in use.',
                     "errors": {
                         "alias": {
                             "msg": "Este nombre de usuario ya está en uso."
@@ -408,7 +420,9 @@ let usuarios = {
         } else {
             let info = {
                 "status": 400,
-                "errorType": "400.1 - Campos vacíos",
+                "oldData": oldData,
+                "errorType": 400,
+                "errorName":"Empty field",
                 "errors": errors.mapped()
             }
             return res.json(info)
