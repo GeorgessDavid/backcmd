@@ -37,7 +37,7 @@ window.addEventListener('load', () => {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(inputs)
         }
-        fetch('http://localhost:3005/apiUsuarios/secretaria/addPaciente', request).then(p => {
+        fetch('https://dh-grupo3.onrender.com/apiUsuarios/secretaria/addPaciente', request).then(p => {
             return p.json()
         }).then(data => {
             console.log(data)
@@ -62,7 +62,7 @@ window.addEventListener('load', () => {
                 }).then((result) => {
                     if (result.dismiss === Swal.DismissReason.timer) {
                         console.log('I was closed by the timer')
-                        window.location.href = "http://localhost:3005/prestadores/secretaria/home"
+                        window.location.href = "https://dh-grupo3.onrender.com/prestadores/secretaria/home"
                     }
                 })
 
