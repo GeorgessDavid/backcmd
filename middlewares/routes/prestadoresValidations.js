@@ -34,7 +34,7 @@ const validaciones = {
 
             }
 
-            return true
+            return sexo
         })
         
     ],
