@@ -389,7 +389,7 @@ let usuarios = {
                         dni: req.body.dni,
                         domicilio: req.body.domicilio,
                         telefono: req.body.telefono,
-                        sexo: req.body.sexo,
+                        sexo: req.body.sexo === 'masculino' ? true : false,
                         nacimiento: req.body.nacimiento,
                         matricula: null,
                         Obra_Social_id: null,

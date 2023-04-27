@@ -37,10 +37,14 @@ window.addEventListener('load', () => {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(inputs)
         }
+
+        
+        console.log(selectedValue)
+        console.log(inputs.sexo)
+        
         fetch('https://dh-grupo3.onrender.com/apiUsuarios/secretaria/addPaciente', request).then(p => {
             return p.json()
         }).then(data => {
-            console.log(data)
             if (data.status == 201) {
                 let timerInterval
                 Swal.fire({

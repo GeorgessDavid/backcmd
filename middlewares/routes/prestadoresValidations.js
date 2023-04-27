@@ -55,7 +55,7 @@ const validaciones = {
                 throw new Error ('Debe seleccionar el sexo.');
 
             }
-            return true
+            return sexo
         }),
         body('nacimiento').custom((value, {req}) => {
             let nacimiento = req.body.nacimiento;
