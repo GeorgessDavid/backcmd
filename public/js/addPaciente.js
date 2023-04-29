@@ -42,7 +42,7 @@ window.addEventListener('load', () => {
         console.log(selectedValue)
         console.log(inputs.sexo)
         
-        fetch('https://dh-grupo3.onrender.com/apiUsuarios/secretaria/addPaciente', request).then(p => {
+        fetch('https://cmedicosdavid.onrender.com/apiUsuarios/secretaria/addPaciente', request).then(p => {
             return p.json()
         }).then(data => {
             if (data.status == 201) {
@@ -66,7 +66,7 @@ window.addEventListener('load', () => {
                 }).then((result) => {
                     if (result.dismiss === Swal.DismissReason.timer) {
                         console.log('I was closed by the timer')
-                        window.location.href = "https://dh-grupo3.onrender.com/prestadores/secretaria/home"
+                        window.location.href = "https://cmedicosdavid.onrender.com/prestadores/secretaria/home"
                     }
                 })
 

@@ -4,7 +4,7 @@ window.addEventListener('load', () => {
 
     let container = document.getElementById('divEspecialidades')
 
-    fetch("https://dh-grupo3.onrender.com/especialidades/api")
+    fetch("https://cmedicosdavid.onrender.com/especialidades/api")
         .then((response) => {
             return response.json();
         })

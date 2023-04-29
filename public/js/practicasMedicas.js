@@ -2,7 +2,7 @@ window.addEventListener('load', () => {
 
     let container = document.getElementById('divPracticasMedicas')
 
-    fetch('https://dh-grupo3.onrender.com/tratamientos/api').then(response => {
+    fetch('https://cmedicosdavid.onrender.com/tratamientos/api').then(response => {
         return response.json()
     }).then(datos => {
 
@@ -119,7 +119,7 @@ window.addEventListener('load', () => {
             };
 
 
-            fetch("https://dh-grupo3.onrender.com/tratamientos/create", requestOptions)
+            fetch("https://cmedicosdavid.onrender.com/tratamientos/create", requestOptions)
                 .then(response => {
                     return response.json()
                 }).then(info => {

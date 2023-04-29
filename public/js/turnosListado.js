@@ -3,7 +3,7 @@ window.addEventListener('load', () => {
 
     
 
-    fetch('https://dh-grupo3.onrender.com/apiUsuarios/profesionales').then(r => {
+    fetch('https://cmedicosdavid.onrender.com/apiUsuarios/profesionales').then(r => {
         return r.json()
     }).then(l => {
         for (let i = 0; i < l.data.length; i++) {
@@ -15,7 +15,7 @@ window.addEventListener('load', () => {
 
     let tableData = document.getElementById('datosTabla')
 
-    fetch('https://dh-grupo3.onrender.com/turnos/api/listar').then(r => {
+    fetch('https://cmedicosdavid.onrender.com/turnos/api/listar').then(r => {
         return r.json()
     }).then(g => {
         let spinner = document.getElementById('loadingSpinner')

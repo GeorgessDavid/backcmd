@@ -2,7 +2,7 @@
 ## Autores: DH grupo 3
 
 ### Main site URL
-https://dh-grupo3.onrender.com/
+https://cmedicosdavid.onrender.com/
 
 # Usuarios prueba
 
@@ -20,10 +20,10 @@ paciente
 
 - Creación de un dashboard inicial hecho en react: https://cmd-dashboard.onrender.com/
 - Creción de APIs para acceso desde el front-end
-  - https://dh-grupo3.onrender.com/apiUsuarios/pacientes
-  - https://dh-grupo3.onrender.com/turnos/api/listar
-  - https://dh-grupo3.onrender.com/apiUsuarios/profesionales
-  - https://dh-grupo3.onrender.com/especialidades/api
+  - https://cmedicosdavid.onrender.com/apiUsuarios/pacientes
+  - https://cmedicosdavid.onrender.com/turnos/api/listar
+  - https://cmedicosdavid.onrender.com/apiUsuarios/profesionales
+  - https://cmedicosdavid.onrender.com/especialidades/api
 
 
 ### Updates Sprint 6
@@ -35,8 +35,8 @@ paciente
 - Se agrego login con jwt para pacientes
 
 ### Updates Sprint 4
-- Agregado listado de pacientes en: https://dh-grupo3.herokuapp.com/pacientes
-- Agregada edicion de pacientes en: https://dh-grupo3.herokuapp.com/pacientes/[id]
+- Agregado listado de pacientes en: https://cmedicosdavid.herokuapp.com/pacientes
+- Agregada edicion de pacientes en: https://cmedicosdavid.herokuapp.com/pacientes/[id]
   - Accesible si clickeamos en un paciente en el listado de pacientes
 - Agregado el borrado de pacientes, desde la vista de edicion, boton "Borrar"
 - Claves storeadas de manera encriptada

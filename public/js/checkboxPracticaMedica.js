@@ -4,7 +4,7 @@ window.addEventListener('load', () => {
   var checkboxArea = document.getElementById("checkboxArea")
 
 
-  fetch('https://dh-grupo3.onrender.com/tratamientos/api').then(res => {
+  fetch('https://cmedicosdavid.onrender.com/tratamientos/api').then(res => {
     return res.json()
   }).then(l => {
     for (let i = 0; i < l.data.length; i++) {

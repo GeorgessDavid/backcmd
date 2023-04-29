@@ -1,7 +1,7 @@
 window.addEventListener('load', () => {
     let container = document.getElementById('usuariosListado')
 
-    fetch('https://dh-grupo3.onrender.com/apiUsuarios/allUsers').then(response => {
+    fetch('https://cmedicosdavid.onrender.com/apiUsuarios/allUsers').then(response => {
         return response.json()
     }).then(datos => {
         let spinner = document.getElementById('loadingSpinner')

@@ -9,7 +9,7 @@ window.addEventListener('load', () => {
     let form = document.getElementById('formEditUser')
 
     if (userType.value == 3) {
-        let direccion = "https://dh-grupo3.onrender.com/apiUsuarios/profesional/" + alias
+        let direccion = "https://cmedicosdavid.onrender.com/apiUsuarios/profesional/" + alias
         fetch(direccion).then(res => {
             return res.json()
         }).then(datos => {
@@ -31,7 +31,7 @@ window.addEventListener('load', () => {
                     </div>
                 </div>`
             let especialidadSelect = document.getElementById('especialidadSelect')
-            fetch('https://dh-grupo3.onrender.com/especialidades/api').then(res => {
+            fetch('https://cmedicosdavid.onrender.com/especialidades/api').then(res => {
                 return res.json()
             }).then(datos => {
                 for (let i = 0; i < datos.data.length; i++) {
