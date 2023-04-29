@@ -154,7 +154,7 @@ let usuarios = {
 
     getPacientes: async (req, res) => {
 /*         try { */
-            const usuarios = await db.Usuario.findAll({ include: [{ association: 'especialidad' }, { association: 'rol' }, { association: 'obra_social' }] })
+            const usuarios = await db.Usuario.findAll({order: [['apellido', 'ASC']]},{ include: [{ association: 'especialidad' }, { association: 'rol' }, { association: 'obra_social' }] })
 
             let pacientes = []
 
