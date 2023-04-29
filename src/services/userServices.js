@@ -171,6 +171,7 @@ let usuarios = {
                         email: x.email,
                         clave: x.clave,
                         sexo: x.sexo==true ? 'Masculino' : 'Femenino',
+                        dni: x.dni,
                         domicilio: x.domicilio,
                         telefono: x.telefono,
                         nacimiento: fechaNacimiento,
