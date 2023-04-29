@@ -4,18 +4,6 @@
 ### Main site URL
 https://cmedicosdavid.onrender.com/
 
-# Usuarios prueba
-
-admin:
-
-    user: jero
-    pass: 12345678
-
-paciente
-
-    user: martin
-    pass: 12345678
-
 ### Updates Spint 8
 
 - Creación de un dashboard inicial hecho en react: https://cmd-dashboard.onrender.com/
