@@ -33,8 +33,15 @@
                 </div>
                 <% } %>
                     <% if (locals.isLogged) { %>
-                        <div class="col logout">
-                            <a href="/prestadores/logout"><i class="fa-solid fa-power-off"></i> Cerrar sesión</a>
+                        <div class="col d-flex logout">
+                            <div>
+                                <a href="/profile/<% usuario.alias %>"><i class="fa-solid fa-user" style="color: #f2f2f2;"></i> Mi
+                                    Perfil</a>
+                            </div>
+                            <i class="fa-sharp fa-solid fa-pipe fa-2xl" style="color: #f4f5f5;"></i></a>
+                            <div>
+                                <a href="/prestadores/logout"><i class="fa-solid fa-power-off"></i></a>
+                            </div>
                         </div>
                         <% } %>
 </div>
