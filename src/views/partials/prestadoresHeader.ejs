@@ -17,17 +17,17 @@
     </div>
     <% if (locals && usuario.Rol_id==1) { %>
         <div class="col">
-            <p style="color: white; text-align: center; margin-top: 15px;"><b>Hola, <%= usuario.nombre %>!</b> - <em
+            <p style="color: white; text-align: center; margin-top: 15px;"><b>Hola, <%= usuario.nombre %>!</b>  <em
                     style="font-size: 12px;">Administrador</em></p>
         </div>
         <% } else if (locals && usuario.Rol_id==2) { %>
             <div class="col">
-                <p style="color: white; text-align: center; margin-top: 15px;"><b>Hola, <%= usuario.nombre %>!</b> - <em
+                <p style="color: white; text-align: center; margin-top: 15px;"><b>Hola, <%= usuario.nombre %>!</b> <em
                         style="font-size: 12px;">Secretaría</em></p>
             </div>
             <% } else if (locals && usuario.Rol_id==3) { %>
                 <div class="col">
-                    <p style="color: white; text-align: center; margin-top: 15px;"><b>Hola, <%= usuario.nombre %>!</b> -
+                    <p style="color: white; text-align: center; margin-top: 15px;"><b>Hola, <%= usuario.nombre %>!</b> 
                         <em style="font-size: 12px;">Profesional</em>
                     </p>
                 </div>
@@ -35,11 +35,10 @@
                     <% if (locals.isLogged) { %>
                         <div class="col d-flex logout">
                             <div>
-                                <a href="/profile/<% usuario.alias %>"><i class="fa-solid fa-user" style="color: #f2f2f2;"></i> Mi
+                                <a href="/profile/<%= usuario.alias %>"><i class="fa-solid fa-user" style="color: #f2f2f2;"></i> Mi
                                     Perfil</a>
                             </div>
-                            <i class="fa-sharp fa-solid fa-pipe fa-2xl" style="color: #f4f5f5;"></i></a>
-                            <div>
+                            <div style="border-left: 2px solid white; margin: 0 1.45vw; padding-left: 1.45vw;">
                                 <a href="/prestadores/logout"><i class="fa-solid fa-power-off"></i></a>
                             </div>
                         </div>

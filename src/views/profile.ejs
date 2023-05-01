@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Perfil - CMD</title>
+    <% if (locals && usuario.Rol_id !=4) { %>
+        <%- include('partials/headPartials.ejs') %>
+            <% } %>
+                <link rel="stylesheet" href="/css/styles.css">
+                <link rel="stylesheet" href="/css/profile.css">
+</head>
+
+<body>
+    <header>
+        <% if (locals && usuario.Rol_id !=4) { %>
+            <%- include('partials/prestadoresHeader.ejs')%>
+                <% } else { %>
+                    <%- include('partials/header.ejs') %>
+                        <% } %>
+    </header>
+    <main>
+        <div class="dataBox">
+            <h1>Datos de usuario</h2>
+                <form action="/profile/<%= usuario.id %>?METHOD_PUT" method="POST">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Usuario: </span>
+                        <input type="text" class="form-control" value="<%= usuario.alias %>" disabled>
+                    </div>
+                    <h6 style="font-style: italic; font-size: 12px; margin: -10px 15px 15px !important;">El nombre de usuario no se puede modificar.</h6>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Contraseña:</span>
+                        <input type="password" class="form-control" disabled placeholder="**********">
+                    </div>
+                    <a href="#" style="font-size: 12px; margin: -10px 15px 15px !important;">Cambiar Contraseña</a>
+                </form>
+        </div>
+    </main>
+</body>
+
+</html>

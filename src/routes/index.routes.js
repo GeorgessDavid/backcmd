@@ -9,5 +9,6 @@ router.use("/prestadores", require('./prestadoresRoutes'))
 router.use("/apiUsuarios", require('./api/userRoutes'))
 router.use("/tratamientos", require('./tratamientoRoutes'))
 router.use('/historiaClinica', require('./api/historiaClinicaRoutes'))
+router.use('/profile', require('./profileRoutes.js'))
 
 module.exports = router
