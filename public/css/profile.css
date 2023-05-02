@@ -28,3 +28,12 @@ main{
 .form-control{
     border-radius: 0px;
 }
+
+.imgDiv{
+    text-align: center;
+}
+.imgDiv img{
+    width: 25%;
+    height: 25%;
+    border-radius: 50%;
+}

@@ -7,6 +7,6 @@ const profileController = require('../controllers/profileController.js')
 router.use(userLoginValidation.defaultLocals)
 
 
-router.get('/:id', userLoginValidation.needLogin, profileController.profile )
+router.get('/:id', userLoginValidation.needLogin, userLoginValidation.selfProfile,profileController.profile )
 
 module.exports = router

@@ -70,6 +70,12 @@ let userLoginValidation = {
             return res.redirect('/pacientes/login')
         }
         next()
+    },
+    selfProfile: (req, res, next) => {
+        if(req.params.id != req.session.usuario.alias) {
+            return res.redirect('/profile/' + req.session.usuario.alias)
+        }
+        next()
     }
 }
 
