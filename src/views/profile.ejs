@@ -25,18 +25,53 @@
             <h1>Datos de usuario</h2>
                 <form action="/profile/<%= usuario.id %>?METHOD_PUT" method="POST">
                     <div class="input-group mb-3">
-                        <span class="input-group-text">Usuario: </span>
+                        <span class="input-group-text">Usuario </span>
                         <input type="text" class="form-control" value="<%= usuario.alias %>" disabled>
                     </div>
-                    <h6 style="font-style: italic; font-size: 12px; margin: -10px 15px 15px !important;">El nombre de usuario no se puede modificar.</h6>
+                    <h6 style="font-style: italic; font-size: 12px; margin: -10px 15px 15px !important;">El nombre de
+                        usuario no se puede modificar.</h6>
                     <div class="input-group mb-3">
                         <span class="input-group-text">Contraseña:</span>
                         <input type="password" class="form-control" disabled placeholder="**********">
                     </div>
-                    <a href="#" style="font-size: 12px; margin: -10px 15px 15px !important;">Cambiar Contraseña</a>
+                    <div style="margin: -10px 15px 15px;">
+                        <a href="#" style="font-size: 12px !important;">Cambiar Contraseña</a>
+                    </div>
+                    <h3 class="mb-3">Datos Personales</h2>
+                    <div class="row">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">Nombre</span>
+                            <input type="text" name="nombre" class="form-control" value="<%= usuario.nombre %>" id="nombre">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">Apellido</span>
+                            <input type="text" name="apellido" class="form-control" value="<%= usuario.apellido %>" id="apellido">
+                        </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Correo electrónico</span>
+                        <input type="text" name="email" id="email" class="form-control" value="<%= usuario.email %>">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Domicilio</span>
+                        <input type="text" name="domicilio" id="domicilio" class="form-control" value="<%= usuario.domicilio  %>">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">DNI</span>
+                        <input type="text" name="dni" id="dni" class="form-control" value="<%= usuario.dni %>">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Sexo</span>
+                        <input type="text" name="sexo" id="sexo" class="form-control" value="<%= usuario.sexo == true ? 'Masculino' : 'Femenino' %>" disabled>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Nacimiento</span>
+                        <input type="text" name="nacimiento" id="nacimiento" class="form-control" value="<%= usuario.nacimiento %>">
+                    </div>
                 </form>
         </div>
     </main>
+    <%- include('./partials/scriptPartials') %>
 </body>
 
 </html>
