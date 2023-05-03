@@ -18,6 +18,8 @@ const controlador = {
     loginProcess: (req, res) => {
         // PRIMERAS VALIDACIONES DEL CAMPO
         let errors = validationResult(req);
+
+        let oldData = req.body
         if (errors.isEmpty()) {
             // BUSQUEDA DEL USUARIO
             db.Usuario.findOne({ where: { alias: req.body.usuario } }).then((usuarioEncontrado) => {
@@ -64,14 +66,14 @@ const controlador = {
 
                     } else {
                         console.log(errors)
-                        return res.render("pacientesLogin", { errors: { password: { msg: "Contraseña incorrecta" } } })
+                        return res.render("pacientesLogin", { errors: { password: { msg: "Contraseña incorrecta" } }, oldData: oldData })
                     }
                 } else {
-                    return res.render("pacientesLogin", { errors: { usuario: { msg: "Usuario inexistente" } } })
+                    return res.render("pacientesLogin", { errors: { usuario: { msg: "Usuario inexistente" } }, oldData: oldData})
                 }
             })
         } else {
-            return res.render("pacientesLogin", { errors: errors.mapped() })
+            return res.render("pacientesLogin", { errors: errors.mapped(), oldData: oldData })
         }
     },
     logout: (req, res) => {

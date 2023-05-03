@@ -28,11 +28,13 @@
             <div class="logInBox">
                 <h1>Log In</h1>
                 <a href="/pacientes/register">REGISTRARSE</a>
-                <input class="userDataBox" name="usuario" type="text" placeholder="USUARIO" id="loginUser">
+                <input class="userDataBox <%= locals.errors && errors.usuario ? 'inputError' : null %>" name="usuario" type="text" placeholder="USUARIO" id="loginUser" value="<%= locals.oldData && oldData.usuario ? oldData.usuario : null %>" >
                 <% if (locals.errors && errors.usuario) { %>
                     <p class="error"> <%= errors.usuario.msg %> </p>
                 <% } %>
-                <input class="userDataBox" name="password" type="password" placeholder="CONTRASEÑA" id="loginPass">
+                <input class="userDataBox" name="password" type="password" placeholder="CONTRASEÑA" id="loginPass" <% if (locals.errors && errors.password) { %>
+                    style="border: red 2px solid !important;"
+                <% } %>>
                 <% if (locals.errors && errors.password) { %>
                     <p class="error"> <%= errors.password.msg %> </p>
                 <% } %>
