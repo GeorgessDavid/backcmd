@@ -87,6 +87,7 @@ const prestadoresController = {
     addUserPost: async (req, res) => {
         let errors = validationResult(req);
 
+        console.log(errors.mapped())
         let especialidad = await db.Especialidad.findAll();
 
         if (errors.isEmpty()) {

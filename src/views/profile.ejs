@@ -29,71 +29,130 @@
                     </div>
                     <div class="input-group mb-3">
                         <span class="input-group-text">Usuario </span>
-                        <input type="text" class="form-control" value="<%= user.alias %>" disabled>
+                        <input type="text" class="form-control" value="<%= user.alias %>" id="alias" disabled>
                     </div>
                     <h6 style="font-style: italic; font-size: 12px; margin: -10px 15px 15px !important;">El nombre de
                         usuario no se puede modificar.</h6>
                     <div class="input-group mb-3">
                         <span class="input-group-text">Tipo de usuario</span>
-                        <input type="text" name="tipoDeUsuario" id="tipoDeUsuario" class="form-control" value="<%= user.rol %>" disabled>
+                        <input type="text" name="tipoDeUsuario" id="tipoDeUsuario" class="form-control"
+                            value="<%= user.rol %>" disabled>
                     </div>
                     <div class="input-group mb-3">
                         <span class="input-group-text">Contraseña</span>
                         <input type="password" class="form-control" disabled placeholder="**********">
                     </div>
                     <div style="margin: -10px 15px 15px;">
-                        <a href="#" style="font-size: 12px !important;">Cambiar Contraseña</a>
+                        <a href="#" class="passwordChange" data-bs-toggle="modal"
+                            data-bs-target="#passwordChange">Cambiar Contraseña</a>
+                        <div class="modal fade" id="passwordChange">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Cambiar Contraseña</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Cambio de contraseña</p>
+                                        <h6 id="contrasenaOld"></h6>
+                                        <div class="input-group mb-5">
+                                            <span class="input-group-text">Contraseña Actual</span>
+                                            <input type="password" name="oldPassword" id="oldPassword"
+                                                class="form-control" required>
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text">Contraseña Nueva</span>
+                                            <input type="password" name="newPassword" id="newPassword"
+                                                class="form-control" required>
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text">Repita la contraseña</span>
+                                            <input type="password" id="newPasswordRepeat" class="form-control" required>
+                                        </div>
+                                        <h6 id="contrasena">
+
+                                        </h6>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Cerrar</button>
+                                        <button type="button" class="btn btn-success" id="changeButton">Cambiar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <h3 class="mb-3">Datos Personales</h2>
-                    <div class="row">
-                        <div class="input-group mb-3">
-                            <span class="input-group-text">Nombre</span>
-                            <input type="text" name="nombre" class="form-control" value="<%= user.nombre %>" id="nombre">
+                        <div class="row">
+                            <div class="input-group mb-3">
+                                <span class="input-group-text">Nombre</span>
+                                <input type="text" name="nombre" class="form-control" value="<%= user.nombre %>"
+                                    id="nombre">
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text">Apellido</span>
+                                <input type="text" name="apellido" class="form-control" value="<%= user.apellido %>"
+                                    id="apellido">
+                            </div>
                         </div>
                         <div class="input-group mb-3">
-                            <span class="input-group-text">Apellido</span>
-                            <input type="text" name="apellido" class="form-control" value="<%= user.apellido %>" id="apellido">
+                            <span class="input-group-text">Correo electrónico</span>
+                            <input type="text" name="email" id="email" class="form-control" value="<%= user.email %>">
                         </div>
-                    </div>
-                    <div class="input-group mb-3">
-                        <span class="input-group-text">Correo electrónico</span>
-                        <input type="text" name="email" id="email" class="form-control" value="<%= user.email %>">
-                    </div>
-                    <div class="input-group mb-3">
-                        <span class="input-group-text">Domicilio</span>
-                        <input type="text" name="domicilio" id="domicilio" class="form-control" value="<%= user.domicilio  %>">
-                    </div>
-                    <div class="input-group mb-3">
-                        <span class="input-group-text">DNI</span>
-                        <input type="text" name="dni" id="dni" class="form-control" value="<%= user.dni %>">
-                    </div>
-                    <div class="input-group mb-3">
-                        <span class="input-group-text">Sexo</span>
-                        <input type="text" name="sexo" id="sexo" class="form-control" value="<%= user.sexo %>" disabled>
-                    </div>
-                    <div class="input-group mb-3">
-                        <span class="input-group-text">Nacimiento</span>
-                        <input type="text" name="nacimiento" id="nacimiento" class="form-control" value="<%= user.nacimiento %>">
-                    </div>
-                    <div class="input-group mb-3">
-                        <span class="input-group-text">Teléfono</span>
-                        <input type="text" name="telefono" id="telefono" class="form-control" value=" <%= user.telefono %>">
-                    </div>
-                    <% if (user.rol == 'Profesional') { %>
-                    <h3 class="mb-3">Datos laborales</h3>
-                    <div class="input-group mb-3">
-                        <span class="input-group-text">Especialidad</span>
-                        <input type="text" name="especialidad" id="especialidad" class="form-control" value="<%= user.especialidad %>">
-                    </div>
-                    <div class="input-group mb-3">
-                        <span class="input-group-text">Matrícula</span>
-                        <input type="text" name="matricula" id="matricula" class="form-control" value="<%= user.matricula %>">
-                    </div>
-                    <% } %>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">Domicilio</span>
+                            <input type="text" name="domicilio" id="domicilio" class="form-control"
+                                value="<%= user.domicilio  %>">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">DNI</span>
+                            <input type="text" name="dni" id="dni" class="form-control" value="<%= user.dni %>">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">Sexo</span>
+                            <input type="text" name="sexo" id="sexo" class="form-control" value="<%= user.sexo %>"
+                                disabled>
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">Nacimiento</span>
+                            <input type="text" name="nacimiento" class="form-control"
+                                value="<%= user.nacimiento %>" disabled>
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">Teléfono</span>
+                            <input type="text" name="telefono" id="telefono" class="form-control"
+                                value=" <%= user.telefono %>">
+                        </div>
+                        <% if (user.rol=='Profesional' ) { %>
+                            <h3 class="mb-3">Datos laborales</h3>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text">Especialidad</span>
+                                <input type="text" name="especialidad" id="especialidad" class="form-control"
+                                    value="<%= user.especialidad %>">
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text">Matrícula</span>
+                                <input type="text" name="matricula" id="matricula" class="form-control"
+                                    value="<%= user.matricula %>">
+                            </div>
+                            <h2>Prácticas médicas:</h2>
+                            <% if (user.tratamiento=='No disponible' ) { %>
+
+                                <% for( let i=0; i < user.tratamiento.length; i++ ) { %>
+                                    <span>
+                                        <%= user.tratamiento[i] %>
+                                    </span>
+                                    <% } %>
+                                        <% } else {%>
+                                            <span>No tienes prácticas médicas asignadas.</span>
+                                            <% } %>
+                                                <% } %>
                 </form>
         </div>
     </main>
     <%- include('./partials/scriptPartials') %>
+    <script src="/js/profile.js"></script>
 </body>
 
 </html>

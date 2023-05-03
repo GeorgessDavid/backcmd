@@ -36,7 +36,7 @@ const validaciones = {
 
             return sexo
         })
-        
+
     ],
     addPaciente: [
         body('alias').notEmpty().trim().withMessage('Debe introducir un nombre de usuario.'),
@@ -47,26 +47,30 @@ const validaciones = {
         body('nombre').notEmpty().trim().withMessage('Debe introducir un nombre.'),
         body('apellido').notEmpty().trim().withMessage('Debe introducir un apellido.'),
         // CUSTOMS
-        body('sexo').custom((value, {req}) => {
+        body('sexo').custom((value, { req }) => {
             let sexo = req.body.sexo;
 
             if (!sexo) {
 
-                throw new Error ('Debe seleccionar el sexo.');
+                throw new Error('Debe seleccionar el sexo.');
 
             }
             return sexo
         }),
-        body('nacimiento').custom((value, {req}) => {
+        body('nacimiento').custom((value, { req }) => {
             let nacimiento = req.body.nacimiento;
 
-            if(!nacimiento) {
+            if (!nacimiento) {
 
-                throw new Error  ('Debe introducir una fecha de nacimiento.')
+                throw new Error('Debe introducir una fecha de nacimiento.')
             }
 
             return true
         })
+    ],
+    changePassword: [
+        body('oldPassword').notEmpty().trim().withMessage('Debe introducir su antigua contraseña.'),
+        body('newPassword').notEmpty().trim().withMessage('Debe introducir la nueva contraseña.')
     ]
 }
 

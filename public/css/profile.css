@@ -37,3 +37,10 @@ main{
     height: 25%;
     border-radius: 50%;
 }
+
+.passwordChange {
+    font-size: 12px;
+    color: blue;
+    text-decoration: solid;
+}
+

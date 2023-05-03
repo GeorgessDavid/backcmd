@@ -2,7 +2,8 @@ const db = require('../../database/models')
 const { validationResult } = require("express-validator");
 const bcrypt = require('bcryptjs')
 const { where } = require("sequelize");
-const moment = require('moment')
+const moment = require('moment');
+const { logout } = require('../controllers/pacientesController');
 
 let usuarios = {
     getAllUsers: async (req, res) => {
@@ -153,47 +154,47 @@ let usuarios = {
     },
 
     getPacientes: async (req, res) => {
-/*         try { */
-            const usuarios = await db.Usuario.findAll({order: [['apellido', 'ASC']]},{ include: [{ association: 'especialidad' }, { association: 'rol' }, { association: 'obra_social' }] })
+        /*         try { */
+        const usuarios = await db.Usuario.findAll({ order: [['apellido', 'ASC']] }, { include: [{ association: 'especialidad' }, { association: 'rol' }, { association: 'obra_social' }] })
 
-            let pacientes = []
+        let pacientes = []
 
-            for (x of usuarios) {
+        for (x of usuarios) {
 
-                if (x.Rol_id == 4) {
-                    const fechaNacimiento = moment(x.nacimiento).format('DD-MM-YYYY')
+            if (x.Rol_id == 4) {
+                const fechaNacimiento = moment(x.nacimiento).format('DD-MM-YYYY')
 
-                    let objPaciente = {
-                        id: x.id,
-                        alias: x.alias,
-                        nombre: x.nombre,
-                        apellido: x.apellido,
-                        email: x.email,
-                        clave: x.clave,
-                        sexo: x.sexo==true ? 'Masculino' : 'Femenino',
-                        dni: x.dni,
-                        domicilio: x.domicilio,
-                        telefono: x.telefono,
-                        nacimiento: fechaNacimiento,
-                        obra_social: x.obra_social ? x.obra_social : 'PARTICULAR'
-                    }
-
-                    
-                    pacientes.push(objPaciente)
+                let objPaciente = {
+                    id: x.id,
+                    alias: x.alias,
+                    nombre: x.nombre,
+                    apellido: x.apellido,
+                    email: x.email,
+                    clave: x.clave,
+                    sexo: x.sexo == true ? 'Masculino' : 'Femenino',
+                    dni: x.dni,
+                    domicilio: x.domicilio,
+                    telefono: x.telefono,
+                    nacimiento: fechaNacimiento,
+                    obra_social: x.obra_social ? x.obra_social : 'PARTICULAR'
                 }
-            }
 
-            let data = {
-                "total": pacientes.length,
-                "data": pacientes,
-                "status": 200
-            }
 
-            res.json(data)
-/*         } catch (err) {
-            res.render(err)
-            console.log(err)
-        } */
+                pacientes.push(objPaciente)
+            }
+        }
+
+        let data = {
+            "total": pacientes.length,
+            "data": pacientes,
+            "status": 200
+        }
+
+        res.json(data)
+        /*         } catch (err) {
+                    res.render(err)
+                    console.log(err)
+                } */
     },
 
     createTrabajador: async (req, res) => {
@@ -330,7 +331,7 @@ let usuarios = {
                         "status": 400,
                         "oldData": oldData,
                         "errorType": 400.3,
-                        "errorName":"Email is already in use.",
+                        "errorName": "Email is already in use.",
                         "errors": {
                             "alias": {
                                 "msg": "Esta dirección de email ya está en uso."
@@ -360,7 +361,7 @@ let usuarios = {
                 "status": 400,
                 "oldData": oldData,
                 "errorType": 400.1,
-                "errorName":"Email is already in use.",
+                "errorName": "Email is already in use.",
                 "errors": errors.mapped()
             }
             return res.json(info)
@@ -404,13 +405,13 @@ let usuarios = {
 
                         return res.json(data)
                     })
-                }else {
+                } else {
 
                     let info = {
                         "status": 400,
                         "oldData": oldData,
                         "errorType": 400.3,
-                        "errorName":"Email is already in use.",
+                        "errorName": "Email is already in use.",
                         "errors": {
                             "alias": {
                                 "msg": "Esta dirección de email ya está en uso."
@@ -440,11 +441,47 @@ let usuarios = {
                 "status": 400,
                 "oldData": oldData,
                 "errorType": 400,
-                "errorName":"Empty field",
+                "errorName": "Empty field",
                 "errors": errors.mapped()
             }
             return res.json(info)
 
+        }
+    },
+    updatePassword: async (req, res) => {
+        let errors = validationResult(req)
+
+        if (errors.isEmpty()) {
+            let userToChange = await db.Usuario.findOne({ where: { alias: req.body.alias } })
+
+            let toCompare = bcrypt.compareSync(req.body.oldPassword, userToChange.clave)
+
+            if (toCompare) {
+                db.Usuario.update({ clave: bcrypt.hashSync(req.body.newPassword, 10) }, { where: { alias: userToChange.alias } })
+
+                let data = {
+                    "status": 201,
+                    "msg": 'Modificado correctamente.'
+                }
+
+
+                req.session.destroy();
+                res.clearCookie('rememberMe')
+
+                return res.json(data)
+            } else {
+                return res.json({
+                    "status": 401,
+                    "error": 'Contraseña incorrecta'
+                })
+            }
+        } else {
+            let data = {
+                "status": 402,
+                "error": errors.mapped()
+            }
+
+            return res.json(data)
         }
     }
 }

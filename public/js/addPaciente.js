@@ -37,10 +37,6 @@ window.addEventListener('load', () => {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(inputs)
         }
-
-        
-        console.log(selectedValue)
-        console.log(inputs.sexo)
         
         fetch('https://cmedicosdavid.onrender.com/apiUsuarios/secretaria/addPaciente', request).then(p => {
             return p.json()
