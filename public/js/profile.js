@@ -63,7 +63,7 @@ changeButton.addEventListener('click', () => {
         body: JSON.stringify(data)
     }
 
-    let url = 'http://localhost:3005/apiUsuarios/changePassword/' + data.alias
+    let url = 'https:/cmedicosdavid.onrender.com/apiUsuarios/changePassword/' + data.alias
 
     fetch(url, request).then(response => {
         return response.json()
