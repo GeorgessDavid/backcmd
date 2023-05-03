@@ -23,7 +23,7 @@
     <main>
         <div class="dataBox">
             <h1>Datos de Usuario</h2>
-                <form action="/profile/<%= user.id %>?METHOD_PUT" method="POST">
+                <form action="/profile/<%= user.id %>?METHOD_PUT" method="POST" id="form">
                     <div class="imgDiv mb-3">
                         <img src="/img/profilepictures/<%= user.imagen %>" alt="profilePicture">
                     </div>
@@ -149,6 +149,7 @@
                                             <% } %>
                                                 <% } %>
                 </form>
+                <button class="btn btn-success displayNone" id="dataChangeButton">Modificar</button>
         </div>
     </main>
     <%- include('./partials/scriptPartials') %>

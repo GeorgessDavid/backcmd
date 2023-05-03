@@ -138,3 +138,56 @@ changeButton.addEventListener('click', () => {
         }
     })
 })
+
+let form = document.getElementById('form')
+
+form.addEventListener('change', () => {
+    
+    let button = document.getElementById('dataChangeButton')
+
+    button.classList.remove('displayNone')
+
+    inputs.nombre.addEventListener('change', () => {
+        inputs.nombre.style.borderColor = 'blue'
+        inputs.nombre.style.borderWidth = '1px'
+        inputs.nombre.style.borderStyle = 'solid'
+        inputs.nombre.style.boxShadow = '0 0 5px blue'
+    })      
+    inputs.apellido.addEventListener('change', () => {
+        inputs.apellido.style.borderColor = 'blue'
+        inputs.apellido.style.borderWidth = '1px'
+        inputs.apellido.style.borderStyle = 'solid'
+        inputs.apellido.style.boxShadow = '0 0 5px blue'
+    })
+    
+    inputs.email.addEventListener('change', () => {
+        inputs.email.style.borderColor = 'blue'
+        inputs.email.style.borderWidth = '1px'
+        inputs.email.style.borderStyle = 'solid'
+        inputs.email.style.boxShadow = '0 0 5px blue'
+    })
+    
+    inputs.dni.addEventListener('change', () => {
+        inputs.dni.style.borderColor = 'blue'
+        inputs.dni.style.borderWidth = '1px'
+        inputs.dni.style.borderStyle = 'solid'
+        inputs.dni.style.boxShadow = '0 0 5px blue'
+    })
+    
+    inputs.telefono.addEventListener('change', () => {
+        inputs.telefono.style.borderColor = 'blue'
+        inputs.telefono.style.borderWidth = '1px'
+        inputs.telefono.style.borderStyle = 'solid'
+        inputs.telefono.style.boxShadow = '0 0 5px blue'
+    })
+    
+    inputs.domicilio.addEventListener('change', () => {
+        inputs.domicilio.style.borderColor = 'blue'
+        inputs.domicilio.style.borderWidth = '1px'
+        inputs.domicilio.style.borderStyle = 'solid'
+        inputs.domicilio.style.boxShadow = '0 0 5px blue'
+    })
+})
+
+
+
