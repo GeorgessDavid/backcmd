@@ -197,7 +197,7 @@ button.addEventListener('click', () => {
     button.innerHTML = `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
     Espere...`
 
-    let url = 'http://localhost:3005/apiUsuarios/updateUser/' + inputs.alias.value
+    let url = 'https://cmedicosdavid.onrender.com/apiUsuarios/updateUser/' + inputs.alias.value
 
     let request = {
         method: 'PUT',
