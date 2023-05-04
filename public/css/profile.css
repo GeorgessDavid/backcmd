@@ -47,3 +47,10 @@ main{
 .displayNone {
     display: none;
 }
+
+.error {
+    font-size: 12px;
+    color: red;
+    font-style: italic;
+}
+

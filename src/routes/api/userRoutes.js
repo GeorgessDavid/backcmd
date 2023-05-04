@@ -16,6 +16,7 @@ router.get('/profesional/:id', apiController.getOneUser)
 router.post('/trabajadores', validations.addUsuario, apiController.createTrabajador)
 
 router.put('/changePassword/:id', validations.changePassword, apiController.updatePassword)
+router.put('/updateUser/:id', validations.updateUser, apiController.updateUser)
 
 // POST - SECRETARIA
 

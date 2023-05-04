@@ -483,6 +483,55 @@ let usuarios = {
 
             return res.json(data)
         }
+    },
+    updateUser: async (req, res) => {
+        let errors = validationResult(req)
+
+        if(errors.isEmpty()){
+            let emailExistente = await db.Usuario.findOne({where: {email: req.body.email}})
+
+            let usuario = await db.Usuario.findOne({ where: { alias: req.body.alias } })
+
+            if(!emailExistente || usuario.email === emailExistente.email){
+                db.Usuario.update({
+                    nombre: req.body.nombre,
+                    apellido: req.body.apellido,
+                    email: req.body.email,
+                    domicilio: req.body.domicilio,
+                    dni: req.body.dni,
+                    telefono: req.body.telefono
+                }, {where: {alias: req.body.alias}})
+                .then(result => {
+                    let data = {
+                        "status": 201,
+                        "msg": 'Modificado correctamente.'
+                    }
+                    return res.json(data)
+                })
+            }else{
+                let data = {
+                    "status": 401,
+                    "errorType": 'Email en uso.',
+                    "errors":{
+                        "email":{
+                            "msg": 'Esta dirección de email ya está en uso.'
+                        }
+                    }
+                }
+
+                return res.json(data)
+            }
+            
+        } else {
+            let data = {
+                "status": 401,
+                "errorType": "Campos vacíos.",
+                "errors": errors.mapped()
+            }
+
+            return res.json(data)
+        }
+            
     }
 }
 

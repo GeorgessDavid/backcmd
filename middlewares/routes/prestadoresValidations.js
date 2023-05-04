@@ -71,6 +71,13 @@ const validaciones = {
     changePassword: [
         body('oldPassword').notEmpty().trim().withMessage('Debe introducir su antigua contraseña.'),
         body('newPassword').notEmpty().trim().withMessage('Debe introducir la nueva contraseña.')
+    ],
+    updateUser: [
+        body('nombre').notEmpty().trim().withMessage('Debe introducir un nombre.'),
+        body('apellido').notEmpty().trim().withMessage('Debe introducir un apellido.'),
+        body('email').notEmpty().trim().withMessage('Debe introducir una dirección de e-mail.').isEmail().withMessage('Debe introducir una dirección de e-mail válida.'),
+        body('dni').notEmpty().trim().withMessage('Debe introducir el número de documento.'),
+        body('telefono').notEmpty().trim().withMessage('Debe introducir un número de teléfono.').isLength({min: 6}).withMessage('El número de teléfono debe tener 6 dígitos como mínimo.')
     ]
 }
 

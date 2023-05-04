@@ -121,10 +121,10 @@ changeButton.addEventListener('click', () => {
                     inputs.oldPassword.style.borderStyle = 'solid'
                     inputs.oldPassword.style.borderWidth = "1px"
                     inputs.oldPassword.style.boxShadow = "0 0 10px red"
-                } else if (result.error.newPassword){
+                } else if (result.error.newPassword) {
                     contrasena.innerHTML = result.error.newPassword.msg
                     contrasena.style.color = 'red'
-        
+
                     inputs.newPassword.style.borderColor = "red"
                     inputs.newPassword.style.borderStyle = 'solid'
                     inputs.newPassword.style.borderWidth = "1px"
@@ -139,55 +139,159 @@ changeButton.addEventListener('click', () => {
     })
 })
 
-let form = document.getElementById('form')
+let button = document.getElementById('dataChangeButton')
 
-form.addEventListener('change', () => {
-    
-    let button = document.getElementById('dataChangeButton')
+inputs.nombre.addEventListener('change', () => {
+    inputs.nombre.style.borderColor = 'blue'
+    inputs.nombre.style.borderWidth = '1px'
+    inputs.nombre.style.borderStyle = 'solid'
+    inputs.nombre.style.boxShadow = '0 0 5px blue'
+    button.removeAttribute('disabled', 'disabled')
+})
+inputs.apellido.addEventListener('change', () => {
+    inputs.apellido.style.borderColor = 'blue'
+    inputs.apellido.style.borderWidth = '1px'
+    inputs.apellido.style.borderStyle = 'solid'
+    inputs.apellido.style.boxShadow = '0 0 5px blue'
+    button.removeAttribute('disabled', 'disabled')
 
-    button.classList.remove('displayNone')
-
-    inputs.nombre.addEventListener('change', () => {
-        inputs.nombre.style.borderColor = 'blue'
-        inputs.nombre.style.borderWidth = '1px'
-        inputs.nombre.style.borderStyle = 'solid'
-        inputs.nombre.style.boxShadow = '0 0 5px blue'
-    })      
-    inputs.apellido.addEventListener('change', () => {
-        inputs.apellido.style.borderColor = 'blue'
-        inputs.apellido.style.borderWidth = '1px'
-        inputs.apellido.style.borderStyle = 'solid'
-        inputs.apellido.style.boxShadow = '0 0 5px blue'
-    })
-    
-    inputs.email.addEventListener('change', () => {
-        inputs.email.style.borderColor = 'blue'
-        inputs.email.style.borderWidth = '1px'
-        inputs.email.style.borderStyle = 'solid'
-        inputs.email.style.boxShadow = '0 0 5px blue'
-    })
-    
-    inputs.dni.addEventListener('change', () => {
-        inputs.dni.style.borderColor = 'blue'
-        inputs.dni.style.borderWidth = '1px'
-        inputs.dni.style.borderStyle = 'solid'
-        inputs.dni.style.boxShadow = '0 0 5px blue'
-    })
-    
-    inputs.telefono.addEventListener('change', () => {
-        inputs.telefono.style.borderColor = 'blue'
-        inputs.telefono.style.borderWidth = '1px'
-        inputs.telefono.style.borderStyle = 'solid'
-        inputs.telefono.style.boxShadow = '0 0 5px blue'
-    })
-    
-    inputs.domicilio.addEventListener('change', () => {
-        inputs.domicilio.style.borderColor = 'blue'
-        inputs.domicilio.style.borderWidth = '1px'
-        inputs.domicilio.style.borderStyle = 'solid'
-        inputs.domicilio.style.boxShadow = '0 0 5px blue'
-    })
 })
 
+inputs.email.addEventListener('change', () => {
+    inputs.email.style.borderColor = 'blue'
+    inputs.email.style.borderWidth = '1px'
+    inputs.email.style.borderStyle = 'solid'
+    inputs.email.style.boxShadow = '0 0 5px blue'
+    button.removeAttribute('disabled', 'disabled')
 
+})
+
+inputs.dni.addEventListener('change', () => {
+    inputs.dni.style.borderColor = 'blue'
+    inputs.dni.style.borderWidth = '1px'
+    inputs.dni.style.borderStyle = 'solid'
+    inputs.dni.style.boxShadow = '0 0 5px blue'
+    button.removeAttribute('disabled', 'disabled')
+
+})
+
+inputs.telefono.addEventListener('change', () => {
+    inputs.telefono.style.borderColor = 'blue'
+    inputs.telefono.style.borderWidth = '1px'
+    inputs.telefono.style.borderStyle = 'solid'
+    inputs.telefono.style.boxShadow = '0 0 5px blue'
+    button.removeAttribute('disabled', 'disabled')
+
+})
+
+inputs.domicilio.addEventListener('change', () => {
+    inputs.domicilio.style.borderColor = 'blue'
+    inputs.domicilio.style.borderWidth = '1px'
+    inputs.domicilio.style.borderStyle = 'solid'
+    inputs.domicilio.style.boxShadow = '0 0 5px blue'
+    button.removeAttribute('disabled', 'disabled')
+})
+
+button.addEventListener('click', () => {
+    button.setAttribute('disabled', 'disabled')
+    button.innerHTML = `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+    Espere...`
+
+    let url = 'http://localhost:3005/apiUsuarios/updateUser/' + inputs.alias.value
+
+    let request = {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            alias: inputs.alias.value,
+            nombre: inputs.nombre.value,
+            apellido: inputs.apellido.value,
+            email: inputs.email.value,
+            domicilio: inputs.domicilio.value,
+            dni: inputs.dni.value,
+            telefono: inputs.telefono.value
+        })
+    }
+
+    fetch(url, request).then(res => {
+        return res.json()
+    }).then(result => {
+        if(result.status == 201){
+            let timerInterval
+            Swal.fire({
+                html: 'Los cambios se han guardado, se recargará la página.',
+                timer: 2000,
+                timerProgressBar: true,
+                background: '#9effd0',
+                position: 'top-end',
+                didOpen: () => {
+                    Swal.showLoading()
+                    const b = Swal.getHtmlContainer().querySelector('b')
+                    timerInterval = setInterval(() => {
+                        b.textContent = Swal.getTimerLeft()
+                    }, 100)
+                },
+                willClose: () => {
+                    clearInterval(timerInterval)
+                }
+            }).then((result) => {
+                if (result.dismiss === Swal.DismissReason.timer) {
+                    console.log('I was closed by the timer')
+                    location.reload()
+                }
+            })
+        }else{
+
+            button.innerHTML = 'Guardar Cambios'
+            button.removeAttribute('disabled', 'disabled')
+
+            if(result.errors.nombre){
+                let h6 = document.getElementById('nombreText')
+
+                h6.innerHTML = result.errors.nombre.msg
+                inputs.nombre.classList.add('inputError')
+            }
+
+            if(result.errors.apellido){
+                
+                let h6 = document.getElementById('apellidoText')
+
+                h6.innerHTML = result.errors.apellido.msg
+                inputs.apellido.classList.add('inputError')
+            }
+
+            if(result.errors.email){
+                
+                let h6 = document.getElementById('emailText')
+
+                h6.innerHTML = result.errors.email.msg
+                inputs.email.classList.add('inputError')
+            }
+
+            if(result.errors.dni){
+                
+                let h6 = document.getElementById('dniText')
+
+                h6.innerHTML = result.errors.dni.msg
+                inputs.dni.classList.add('inputError')
+            }
+
+            if(result.errors.domicilio){
+                
+                let h6 = document.getElementById('domicilioText')
+
+                h6.innerHTML = result.errors.domicilio.msg
+                inputs.domicilio.classList.add('inputError')
+            }
+
+            if(result.errors.telefono){
+                
+                let h6 = document.getElementById('telefonoText')
+
+                h6.innerHTML = result.errors.telefono.msg
+                inputs.telefono.classList.add('inputError')
+            }
+        }
+    })
+})
 

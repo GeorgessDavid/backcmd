@@ -90,25 +90,42 @@
                                 <input type="text" name="nombre" class="form-control" value="<%= user.nombre %>"
                                     id="nombre">
                             </div>
+                            <h6 class="error" id="nombreText">
+
+                            </h6>
                             <div class="input-group mb-3">
                                 <span class="input-group-text">Apellido</span>
                                 <input type="text" name="apellido" class="form-control" value="<%= user.apellido %>"
                                     id="apellido">
-                            </div>
+                            </div>                            
+                            <h6 class="error" id="apellidoText">
+                                
+                            </h6>
                         </div>
                         <div class="input-group mb-3">
                             <span class="input-group-text">Correo electrónico</span>
                             <input type="text" name="email" id="email" class="form-control" value="<%= user.email %>">
-                        </div>
+                        </div>                        
+                        <h6 class="error" id="emailText">
+                                
+                        </h6>
                         <div class="input-group mb-3">
                             <span class="input-group-text">Domicilio</span>
                             <input type="text" name="domicilio" id="domicilio" class="form-control"
                                 value="<%= user.domicilio  %>">
                         </div>
+                        
+                        <h6 class="error" id="domicilioText">
+                                
+                        </h6>
                         <div class="input-group mb-3">
                             <span class="input-group-text">DNI</span>
                             <input type="text" name="dni" id="dni" class="form-control" value="<%= user.dni %>">
                         </div>
+                        
+                        <h6 class="error" id="dniText">
+                                
+                        </h6>
                         <div class="input-group mb-3">
                             <span class="input-group-text">Sexo</span>
                             <input type="text" name="sexo" id="sexo" class="form-control" value="<%= user.sexo %>"
@@ -124,17 +141,20 @@
                             <input type="text" name="telefono" id="telefono" class="form-control"
                                 value=" <%= user.telefono %>">
                         </div>
+                        <h6 class="error" id="telefonoText">
+                                
+                        </h6>
                         <% if (user.rol=='Profesional' ) { %>
                             <h3 class="mb-3">Datos laborales</h3>
                             <div class="input-group mb-3">
                                 <span class="input-group-text">Especialidad</span>
                                 <input type="text" name="especialidad" id="especialidad" class="form-control"
-                                    value="<%= user.especialidad %>">
+                                    value="<%= user.especialidad %>" disabled>
                             </div>
                             <div class="input-group mb-3">
                                 <span class="input-group-text">Matrícula</span>
                                 <input type="text" name="matricula" id="matricula" class="form-control"
-                                    value="<%= user.matricula %>">
+                                    value="<%= user.matricula %>" disabled>
                             </div>
                             <h2>Prácticas médicas:</h2>
                             <% if (user.tratamiento=='No disponible' ) { %>
@@ -149,7 +169,7 @@
                                             <% } %>
                                                 <% } %>
                 </form>
-                <button class="btn btn-success displayNone" id="dataChangeButton">Modificar</button>
+                <button class="btn btn-success" id="dataChangeButton" disabled>Guardar Cambios</button>
         </div>
     </main>
     <%- include('./partials/scriptPartials') %>
