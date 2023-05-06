@@ -45,7 +45,8 @@ router.get('/secretaria/agregarPaciente', logInMiddleware.needLogin, userTypeAut
 /* PROFESIONALES ROUTES */
 router.get('/profesional/home', logInMiddleware.needLogin, userTypeAuth.medic, prestadoresController.home)
 router.get('/profesional/turnos', logInMiddleware.needLogin, userTypeAuth.medic, prestadoresController.profesionalTurnos)
-router.get('/profesional/historiaClinica', logInMiddleware.needLogin, userTypeAuth.medic, prestadoresController.historiaClinica)
+router.get('/profesional/pacientes', logInMiddleware.needLogin, userTypeAuth.medic, prestadoresController.pacientes)
+router.get('/profesional/pacientes/historiaClinica/:id', logInMiddleware.needLogin, userTypeAuth.medic, prestadoresController.historiaClinica)
 
 
 

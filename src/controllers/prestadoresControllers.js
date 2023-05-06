@@ -506,9 +506,15 @@ const prestadoresController = {
     secretariaAddPaciente: (req, res) => {
         return res.render('prestadoresViews/secretariaViews/agregarPaciente')
     },
-    historiaClinica: (req, res) => {
-        return res.render('prestadoresViews/profesionalViews/historiaClinica')
+    pacientes: (req, res) => {
+        return res.render('prestadoresViews/profesionalViews/pacientes')
+    },
+    historiaClinica: async (req, res) => {
+        let paciente = await db.Usuario.findOne({where: {id: req.params.id}})
+
+        return res.render('prestadoresViews/profesionalViews/historiaClinica', {paciente: paciente})
     }
+
 }
 
 module.exports = prestadoresController;

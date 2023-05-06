@@ -50,7 +50,7 @@ function mostrarPacientes(pacientes) {
         container.innerHTML += `
     <div class="itemBox">
         <h2>${pac.apellido.toUpperCase()}, ${pac.nombre} - <em style="font-size: 16px">DNI: ${pac.dni}</em></h2>
-        <button><a href="/historiaClinica/${pac.alias}" target="__blank">Abrir Historia Clínica <i class="fa-solid fa-arrow-up-right-from-square"></i></a></button>
+        <button><a href="/prestadores/profesional/pacientes/historiaClinica/${pac.id}" target="__blank">Abrir Historia Clínica <i class="fa-solid fa-arrow-up-right-from-square"></i></a></button>
     </div>
     `
     }
