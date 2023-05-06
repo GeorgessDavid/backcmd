@@ -154,7 +154,6 @@ let usuarios = {
     },
 
     getPacientes: async (req, res) => {
-        /*         try { */
         const usuarios = await db.Usuario.findAll({ order: [['apellido', 'ASC']] }, { include: [{ association: 'especialidad' }, { association: 'rol' }, { association: 'obra_social' }] })
 
         let pacientes = []
@@ -190,11 +189,7 @@ let usuarios = {
             "status": 200
         }
 
-        res.json(data)
-        /*         } catch (err) {
-                    res.render(err)
-                    console.log(err)
-                } */
+        return res.json(data)
     },
 
     createTrabajador: async (req, res) => {
