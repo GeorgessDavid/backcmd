@@ -12,6 +12,7 @@ const prestadoresUsers = JSON.parse(fs.readFileSync(innerDatabase, 'utf-8'))
 const bcrypt = require('bcryptjs')
 const db = require('../../database/models');
 const { response } = require("express");
+const moment = require('moment')
 
 const user = {
     findByField: (field, text) => {
@@ -510,8 +511,30 @@ const prestadoresController = {
         return res.render('prestadoresViews/profesionalViews/pacientes')
     },
     historiaClinica: async (req, res) => {
-        let paciente = await db.Usuario.findOne({where: {id: req.params.id}})
+        let user = await db.Usuario.findOne({where: {id: req.params.id}})
 
+        let nacimiento = moment(user.nacimiento).format('DD-MM-YYYY')
+
+        function edades(nacimiento){
+            const hoy = moment()
+            const edad = hoy.diff(nacimiento, 'years')
+            return edad
+        }
+
+        const edad = edades(user.nacimiento)
+
+        let paciente = {
+            alias: user.alias,
+            nombre: user.nombre,
+            apellido: user.apellido,
+            nacimiento: nacimiento,
+            domicilio: user.domicilio,
+            imagen: user.imagen,
+            email: user.email,
+            telefono: user.telefono,
+            dni:user.dni,
+            edad: edad
+        }
         return res.render('prestadoresViews/profesionalViews/historiaClinica', {paciente: paciente})
     }
 

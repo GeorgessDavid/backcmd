@@ -5,13 +5,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Historia Clínica - CMD</title>
     <%- include('../../partials/headPartials.ejs') %>
+    <link rel="stylesheet" href="/css/sectionPrestadores/historiaClinica.css">
 </head>
 <body>
     <header>
         <%- include('../../partials/prestadoresHeader.ejs') %>
     </header>
     <main>
-
+        <h1 class="titula">Historia Clínica</h1>
+        <div class="d-flex justify-content-center">
+            <div class="d-flex main-container">
+                <div class="col">
+                    <img src="/img/profilepictures/<%= paciente.imagen %>" alt="profile_image" id="profileImg">
+                </div>
+                <div class="col me-3">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Nombre</span>
+                        <input type="text" class="form-control" disabled value="<%= paciente.nombre  %>">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Apellido</span>
+                        <input type="text" class="form-control" disabled value="<%= paciente.apellido %>">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">DNI</span>
+                        <input type="text" class="form-control" disabled value="<%= paciente.dni %>">
+                    </div>
+                </div>
+                <div class="col me-3">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Domicilio</span>
+                        <input type="text" class="form-control" disabled value="<%= paciente.domicilio %>">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Email</span>
+                        <input type="text" class="form-control" disabled value="<%= paciente.email %>">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Teléfono</span>
+                        <input type="text" class="form-control" disabled value="<%= paciente.telefono %>">
+                    </div>
+                </div>
+                <div class="col me-3">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">
+                            Nacimiento
+                        </span>
+                        <input type="text" class="form-control" disabled value="<%= paciente.nacimiento %>">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Edad</span>
+                        <input type="text" class="form-control" disabled value="<%= paciente.edad %>">
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
     <!-- SCRIPTS -->
     <%- include('../../partials/scriptPartials.ejs') %>
