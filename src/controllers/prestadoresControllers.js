@@ -13,6 +13,7 @@ const bcrypt = require('bcryptjs')
 const db = require('../../database/models');
 const { response } = require("express");
 const moment = require('moment')
+moment.locale('es')
 
 const user = {
     findByField: (field, text) => {
@@ -515,6 +516,14 @@ const prestadoresController = {
 
         let nacimiento = moment(user.nacimiento).format('DD-MM-YYYY')
 
+        let historia = await db.Diagnostico.findOne({where: {Paciente_id: user.id}})
+
+        let fechaDeHistoria = moment(historia.fecha).format('D [de] MMMM [de] YYYY')
+
+        let medico = await db.Usuario.findOne({where: {id: req.session.usuario.id}})
+
+        let previousData = historia.descripcion + ' ' + fechaDeHistoria + '. ' + medico.apellido.toUpperCase() + ', ' + medico.nombre + '. ' + medico.matricula
+
         function edades(nacimiento){
             const hoy = moment()
             const edad = hoy.diff(nacimiento, 'years')
@@ -535,7 +544,11 @@ const prestadoresController = {
             dni:user.dni,
             edad: edad
         }
-        return res.render('prestadoresViews/profesionalViews/historiaClinica', {paciente: paciente})
+
+        let historiaPaciente = {
+            descripcion: previousData
+        }
+        return res.render('prestadoresViews/profesionalViews/historiaClinica', {paciente: paciente, historiaClinica: historiaPaciente})
     }
 
 }
