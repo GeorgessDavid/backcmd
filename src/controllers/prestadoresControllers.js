@@ -518,11 +518,6 @@ const prestadoresController = {
 
         let historia = await db.Diagnostico.findOne({where: {Paciente_id: user.id}})
 
-        let fechaDeHistoria = moment(historia.fecha).format('D [de] MMMM [de] YYYY')
-
-        let medico = await db.Usuario.findOne({where: {id: req.session.usuario.id}})
-
-        let previousData = historia.descripcion + ' ' + fechaDeHistoria + '. ' + medico.apellido.toUpperCase() + ', ' + medico.nombre + '. ' + medico.matricula
 
         function edades(nacimiento){
             const hoy = moment()
@@ -546,8 +541,10 @@ const prestadoresController = {
         }
 
         let historiaPaciente = {
-            descripcion: previousData
+            descripcion: historia ? historia.descripcion : 'Éste paciente no tiene historia clínica previa en esta institución.',
+            tieneHistoria: historia ? 1 : 2
         }
+
         return res.render('prestadoresViews/profesionalViews/historiaClinica', {paciente: paciente, historiaClinica: historiaPaciente})
     }
 

@@ -59,13 +59,18 @@
                         <span class="input-group-text">Edad</span>
                         <input type="text" class="form-control" disabled value="<%= paciente.edad %>">
                     </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Usuario</span>
+                        <input type="text" name="alias" id="alias" class="form-control" disabled
+                            value="<%= paciente.alias %>">
+                    </div>
                 </div>
             </div>
         </div>
         <div class="d-flex justify-content-center">
-            <div data-bs-spy="scroll" class="main-container" data-bs-target="#navbar-example2" >
+            <div data-bs-spy="scroll" class="main-container" data-bs-target="#navbar-example2">
                 <div class="col">
-                    <h3>Datos previos</h3>
+                    <h3>Historia Clínica</h3>
                 </div>
                 <p id="previousDataDiv">
                     <%= historiaClinica.descripcion %>
@@ -78,19 +83,40 @@
                     <h3>Agregar datos a la historia clínica</h3>
                 </div>
                 <input type="textarea" id="descripcioninput" name="nuevosDatos" placeholder="Escriba aquí...">
-                <h6 style='font-style: italic; margin: 10px;'>No es necesario que deje por escrito ni la fecha, ni su firma ni su nombre. El sistema lo registra automáticamente.</h6>
+                <h6 style='font-style: italic; margin: 10px;'>No es necesario que deje por escrito ni la fecha, ni su
+                    firma ni su nombre. El sistema lo registra automáticamente.</h6>
             </div>
         </div>
         <div class="d-flex justify-content-center">
             <div class="main-container">
                 <div class="d-flex justify-content-end">
-                    <button disabled="disabled" class="btn btn-success">Guardar cambios</button>
+                    <button disabled class="btn btn-success" data-bs-target="#saveChangesModal" data-bs-toggle="modal" id="guardarCambios">Guardar cambios</button>
                 </div>
             </div>
         </div>
+        <div class="modal fade" id="saveChangesModal" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Guardar cambios</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>¿Está seguro que quiere agregar estos datos a la historia clínica? Una vez guardado no podrá modificar ni eliminar estos datos.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-success" id="saveButton">Guardar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <input type="text" id="historiaClinicaPrevia" value="<%= historiaClinica.tieneHistoria %>"
+            style="visibility: hidden;" disabled>
     </main>
     <!-- SCRIPTS -->
     <%- include('../../partials/scriptPartials.ejs') %>
+    <script src="/js/historiaClinica.js"></script>
 </body>
 
 </html>
