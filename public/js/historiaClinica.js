@@ -74,7 +74,7 @@ sendButton.addEventListener('click', () => {
             body: JSON.stringify(data)
         }
 
-        fetch('http://localhost:3005/historiaClinica/createHistoria', request).then(p => {
+        fetch('https://cmedicosdavid.onrender.com/historiaClinica/createHistoria', request).then(p => {
             return p.json()
         }).then(data => {
             if (data.status == 201) {
@@ -90,7 +90,7 @@ sendButton.addEventListener('click', () => {
             body: JSON.stringify(data)
         }
 
-        fetch('http://localhost:3005/historiaClinica/updateHistoria', request).then(p => {
+        fetch('https://cmedicosdavid.onrender.com/historiaClinica/updateHistoria', request).then(p => {
             return p.json()
         }).then(data => {
             if (data.status == 201) {
