@@ -1,194 +1,79 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" >
-    <link rel="stylesheet" type= "text/css" herf= "http.//fonts.googleapis.com/css">
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/turnos.css">
-    <link rel="icon" type="image/png" href="/img/logoCMD.png">
-    <title>Consultorios Médicos David</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+  <link rel="stylesheet" type="text/css" herf="http.//fonts.googleapis.com/css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+    integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/turnos.css">
+  <link rel="icon" type="image/png" href="/img/logoCMD.png">
+  <title>Consultorios Médicos David</title>
 </head>
+
 <body> <!--START BODY-->
   <header> <!--start header-->
-  <%- include('partials/header') %>
+    <%- include('partials/header') %>
   </header>
-  <section class="banner"> 
+  <section class="banner">
     <img src="img/banner_index_01.png" alt="Banner institucional">
     <h1>Ética profesional al servicio de tu salud.</h1>
-  </section>    
+  </section>
 
-<main> <!--ESTUDIOS MEDICOS-->
-  <section class="last_visit">
-    <h3>ESTUDIOS MÉDICOS</h3>
-    <div class="estudios">
-      <article>
-        <img src="img/radiologia.png" class="img_product" alt="imagen radiologia">
-        <div class="main_article">
-          <p class="description">Especialidades Médicas</p>
-          <p><a  href="h">Pedir Turno</a></p>
+  <main> <!--ESTUDIOS MEDICOS-->
+    <section class="last_visit">
+      <h3>ESTUDIOS MÉDICOS</h3>
 
-        </div>
-      </article>
-      <article>
-        <img src="img/radiologia.png" class="img_product" alt="img radiologia">
-        <div class="main_article">
-          <p class="description">Clínica Médica</p>
-          <p><a  href="h">Pedir Turno</a></p>
-
-        </div>
-      </article>
-      <article>
-        <img src="img/radiologia.png" class="img_product" alt="img radiologia">
-        <div class="main_article">
-          <p class="description">Ecografías</p>
-          <p><a  href="h">Pedir Turno</a></p>
-
-        </div>
-      </article>
-      <article>
-        <img src="img/radiologia.png" class="img_product" alt="img radiologia">
-        <div class="main_article">
-          <p class="description">Laboratorio</p>
-          <p><a  href="h">Pedir Turno</a></p>
-        </div>
-      </article>
-      <article>
-        <img src="img/radiologia.png" class="img_product" alt="imagen radiologia">
-        <div class="main_article">
-          <p class="description">Especialidades Médicas</p>
-          <p><a  href="h">Pedir Turno</a></p>
-
-        </div>
-      </article>
-      <article>
-        <img src="img/radiologia.png" class="img_product" alt="img radiologia">
-        <div class="main_article">
-          <p class="description">Clínica Médica</p>
-          <p><a  href="h">Pedir Turno</a></p>
-
-        </div>
-      </article>
-      <article>
-        <img src="img/radiologia.png" class="img_product" alt="img radiologia">
-        <div class="main_article">
-          <p class="description">Ecografías</p>
-          <p><a  href="h">Pedir Turno</a></p>
-
-        </div>
-      </article>
-      <article>
-        <img src="img/radiologia.png" class="img_product" alt="img radiologia">
-        <div class="main_article">
-          <p class="description">Laboratorio</p>
-          <p><a  href="h">Pedir Turno</a></p>
-        </div>
-      </article>
-    </div>
-  </section> 
- <!--SECTION TURNOS-->
-
-<section class="turnos">  <!--SECTION TURNOS-->
-  <div class="divTurnosSection">
-    <div class="turnos">
-      <form action="turnos.html" method="POST">
-        <div class="column1">
-          <h3>MIS TURNOS</h3>
-          <p>Turnos Para:</p>
-          <select name="turnoPara" class="selectorCMD">
-              <option value="Estudios">ESTUDIOS</option>
-              <option value="Especialidades">ESPECIALIDADES</option>
-          </select>
-          <p>Especialidad:</p>
-          <select name="especialidad" class="selectorCMD">
-              <option value="1">ALERGIA</option>
-              <option value="2">CARDIOLOGIA</option>
-              <option value="3">CLINICA MEDICA</option>
-              <option value="4">DERMATILOGÍA</option>
-              <option value="5">ENDOCRINOLOGIA</option>
-              <option value="6">FLEBOLOGIA</option>
-              <option value="7">GASTROENTEROLOGIA</option>
-              <option value="8">GINECOLOGIA</option>
-              <option value="9">ODONTOLOGIA</option>
-          </select>
-          <p>Dr/Dra:</p>
-          <select name="doctor" class="selectorCMD">
-              <option value="1">Dra. Maradona Yanina</option>
-              <option value="2">Dr. Coppola Guillermo</option>
-              <option value="3">Dr. Messi Lionel</option>
-          </select>
-          <p>Fecha:</p>
-          <select name="fecha" >
-            <input type="date" name="fecha" value="2022-09-22" min="2022-09-01"max="2022-12-31">
-          </select>
-        </div>
-    </div>
-    <div class="column2"> 
-        <h3>INFORMACIÓN PERSONAL</h3>
-        <p>Los campos con * son obligatorios</p>
-          <p> <input type="email" name="email" placeholder="EMAIL *" class="formCMD" required></p>
-          <p><input type="text" name="nombre" placeholder="NOMBRE Y APELLIDO *" class="formCMD" required></p>
-          <p><input type="number" name="telefono" placeholder="TELÉFONO *" class="formCMD" required></p>
-          <div>
-            <div class="idSection">
-              <label for="documento">Tipo de documento:</label>
-              <select class="idSelector">
-                <option value="documento">DNI</option>
-                <option value="documento">LC</option>
-                <option value="documento">LE</option>              
-              </select>
+      <div class="estudios">
+        <% for( let i = 0; i < data.length; i++ ) { %>
+          <article class="mb-3">
+            <div class="especialidadImg mb-3" style="background-color: <%= data[i].color %>"><!--FUNCIONA, SÓLO APARECE COMO ERROR--> 
+              <span><%= data[i].practica  %></span>
             </div>
-            <div>
-              <label for="documento"></label>
-              <input type="text" class="formCMD" placeholder="NÚMERO DE DOCUMENTO *">
+            <div class="main_article">
+              <p class="description"><%= data[i].practica  %></p>
             </div>
-          </div>
+          </article>
+          <% } %>
+      </div>
+    </section>
 
-          <div class="buttonBox submitButton">
-            <p><input type="submit" value="ENVIAR" class="sendButton">
-            <input type="reset" value="CANCELAR" class="cancelButton"></p>
-          </div>
-    </div>  
-    </form>
-    <img src="/img/turnos.png">
-  </div>
-  </div>
-</div>
-</section>
-<section class="banner"> 
-  <img src="img/banner_contacto_03.png" alt="Banner contacto" >
-  
-</section>    
-<section>  <!--SECTION CONTACTO-->
-  <div class="ubicacion">
-    
-   <div class="map">
-  <h3>UBICACION</h3>
-   <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3284.218285016829!2d-58.54937308477054!3d-34.59864138046075!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcb78eea744601%3A0x42c802cad54d54ce!2sPadre%20Silberman%201740%2C%20B1676BRP%20Santos%20Lugares%2C%20Provincia%20de%20Buenos%20Aires!5e0!3m2!1ses!2sar!4v1663784530531!5m2!1ses!2sar" 
-    width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-   </div>
-   <div class="contacto">
-    <h3>CONTACTO</h3>
-    <P>Clínica Médica David<br>
-    <p>consultorios Médicos David<br> 
-    <p>Padre Silberman 1740<br>
-    <p>Buenos Aires, Santos Lugares<br>
-    <p>Ver mapa<br>
-    <p>info@consultorioscmd.com.ar<br>
-    <p>newsletter@consultorioscmd.com.ar<br>
-    <p>+54 11 4757-2389<br>
-    </div>
-    <div class="contacto-logo">
-    <img  src="img/logoCMD.png" width="300px" alt="Logo CMD"/>
-    </div>
+    <section class="banner">
+      <img src="img/banner_contacto_03.png" alt="Banner contacto">
 
-   </div>
+    </section>
+    <section> <!--SECTION CONTACTO-->
+      <div class="d-flex justify-content-center">
 
-  </div>
+        <div class="map">
+          <h3>UBICACION</h3>
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3284.218285016829!2d-58.54937308477054!3d-34.59864138046075!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcb78eea744601%3A0x42c802cad54d54ce!2sPadre%20Silberman%201740%2C%20B1676BRP%20Santos%20Lugares%2C%20Provincia%20de%20Buenos%20Aires!5e0!3m2!1ses!2sar!4v1663784530531!5m2!1ses!2sar"
+            width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <div class="col" style="color: #012B78">
+          <h3 style="font-weight: bold;">CONTACTO</h3>
+          <p><i class="fa-solid fa-clock"></i> Horario de atención: Lun. a Vie. de 8:00 a 19:00 - Sábados de 8:00 a 13:30 </p>
+          <p><i class="fa-sharp fa-solid fa-location-dot" style="color: #012b78;"></i> Padre Silberman 1740, Santos Lugares</p>
+          <p><i class="fa-solid fa-envelope" style="color: #012b78;"></i> consultoriosmedicosdavid@gmail.com</p>
+          <p><i class="fa-solid fa-phone" style="color: #012b78;"></i> 4757-2389</p>
+          <p><i class="fa-brands fa-whatsapp" style="color: #012b78;"></i> 11 7020-3287</p>
+        </div>
+        <div class="contacto-logo">
+          <img src="img/logoCMD.png" width="300px" alt="Logo CMD" />
+        </div>
 
-</section>
-</main>
-<%- include('partials/footer') %>
+      </div>
+
+      </div>
+
+    </section>
+  </main>
+  <%- include('partials/footer') %>
 </body>
+
 </html>
