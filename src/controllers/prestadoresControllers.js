@@ -215,7 +215,7 @@ const prestadoresController = {
                                 }
 
                                 let planilla_horaria = {
-                                    dia_semana: req.body.diaDeAtencion,
+                                    dia_semana: [req.body.diaDeAtencion],
                                     hora_inicio: [],
                                     hora_fin: [],
                                     duracion: []
@@ -223,9 +223,9 @@ const prestadoresController = {
 
                                 for (let i = 0; i < req.body.hora_inicio.length; i++) {
                                     if (req.body.hora_inicio[i] != '') {
-                                        planilla_horaria.hora_inicio.push(req.body.hora_inicio[i]),
-                                            planilla_horaria.hora_fin.push(req.body.hora_fin[i]),
-                                            planilla_horaria.duracion.push(req.body.duracion[i])
+                                        planilla_horaria.hora_inicio.push(req.body.hora_inicio[i])
+                                        planilla_horaria.hora_fin.push(req.body.hora_fin[i])
+                                        planilla_horaria.duracion.push(req.body.duracion[i])
                                     }
 
                                 }
@@ -512,14 +512,14 @@ const prestadoresController = {
         return res.render('prestadoresViews/profesionalViews/pacientes')
     },
     historiaClinica: async (req, res) => {
-        let user = await db.Usuario.findOne({where: {id: req.params.id}})
+        let user = await db.Usuario.findOne({ where: { id: req.params.id } })
 
         let nacimiento = moment(user.nacimiento).format('DD-MM-YYYY')
 
-        let historia = await db.Diagnostico.findOne({where: {Paciente_id: user.id}})
+        let historia = await db.Diagnostico.findOne({ where: { Paciente_id: user.id } })
 
 
-        function edades(nacimiento){
+        function edades(nacimiento) {
             const hoy = moment()
             const edad = hoy.diff(nacimiento, 'years')
             return edad
@@ -536,7 +536,7 @@ const prestadoresController = {
             imagen: user.imagen,
             email: user.email,
             telefono: user.telefono,
-            dni:user.dni,
+            dni: user.dni,
             edad: edad
         }
 
@@ -545,7 +545,7 @@ const prestadoresController = {
             tieneHistoria: historia ? 1 : 2
         }
 
-        return res.render('prestadoresViews/profesionalViews/historiaClinica', {paciente: paciente, historiaClinica: historiaPaciente})
+        return res.render('prestadoresViews/profesionalViews/historiaClinica', { paciente: paciente, historiaClinica: historiaPaciente })
     }
 
 }

@@ -5,15 +5,9 @@
     text-align: center;
     font-size: large;
 }
-
-.parrafoEspecialidades{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: x-small;
-
+main{
+    min-height: 80%;
 }
-
 .especialidadesFooter{
     background-color: #012B78;
     color: white;
@@ -31,6 +25,17 @@
     background-position: left top;
     width: 90px;
     height: 90px;
+}
+
+.especialidadBox h2 {
+    font-size: 20px;
+    font-weight: bold;
+    color: black
+}
+
+.especialidadBox p{
+    font-size: 16px;
+    font-style: italic;
 }
 
 @media (min-width: 600px) and (min-height: 600px){

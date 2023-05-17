@@ -302,6 +302,15 @@ footer{
     padding-right:10px;
 }
 
+#showPassword{
+    background-color: rgba(0 0 0 0);
+    position: absolute;
+    right: 5%;
+    top: 40%;
+    cursor: pointer;
+    color: #012B78;
+}
+
 
 /*----------- END MAIN'S STYLES ↑ -----------*/
 

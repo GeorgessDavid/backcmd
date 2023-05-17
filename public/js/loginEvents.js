@@ -7,3 +7,19 @@ window.addEventListener('load', () => {
       </div>`
   })
 })
+
+let showPassword = document.getElementById('showPassword')
+
+showPassword.addEventListener('click', () => {
+  showPassword.classList.toggle('fa-eye')
+
+  const input = document.getElementById('loginPass')
+
+  const currentType = input.getAttribute('type');
+
+  if (currentType === 'text') {
+    input.setAttribute('type', 'password');
+  } else {
+    input.setAttribute('type', 'text');
+  }
+})

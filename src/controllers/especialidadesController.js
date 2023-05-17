@@ -8,7 +8,7 @@ const controlador = {
 
     getEspecialidades: async (req, res) => {
         try {
-            let especialidades = await db.Especialidad.findAll()
+            let especialidades = await db.Especialidad.findAll({include: [{association:'especialidad'}]})
 
             let data = {
                 "data": especialidades,
