@@ -9,7 +9,7 @@ const controlador = {
 
         let practicas = []
 
-        let color = ['f43838', '0863f6', '9800b3', '80800a', '0a8014', '80240a', '090051', '926100']
+        let color = ['004f94', '012c52', '010e7d', '1d2b52', '1b0178', '010d2e', '000512', '11265e']
 
 
         let data = []

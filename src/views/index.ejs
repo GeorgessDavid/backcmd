@@ -29,9 +29,10 @@
 
       <div class="estudios">
         <% for( let i = 0; i < data.length; i++ ) { %>
-          <article class="mb-3">
+          <article class="mb-3" style="position: relative !important;">
             <div class="especialidadImg mb-3" style="background-color: <%= data[i].color %>"><!--FUNCIONA, SÓLO APARECE COMO ERROR--> 
               <span><%= data[i].practica  %></span>
+              <p class="practicaBackground"><%= data[i].practica  %></p>
             </div>
             <div class="main_article">
               <p class="description"><%= data[i].practica  %></p>
@@ -45,7 +46,7 @@
       <img src="img/banner_contacto_03.png" alt="Banner contacto">
 
     </section>
-    <section> <!--SECTION CONTACTO-->
+    <section id="contacto"> <!--SECTION CONTACTO-->
       <div class="d-flex justify-content-center">
 
         <div class="map">
