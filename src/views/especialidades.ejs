@@ -36,7 +36,7 @@
                 window.addEventListener('load', () => {
                     let container = document.getElementById('container')
 
-                    fetch('http://localhost:3005/especialidades/api').then(res => {
+                    fetch('https//cmedicosdavid.onrender.com/especialidades/api').then(res => {
                         return res.json()
                     }).then(r => {
                         for (let i = 0; i < r.data.length; i++) {
