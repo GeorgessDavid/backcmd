@@ -19,11 +19,17 @@
 
         <main>
             <div class="col">
-                <h1> Nuestras Especialidades </h1>
+                <h1 class="my-3">Nuestras Especialidades </h1>
                 <div>
                     <div class="row">
-                        <div class="col especialidadBox" id="container">
-
+                        <div class="col-sm-6 mb-3 mb-sm-0">
+                            <div class="card">
+                                <div class="card-body" id="card-body">
+                                    <!-- <h5 class="card-title"></h5> -->
+                                    <!-- <p class="card-text"></p>
+                                    <p class="card-text"></p> -->
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -34,7 +40,7 @@
         <%- include('partials/footer') %>
             <script>
                 window.addEventListener('load', () => {
-                    let container = document.getElementById('container')
+                    let container = document.getElementById('card-body')
 
                     fetch('https://cmedicosdavid.onrender.com/especialidades/api').then(res => {
                         return res.json()
@@ -44,7 +50,7 @@
                             const profesional = e.especialidad;
 
                             container.innerHTML += `
-                    <h2>${e.nombre.toUpperCase()}</h2>
+                    <h5 class="card-title">${e.nombre.toUpperCase()}</h5>
                     <div id="medicos${i}" class="mb-5"></div>`
                             let p = 'medicos' + [i]
                             let medicos = document.getElementById(p)
@@ -61,7 +67,7 @@
                                         }
 
                                         let prefix = prof.sexo == 'Masculino' ? 'Dr.' : 'Dra.'
-                                        medicos.innerHTML += `<p>${prefix} ${prof.nombre} ${prof.apellido}</p>`
+                                        medicos.innerHTML += `<p class="card-text">${prefix} ${prof.nombre} ${prof.apellido}</p>`
                                     }
                                 } else {
 
@@ -73,10 +79,10 @@
 
                                     let prefix = prof.sexo == 'Masculino' ? 'Dr.' : 'Dra.'
 
-                                    medicos.innerHTML += `<p>${prefix} ${prof.nombre} ${prof.apellido}</p>`
+                                    medicos.innerHTML += `<p class="card-text">${prefix} ${prof.nombre} ${prof.apellido}</p>`
                                 }
                             } else {
-                                medicos.innerHTML = `<p> No disponible actualmente</p>`
+                                medicos.innerHTML = `<p class="card-text"> No disponible actualmente</p>`
                             }
                         }
                     })
