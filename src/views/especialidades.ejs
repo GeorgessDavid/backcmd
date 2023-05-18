@@ -21,15 +21,23 @@
             <div class="col">
                 <h1 class="my-3">Nuestras Especialidades </h1>
                 <div>
+                    <div class="d-flex justify-content-center" id="loadingSpinner">
+                        <div class="me-3">
+                            <span style="color: #012B78; font-style: italic;">Cargando especialidades. Espere un momento por favor</span>
+                        </div>
+                        <div class="spinner-grow text-primary" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                        <div class="spinner-grow text-primary" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                        <div class="spinner-grow text-primary" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                    </div>
                     <div class="row">
-                        <div class="col-sm-6 mb-3 mb-sm-0">
-                            <div class="card">
-                                <div class="card-body" id="card-body">
-                                    <!-- <h5 class="card-title"></h5> -->
-                                    <!-- <p class="card-text"></p>
-                                    <p class="card-text"></p> -->
-                                </div>
-                            </div>
+                        <div class="d-flex justify-content-start flex-wrap" id="main-container">
+
                         </div>
                     </div>
                 </div>
@@ -38,56 +46,7 @@
 
 
         <%- include('partials/footer') %>
-            <script>
-                window.addEventListener('load', () => {
-                    let container = document.getElementById('card-body')
-
-                    fetch('https://cmedicosdavid.onrender.com/especialidades/api').then(res => {
-                        return res.json()
-                    }).then(r => {
-                        for (let i = 0; i < r.data.length; i++) {
-                            const e = r.data[i];
-                            const profesional = e.especialidad;
-
-                            container.innerHTML += `
-                    <h5 class="card-title">${e.nombre.toUpperCase()}</h5>
-                    <div id="medicos${i}" class="mb-5"></div>`
-                            let p = 'medicos' + [i]
-                            let medicos = document.getElementById(p)
-                            console.log(medicos)
-                            if (e.especialidad.length > 0) {
-                                if (profesional.length > 1) {
-                                    for (let l = 0; l < profesional.length; l++) {
-                                        const medico = profesional[l];
-
-                                        let prof = {
-                                            nombre: medico.nombre,
-                                            apellido: medico.apellido,
-                                            sexo: medico.sexo ? 'Masculino' : 'Femenino'
-                                        }
-
-                                        let prefix = prof.sexo == 'Masculino' ? 'Dr.' : 'Dra.'
-                                        medicos.innerHTML += `<p class="card-text">${prefix} ${prof.nombre} ${prof.apellido}</p>`
-                                    }
-                                } else {
-
-                                    let prof = {
-                                        nombre: e.especialidad[0].nombre,
-                                        apellido: e.especialidad[0].apellido,
-                                        sexo: e.especialidad[0].sexo ? 'Masculino' : 'Femenino'
-                                    }
-
-                                    let prefix = prof.sexo == 'Masculino' ? 'Dr.' : 'Dra.'
-
-                                    medicos.innerHTML += `<p class="card-text">${prefix} ${prof.nombre} ${prof.apellido}</p>`
-                                }
-                            } else {
-                                medicos.innerHTML = `<p class="card-text"> No disponible actualmente</p>`
-                            }
-                        }
-                    })
-                })
-            </script>
+            <script src="/js/publicEspecialidades.js"></script>
 </body>
 
 </html>
