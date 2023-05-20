@@ -68,7 +68,7 @@ main {
 .card:hover {
     border: rgb(227, 227, 227) solid 1px;
     box-shadow: 0 0 5px #012B78;
-    transform: scale(1.1);
+    transform: scale(1.0325);
     z-index: 10;
 }
 

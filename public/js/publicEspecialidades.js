@@ -13,6 +13,7 @@ window.addEventListener('load', () => {
             spinner.style.opacity = '0';
             spinner.style.display = 'none'
             container.innerHTML += `
+            <div class="col-3">
             <div class="mb-3 ms-5 card-div">
                 <div class="card">
                     <div class="card-body">
@@ -20,11 +21,13 @@ window.addEventListener('load', () => {
                         <div id="medicos${i}"></div>
                     </div>
                 </div>
-            </div>`
+            </div>
+            `
+
 
             let p = 'medicos' + [i]
             let medicos = document.getElementById(p)
-            console.log(medicos)
+
             if (e.especialidad.length > 0) {
                 if (profesional.length > 1) {
                     for (let l = 0; l < profesional.length; l++) {
