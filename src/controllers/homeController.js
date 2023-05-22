@@ -29,9 +29,6 @@ const controlador = {
             });
         }
 
-
-        console.log(data)
-
         return res.render("index", { data: data })
 
     },

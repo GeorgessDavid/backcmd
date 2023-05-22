@@ -101,7 +101,7 @@ const controlador = {
     byProfessional: async (req, res) => {
         let profesional = await db.Usuario.findAll({
             where: {
-                alias: req.params.id
+                alias: req.session.alias
             }
         })
 

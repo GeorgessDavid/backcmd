@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans+Condensed');
+
+body {
+    font-family: 'Fira Sans Condensed';
+}
+aside{
+    width: 20%;
+    padding: 2vw 0px;
+    background-color: #ccc;
+}
+#calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    width: 100%;
+}
+
+.day {
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+#pagination {
+    margin-top: 20px;
+    text-align: center;
+}
+
+#pagination a {
+    margin: 0 5px;
+    text-decoration: none;
+    color: blue;
+    cursor: pointer;
+}
