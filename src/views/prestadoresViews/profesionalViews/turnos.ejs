@@ -14,21 +14,46 @@
         <%- include('../../partials/prestadoresHeader.ejs') %>
     </header>
     <main>
-        <aside>
-            <div id="pagination">
-                <a id="prevMonth">&lt;</a>
-                <span id="currentMonth"></span>
-                <a id="nextMonth">&gt;</a>
+        <div class="sideBar">
+            <div class="sidebar">
+                <div class="root">
+                    <div class="calendar" id="calendar">
+                        <div class="calendar__header">
+                            <button type="button" class="control control--prev"><i class="fa-sharp fa-solid fa-caret-left"></i></button>
+                            <span class="month-name">MAY 2023</span>
+                            <button type="button" class="control control--next"><i class="fa-sharp fa-solid fa-caret-right"></i></button>
+                        </div>
+                        <div class="calendar_body">
+                            <div class="grid">
+                                <div class="grid__header">
+                                    
+                                </div>
+                                <div class="grid__body">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div id="calendar"></div>
-        </aside>
-        <div>
 
         </div>
     </main>
 
     <%- include('../../partials/scriptPartials.ejs') %>
-        <script src="/js/profesionales/turnos.js"></script>
+    <script src="/js/profesionales/calendario.js"></script>
+    <script  type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script  type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/locale/es.js"></script><script type="text/javascript">
+        let calendar = new Calendar('calendar');
+        calendar.getElement().addEventListener('change', e => {
+            console.log(calendar.value().format('LLL'));
+        });
+
+        let calendar2 = new Calendar('calendar2');
+        calendar2.getElement().addEventListener('change', e => {
+            console.log(calendar2.value().format('LLL'));
+        });
+    </script>
 </body>
 
 </html>
