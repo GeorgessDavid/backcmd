@@ -11,8 +11,6 @@ window.addEventListener('load', () => {
         spinner.classList.remove('m-5')
 
         let t = f.data.turno.datosTurno
-        console.log(t)
-
         
         let today = moment().format('DD [de] MMMM')
 
@@ -57,4 +55,5 @@ function turnosDelDia(paciente) {
         <td><button class="btn btn-primary"><a href="/prestadores/profesional/pacientes/historiaClinica/${r.paciente.id}" target="__blank">Abrir Historia Clínica <i class="fa-solid fa-arrow-up-right-from-square"></i></a></button></td>
     </tr>`
     }
+
 }

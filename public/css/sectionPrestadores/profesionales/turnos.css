@@ -21,6 +21,11 @@ main{
     width: 20%;
     padding: 2vw 0px;
     background-color: #F8F9FA;
+    min-height: 100vh;
+}
+
+.sideBar h2{
+    margin-top: -2vw;
 }
 
 :root {
@@ -30,7 +35,6 @@ main{
 }
 
 .root {
-    min-height: 100vh;
     padding: 0 15px;
     display: flex;
     justify-content: center;
@@ -63,7 +67,8 @@ main{
 }
 
 .calendar .control:hover{
-    color: #046a00
+    color: #046a00;
+    transform: scale(1.4);
 }
 
 .grid__header, .grid__body {
@@ -114,4 +119,8 @@ main{
 }
 table{
     text-align: center;
+}
+
+.displayNone{
+    display: none;
 }

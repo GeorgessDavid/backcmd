@@ -8,6 +8,7 @@ class Calendar {
         this.elGridBody = this.elCalendar.querySelector('.grid__body');
         this.elMonthName = this.elCalendar.querySelector('.month-name');
         this.showCells();
+        this.selectToday();
     }
 
     showTemplate() {
@@ -144,6 +145,20 @@ class Calendar {
                 this.elCalendar.dispatchEvent(new Event('change'));
             });
         });
+    }
+
+    selectToday() {
+        const today = moment().startOf('day');
+
+        for (let i = 0; i < this.cells.length; i++) {
+            const cell = this.cells[i];
+            if (cell.date.isSame(today, 'day')) {
+                const cellElement = this.elGridBody.querySelector(`[data-cell-id="${i}"]`);
+                cellElement.classList.add('grid__cell--selected');
+                this.selectedDate = cell.date;
+                break;
+            }
+        }
     }
 
     getElement() {
