@@ -99,25 +99,14 @@ const controlador = {
     },
 
     byProfessional: async (req, res) => {
-        let profesional = await db.Usuario.findAll({
+        let profesional = await db.Usuario.findOne({
             where: {
-                alias: req.session.alias
+                alias: req.session.usuario.alias
             }
         })
-
         let turno = await db.Turno.findAll({
             where: {
-                fecha_turno: {
-                    [Op.between]: [
-                        moment()
-                            .startOf('day')
-                            .format(),
-                        moment()
-                            .endOf('year')
-                            .format()
-                    ]
-                },
-                Profesional_id: profesional[0].id
+                Profesional_id: profesional.id
             }, include: [{ association: 'paciente', include: [{ association: 'obra_social' }] }, { association: 'profesional', include: [{ association: 'especialidad' }] }, { association: 'practicaMedica' }]
         })
 
@@ -131,8 +120,9 @@ const controlador = {
             const e = turno[i]
             moment.locale('es-mx')
             let fechaCreacion = moment(e.fecha_creacion).format('LLLL')
-            let horario = moment(e.fecha_turno).format('LLLL')
+            let horario = moment(e.fecha_turno).format('DD [de] MMMM')
             let fechaCancelacion = moment(e.fecha_cancelacion).format('LLLL')
+            let hora = moment(e.fecha_turno).format('HH:mm')
 
             let turnoToPush = {
                 id: e.id,
@@ -141,18 +131,18 @@ const controlador = {
                 fecha_creacion: fechaCreacion == "Fecha inválida" ? " " : fechaCreacion,
                 fecha_cancelacion: fechaCancelacion == "Fecha inválida" ? " " : fechaCancelacion,
                 fecha_turno: horario,
+                hora: hora,
                 Tratamiento_id: e.Tratamiento_id,
                 presente: e.presente,
                 paciente: e.paciente,
                 profesional: e.profesional,
-                practicaMedica: e.practicaMedica
+                practicaMedica: e.practicaMedica ? e.practicaMedica : 'Ninguna'
             }
 
             dato.turno.datosTurno.push(turnoToPush)
 
         }
 
-        console.log(turno)
 
         let apiData = {
             "data": dato,

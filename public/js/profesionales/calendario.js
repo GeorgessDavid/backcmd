@@ -18,9 +18,9 @@ class Calendar {
     getTemplate() {
         let template = `
             <div class="calendar__header">
-                <button type="button" class="control control--prev"><i class="fa-sharp fa-solid fa-caret-left"></i></button>
-                <span class="month-name">dic 2019</span>
-                <button type="button" class="control control--next"><i class="fa-sharp fa-solid fa-caret-right"></i></button>
+                <button type="button" class="control control--prev fa-sharp fa-solid fa-caret-left"></button>
+                <span class="month-name"></span>
+                <button type="button" class="control control--next fa-sharp fa-solid fa-caret-right"></button>
             </div>
             <div class="calendar__body">
                 <div class="grid">
@@ -47,9 +47,11 @@ class Calendar {
         elControls.forEach(elControl => {
             elControl.addEventListener('click', e => {
                 let elTarget = e.target;
+
                 if (elTarget.classList.contains('control--next')) {
                     this.changeMonth(true);
-                } else {
+
+                }else{
                     this.changeMonth(false);
                 }
                 this.showCells();
@@ -130,12 +132,12 @@ class Calendar {
                 if (elTarget.classList.contains('grid__cell--disabled') || elTarget.classList.contains('grid__cell--selected')) {
                     return;
                 }
-                // Deselecionar la celda anterior
+                // Des-seleccionar la celda anterior
                 let selectedCell = this.elGridBody.querySelector('.grid__cell--selected');
                 if (selectedCell) {
                     selectedCell.classList.remove('grid__cell--selected');
                 }
-                // Selecionar la nueva celda
+                // Seleccionar la nueva celda
                 elTarget.classList.add('grid__cell--selected');
                 this.selectedDate = this.cells[parseInt(elTarget.dataset.cellId)].date;
                 // Lanzar evento change

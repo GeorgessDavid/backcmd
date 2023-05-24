@@ -9,13 +9,18 @@
 body {
     font-family: 'Fira Sans Condensed';
 }
+main{
+    display: flex;
+    position: relative;
+}
+#main{
+    width: 100%;
+}
 
 .sideBar {
     width: 20%;
     padding: 2vw 0px;
     background-color: #F8F9FA;
-    border-right: 1px solid #F8F9FA;
-    box-shadow: 0 1px 5px rgb(178, 178, 178)
 }
 
 :root {
@@ -54,6 +59,11 @@ body {
     background-color: transparent;
     border: none;
     cursor: pointer;
+    transition: all 300ms ease-in-out;
+}
+
+.calendar .control:hover{
+    color: #046a00
 }
 
 .grid__header, .grid__body {
@@ -81,9 +91,13 @@ body {
     cursor: pointer;
 }
 
+.grid__cell--gd:hover{
+    background-color: #8fd58e;
+    border-radius: 50%;
+}
 .grid__cell--selected {
     color: var(--color-bg-calendar);
-    background-color: white;
+    background-color: #046a00;
     border-radius: 50%;
     border: 2px solid white;
     box-shadow: 0 0 0 2px var(--color-bg-calendar) inset;
@@ -92,4 +106,12 @@ body {
 .grid__cell--disabled {
     color: var(--color-cell-disabled);
     cursor: not-allowed;
+}
+
+.btn-primary a{
+    color:white;
+    text-decoration: none;
+}
+table{
+    text-align: center;
 }
