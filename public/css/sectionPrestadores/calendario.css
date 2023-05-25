@@ -1,0 +1,84 @@
+:root {
+    --color-bg-calendar: #efefef;
+    --color-cell: #000000;
+    --color-cell-disabled: #c9c9c9;
+}
+
+.root {
+    padding: 0 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.calendar {
+    padding: 20px 10px;
+    background-color: var(--color-bg-calendar);
+    border-radius: 3px;
+    width: 100%;
+    max-width: 300px;
+
+}
+
+.calendar__header {
+    color: rgb(0, 0, 0);
+    display: flex;
+    justify-content: space-between;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+}
+
+.calendar .control {
+    color: rgb(0, 0, 0);
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: all 300ms ease-in-out;
+}
+
+.calendar .control:hover{
+    color: #046a00;
+    transform: scale(1.4);
+}
+
+.grid__header, .grid__body {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+}
+
+.grid__header {
+    color: rgb(0, 0, 0);
+    margin-bottom: 20px;
+}
+
+.grid__body {
+    grid-auto-rows: 40px;
+    color: var(--color-cell);
+}
+
+.grid__cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.grid__cell--gd {
+    cursor: pointer;
+}
+
+.grid__cell--gd:hover{
+    background-color: #8fd58e;
+    border-radius: 50%;
+}
+.grid__cell--selected {
+    color: var(--color-bg-calendar);
+    background-color: #046a00;
+    border-radius: 50%;
+    border: 2px solid white;
+    box-shadow: 0 0 0 2px var(--color-bg-calendar) inset;
+}
+
+.grid__cell--disabled {
+    color: var(--color-cell-disabled);
+    cursor: not-allowed;
+}

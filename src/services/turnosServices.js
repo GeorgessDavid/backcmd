@@ -107,7 +107,9 @@ const controlador = {
         let turno = await db.Turno.findAll({
             where: {
                 Profesional_id: profesional.id
-            }, include: [{ association: 'paciente', include: [{ association: 'obra_social' }] }, { association: 'profesional', include: [{ association: 'especialidad' }] }, { association: 'practicaMedica' }]
+            },
+            order: [['fecha_turno', 'ASC']], 
+            include: [{ association: 'paciente', include: [{ association: 'obra_social' }] }, { association: 'profesional', include: [{ association: 'especialidad' }] }, { association: 'practicaMedica' }]
         })
 
         let dato = {

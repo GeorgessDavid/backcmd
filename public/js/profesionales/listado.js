@@ -42,7 +42,7 @@ function turnosDelDia(paciente) {
         const r = paciente[i];
 
         tabla.innerHTML += `
-    <tr>
+    <tr class="${r.presente ? 'table-success' : 'table-light'}">
         <th scope="row">${r.id}</th>
         <td>${r.paciente.nombre}</td>
         <td>${r.paciente.apellido}</td>
@@ -52,7 +52,7 @@ function turnosDelDia(paciente) {
         <td>${r.paciente.sexo ? 'Masculino' : 'Femenino'}</td>
         <td>${r.practicaMedica}</td>
         <td>${r.presente ? 'Sí' : 'No'}</td>
-        <td><button class="btn btn-primary"><a href="/prestadores/profesional/pacientes/historiaClinica/${r.paciente.id}" target="__blank">Abrir Historia Clínica <i class="fa-solid fa-arrow-up-right-from-square"></i></a></button></td>
+        <td><button ${r.presente ? '' : 'disabled'} class="btn btn-primary"><a href="/prestadores/profesional/pacientes/historiaClinica/${r.paciente.id}" target="__blank">Abrir Historia Clínica <i class="fa-solid fa-arrow-up-right-from-square"></i></a></button></td>
     </tr>`
     }
 
