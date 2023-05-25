@@ -1,7 +1,6 @@
 window.addEventListener('load', () => {
-    let tabla = document.getElementById('table')
 
-    fetch('http://localhost:3005/turnos/api/profesional/').then(r => {
+    fetch('https://cmedicosdavid.onrender.com/turnos/api/profesional/').then(r => {
         return r.json()
     }).then(f => {
         let spinner = document.getElementById('loadingSpinner')
