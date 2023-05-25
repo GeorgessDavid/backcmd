@@ -7,6 +7,7 @@
     <%- include('../../partials/headPartials.ejs') %>
         <link rel="stylesheet" href="/css/sectionPrestadores/profesionales/turnos.css">
         <title>Turnos - CMD</title>
+        <link rel="stylesheet" href="/css/sectionPrestadores/calendario.css">
 </head>
 
 <body>
@@ -14,21 +15,58 @@
         <%- include('../../partials/prestadoresHeader.ejs') %>
     </header>
     <main>
-        <aside>
-            <div id="pagination">
-                <a id="prevMonth">&lt;</a>
-                <span id="currentMonth"></span>
-                <a id="nextMonth">&gt;</a>
-            </div>
-            <div id="calendar"></div>
-        </aside>
-        <div>
+        <div class="sideBar">
+            <h2 class="ms-3 mb-5">Listado de Turnos</h2>
+            <div class="sidebar">                
+                <h5 class="mb-3 ms-3">Fecha</h5>
+                <div class="root">
+                    <div class="calendar" id="calendar">
+                        <div class="calendar" id="calendar">
 
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+        <div id="main">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Apellido</th>
+                        <th scope="col">Fecha</th>
+                        <th scope="col">Hora</th>
+                        <th scope="col">DNI</th>
+                        <th scope="col">Sexo</th>
+                        <th scope="col">Practicas</th>
+                        <th scope="col">Presente</th>
+                        <th scope="col">H.C.</th>
+                    </tr>
+                </thead>
+                <tbody id="table" class="table-group-divider">
+
+                </tbody>
+            </table>
+            <div class="d-flex justify-content-center" id="loadingSpinner">
+                <div class="m-5 me-0">
+                    <span style="font-style: italic;">Cargando turnos, espere por favor...</span>
+                </div>
+                <div class="spinner-border m-5 text-success" role="status" i>
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+        </div>
+
     </main>
 
     <%- include('../../partials/scriptPartials.ejs') %>
-        <script src="/js/profesionales/turnos.js"></script>
+        <script src="/js/profesionales/calendario.js"></script>
+        <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+        <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/locale/es.js"></script>
+        <script src="/js/profesionales/listado.js"></script>
 </body>
 
 </html>

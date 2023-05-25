@@ -1,32 +1,42 @@
 @import url('https://fonts.googleapis.com/css?family=Fira+Sans+Condensed');
 
+*, *:before *:after{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
 body {
     font-family: 'Fira Sans Condensed';
 }
-aside{
-    width: 20%;
-    padding: 2vw 0px;
-    background-color: #ccc;
+main{
+    display: flex;
+    position: relative;
 }
-#calendar {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
+#main{
     width: 100%;
 }
 
-.day {
-    border: 1px solid #ccc;
-    padding: 10px;
+.sideBar {
+    width: 20%;
+    padding: 2vw 0px;
+    background-color: #F8F9FA;
+    min-height: 100vh;
 }
 
-#pagination {
-    margin-top: 20px;
+.sideBar h2{
+    margin-top: -2vw;
+}
+
+
+.btn-primary a{
+    color:white;
+    text-decoration: none;
+}
+table{
     text-align: center;
 }
 
-#pagination a {
-    margin: 0 5px;
-    text-decoration: none;
-    color: blue;
-    cursor: pointer;
+.displayNone{
+    display: none;
 }
