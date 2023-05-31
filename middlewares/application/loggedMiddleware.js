@@ -1,19 +1,20 @@
 const jwt = require('jsonwebtoken');
+const dotenv = require('dotenv');
 
 function validateToken(req, res, next) {
-  const token = req.session.token;
-  if (!token) {
-    return res.status(401).json({ message: 'Token no encontrado' });
-  }
-  try {
-    const decoded = jwt.verify(token, process.env.TOKEN_SECRET);
-    console.log("Token valido, usuario" + decoded.userId);
-    req.user = decoded;
-    next();
-  } catch (error) {
-    console.log(error);
-    return res.status(401).json({ message: 'Token expirado' });
-  }
+    const token = req.session.token;
+    if (!token) {
+        return res.status(401).json({ message: 'Token no encontrado' });
+    }
+    try {
+        const decoded = jwt.verify(token, process.env.TOKEN_SECRET);
+        console.log("Token valido, usuario" + decoded.userId);
+        req.user = decoded;
+        next();
+    } catch (error) {
+        console.log(error);
+        return res.status(401).json({ message: 'Token expirado' });
+    }
 }
 
 let userLoginValidation = {
@@ -41,7 +42,7 @@ let userLoginValidation = {
                 return res.redirect('/')
             }
 
-    
+
         } else if (req.cookies.rememberMe) {
             req.session.usuario = req.cookies.rememberMe
             res.locals.isLogged = req.session.usuario;
@@ -72,8 +73,16 @@ let userLoginValidation = {
         next()
     },
     selfProfile: (req, res, next) => {
-        if(req.params.id != req.session.usuario.alias) {
+        if (req.params.id != req.session.usuario.alias) {
             return res.redirect('/profile/' + req.session.usuario.alias)
+        }
+        next()
+    },
+    apiKey: (req, res, next) => {
+        const apiKey = req.query.apiKey
+
+        if(!req.session.usuario && apiKey !== process.env.API_KEY){
+            return res.json({"status": "502", "msg": "access denied."})
         }
         next()
     }

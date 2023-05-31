@@ -15,9 +15,8 @@ router.get("/listar",logInMiddleware.needLogin,turnosController.listar )
 
 router.delete("/borrar/:id",logInMiddleware.needLogin,turnosController.delete )
 
-router.get("/api/listar",turnosServices.apiListar ) //api
-router.get("/api/today", turnosServices.currentDay)
-router.get("/api/profesional/", turnosServices.byProfessional)
+router.get("/api/listar", logInMiddleware.apiKey, turnosServices.apiListar ) //api
+router.get("/api/profesional/", logInMiddleware.apiKey, turnosServices.byProfessional)
 
 
 module.exports = router;

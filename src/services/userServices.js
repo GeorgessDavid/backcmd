@@ -389,7 +389,7 @@ let usuarios = {
                         sexo: req.body.sexo === 'masculino' ? true : false,
                         nacimiento: req.body.nacimiento,
                         matricula: null,
-                        Obra_Social_id: null,
+                        Obra_Social_id: 1,
                         imagen: "default_profile_img.png"
                     }).then(resultados => {
                         let data = {
