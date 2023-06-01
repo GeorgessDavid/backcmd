@@ -1,7 +1,7 @@
 window.addEventListener('load', () => {
     let container = document.getElementById('main-container')
 
-    fetch('https://cmedicosdavid.onrender.com/especialidades/api').then(res => {
+    fetch('https://cmedicosdavid.onrender.com/especialidades/api?apiKey=6a3ad1a1c550159304c55cbd0e4e546d-onrender').then(res => {
         return res.json()
     }).then(r => {
         for (let i = 0; i < r.data.length; i++) {
