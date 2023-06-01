@@ -81,7 +81,8 @@ let userLoginValidation = {
     apiKey: (req, res, next) => {
         const apiKey = req.query.apiKey
 
-        if(!req.session.usuario && apiKey !== process.env.API_KEY){
+        if(!req.session.usuario || apiKey !== process.env.API_KEY){
+            console.log('Petición rechazada.')
             return res.json({"status": "502", "msg": "access denied."})
         }
         next()
