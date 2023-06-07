@@ -2,6 +2,7 @@ let dni = document.getElementById('paciente')
 let sugerencias = document.getElementById('sugerencias');
 let profesionales = document.getElementById('profesional');
 let practicaMedica = document.getElementById('practicaMedicaModal')
+let horarios = document.getElementById('horarios');
 
 window.addEventListener('load', function () {
     fetch('https://cmedicosdavid.onrender.com/apiUsuarios/pacientes').then(r => {
@@ -39,6 +40,16 @@ window.addEventListener('load', function () {
         listarMedicos(prof)
 
 
+        profesionales.addEventListener('change', () => {
+            let value = profesionales.value
+
+            let profSelected = prof.filter(e => {
+                return(e.profesional.id == value)
+            })
+
+            listarHorarios(profSelected[0].horarios[0].horarios)
+        })
+
     })
 
     fetch('https://cmedicosdavid.onrender.com/tratamientos/api/').then(r => {
@@ -47,9 +58,10 @@ window.addEventListener('load', function () {
         prac = e.data
 
         listarPracticasMedicas(prac)
-        
+
 
     })
+
 })
 
 
@@ -108,11 +120,22 @@ function pacienteData(documento, pacie) {
 }
 
 function listarMedicos(medico) {
-
     for (let i = 0; i < medico.length; i++) {
         const profesional = medico[i];
 
-        profesionales.innerHTML += `<option value="${profesional.id}">${profesional.profesional.apellido.toUpperCase()}, ${profesional.profesional.nombre}</option>`
+        profesionales.innerHTML += `<option value="${profesional.profesional.id}">${profesional.profesional.apellido.toUpperCase()}, ${profesional.profesional.nombre}</option>`
+    }
+
+}
+
+function listarHorarios(hora) {
+
+    horarios.innerHTML = ''
+
+    for (let i = 0; i < hora.length; i++) {
+        const horario = hora[i];
+
+        horarios.innerHTML += `<div class="m-2 mb-4"><span value="${horario}">${horario}</span></div>`
     }
 }
 
