@@ -1,5 +1,8 @@
 let dni = document.getElementById('paciente')
 let sugerencias = document.getElementById('sugerencias');
+let profesionales = document.getElementById('profesional');
+let practicaMedica = document.getElementById('practicaMedicaModal')
+
 window.addEventListener('load', function () {
     fetch('https://cmedicosdavid.onrender.com/apiUsuarios/pacientes').then(r => {
         return r.json()
@@ -26,6 +29,26 @@ window.addEventListener('load', function () {
                 sugerencias.innerHTML = `<span class="ms-3" style="font-size: 16px; font-style: italic;">Paciente no encontrado. </span>`
             }
         })
+    })
+
+    fetch('https://cmedicosdavid.onrender.com/apiUsuarios/profesionales/').then(r => {
+        return r.json()
+    }).then(e => {
+        prof = e.data
+
+        listarMedicos(prof)
+
+
+    })
+
+    fetch('https://cmedicosdavid.onrender.com/tratamientos/api/').then(r => {
+        return r.json()
+    }).then(e => {
+        prac = e.data
+
+        listarPracticasMedicas(prac)
+        
+
     })
 })
 
@@ -65,7 +88,7 @@ function pacienteData(documento, pacie) {
     let pacienteInfo = document.getElementById('pacienteInfo')
 
     let p = pacie.filter(pac => {
-        return(pac.id === documento)
+        return (pac.id === documento)
     })
 
     pacienteInfo.style.display = 'block'
@@ -82,4 +105,22 @@ function pacienteData(documento, pacie) {
     <label for="apellido">Documento:</label>
     <span class="ms-3">${p[0].dni}</span>
 </div>`
+}
+
+function listarMedicos(medico) {
+
+    for (let i = 0; i < medico.length; i++) {
+        const profesional = medico[i];
+
+        profesionales.innerHTML += `<option value="${profesional.id}">${profesional.profesional.apellido.toUpperCase()}, ${profesional.profesional.nombre}</option>`
+    }
+}
+
+function listarPracticasMedicas(p) {
+
+    for (let i = 0; i < p.length; i++) {
+        const practica = p[i]
+
+        practicaMedica.innerHTML += `<option value="${practica.id}">${practica.nombre}</option>`
+    }
 }
