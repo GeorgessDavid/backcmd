@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuestras Prácticas - CMD</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/practicasMedicas.css">
+    <%- include('partials/headPartials') %>
+</head>
+<body>
+    <header>
+        <%- include('partials/header') %>
+    </header>
+    <main>
+        <div class="col">
+            <h1 class="my-3">Nuestras Prácticas Médicas </h1>
+            <div>
+                <div class="d-flex justify-content-center" id="loadingSpinner">
+                    <div class="me-3">
+                        <span style="color: #012B78; font-style: italic;">Cargando prácticas. Espere un momento por favor</span>
+                    </div>
+                    <div class="spinner-grow text-primary" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                    <div class="spinner-grow text-primary" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                    <div class="spinner-grow text-primary" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div>
+                <div class="row" id="main-container">
+                    
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- SCRIPTS  -->
+    <%- include('partials/scriptPartials') %>
+    <script src="/js/publicPracticasMedicas.js"></script>
+</body>
+</html>

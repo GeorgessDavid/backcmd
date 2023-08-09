@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans+Condensed');
+*{
+    font-family: 'Fira Sans Condensed';
+}
+.card-text {
+    font-size: 16px;
+}
+
+.card {
+    height: 100%;
+    border-radius: 0px !important;
+    border: white 0px solid !important;
+    transition: all 300ms ease;
+}
+
+.card h5 {
+    font-weight: bold;
+    color: #012B78;
+    border-bottom: #012B78 solid 2px;
+}
+
+#main-container {
+    position: relative
+}
+
+.card-div {
+    position: relative;
+}
+
+
+.card:hover {
+    border: rgb(227, 227, 227) solid 1px;
+    box-shadow: 0 0 5px #012B78;
+    transform: scale(1.0325);
+    z-index: 10;
+}

@@ -546,6 +546,25 @@ div.map {
     z-index: -3;
     opacity: 5%;
 }
+
+.practicasMedicasTitle{
+    display: flex;
+    justify-content: center;
+    justify-content: space-between;
+}
+
+.practicasMedicasTitle a{
+    text-decoration: none;
+    font-size: 20px;
+    color: #012B78;
+    transition: all 300ms;
+}
+
+.practicasMedicasTitle a:hover{
+    font-size: 21px;
+    color: #043ca3;
+    font-weight: bold;
+}
 /* ------@MEDIA-------*/
 @media (min-width: 361px) {
     main section div.estudios {

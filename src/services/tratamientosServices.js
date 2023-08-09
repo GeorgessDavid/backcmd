@@ -4,6 +4,10 @@ const db = require('../../database/models');
 
 const controlador = {
 
+    render: (req,res) =>{
+        return res.render('practicasMedicas')
+    },
+
     apiListar: (req, res) => {
         db.Tratamiento.findAll({
         }).then((tratamiento) => {
