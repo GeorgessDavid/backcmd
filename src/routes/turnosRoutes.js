@@ -5,10 +5,11 @@ const express = require('express');
 const router = express.Router();
 
 const logInMiddleware = require('../../middlewares/application/loggedMiddleware.js')
+const mantenimiento = require('../../middlewares/application/mantenimiento.js')
 
-router.get("/",logInMiddleware.needLogin,turnosController.index )
+router.get("/", logInMiddleware.needLogin, mantenimiento.activo, turnosController.index )
 
-router.get("/crear",logInMiddleware.needLogin,turnosController.crear )
+router.get("/crear", logInMiddleware.needLogin, mantenimiento.activo, turnosController.crear )
 router.post("/crear",logInMiddleware.needLogin,turnosController.store )
 
 router.get("/listar",logInMiddleware.needLogin,turnosController.listar )

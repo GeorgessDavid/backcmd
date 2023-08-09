@@ -24,6 +24,7 @@ const uploadFile = multer({ storage: imgConfiguration });
 /* MIDDLEWAREs */
 const logInMiddleware = require('../../middlewares/application/loggedMiddleware.js')
 const userTypeAuth = require('../../middlewares/application/privilegeAuthMiddleware.js')
+const mantenimiento = require('../../middlewares/application/mantenimiento.js')
 /* RUTAS */
 
 router.use(logInMiddleware.defaultLocals)
@@ -39,12 +40,12 @@ router.get('/admin/users', logInMiddleware.needLogin, userTypeAuth.admin, presta
 
 /* SECRETARIA ROUTES */
 router.get('/secretaria/home', logInMiddleware.needLogin, userTypeAuth.secretaria, prestadoresController.home)
-router.get('/secretaria/turnos', logInMiddleware.needLogin, userTypeAuth.secretaria, prestadoresController.secretariaTurnos);
+router.get('/secretaria/turnos', logInMiddleware.needLogin, mantenimiento.activo, userTypeAuth.secretaria, prestadoresController.secretariaTurnos);
 router.get('/secretaria/agregarPaciente', logInMiddleware.needLogin, userTypeAuth.secretaria, prestadoresController.secretariaAddPaciente);
 
 /* PROFESIONALES ROUTES */
 router.get('/profesional/home', logInMiddleware.needLogin, userTypeAuth.medic, prestadoresController.home)
-router.get('/profesional/turnos', logInMiddleware.needLogin, userTypeAuth.medic, prestadoresController.profesionalTurnos)
+router.get('/profesional/turnos', logInMiddleware.needLogin, mantenimiento.activo, userTypeAuth.medic, prestadoresController.profesionalTurnos)
 router.get('/profesional/pacientes', logInMiddleware.needLogin, userTypeAuth.medic, prestadoresController.pacientes)
 router.get('/profesional/pacientes/historiaClinica/:id', logInMiddleware.needLogin, userTypeAuth.medic, prestadoresController.historiaClinica)
 

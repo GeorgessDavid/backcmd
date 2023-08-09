@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>No disponible - CMD</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <%- include('partials/headPartials') %>
+</head>
+
+<body>
+    <header>
+        <% if (locals && usuario.Rol_id ==4 ) { %>
+            <%- include('partials/header') %>
+
+                <% } else { %>
+                    <%- include('partials/prestadoresHeader') %>
+                        <% } %>
+    </header>
+    <main>
+        <% if (locals && usuario.Rol_id !=4) { %>
+            <h4>Página no disponible</h4>
+            <span>
+                Lamentablemente, esta sección no se encuentra disopnible debido a que está en mantenimiento. Disculpe
+                las molestias.
+            </span>
+            <% } else {%>
+                <h4>No disponible</h4>
+                <span>Lamentablemente, esta función no está disponible en este momento. Puede contactarse con nosotros a
+                    través de cualquier medio de contacto. Disculpe las molestias.</span>
+                <% } %>
+    </main>
+
+</body>
+<style>
+    @import url('https://fonts.googleapis.com/css?family=Fira+Sans+Condensed');
+
+    * {
+        font-family: 'Fira Sans Condensed';
+    }
+
+    main {
+        text-align: center;
+        margin: 20px;
+        width: 100%;
+    }
+
+    h4 {
+        font-size: 35px;
+    }
+
+    span {
+        font-style: italic;
+    }
+</style>
+
+</html>
