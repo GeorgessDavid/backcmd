@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans+Condensed');
+
+footer{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    justify-content: space-between;
+    background-color: #012B78;
+    color: white;
+    font-family: 'Fira Sans Condensed'
+}
+
+footer div {
+    margin: 30px 20px
+}
+
+footer div a{
+    color: white;
+    transition: all 300ms;
+    margin-right: 10px;
+}
+
+footer div a:hover {
+    color: #25D366
+}

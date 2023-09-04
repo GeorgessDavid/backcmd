@@ -8,144 +8,144 @@
         integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <link rel="stylesheet" href="../css/registerStyles.css">
+    <link rel="stylesheet" href="../css/styles.css">
     <title>Registrarse - CMD</title>
     <link rel="icon" type="image/png" href="/img/logoCMD.png">
+    <link rel="stylesheet" href="../css/partialStyles.css">
 </head>
 
 <body>
     <header>
-        <div class="divTelefono">
-            <p><i class="fa-solid fa-phone"></i> CENTRAL DE TURNOS</p>
-            <p class="numeroDeTelefono">4757-2389</p>
-        </div>
-        <div class="imgLogo">
-            <a href="/"><img src="../img/logoCMD.png"></a>
-        </div>
+        <%- include('partials/header.ejs') %>
     </header>
     <main>
-        <div class="d-flex justify-content-between">
-            <div class="divLogoConsultorio">
-                <img src="/img/logoCMD.png">
+        <!-- FORM -->
+        <div class="mainForm m-3">
+            <h1>Registrarse</h1>
+            <div class="mb-5">
+                <h3> Datos de Usuario</h3>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="alias" placeholder="name@example.com">
+                    <label for="floatingInput">Usuario</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="password" class="form-control" id="password" placeholder="name@example.com">
+                    <label for="floatingInput">Contraseña</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="password" class="form-control" id="confirmPassword" placeholder="name@example.com">
+                    <label for="floatingInput">CONFIRMAR CONTRASEÑA</label>
+                </div>
+                <div id="h6extra">
+                    
+                </div>
+                <div style="font-size: 14px;">
+                    <input type="checkbox" id="showPassword" value="1">
+                    <label for="showPassword">Mostrar Contraseña</label>
+                </div>
             </div>
-            <div class="divContainerRegister blurBackground">
-                <div class="divRegistrarse">
-                    <h1 class="titleRegistrarse">Registrarse</h1>
-                    <div class="divFormulario">
-                        <form action="/pacientes/register" method="POST" id="pacientesRegister">
-                            <label name="usuario">
-                                <input type="text" class="formCMD" name="usuario" placeholder="Usuario" id="usuarioId">
-                                <label name="contraseña">
-                                    <input type="password" class="formCMD" name="password" placeholder="Clave" id="passwordId">
-                                    <% if (locals.errors && errors.password) { %>
-                                        <p class="error">
-                                            <%= errors.password.msg %>
-                                        </p>
-                                    <% } %>
-                                        <label name="contraseña">
-                                            <input type="password" class="formCMD" name="passwordConf" placeholder="Confirmar Clave">
-                                                <% if (locals.errors && errors.password) { %>
-                                                    <p class="error">
-                                                        <%= errors.password.msg %>
-                                                    </p>
-                                                <% } %>
-                                        <br>
-                                        <br>
-                                        <label name="nombre">
-                                        <input type="text" class="formCMD" name="nombre" placeholder="Nombre" id="nombreId">
-                                            <% if (locals.errors && errors.nombre) { %>
-                                                <p class="error">
-                                                    <%= errors.nombre.msg %>
-                                                </p>
-                                            <% } %>
-                                        <label name="apellido">
-                                        <input type="text" class="formCMD" name="apellido" placeholder="Apellido" id="apellidoId">
-                                            <% if (locals.errors && errors.apellido) { %>
-                                                <p class="error">
-                                                    <%= errors.apellido.msg %>
-                                                </p>
-                                            <% } %>
-                                        <label name="dni">
-                                        <input type="text" class="formCMD" name="dni" placeholder="DNI"id="dniId">
-                                            <% if (locals.errors && errors.dni) { %>
-                                                <p class="error">
-                                                    <%= errors.dni.msg %>
-                                                </p>
-                                            <% } %>
-                                        <label name="nacimiento">
-                                        <input type="date" class="formCMD" name="nacimiento" placeholder="Fecha de Nacimiento">
-                                            <% if (locals.errors && errors.nacimiento) { %>
-                                                <p class="error">
-                                                    <%= errors.nacimiento.msg %>
-                                                </p>
-                                            <% } %>
-                                        <label name="domicilio">
-                                        <input  type="text" class="formCMD" name="domicilio" placeholder="Domicilio">
-                                            <% if(locals.errors && errors.domicilio) { %>
-                                                <p class="error">
-                                                    <%= errors.domicilio.msg %>
-                                                </p>
-                                            <% } %>
-                                        <label name="telefono">
-                                        <input type="text" class="formCMD" name="telefono" placeholder="Telefono">
-                                            <% if(locals.errors && errors.telefono){ %>
-                                                <p class="error">
-                                                    <%= errors.telefono.msg %>
-                                                </p>
-                                            <% } %>
-                                        <label name="email">
-                                        <input name="email" class="formCMD" type="email" placeholder="Email" id="emailId">
-                                            <% if(locals.errors && errors.email) { %>
-                                                <p class="error">
-                                                    <%= errors.email.msg %>
-                                                </p>
-                                            <% } %>
-                                        <label name="email">
-                                        <input name="emailConf" class="formCMD" type="email" placeholder="Confirmar Email">
-                                            <% if (locals.errors && errors.email) { %>
-                                                <p class="error">
-                                                    <%= errors.email.msg%>
-                                                </p>
-                                            <% } %>
-                                        <div class="selectorsDiv">
-                                            <select name="sexo">
-                                                <option selected disabled>SEXO</option>
-                                                <option value="false">FEMENINO</option>
-                                                <option value="true">MASCULINO</option>
-                                            </select>
-                                            <select name="obraSocial">
-                                                <option selected disabled> OBRA SOCIAL </option>
-                                                <option value="1">PARTICULAR </option>
-                                                <option value="2">PAMI </option>
-                                            </select>
-                                        </div>
-                                        <br>
-                                        <button type="submit" class="btn btn-registrar">Registrar</button>
-                        </form>
+            <div>
+                <h3>Datos Personales</h3>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="nombre" placeholder="name@example.com">
+                    <label for="floatingInput">Nombre</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="apellido" placeholder="name@example.com">
+                    <label for="floatingInput">Apellido</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="dni" placeholder="name@example.com"
+                        onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+                    <label for="floatingInput">dni</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="domicilio" placeholder="name@example.com">
+                    <label for="floatingInput">domicilio</label>
+                </div>
+                <div class="mb-3">
+                    <select id="provincia" class="form-select">
+                        <option selected disabled>PROVINCIA</option>
+                    </select>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="telefono" placeholder="name@example.com"
+                        onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+                    <label for="floatingInput">teléfono</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <input type="email" class="form-control" id="email" placeholder="name@example.com">
+                    <label for="floatingInput">email</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="email" class="form-control" id="confirmarEmail" placeholder="name@example.com">
+                    <label for="floatingInput">confirmar email</label>
+                </div>
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <label>sexo</label>
+                        <select class="mb-3 form-select" aria-label="Default select example" id="sexo">
+                            <option selected>Seleccione</option>
+                            <option value="1">Femenino</option>
+                            <option value="2">Masculino</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label>Obra Social</label>
+                        <select class="mb-3 form-select" aria-label="Default select example" id="obraSocial">
+                            <option selected>Seleccione</option>
+                            <option value="1">PARTICULAR</option>
+                            <option value="2">PAMI</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="nacimiento">Nacimiento</label>
+                        <input type="date" min="1900-01-01" class="form-control" id="nacimiento">
                     </div>
                 </div>
             </div>
+            <h5 style="font-size: 16px; font-style: italic;" class="mb-5">todos los campos de este formulario son obligatorios</h5>
+            <button type="button" class="btn btn-primary">REGISTRARSE</button>
+            <button type="button" class="btn btn-secondary"><a href="/">VOLVER</a></button>
         </div>
-        <div class="divContainerRegister displayNone" id="divRegisterErrors">
-            <ul id="ulErrores">
 
-            </ul>
-        </div>
     </main>
     <footer>
-        <div class="footerBox">
-            <div class="divFooterWhatsApp">
-                <a href="https://wa.me/message/JARCJT66KGQ3L1" target="_blank"><i class="fa-brands fa-whatsapp fa-2xl whatsAppLogo"></i></a>
-                <span>Puedes hacer clic en el ícono o simplemente enviar un mensaje a +54 9 11 7020-3287</span>
-            </div>
-            <div class="socialesLogos">
-                <a href="https://www.instagram.com/consultoriosmedicosdavid/" target="_blank"><i class="fa-brands fa-instagram fa-2xl instagramLogo"></i></a>
-                <a href="https://www.facebook.com/ConsultoriosMedicosDavid" target="_blank"><i class="fa-brands fa-facebook fa-2xl facebookLogo"></i></a>
-            </div>
-        </div>
+        <%- include('partials/footer.ejs') %>
     </footer>
+    <%- include('partials/scriptPartials.ejs') %>
+        <script>
+            window.addEventListener('load', () => {
+                let provinciasOptions = document.getElementById('provincia')
+                fetch('https://apis.datos.gob.ar/georef/api/provincias').then(r => {
+                    return r.json()
+                }).then(datos => {
+                    for (let i = 0; i < datos.provincias.length; i++) {
+                        const provincia = datos.provincias[i].nombre
+                        provinciasOptions.innerHTML += `<option value=${provincia}>${provincia}</option>`
+                    }
+                })
+            })
+        </script>
+        <script>
+            var today = new Date();
+            var dd = today.getDate();
+            var mm = today.getMonth() + 1; //January is 0!
+            var yyyy = today.getFullYear();
 
-    <script src="../js/validations/pacientesRegistroValidations.js"></script>
+            if (dd < 10) {
+                dd = '0' + dd;
+            }
 
+            if (mm < 10) {
+                mm = '0' + mm;
+            }
+
+            today = yyyy + '-' + mm + '-' + dd;
+            document.getElementById("nacimiento").setAttribute("max", today)
+        </script>
+        <script src="/js/register.js"></script>
 </body>
 
 </html>

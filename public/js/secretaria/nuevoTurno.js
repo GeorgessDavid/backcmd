@@ -130,6 +130,8 @@ function listarMedicos(medico) {
 
 function listarHorarios(hora) {
 
+    console.log(hora)
+
     horarios.innerHTML = ''
 
     for (let i = 0; i < hora.length; i++) {
@@ -147,3 +149,28 @@ function listarPracticasMedicas(p) {
         practicaMedica.innerHTML += `<option value="${practica.id}">${practica.nombre}</option>`
     }
 }
+/* 
+function clickEventListener() {
+    let horarios = document.querySelectorAll('.horarios')
+
+    horarios.forEach(horario => {
+        horario.addEventListener('click', e => {
+            let target = e.target;
+
+            if(target.classList.contains('.horarios-disabled') || target.classList.contains('.horarios-selected')){
+                return
+            }
+
+            //Des-seleccion
+
+            let targetSeleccionado = document.querySelector('.horarios-selected')
+            
+            if(targetSeleccionado){
+                targetSeleccionado.classList.remove('.horarios-selected')
+            }
+
+            target.classList.add('.horarios-selected')
+
+        })
+    })
+} */

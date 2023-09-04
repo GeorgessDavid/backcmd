@@ -176,7 +176,7 @@ section.banner h1 {
     font-weight: bold;
     text-align: center;
     position: relative;
-    bottom: 180px;
+    bottom: 130px;
 }
 
 /* --- Main estudios  */
@@ -205,8 +205,6 @@ main section article p,
 .description {
     color: #012B78;
     text-align: center;
-
-
 }
 
 article div.main-article {
@@ -421,7 +419,7 @@ section.turnos {
 
 
 /* ---  footer ----- */
-footer {
+/* footer {
     display: flex;
     flex-direction: row;
     font-size: 1em;
@@ -430,11 +428,12 @@ footer {
     align-items: center;
     letter-spacing: 0.05em;
     background-color: #012B78;
+    justify-content: center;
     justify-content: space-between;
     padding: 20px;
     margin-top: 20px;
 
-}
+} */
 
 .WhatsApp i {
     color: aliceblue;

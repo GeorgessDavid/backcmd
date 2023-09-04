@@ -23,5 +23,8 @@ router.put('/updateUser/:id', validations.updateUser, apiController.updateUser)
 
 router.post('/secretaria/addPaciente', validations.addPaciente, apiController.addPaciente)
 
+// POST - USUARIOS
+// router.post('/addUser', validations.addUser, apiController.addUser)
+
 
 module.exports = router
