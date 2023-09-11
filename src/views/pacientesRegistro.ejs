@@ -68,13 +68,16 @@
                 </div>
                 <div class="mb-3">
                     <select id="provincia" class="form-select">
-                        <option selected disabled>PROVINCIA</option>
+                        <option selected disabled value="0">PROVINCIA</option>
                     </select>
                 </div>
                 <div class="form-floating mb-3">
                     <input type="text" class="form-control" id="telefono" placeholder="name@example.com"
                         onkeypress="return event.charCode >= 48 && event.charCode <= 57">
                     <label for="floatingInput">teléfono</label>
+                </div>
+                <div id="telefonoDiv">
+
                 </div>
 
                 <div class="form-floating mb-3">
@@ -85,19 +88,22 @@
                     <input type="email" class="form-control" id="confirmarEmail" placeholder="name@example.com">
                     <label for="floatingInput">confirmar email</label>
                 </div>
+                <div id="emailValidation">
+
+                </div>
                 <div class="d-flex justify-content-between">
                     <div>
                         <label>sexo</label>
                         <select class="mb-3 form-select" aria-label="Default select example" id="sexo">
-                            <option selected>Seleccione</option>
-                            <option value="1">Femenino</option>
-                            <option value="2">Masculino</option>
+                            <option selected disabled value="0">Seleccione</option>
+                            <option value="Femenino">Femenino</option>
+                            <option value="Masculino">Masculino</option>
                         </select>
                     </div>
                     <div>
                         <label>Obra Social</label>
                         <select class="mb-3 form-select" aria-label="Default select example" id="obraSocial">
-                            <option selected>Seleccione</option>
+                            <option selected disabled value="0">Seleccione</option>
                             <option value="1">PARTICULAR</option>
                             <option value="2">PAMI</option>
                         </select>
@@ -109,7 +115,7 @@
                 </div>
             </div>
             <h5 style="font-size: 16px; font-style: italic;" class="mb-5">todos los campos de este formulario son obligatorios</h5>
-            <button type="button" class="btn btn-primary">REGISTRARSE</button>
+            <button type="button" class="btn btn-primary" id="sendButton" disabled="disabled">REGISTRARSE</button>
             <button type="button" class="btn btn-secondary"><a href="/">VOLVER</a></button>
         </div>
 
@@ -118,19 +124,6 @@
         <%- include('partials/footer.ejs') %>
     </footer>
     <%- include('partials/scriptPartials.ejs') %>
-        <script>
-            window.addEventListener('load', () => {
-                let provinciasOptions = document.getElementById('provincia')
-                fetch('https://apis.datos.gob.ar/georef/api/provincias').then(r => {
-                    return r.json()
-                }).then(datos => {
-                    for (let i = 0; i < datos.provincias.length; i++) {
-                        const provincia = datos.provincias[i].nombre
-                        provinciasOptions.innerHTML += `<option value=${provincia}>${provincia}</option>`
-                    }
-                })
-            })
-        </script>
         <script>
             var today = new Date();
             var dd = today.getDate();

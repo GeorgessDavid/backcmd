@@ -39,7 +39,7 @@ function usuariosDatabase(sequelize, DataTypes) {
             type: DataTypes.BOOLEAN,
         },
         domicilio: {
-            type: DataTypes.STRING(50),
+            type: DataTypes.STRING(200),
             allowNull: false
         },
         telefono: {
