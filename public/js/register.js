@@ -398,7 +398,7 @@ button.addEventListener('click', () => {
 
             if (errorType == 400.3) {
                 toastTitle.innerHTML = 'Error - Email no disponible.'
-                toastBody.innerHTML = errors.alias.msg
+                toastBody.innerHTML = errors.email.msg
                 inputs.email.classList.add('error')
                 inputs.confirmarEmail.classList.add('error')
                 inputs.email.classList.remove('correct')
