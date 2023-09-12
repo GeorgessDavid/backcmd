@@ -573,7 +573,7 @@ let usuarios = {
                         "errorType": 400.3,
                         "errorName": "Email is already in use.",
                         "errors": {
-                            "alias": {
+                            "email": {
                                 "msg": "Esta dirección de email ya está en uso."
                             }
                         }

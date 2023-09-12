@@ -324,7 +324,7 @@ button.addEventListener('click', () => {
     let provinciaSelected = provincias.filter(ch => {
         return inputs.provincia.value === ch.id
     })
-    
+
     let body = {
         alias: inputs.alias.value,
         password: inputs.password.value,
@@ -357,37 +357,69 @@ button.addEventListener('click', () => {
 
     fetch('https://cmedicosdavid.onrender.com/apiUsuarios/addUser', req).then(response => {
         return response.json()
-    }).then((data)   => {
-        console.log(data)
-        if(data.status == 201){
+    }).then((data) => {
+        let status = data.status
+        let errorType = data.errorType
+        if (status == 201) {
             let timerInterval
-                Swal.fire({
-                    html: 'Te has registrado exitosamente! Se te redirigirá al inicio.',
-                    timer: 2000,
-                    timerProgressBar: true,
-                    background: '#9effd0',
-                    position: 'top-end',
-                    didOpen: () => {
-                        Swal.showLoading()
-                        const b = Swal.getHtmlContainer().querySelector('b')
-                        timerInterval = setInterval(() => {
-                            b.textContent = Swal.getTimerLeft()
-                        }, 100)
-                    },
-                    willClose: () => {
-                        clearInterval(timerInterval)
-                    }
-                }).then((result) => {
-                    if (result.dismiss === Swal.DismissReason.timer) {
-                        console.log('I was closed by the timer')
-                        window.location.href = "https://cmedicosdavid.onrender.com/"
-                    }
-                })
-                button.setAttribute('disabled', 'disabled')
-                button.innerHTML = `<i class="fa-solid fa-check fa-fade" style="color: #ffffff;"></i> Registrado exitosamente. Redirigiendo...`
-        }else{
+            Swal.fire({
+                html: 'Te has registrado exitosamente! Se te redirigirá al inicio.',
+                timer: 2000,
+                timerProgressBar: true,
+                background: '#9effd0',
+                position: 'top-end',
+                didOpen: () => {
+                    Swal.showLoading()
+                    const b = Swal.getHtmlContainer().querySelector('b')
+                    timerInterval = setInterval(() => {
+                        b.textContent = Swal.getTimerLeft()
+                    }, 100)
+                },
+                willClose: () => {
+                    clearInterval(timerInterval)
+                }
+            }).then((result) => {
+                if (result.dismiss === Swal.DismissReason.timer) {
+                    console.log('I was closed by the timer')
+                    window.location.href = "https://cmedicosdavid.onrender.com/"
+                }
+            })
+            button.setAttribute('disabled', 'disabled')
+            button.innerHTML = `<i class="fa-solid fa-check fa-fade" style="color: #ffffff;"></i> Registrado exitosamente. Redirigiendo...`
+        } else if (status != 201) {
+            let errors = data.errors
             button.innerHTML = 'REGISTRARSE'
             button.removeAttribute('disabled', 'disabled')
+            const toastLiveExample = document.getElementById('liveToast')
+            const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
+            toastBootstrap.show()
+            let toastBody = document.getElementById('toast-text')
+            let toastTitle = document.querySelector('strong')
+
+            if (errorType == 400.3) {
+                toastTitle.innerHTML = 'Error - Email no disponible.'
+                toastBody.innerHTML = errors.alias.msg
+                inputs.email.classList.add('error')
+                inputs.confirmarEmail.classList.add('error')
+                inputs.email.classList.remove('correct')
+                inputs.confirmarEmail.classList.remove('correct')
+            }
+
+            if (errorType == 400.2){
+                toastTitle.innerHTML = 'Error - Usuario no disponible.'
+                toastBody.innerHTML = errors.alias.msg
+                inputs.alias.classList.add('error')
+                inputs.alias.classList.remove('correct')
+            }
+
+            if(errorType == 400){
+                toastTitle.innerHTML = 'Error - Campos vacíos'
+                toastBody.innerHTML = 'Debes completar todos los campos del formulario.'
+            }
+
+            $('body,html').animate({
+                scrollTop: 0
+            }, 200);
         }
     })
 })

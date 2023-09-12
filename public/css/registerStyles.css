@@ -72,3 +72,9 @@ main{
     padding: 1rem;
     color:#012B78
 }
+.alerta {
+    position: absolute;
+    margin-top: 12.5vw;
+    margin-right: 3.5vw;
+    box-shadow: 0 0 5px red;
+}
